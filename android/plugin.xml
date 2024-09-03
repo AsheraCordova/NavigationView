@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="com.ashera.navigationview"
+        version="1.0">
+
+  <name>CordovaNavigationViewPlugin</name>
+
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+  </engines>
+  
+  <platform name="android">
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="CordovaNavigationViewPlugin">
+        <param name="android-package" value="com.ashera.navigationview.CordovaNavigationViewPlugin"/>
+        <param name="onload" value="true" />
+      </feature>
+    </config-file>
+
+   	 <!-- start src -->
+     <source-file src="src/com/ashera/navigationview/BottomNavigationViewImpl.java" target-dir="src/com/ashera/navigationview"/>
+     <source-file src="src/com/ashera/navigationview/CordovaNavigationViewPlugin.java" target-dir="src/com/ashera/navigationview"/>
+     <source-file src="src/com/ashera/navigationview/NavigationRailViewImpl.java" target-dir="src/com/ashera/navigationview"/>
+     <source-file src="src/com/ashera/navigationview/NavigationViewPlugin.java" target-dir="src/com/ashera/navigationview"/>
+     <!-- src end -->
+     <!-- start res -->
+     <source-file src="res/layout/design_bottom_navigation_item_new.xml" target-dir="res/layout"/>
+     <source-file src="res/layout/design_navigation_rail_item_new.xml" target-dir="res/layout"/>
+     <!-- res end -->
+     <!-- start tsc -->
+     <source-file src="tsc/src/android/widget/BottomNavigationViewImpl.ts" target-dir="tsc/src/android/widget"/>
+     <source-file src="tsc/src/android/widget/NavigationRailViewImpl.ts" target-dir="tsc/src/android/widget"/>
+     <!-- tsc end -->
+  </platform>
+
+
+</plugin>

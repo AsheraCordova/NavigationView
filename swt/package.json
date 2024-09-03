@@ -1,0 +1,7 @@
+{
+  "name": "${swtpackagename}",
+  "version": "1.0.0",
+  "description": "NavigationView Plugin",
+  "author": "Ashera",
+  "license": "ISC"
+}

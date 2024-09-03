@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="com.ashera.navigationview"
+        version="1.0">
+
+  <name>CordovaNavigationViewPlugin</name>
+
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+  </engines>
+  
+  <platform name="android">
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="CordovaNavigationViewPlugin">
+        <param name="android-package" value="com.ashera.navigationview.CordovaNavigationViewPlugin"/>
+        <param name="onload" value="true" />
+      </feature>
+    </config-file>
+
+   	 <!-- start src -->
+     <source-file src="android/src/com/ashera/navigationview/BottomNavigationViewImpl.java" target-dir="src/com/ashera/navigationview"/>
+     <source-file src="android/src/com/ashera/navigationview/CordovaNavigationViewPlugin.java" target-dir="src/com/ashera/navigationview"/>
+     <source-file src="android/src/com/ashera/navigationview/NavigationRailViewImpl.java" target-dir="src/com/ashera/navigationview"/>
+     <source-file src="android/src/com/ashera/navigationview/NavigationViewPlugin.java" target-dir="src/com/ashera/navigationview"/>
+     <!-- src end -->
+     <!-- start res -->
+     <source-file src="android/res/layout/design_bottom_navigation_item_new.xml" target-dir="res/layout"/>
+     <source-file src="android/res/layout/design_navigation_rail_item_new.xml" target-dir="res/layout"/>
+     <!-- res end -->
+     <!-- start tsc -->
+     <source-file src="android/tsc/src/android/widget/BottomNavigationViewImpl.ts" target-dir="tsc/src/android/widget"/>
+     <source-file src="android/tsc/src/android/widget/NavigationRailViewImpl.ts" target-dir="tsc/src/android/widget"/>
+     <!-- tsc end -->
+  </platform>
+  <platform name="ios">
+    <config-file target="config.xml" parent="/widget">
+      <feature name="com.ashera.navigationview.ios">
+        	<param name="ios-package" value="CordovaNavigationViewPlugin" />
+         	<param name="onload" value="true" />
+      </feature>
+    </config-file>
+
+   	 <!-- start ios -->
+     <header-file src="ios/ios/src/BaselineLayoutImpl.h" target-dir="NavigationView/ios/src"/>
+     <source-file src="ios/ios/src/BaselineLayoutImpl.m" target-dir="NavigationView/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/ios/src/BottomNavigationItemViewImpl.h" target-dir="NavigationView/ios/src"/>
+     <source-file src="ios/ios/src/BottomNavigationItemViewImpl.m" target-dir="NavigationView/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/ios/src/BottomNavigationMenuViewImpl.h" target-dir="NavigationView/ios/src"/>
+     <source-file src="ios/ios/src/BottomNavigationMenuViewImpl.m" target-dir="NavigationView/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/ios/src/BottomNavigationViewImpl.h" target-dir="NavigationView/ios/src"/>
+     <source-file src="ios/ios/src/BottomNavigationViewImpl.m" target-dir="NavigationView/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/ios/src/CordovaNavigationViewPlugin.h" target-dir="NavigationView/ios/src"/>
+     <source-file src="ios/ios/src/CordovaNavigationViewPlugin.m" target-dir="NavigationView/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/ios/src/NavigationRailItemViewImpl.h" target-dir="NavigationView/ios/src"/>
+     <source-file src="ios/ios/src/NavigationRailItemViewImpl.m" target-dir="NavigationView/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/ios/src/NavigationRailMenuViewImpl.h" target-dir="NavigationView/ios/src"/>
+     <source-file src="ios/ios/src/NavigationRailMenuViewImpl.m" target-dir="NavigationView/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/ios/src/NavigationRailViewImpl.h" target-dir="NavigationView/ios/src"/>
+     <source-file src="ios/ios/src/NavigationRailViewImpl.m" target-dir="NavigationView/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/ios/src/NavigationViewPlugin.h" target-dir="NavigationView/ios/src"/>
+     <source-file src="ios/ios/src/NavigationViewPlugin.m" target-dir="NavigationView/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <!-- ios end -->
+     <!-- start tsc -->
+     <source-file src="ios/tsc/src/ios/widget/BaselineLayoutImpl.ts" target-dir="tsc/src/ios/widget"/>
+     <source-file src="ios/tsc/src/ios/widget/BottomNavigationItemViewImpl.ts" target-dir="tsc/src/ios/widget"/>
+     <source-file src="ios/tsc/src/ios/widget/BottomNavigationMenuViewImpl.ts" target-dir="tsc/src/ios/widget"/>
+     <source-file src="ios/tsc/src/ios/widget/BottomNavigationViewImpl.ts" target-dir="tsc/src/ios/widget"/>
+     <source-file src="ios/tsc/src/ios/widget/NavigationRailItemViewImpl.ts" target-dir="tsc/src/ios/widget"/>
+     <source-file src="ios/tsc/src/ios/widget/NavigationRailMenuViewImpl.ts" target-dir="tsc/src/ios/widget"/>
+     <source-file src="ios/tsc/src/ios/widget/NavigationRailViewImpl.ts" target-dir="tsc/src/ios/widget"/>
+     <!-- tsc end -->
+     
+     <!-- start NavigationView -->
+     <header-file src="ios/library/NavigationView/src/BaselineLayout.h" target-dir="NavigationView/NavigationView/src"/>
+     <source-file src="ios/library/NavigationView/src/BaselineLayout.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
+     <header-file src="ios/library/NavigationView/src/BottomNavigationItemView.h" target-dir="NavigationView/NavigationView/src"/>
+     <source-file src="ios/library/NavigationView/src/BottomNavigationItemView.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
+     <header-file src="ios/library/NavigationView/src/BottomNavigationMenuView.h" target-dir="NavigationView/NavigationView/src"/>
+     <source-file src="ios/library/NavigationView/src/BottomNavigationMenuView.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
+     <header-file src="ios/library/NavigationView/src/BottomNavigationView.h" target-dir="NavigationView/NavigationView/src"/>
+     <source-file src="ios/library/NavigationView/src/BottomNavigationView.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
+     <header-file src="ios/library/NavigationView/src/NavigationBarItemView.h" target-dir="NavigationView/NavigationView/src"/>
+     <source-file src="ios/library/NavigationView/src/NavigationBarItemView.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
+     <header-file src="ios/library/NavigationView/src/NavigationBarMenu.h" target-dir="NavigationView/NavigationView/src"/>
+     <source-file src="ios/library/NavigationView/src/NavigationBarMenu.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
+     <header-file src="ios/library/NavigationView/src/NavigationBarMenuView.h" target-dir="NavigationView/NavigationView/src"/>
+     <source-file src="ios/library/NavigationView/src/NavigationBarMenuView.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
+     <header-file src="ios/library/NavigationView/src/NavigationBarPresenter.h" target-dir="NavigationView/NavigationView/src"/>
+     <source-file src="ios/library/NavigationView/src/NavigationBarPresenter.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
+     <header-file src="ios/library/NavigationView/src/NavigationBarView.h" target-dir="NavigationView/NavigationView/src"/>
+     <source-file src="ios/library/NavigationView/src/NavigationBarView.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
+     <header-file src="ios/library/NavigationView/src/NavigationRailItemView.h" target-dir="NavigationView/NavigationView/src"/>
+     <source-file src="ios/library/NavigationView/src/NavigationRailItemView.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
+     <header-file src="ios/library/NavigationView/src/NavigationRailMenuView.h" target-dir="NavigationView/NavigationView/src"/>
+     <source-file src="ios/library/NavigationView/src/NavigationRailMenuView.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
+     <header-file src="ios/library/NavigationView/src/NavigationRailView.h" target-dir="NavigationView/NavigationView/src"/>
+     <source-file src="ios/library/NavigationView/src/NavigationRailView.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
+     <!-- NavigationView end -->
+  </platform>
+  <platform name="browser">
+    <config-file target="config.xml" parent="/*">
+      <feature name="CordovaNavigationViewPlugin">
+        <param name="android-package" value="com.ashera.navigationview.CordovaNavigationViewPlugin"/>
+        <param name="onload" value="true" />
+      </feature>
+    </config-file>
+	<framework src="browser/core.gradle" custom="true" type="gradleReference" />
+   	 <!-- start src -->
+     <!-- src end -->
+     <!-- start res -->
+     <!-- res end -->
+     <!-- start tsc -->
+     <source-file src="browser/tsc/src/web/widget/BaselineLayoutImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="browser/tsc/src/web/widget/BottomNavigationItemViewImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="browser/tsc/src/web/widget/BottomNavigationMenuViewImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="browser/tsc/src/web/widget/BottomNavigationViewImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="browser/tsc/src/web/widget/NavigationRailItemViewImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="browser/tsc/src/web/widget/NavigationRailMenuViewImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="browser/tsc/src/web/widget/NavigationRailViewImpl.ts" target-dir="tsc/src/web/widget"/>
+     <!-- tsc end -->
+  </platform>
+  <platform name="swt">
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="CordovaNavigationViewPlugin">
+        <param name="android-package" value="com.ashera.navigationview.CordovaNavigationViewPlugin"/>
+        <param name="onload" value="true" />
+      </feature>
+    </config-file>
+	<framework src="swt/core.gradle" custom="true" type="gradleReference" />
+   	 <!-- start src -->
+     <!-- src end -->
+     <!-- start res -->
+     <!-- res end -->
+     <!-- start tsc -->
+     <source-file src="swt/tsc/src/swt/widget/BaselineLayoutImpl.ts" target-dir="tsc/src/swt/widget"/>
+     <source-file src="swt/tsc/src/swt/widget/BottomNavigationItemViewImpl.ts" target-dir="tsc/src/swt/widget"/>
+     <source-file src="swt/tsc/src/swt/widget/BottomNavigationItemViewViewImpl.ts" target-dir="tsc/src/swt/widget"/>
+     <source-file src="swt/tsc/src/swt/widget/BottomNavigationMenuViewImpl.ts" target-dir="tsc/src/swt/widget"/>
+     <source-file src="swt/tsc/src/swt/widget/BottomNavigationViewImpl.ts" target-dir="tsc/src/swt/widget"/>
+     <source-file src="swt/tsc/src/swt/widget/NavigationRailItemViewImpl.ts" target-dir="tsc/src/swt/widget"/>
+     <source-file src="swt/tsc/src/swt/widget/NavigationRailMenuViewImpl.ts" target-dir="tsc/src/swt/widget"/>
+     <source-file src="swt/tsc/src/swt/widget/NavigationRailViewImpl.ts" target-dir="tsc/src/swt/widget"/>
+     <!-- tsc end -->
+  </platform>
+
+
+
+
+
+</plugin>
