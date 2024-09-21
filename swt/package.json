@@ -1,5 +1,5 @@
 {
-  "name": "${swtpackagename}",
+  "name": "com.ashera.navigationview.swt",
   "version": "1.0.0",
   "description": "NavigationView Plugin",
   "author": "Ashera",
