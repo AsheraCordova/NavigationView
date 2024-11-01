@@ -75,7 +75,7 @@ public class NavigationRailMenuViewImpl extends BaseHasWidgets {
 	}
 
 	@Override
-	public boolean remove(IWidget w) {		
+	public boolean remove(IWidget w) {
 		boolean remove = super.remove(w);
 		navigationRailMenuView.removeView((View) w.asWidget());
 		 nativeRemoveView(w);            
@@ -299,7 +299,9 @@ public class NavigationRailMenuViewImpl extends BaseHasWidgets {
         @Override
         public void drawableStateChanged() {
         	super.drawableStateChanged();
-        	ViewImpl.drawableStateChanged(NavigationRailMenuViewImpl.this);
+        	if (!isWidgetDisposed()) {
+        		ViewImpl.drawableStateChanged(NavigationRailMenuViewImpl.this);
+        	}
         }
         private Map<String, IWidget> templates;
     	@Override
@@ -312,9 +314,10 @@ public class NavigationRailMenuViewImpl extends BaseHasWidgets {
     			template = (IWidget) quickConvert(layout, "template");
     			templates.put(layout, template);
     		}
-    		IWidget widget = template.loadLazyWidgets(NavigationRailMenuViewImpl.this.getParent());
-    		return (View) widget.asWidget();
-    	}        
+    		
+    		IWidget widget = template.loadLazyWidgets(NavigationRailMenuViewImpl.this);
+			return (View) widget.asWidget();
+    	}   
         
     	@Override
 		public void remeasure() {
@@ -379,7 +382,10 @@ public class NavigationRailMenuViewImpl extends BaseHasWidgets {
         @Override
         public void setVisibility(int visibility) {
             super.setVisibility(visibility);
-            ((org.eclipse.swt.widgets.Control)asNativeWidget()).setVisible(View.VISIBLE == visibility);
+            org.eclipse.swt.widgets.Control control = ((org.eclipse.swt.widgets.Control)asNativeWidget());
+            if (!control.isDisposed()) {
+            	control.setVisible(View.VISIBLE == visibility);
+            }
             
         }
         
@@ -428,6 +434,7 @@ public class NavigationRailMenuViewImpl extends BaseHasWidgets {
 			super.endViewTransition(view);
 			runBufferedRunnables();
 		}
+	
 	}
 	@Override
 	public Class getViewClass() {

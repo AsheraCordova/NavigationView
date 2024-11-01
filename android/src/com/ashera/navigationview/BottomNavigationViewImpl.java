@@ -258,7 +258,9 @@ public class BottomNavigationViewImpl extends BaseWidget {
         @Override
         public void drawableStateChanged() {
         	super.drawableStateChanged();
-        	ViewImpl.drawableStateChanged(BottomNavigationViewImpl.this);
+        	if (!isWidgetDisposed()) {
+        		ViewImpl.drawableStateChanged(BottomNavigationViewImpl.this);
+        	}
         }
         
     	public void setState0(float value) {
@@ -396,6 +398,7 @@ public class BottomNavigationViewImpl extends BaseWidget {
         	ViewImpl.stateNo(BottomNavigationViewImpl.this);
         }
      
+	
 	}	@Override
 	public Class getViewClass() {
 		return BottomNavigationViewExt.class;
@@ -1313,9 +1316,7 @@ private void setBadgeIsVisibles(Object objValue) {
 @SuppressLint("RestrictedApi")
 private void setTextAppearanceResources(Object objValue) {
 	setValueOnBadgeDrawable(objValue, (badge, value) -> {
-		//badge.setTextAppearanceResource((int) value);
-		invokePrivateMethodUsingReflection(badge, "setTextAppearance",
-				new com.google.android.material.resources.TextAppearance(bottomNavigationView.getContext(), (int) value));
+		badge.setTextAppearance((int) value);
 	});
 }
 //end - textAppearance

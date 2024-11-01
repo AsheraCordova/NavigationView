@@ -28,12 +28,16 @@
      <source-file src="ios/src/BottomNavigationViewImpl.m" target-dir="NavigationView/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
      <header-file src="ios/src/CordovaNavigationViewPlugin.h" target-dir="NavigationView/ios/src"/>
      <source-file src="ios/src/CordovaNavigationViewPlugin.m" target-dir="NavigationView/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/src/NavigationMenuItemViewImpl.h" target-dir="NavigationView/ios/src"/>
+     <source-file src="ios/src/NavigationMenuItemViewImpl.m" target-dir="NavigationView/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
      <header-file src="ios/src/NavigationRailItemViewImpl.h" target-dir="NavigationView/ios/src"/>
      <source-file src="ios/src/NavigationRailItemViewImpl.m" target-dir="NavigationView/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
      <header-file src="ios/src/NavigationRailMenuViewImpl.h" target-dir="NavigationView/ios/src"/>
      <source-file src="ios/src/NavigationRailMenuViewImpl.m" target-dir="NavigationView/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
      <header-file src="ios/src/NavigationRailViewImpl.h" target-dir="NavigationView/ios/src"/>
      <source-file src="ios/src/NavigationRailViewImpl.m" target-dir="NavigationView/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/src/NavigationViewImpl.h" target-dir="NavigationView/ios/src"/>
+     <source-file src="ios/src/NavigationViewImpl.m" target-dir="NavigationView/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
      <header-file src="ios/src/NavigationViewPlugin.h" target-dir="NavigationView/ios/src"/>
      <source-file src="ios/src/NavigationViewPlugin.m" target-dir="NavigationView/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
      <!-- ios end -->
@@ -42,9 +46,11 @@
      <source-file src="tsc/src/ios/widget/BottomNavigationItemViewImpl.ts" target-dir="tsc/src/ios/widget"/>
      <source-file src="tsc/src/ios/widget/BottomNavigationMenuViewImpl.ts" target-dir="tsc/src/ios/widget"/>
      <source-file src="tsc/src/ios/widget/BottomNavigationViewImpl.ts" target-dir="tsc/src/ios/widget"/>
+     <source-file src="tsc/src/ios/widget/NavigationMenuItemViewImpl.ts" target-dir="tsc/src/ios/widget"/>
      <source-file src="tsc/src/ios/widget/NavigationRailItemViewImpl.ts" target-dir="tsc/src/ios/widget"/>
      <source-file src="tsc/src/ios/widget/NavigationRailMenuViewImpl.ts" target-dir="tsc/src/ios/widget"/>
      <source-file src="tsc/src/ios/widget/NavigationRailViewImpl.ts" target-dir="tsc/src/ios/widget"/>
+     <source-file src="tsc/src/ios/widget/NavigationViewImpl.ts" target-dir="tsc/src/ios/widget"/>
      <!-- tsc end -->
      
      <!-- start NavigationView -->
@@ -56,6 +62,8 @@
      <source-file src="library/NavigationView/src/BottomNavigationMenuView.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
      <header-file src="library/NavigationView/src/BottomNavigationView.h" target-dir="NavigationView/NavigationView/src"/>
      <source-file src="library/NavigationView/src/BottomNavigationView.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
+     <header-file src="library/NavigationView/src/ForegroundLinearLayout.h" target-dir="NavigationView/NavigationView/src"/>
+     <source-file src="library/NavigationView/src/ForegroundLinearLayout.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
      <header-file src="library/NavigationView/src/NavigationBarItemView.h" target-dir="NavigationView/NavigationView/src"/>
      <source-file src="library/NavigationView/src/NavigationBarItemView.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
      <header-file src="library/NavigationView/src/NavigationBarMenu.h" target-dir="NavigationView/NavigationView/src"/>
@@ -66,12 +74,26 @@
      <source-file src="library/NavigationView/src/NavigationBarPresenter.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
      <header-file src="library/NavigationView/src/NavigationBarView.h" target-dir="NavigationView/NavigationView/src"/>
      <source-file src="library/NavigationView/src/NavigationBarView.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
+     <header-file src="library/NavigationView/src/NavigationMenu.h" target-dir="NavigationView/NavigationView/src"/>
+     <source-file src="library/NavigationView/src/NavigationMenu.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
+     <header-file src="library/NavigationView/src/NavigationMenuItemView.h" target-dir="NavigationView/NavigationView/src"/>
+     <source-file src="library/NavigationView/src/NavigationMenuItemView.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
+     <header-file src="library/NavigationView/src/NavigationMenuPresenter.h" target-dir="NavigationView/NavigationView/src"/>
+     <source-file src="library/NavigationView/src/NavigationMenuPresenter.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
+     <header-file src="library/NavigationView/src/NavigationMenuView.h" target-dir="NavigationView/NavigationView/src"/>
+     <source-file src="library/NavigationView/src/NavigationMenuView.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
      <header-file src="library/NavigationView/src/NavigationRailItemView.h" target-dir="NavigationView/NavigationView/src"/>
      <source-file src="library/NavigationView/src/NavigationRailItemView.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
      <header-file src="library/NavigationView/src/NavigationRailMenuView.h" target-dir="NavigationView/NavigationView/src"/>
      <source-file src="library/NavigationView/src/NavigationRailMenuView.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
      <header-file src="library/NavigationView/src/NavigationRailView.h" target-dir="NavigationView/NavigationView/src"/>
      <source-file src="library/NavigationView/src/NavigationRailView.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
+     <header-file src="library/NavigationView/src/NavigationSubMenu.h" target-dir="NavigationView/NavigationView/src"/>
+     <source-file src="library/NavigationView/src/NavigationSubMenu.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
+     <header-file src="library/NavigationView/src/NavigationView.h" target-dir="NavigationView/NavigationView/src"/>
+     <source-file src="library/NavigationView/src/NavigationView.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
+     <header-file src="library/NavigationView/src/ScrimInsetsFrameLayout.h" target-dir="NavigationView/NavigationView/src"/>
+     <source-file src="library/NavigationView/src/ScrimInsetsFrameLayout.m" target-dir="NavigationView/NavigationView/src" compiler-flags="-fno-objc-arc"/>
      <!-- NavigationView end -->
   </platform>
 

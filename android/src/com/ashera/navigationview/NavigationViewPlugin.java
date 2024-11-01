@@ -7,6 +7,7 @@ public class NavigationViewPlugin  {
     	//start - widgets
         WidgetFactory.register(new com.ashera.navigationview.BottomNavigationViewImpl());
         WidgetFactory.register(new com.ashera.navigationview.NavigationRailViewImpl());
+        WidgetFactory.register(new com.ashera.navigationview.NavigationViewImpl());
         //end - widgets
     }
 }

@@ -27,9 +27,12 @@
      <source-file src="tsc/src/swt/widget/BottomNavigationItemViewViewImpl.ts" target-dir="tsc/src/swt/widget"/>
      <source-file src="tsc/src/swt/widget/BottomNavigationMenuViewImpl.ts" target-dir="tsc/src/swt/widget"/>
      <source-file src="tsc/src/swt/widget/BottomNavigationViewImpl.ts" target-dir="tsc/src/swt/widget"/>
+     <source-file src="tsc/src/swt/widget/NavigationMenuItemViewImpl.ts" target-dir="tsc/src/swt/widget"/>
+     <source-file src="tsc/src/swt/widget/NavigationMenuViewImpl.ts" target-dir="tsc/src/swt/widget"/>
      <source-file src="tsc/src/swt/widget/NavigationRailItemViewImpl.ts" target-dir="tsc/src/swt/widget"/>
      <source-file src="tsc/src/swt/widget/NavigationRailMenuViewImpl.ts" target-dir="tsc/src/swt/widget"/>
      <source-file src="tsc/src/swt/widget/NavigationRailViewImpl.ts" target-dir="tsc/src/swt/widget"/>
+     <source-file src="tsc/src/swt/widget/NavigationViewImpl.ts" target-dir="tsc/src/swt/widget"/>
      <!-- tsc end -->
   </platform>
 

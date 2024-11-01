@@ -261,7 +261,9 @@ public class NavigationRailViewImpl extends BaseWidget {
         @Override
         public void drawableStateChanged() {
         	super.drawableStateChanged();
-        	ViewImpl.drawableStateChanged(NavigationRailViewImpl.this);
+        	if (!isWidgetDisposed()) {
+        		ViewImpl.drawableStateChanged(NavigationRailViewImpl.this);
+        	}
         }
         
     	public void setState0(float value) {
@@ -399,6 +401,7 @@ public class NavigationRailViewImpl extends BaseWidget {
         	ViewImpl.stateNo(NavigationRailViewImpl.this);
         }
      
+	
 	}	@Override
 	public Class getViewClass() {
 		return NavigationRailViewExt.class;
@@ -807,9 +810,7 @@ private void setBadgeIsVisibles(Object objValue) {
 @SuppressLint("RestrictedApi")
 private void setTextAppearanceResources(Object objValue) {
 	setValueOnBadgeDrawable(objValue, (badge, value) -> {
-		//badge.setTextAppearanceResource((int) value);
-		invokePrivateMethodUsingReflection(badge, "setTextAppearance",
-				new com.google.android.material.resources.TextAppearance(navigationRailView.getContext(), (int) value));
+		badge.setTextAppearance((int) value);
 	});
 }
 

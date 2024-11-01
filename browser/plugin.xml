@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-        id="com.ashera.navigationview"
+        id="com.ashera.navigationview.web"
         version="1.0">
 
   <name>CordovaNavigationViewPlugin</name>
@@ -26,9 +26,11 @@
      <source-file src="tsc/src/web/widget/BottomNavigationItemViewImpl.ts" target-dir="tsc/src/web/widget"/>
      <source-file src="tsc/src/web/widget/BottomNavigationMenuViewImpl.ts" target-dir="tsc/src/web/widget"/>
      <source-file src="tsc/src/web/widget/BottomNavigationViewImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="tsc/src/web/widget/NavigationMenuItemViewImpl.ts" target-dir="tsc/src/web/widget"/>
      <source-file src="tsc/src/web/widget/NavigationRailItemViewImpl.ts" target-dir="tsc/src/web/widget"/>
      <source-file src="tsc/src/web/widget/NavigationRailMenuViewImpl.ts" target-dir="tsc/src/web/widget"/>
      <source-file src="tsc/src/web/widget/NavigationRailViewImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="tsc/src/web/widget/NavigationViewImpl.ts" target-dir="tsc/src/web/widget"/>
      <!-- tsc end -->
   </platform>
 

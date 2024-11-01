@@ -12,6 +12,8 @@ public class NavigationViewPlugin  {
         WidgetFactory.register(new com.ashera.navigationview.NavigationRailViewImpl());
         WidgetFactory.register(new com.ashera.navigationview.NavigationRailMenuViewImpl());
         WidgetFactory.register(new com.ashera.navigationview.NavigationRailItemViewImpl());
+        WidgetFactory.register(new com.ashera.navigationview.NavigationViewImpl());
+        WidgetFactory.register(new com.ashera.navigationview.NavigationMenuItemViewImpl());
         //end - widgets
     }
 }

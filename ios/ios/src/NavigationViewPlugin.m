@@ -8,9 +8,11 @@
 #include "BottomNavigationMenuViewImpl.h"
 #include "BottomNavigationViewImpl.h"
 #include "J2ObjC_source.h"
+#include "NavigationMenuItemViewImpl.h"
 #include "NavigationRailItemViewImpl.h"
 #include "NavigationRailMenuViewImpl.h"
 #include "NavigationRailViewImpl.h"
+#include "NavigationViewImpl.h"
 #include "NavigationViewPlugin.h"
 #include "WidgetFactory.h"
 
@@ -66,6 +68,8 @@ void ASNavigationViewPlugin_initPlugin() {
   ASWidgetFactory_register__WithASIWidget_(new_ASNavigationRailViewImpl_init());
   ASWidgetFactory_register__WithASIWidget_(new_ASNavigationRailMenuViewImpl_init());
   ASWidgetFactory_register__WithASIWidget_(new_ASNavigationRailItemViewImpl_init());
+  ASWidgetFactory_register__WithASIWidget_(new_ASNavigationViewImpl_init());
+  ASWidgetFactory_register__WithASIWidget_(new_ASNavigationMenuItemViewImpl_init());
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationViewPlugin)

@@ -85,7 +85,7 @@ public class BottomNavigationItemViewImpl extends BaseHasWidgets {
 	}
 
 	@Override
-	public boolean remove(IWidget w) {		
+	public boolean remove(IWidget w) {
 		boolean remove = super.remove(w);
 		bottomNavigationItemView.removeView((View) w.asWidget());
 		 nativeRemoveView(w);            
@@ -309,7 +309,9 @@ public class BottomNavigationItemViewImpl extends BaseHasWidgets {
         @Override
         public void drawableStateChanged() {
         	super.drawableStateChanged();
-        	ViewImpl.drawableStateChanged(BottomNavigationItemViewImpl.this);
+        	if (!isWidgetDisposed()) {
+        		ViewImpl.drawableStateChanged(BottomNavigationItemViewImpl.this);
+        	}
         }
         private Map<String, IWidget> templates;
     	@Override
@@ -322,9 +324,10 @@ public class BottomNavigationItemViewImpl extends BaseHasWidgets {
     			template = (IWidget) quickConvert(layout, "template");
     			templates.put(layout, template);
     		}
+    		
     		IWidget widget = template.loadLazyWidgets(BottomNavigationItemViewImpl.this);
-    		return (View) widget.asWidget();
-    	}        
+			return (View) widget.asWidget();
+    	}   
         
     	@Override
 		public void remeasure() {
@@ -436,6 +439,7 @@ public class BottomNavigationItemViewImpl extends BaseHasWidgets {
 			super.endViewTransition(view);
 			runBufferedRunnables();
 		}
+	
 	}
 	@Override
 	public Class getViewClass() {
