@@ -74,6 +74,7 @@ public class BottomNavigationItemViewImpl extends BaseHasWidgets {
 		
 		ViewGroupImpl.registerCommandConveter(this);
 		setWidgetOnNativeClass();
+		
 	}
 	private native void setWidgetOnNativeClass() /*-[
 		((ASUIView*) [self asNativeWidget]).widget = self;
@@ -449,7 +450,7 @@ public class BottomNavigationItemViewImpl extends BaseHasWidgets {
 	@SuppressLint("NewApi")
 	@Override
 	public void setAttribute(WidgetAttribute key, String strValue, Object objValue, ILifeCycleDecorator decorator) {
-				ViewGroupImpl.setAttribute(this, key, strValue, objValue, decorator);
+				ViewGroupImpl.setAttribute(this,  key, strValue, objValue, decorator);
 		Object nativeWidget = asNativeWidget();
 
 	}
@@ -504,75 +505,7 @@ public class BottomNavigationItemViewImpl extends BaseHasWidgets {
         ((View)asWidget()).setVisibility(b ? View.VISIBLE : View.GONE);
     }
 
-	
-private BottomNavigationItemViewCommandBuilder builder;
-private BottomNavigationItemViewBean bean;
-public Object getPlugin(String plugin) {
-	return WidgetFactory.getAttributable(plugin).newInstance(this);
-}
-public BottomNavigationItemViewBean getBean() {
-	if (bean == null) {
-		bean = new BottomNavigationItemViewBean();
-	}
-	return bean;
-}
-public BottomNavigationItemViewCommandBuilder getBuilder() {
-	if (builder == null) {
-		builder = new BottomNavigationItemViewCommandBuilder();
-	}
-	return builder;
-}
-
-
-public  class BottomNavigationItemViewCommandBuilder extends com.ashera.layout.ViewGroupImpl.ViewGroupCommandBuilder <BottomNavigationItemViewCommandBuilder> {
-    public BottomNavigationItemViewCommandBuilder() {
-	}
-	
-	public BottomNavigationItemViewCommandBuilder execute(boolean setter) {
-		if (setter) {
-			executeCommand(command, null, IWidget.COMMAND_EXEC_SETTER_METHOD);
-			getFragment().remeasure();
-		}
-		executeCommand(command, null, IWidget.COMMAND_EXEC_GETTER_METHOD);
-return this;	}
-
-}
-public class BottomNavigationItemViewBean extends com.ashera.layout.ViewGroupImpl.ViewGroupBean{
-		public BottomNavigationItemViewBean() {
-			super(BottomNavigationItemViewImpl.this);
-		}
-}
-
-
-private BottomNavigationItemViewCommandParamsBuilder paramsBuilder;
-private BottomNavigationItemViewParamsBean paramsBean;
-
-public BottomNavigationItemViewParamsBean getParamsBean() {
-	if (paramsBean == null) {
-		paramsBean = new BottomNavigationItemViewParamsBean();
-	}
-	return paramsBean;
-}
-public BottomNavigationItemViewCommandParamsBuilder getParamsBuilder() {
-	if (paramsBuilder == null) {
-		paramsBuilder = new BottomNavigationItemViewCommandParamsBuilder();
-	}
-	return paramsBuilder;
-}
-
-
-
-public class BottomNavigationItemViewParamsBean extends com.ashera.layout.ViewGroupImpl.ViewGroupParamsBean{
-}
-
-
-
-
-
-public class BottomNavigationItemViewCommandParamsBuilder extends com.ashera.layout.ViewGroupImpl.ViewGroupCommandParamsBuilder<BottomNavigationItemViewCommandParamsBuilder>{
-}
-
-	//end - body
+		//end - body
 
 public void nativeCreate(Map<String, Object> params) {
 	nativeCreate();

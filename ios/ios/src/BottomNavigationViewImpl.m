@@ -17,7 +17,6 @@
 #include "FrameLayout.h"
 #include "HasWidgets.h"
 #include "IActivity.h"
-#include "IAttributable.h"
 #include "IFragment.h"
 #include "ILifeCycleDecorator.h"
 #include "IListener.h"
@@ -59,17 +58,12 @@
 
 
 #pragma clang diagnostic ignored "-Wprotocol"
-#pragma clang diagnostic ignored "-Wincomplete-implementation"
 
 @interface ASBottomNavigationViewImpl () {
  @public
   id uiView_;
   ADXBottomNavigationView *bottomNavigationView_;
   id<JavaUtilList> badgeMenuItemIds_;
-  ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *builder_;
-  ASBottomNavigationViewImpl_BottomNavigationViewBean *bean_;
-  ASBottomNavigationViewImpl_BottomNavigationViewCommandParamsBuilder *paramsBuilder_;
-  ASBottomNavigationViewImpl_BottomNavigationViewParamsBean *paramsBean_;
 }
 
 - (void)setWidgetOnNativeClass;
@@ -112,10 +106,6 @@ withASBottomNavigationViewImpl_ValueSetter:(id<ASBottomNavigationViewImpl_ValueS
 J2OBJC_FIELD_SETTER(ASBottomNavigationViewImpl, uiView_, id)
 J2OBJC_FIELD_SETTER(ASBottomNavigationViewImpl, bottomNavigationView_, ADXBottomNavigationView *)
 J2OBJC_FIELD_SETTER(ASBottomNavigationViewImpl, badgeMenuItemIds_, id<JavaUtilList>)
-J2OBJC_FIELD_SETTER(ASBottomNavigationViewImpl, builder_, ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)
-J2OBJC_FIELD_SETTER(ASBottomNavigationViewImpl, bean_, ASBottomNavigationViewImpl_BottomNavigationViewBean *)
-J2OBJC_FIELD_SETTER(ASBottomNavigationViewImpl, paramsBuilder_, ASBottomNavigationViewImpl_BottomNavigationViewCommandParamsBuilder *)
-J2OBJC_FIELD_SETTER(ASBottomNavigationViewImpl, paramsBean_, ASBottomNavigationViewImpl_BottomNavigationViewParamsBean *)
 
 __attribute__((unused)) static void ASBottomNavigationViewImpl_setWidgetOnNativeClass(ASBottomNavigationViewImpl *self);
 
@@ -269,20 +259,6 @@ __attribute__((unused)) static ASBottomNavigationViewImpl_OnItemReselectedListen
 __attribute__((unused)) static ASBottomNavigationViewImpl_OnItemReselectedListener *create_ASBottomNavigationViewImpl_OnItemReselectedListener_initWithASIWidget_withNSString_withNSString_(id<ASIWidget> w, NSString *strValue, NSString *action);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASBottomNavigationViewImpl_OnItemReselectedListener)
-
-@interface ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder () {
- @public
-  ASBottomNavigationViewImpl *this$0_;
-}
-
-@end
-
-@interface ASBottomNavigationViewImpl_BottomNavigationViewBean () {
- @public
-  ASBottomNavigationViewImpl *this$0_;
-}
-
-@end
 
 @interface ASBottomNavigationViewImpl_$Lambda$1 : NSObject < JavaLangRunnable > {
  @public
@@ -874,38 +850,6 @@ withASBottomNavigationViewImpl_ValueSetter:(id<ASBottomNavigationViewImpl_ValueS
   [((ADView *) nil_chk(((ADView *) cast_chk([self asWidget], [ADView class])))) setVisibilityWithInt:b ? ADView_VISIBLE : ADView_GONE];
 }
 
-- (id)getPluginWithNSString:(NSString *)plugin {
-  return [((id<ASIAttributable>) nil_chk(ASWidgetFactory_getAttributableWithNSString_(plugin))) newInstanceWithASIWidget:self];
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewBean *)getBean {
-  if (bean_ == nil) {
-    bean_ = new_ASBottomNavigationViewImpl_BottomNavigationViewBean_initWithASBottomNavigationViewImpl_(self);
-  }
-  return bean_;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)getBuilder {
-  if (builder_ == nil) {
-    builder_ = new_ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder_initWithASBottomNavigationViewImpl_(self);
-  }
-  return builder_;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewParamsBean *)getParamsBean {
-  if (paramsBean_ == nil) {
-    paramsBean_ = new_ASBottomNavigationViewImpl_BottomNavigationViewParamsBean_initWithASBottomNavigationViewImpl_(self);
-  }
-  return paramsBean_;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandParamsBuilder *)getParamsBuilder {
-  if (paramsBuilder_ == nil) {
-    paramsBuilder_ = new_ASBottomNavigationViewImpl_BottomNavigationViewCommandParamsBuilder_initWithASBottomNavigationViewImpl_(self);
-  }
-  return paramsBuilder_;
-}
-
 - (void)nativeCreateWithJavaUtilMap:(id<JavaUtilMap>)params {
   [self nativeCreate];
   [((ADXBottomNavigationView *) nil_chk(bottomNavigationView_)) initNavigationBarView];
@@ -957,12 +901,7 @@ withASBottomNavigationViewImpl_ValueSetter:(id<ASBottomNavigationViewImpl_ValueS
     { NULL, "V", 0x2, 38, 25, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 39, 1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 40, 41, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, 42, 1, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewBean;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewParamsBean;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandParamsBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 43, 44, -1, 45, -1, -1 },
+    { NULL, "V", 0x1, 42, 43, -1, 44, -1, -1 },
     { NULL, "V", 0x101, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -1006,27 +945,18 @@ withASBottomNavigationViewImpl_ValueSetter:(id<ASBottomNavigationViewImpl_ValueS
   methods[35].selector = @selector(setTextAppearanceResourcesWithId:);
   methods[36].selector = @selector(setIdWithNSString:);
   methods[37].selector = @selector(setVisibleWithBoolean:);
-  methods[38].selector = @selector(getPluginWithNSString:);
-  methods[39].selector = @selector(getBean);
-  methods[40].selector = @selector(getBuilder);
-  methods[41].selector = @selector(getParamsBean);
-  methods[42].selector = @selector(getParamsBuilder);
-  methods[43].selector = @selector(nativeCreateWithJavaUtilMap:);
-  methods[44].selector = @selector(nativeCreate);
+  methods[38].selector = @selector(nativeCreateWithJavaUtilMap:);
+  methods[39].selector = @selector(nativeCreate);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "uiView_", "LNSObject;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 46, -1, -1 },
-    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 47, -1, -1 },
+    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 45, -1, -1 },
+    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 46, -1, -1 },
     { "bottomNavigationView_", "LADXBottomNavigationView;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "badgeMenuItemIds_", "LJavaUtilList;", .constantValue.asLong = 0, 0x2, -1, -1, 48, -1 },
-    { "builder_", "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "bean_", "LASBottomNavigationViewImpl_BottomNavigationViewBean;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "paramsBuilder_", "LASBottomNavigationViewImpl_BottomNavigationViewCommandParamsBuilder;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "paramsBean_", "LASBottomNavigationViewImpl_BottomNavigationViewParamsBean;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "badgeMenuItemIds_", "LJavaUtilList;", .constantValue.asLong = 0, 0x2, -1, -1, 47, -1 },
   };
-  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "remove", "LASIWidget;", "I", "nativeRemoveView", "add", "LASIWidget;I", "createLayoutParams", "LADView;", "getLayoutParams", "setChildAttribute", "LASIWidget;LASWidgetAttribute;LNSString;LNSObject;", "getChildAttribute", "LASIWidget;LASWidgetAttribute;", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "checkIosVersion", "setBadgeBackgroundColors", "LNSObject;", "setValueOnBadgeDrawable", "LNSObject;LASBottomNavigationViewImpl_ValueSetter;", "setBadgeMenuItemIds", "setBadgeNumbers", "setBadgeVerticalOffsets", "setBadgeHorizontalOffsets", "setBadgeGravities", "setBadgeMaxCharacterCounts", "setBadgeAlphas", "setBadgeTextColors", "setBadgeIsVisibles", "setMenu", "setTextAppearanceResources", "setId", "setVisible", "Z", "getPlugin", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", &ASBottomNavigationViewImpl_LOCAL_NAME, &ASBottomNavigationViewImpl_GROUP_NAME, "Ljava/util/List<Ljava/lang/Object;>;", "LASBottomNavigationViewImpl_LabelVisibilityMode;LASBottomNavigationViewImpl_BottomNavigationViewExt;LASBottomNavigationViewImpl_ValueSetter;LASBottomNavigationViewImpl_OnItemSelectedListener;LASBottomNavigationViewImpl_OnItemReselectedListener;LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;LASBottomNavigationViewImpl_BottomNavigationViewBean;LASBottomNavigationViewImpl_BottomNavigationViewParamsBean;LASBottomNavigationViewImpl_BottomNavigationViewCommandParamsBuilder;" };
-  static const J2ObjcClassInfo _ASBottomNavigationViewImpl = { "BottomNavigationViewImpl", "com.ashera.navigationview", ptrTable, methods, fields, 7, 0x1, 45, 9, -1, 49, -1, -1, -1 };
+  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "remove", "LASIWidget;", "I", "nativeRemoveView", "add", "LASIWidget;I", "createLayoutParams", "LADView;", "getLayoutParams", "setChildAttribute", "LASIWidget;LASWidgetAttribute;LNSString;LNSObject;", "getChildAttribute", "LASIWidget;LASWidgetAttribute;", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "checkIosVersion", "setBadgeBackgroundColors", "LNSObject;", "setValueOnBadgeDrawable", "LNSObject;LASBottomNavigationViewImpl_ValueSetter;", "setBadgeMenuItemIds", "setBadgeNumbers", "setBadgeVerticalOffsets", "setBadgeHorizontalOffsets", "setBadgeGravities", "setBadgeMaxCharacterCounts", "setBadgeAlphas", "setBadgeTextColors", "setBadgeIsVisibles", "setMenu", "setTextAppearanceResources", "setId", "setVisible", "Z", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", &ASBottomNavigationViewImpl_LOCAL_NAME, &ASBottomNavigationViewImpl_GROUP_NAME, "Ljava/util/List<Ljava/lang/Object;>;", "LASBottomNavigationViewImpl_LabelVisibilityMode;LASBottomNavigationViewImpl_BottomNavigationViewExt;LASBottomNavigationViewImpl_ValueSetter;LASBottomNavigationViewImpl_OnItemSelectedListener;LASBottomNavigationViewImpl_OnItemReselectedListener;" };
+  static const J2ObjcClassInfo _ASBottomNavigationViewImpl = { "BottomNavigationViewImpl", "com.ashera.navigationview", ptrTable, methods, fields, 7, 0x1, 40, 5, -1, 48, -1, -1, -1 };
   return &_ASBottomNavigationViewImpl;
 }
 
@@ -1865,564 +1795,6 @@ ASBottomNavigationViewImpl_OnItemReselectedListener *create_ASBottomNavigationVi
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBottomNavigationViewImpl_OnItemReselectedListener)
-
-@implementation ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder
-
-- (instancetype)initWithASBottomNavigationViewImpl:(ASBottomNavigationViewImpl *)outer$ {
-  ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder_initWithASBottomNavigationViewImpl_(self, outer$);
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)executeWithBoolean:(jboolean)setter {
-  if (setter) {
-    [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_SETTER_METHOD];
-    [((id<ASIFragment>) nil_chk([this$0_ getFragment])) remeasure];
-  }
-  [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_GETTER_METHOD];
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)setItemHorizontalTranslationEnabledWithBoolean:(jboolean)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"itemHorizontalTranslationEnabled"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:JavaLangBoolean_valueOfWithBoolean_(value)];
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)setOnItemSelectedWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"onItemSelected"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)setOnItemReselectedWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"onItemReselected"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)setMenuWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"menu"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)setItemIconTintWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"itemIconTint"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)setItemIconSizeWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"itemIconSize"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)setItemTextColorWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"itemTextColor"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)setItemBackgroundWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"itemBackground"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)setSelectedItemIdWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"selectedItemId"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)setLabelVisibilityModeWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"labelVisibilityMode"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)setBadgeNumbersWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"badgeNumbers"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)setMenuItemIdsWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"menuItemIds"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)setBadgeAlphasWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"badgeAlphas"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)setBadgeMaxCharacterCountsWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"badgeMaxCharacterCounts"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)setBadgeGravitiesWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"badgeGravities"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)setBadgeHorizontalOffsetsWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"badgeHorizontalOffsets"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)setBadgeVerticalOffsetsWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"badgeVerticalOffsets"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)setBadgeIsVisiblesWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"badgeIsVisibles"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)setItemTextAppearanceInactiveWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"itemTextAppearanceInactive"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)setItemTextAppearanceActiveWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"itemTextAppearanceActive"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)setBadgeBackgroundColorsWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"badgeBackgroundColors"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)setBadgeTextColorsWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"badgeTextColors"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *)setBadgeTextAppearanceResourcesWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"badgeTextAppearanceResources"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 1, 2, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 3, 2, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 4, 5, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 6, 5, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 7, 5, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 8, 5, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 9, 5, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 10, 5, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 11, 5, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 12, 5, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 13, 5, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 14, 5, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 15, 5, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 16, 5, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 17, 5, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 18, 5, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 19, 5, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 20, 5, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 21, 5, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 22, 5, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 23, 5, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 24, 5, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 25, 5, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;", 0x1, 26, 5, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASBottomNavigationViewImpl:);
-  methods[1].selector = @selector(executeWithBoolean:);
-  methods[2].selector = @selector(setItemHorizontalTranslationEnabledWithBoolean:);
-  methods[3].selector = @selector(setOnItemSelectedWithNSString:);
-  methods[4].selector = @selector(setOnItemReselectedWithNSString:);
-  methods[5].selector = @selector(setMenuWithNSString:);
-  methods[6].selector = @selector(setItemIconTintWithNSString:);
-  methods[7].selector = @selector(setItemIconSizeWithNSString:);
-  methods[8].selector = @selector(setItemTextColorWithNSString:);
-  methods[9].selector = @selector(setItemBackgroundWithNSString:);
-  methods[10].selector = @selector(setSelectedItemIdWithNSString:);
-  methods[11].selector = @selector(setLabelVisibilityModeWithNSString:);
-  methods[12].selector = @selector(setBadgeNumbersWithNSString:);
-  methods[13].selector = @selector(setMenuItemIdsWithNSString:);
-  methods[14].selector = @selector(setBadgeAlphasWithNSString:);
-  methods[15].selector = @selector(setBadgeMaxCharacterCountsWithNSString:);
-  methods[16].selector = @selector(setBadgeGravitiesWithNSString:);
-  methods[17].selector = @selector(setBadgeHorizontalOffsetsWithNSString:);
-  methods[18].selector = @selector(setBadgeVerticalOffsetsWithNSString:);
-  methods[19].selector = @selector(setBadgeIsVisiblesWithNSString:);
-  methods[20].selector = @selector(setItemTextAppearanceInactiveWithNSString:);
-  methods[21].selector = @selector(setItemTextAppearanceActiveWithNSString:);
-  methods[22].selector = @selector(setBadgeBackgroundColorsWithNSString:);
-  methods[23].selector = @selector(setBadgeTextColorsWithNSString:);
-  methods[24].selector = @selector(setBadgeTextAppearanceResourcesWithNSString:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LASBottomNavigationViewImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LASBottomNavigationViewImpl;", "execute", "Z", "setItemHorizontalTranslationEnabled", "setOnItemSelected", "LNSString;", "setOnItemReselected", "setMenu", "setItemIconTint", "setItemIconSize", "setItemTextColor", "setItemBackground", "setSelectedItemId", "setLabelVisibilityMode", "setBadgeNumbers", "setMenuItemIds", "setBadgeAlphas", "setBadgeMaxCharacterCounts", "setBadgeGravities", "setBadgeHorizontalOffsets", "setBadgeVerticalOffsets", "setBadgeIsVisibles", "setItemTextAppearanceInactive", "setItemTextAppearanceActive", "setBadgeBackgroundColors", "setBadgeTextColors", "setBadgeTextAppearanceResources", "Lcom/ashera/layout/ViewGroupImpl$ViewGroupCommandBuilder<Lcom/ashera/navigationview/BottomNavigationViewImpl$BottomNavigationViewCommandBuilder;>;" };
-  static const J2ObjcClassInfo _ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder = { "BottomNavigationViewCommandBuilder", "com.ashera.navigationview", ptrTable, methods, fields, 7, 0x1, 25, 1, 0, -1, -1, 27, -1 };
-  return &_ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder;
-}
-
-@end
-
-void ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder_initWithASBottomNavigationViewImpl_(ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *self, ASBottomNavigationViewImpl *outer$) {
-  self->this$0_ = outer$;
-  ASViewGroupImpl_ViewGroupCommandBuilder_init(self);
-}
-
-ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *new_ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder_initWithASBottomNavigationViewImpl_(ASBottomNavigationViewImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder, initWithASBottomNavigationViewImpl_, outer$)
-}
-
-ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *create_ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder_initWithASBottomNavigationViewImpl_(ASBottomNavigationViewImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder, initWithASBottomNavigationViewImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder)
-
-@implementation ASBottomNavigationViewImpl_BottomNavigationViewBean
-
-- (instancetype)initWithASBottomNavigationViewImpl:(ASBottomNavigationViewImpl *)outer$ {
-  ASBottomNavigationViewImpl_BottomNavigationViewBean_initWithASBottomNavigationViewImpl_(self, outer$);
-  return self;
-}
-
-- (void)setItemHorizontalTranslationEnabledWithBoolean:(jboolean)value {
-  (void) [((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setItemHorizontalTranslationEnabledWithBoolean:value])) executeWithBoolean:true];
-}
-
-- (void)setOnItemSelectedWithNSString:(NSString *)value {
-  (void) [((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setOnItemSelectedWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setOnItemReselectedWithNSString:(NSString *)value {
-  (void) [((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setOnItemReselectedWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setMenuWithNSString:(NSString *)value {
-  (void) [((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setMenuWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setItemIconTintWithNSString:(NSString *)value {
-  (void) [((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setItemIconTintWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setItemIconSizeWithNSString:(NSString *)value {
-  (void) [((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setItemIconSizeWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setItemTextColorWithNSString:(NSString *)value {
-  (void) [((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setItemTextColorWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setItemBackgroundWithNSString:(NSString *)value {
-  (void) [((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setItemBackgroundWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setSelectedItemIdWithNSString:(NSString *)value {
-  (void) [((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setSelectedItemIdWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setLabelVisibilityModeWithNSString:(NSString *)value {
-  (void) [((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setLabelVisibilityModeWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setBadgeNumbersWithNSString:(NSString *)value {
-  (void) [((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setBadgeNumbersWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setMenuItemIdsWithNSString:(NSString *)value {
-  (void) [((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setMenuItemIdsWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setBadgeAlphasWithNSString:(NSString *)value {
-  (void) [((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setBadgeAlphasWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setBadgeMaxCharacterCountsWithNSString:(NSString *)value {
-  (void) [((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setBadgeMaxCharacterCountsWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setBadgeGravitiesWithNSString:(NSString *)value {
-  (void) [((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setBadgeGravitiesWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setBadgeHorizontalOffsetsWithNSString:(NSString *)value {
-  (void) [((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setBadgeHorizontalOffsetsWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setBadgeVerticalOffsetsWithNSString:(NSString *)value {
-  (void) [((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setBadgeVerticalOffsetsWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setBadgeIsVisiblesWithNSString:(NSString *)value {
-  (void) [((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setBadgeIsVisiblesWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setItemTextAppearanceInactiveWithNSString:(NSString *)value {
-  (void) [((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setItemTextAppearanceInactiveWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setItemTextAppearanceActiveWithNSString:(NSString *)value {
-  (void) [((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setItemTextAppearanceActiveWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setBadgeBackgroundColorsWithNSString:(NSString *)value {
-  (void) [((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setBadgeBackgroundColorsWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setBadgeTextColorsWithNSString:(NSString *)value {
-  (void) [((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setBadgeTextColorsWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setBadgeTextAppearanceResourcesWithNSString:(NSString *)value {
-  (void) [((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([((ASBottomNavigationViewImpl_BottomNavigationViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setBadgeTextAppearanceResourcesWithNSString:value])) executeWithBoolean:true];
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 1, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 3, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 5, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 6, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 7, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 8, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 9, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 10, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 11, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 12, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 13, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 14, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 15, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 16, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 17, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 18, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 19, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 20, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 21, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 22, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 23, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 24, 4, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 25, 4, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASBottomNavigationViewImpl:);
-  methods[1].selector = @selector(setItemHorizontalTranslationEnabledWithBoolean:);
-  methods[2].selector = @selector(setOnItemSelectedWithNSString:);
-  methods[3].selector = @selector(setOnItemReselectedWithNSString:);
-  methods[4].selector = @selector(setMenuWithNSString:);
-  methods[5].selector = @selector(setItemIconTintWithNSString:);
-  methods[6].selector = @selector(setItemIconSizeWithNSString:);
-  methods[7].selector = @selector(setItemTextColorWithNSString:);
-  methods[8].selector = @selector(setItemBackgroundWithNSString:);
-  methods[9].selector = @selector(setSelectedItemIdWithNSString:);
-  methods[10].selector = @selector(setLabelVisibilityModeWithNSString:);
-  methods[11].selector = @selector(setBadgeNumbersWithNSString:);
-  methods[12].selector = @selector(setMenuItemIdsWithNSString:);
-  methods[13].selector = @selector(setBadgeAlphasWithNSString:);
-  methods[14].selector = @selector(setBadgeMaxCharacterCountsWithNSString:);
-  methods[15].selector = @selector(setBadgeGravitiesWithNSString:);
-  methods[16].selector = @selector(setBadgeHorizontalOffsetsWithNSString:);
-  methods[17].selector = @selector(setBadgeVerticalOffsetsWithNSString:);
-  methods[18].selector = @selector(setBadgeIsVisiblesWithNSString:);
-  methods[19].selector = @selector(setItemTextAppearanceInactiveWithNSString:);
-  methods[20].selector = @selector(setItemTextAppearanceActiveWithNSString:);
-  methods[21].selector = @selector(setBadgeBackgroundColorsWithNSString:);
-  methods[22].selector = @selector(setBadgeTextColorsWithNSString:);
-  methods[23].selector = @selector(setBadgeTextAppearanceResourcesWithNSString:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LASBottomNavigationViewImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LASBottomNavigationViewImpl;", "setItemHorizontalTranslationEnabled", "Z", "setOnItemSelected", "LNSString;", "setOnItemReselected", "setMenu", "setItemIconTint", "setItemIconSize", "setItemTextColor", "setItemBackground", "setSelectedItemId", "setLabelVisibilityMode", "setBadgeNumbers", "setMenuItemIds", "setBadgeAlphas", "setBadgeMaxCharacterCounts", "setBadgeGravities", "setBadgeHorizontalOffsets", "setBadgeVerticalOffsets", "setBadgeIsVisibles", "setItemTextAppearanceInactive", "setItemTextAppearanceActive", "setBadgeBackgroundColors", "setBadgeTextColors", "setBadgeTextAppearanceResources" };
-  static const J2ObjcClassInfo _ASBottomNavigationViewImpl_BottomNavigationViewBean = { "BottomNavigationViewBean", "com.ashera.navigationview", ptrTable, methods, fields, 7, 0x1, 24, 1, 0, -1, -1, -1, -1 };
-  return &_ASBottomNavigationViewImpl_BottomNavigationViewBean;
-}
-
-@end
-
-void ASBottomNavigationViewImpl_BottomNavigationViewBean_initWithASBottomNavigationViewImpl_(ASBottomNavigationViewImpl_BottomNavigationViewBean *self, ASBottomNavigationViewImpl *outer$) {
-  self->this$0_ = outer$;
-  ASViewGroupImpl_ViewGroupBean_initWithASIWidget_(self, outer$);
-}
-
-ASBottomNavigationViewImpl_BottomNavigationViewBean *new_ASBottomNavigationViewImpl_BottomNavigationViewBean_initWithASBottomNavigationViewImpl_(ASBottomNavigationViewImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASBottomNavigationViewImpl_BottomNavigationViewBean, initWithASBottomNavigationViewImpl_, outer$)
-}
-
-ASBottomNavigationViewImpl_BottomNavigationViewBean *create_ASBottomNavigationViewImpl_BottomNavigationViewBean_initWithASBottomNavigationViewImpl_(ASBottomNavigationViewImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASBottomNavigationViewImpl_BottomNavigationViewBean, initWithASBottomNavigationViewImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBottomNavigationViewImpl_BottomNavigationViewBean)
-
-@implementation ASBottomNavigationViewImpl_BottomNavigationViewParamsBean
-
-- (instancetype)initWithASBottomNavigationViewImpl:(ASBottomNavigationViewImpl *)outer$ {
-  ASBottomNavigationViewImpl_BottomNavigationViewParamsBean_initWithASBottomNavigationViewImpl_(self, outer$);
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASBottomNavigationViewImpl:);
-  #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "LASBottomNavigationViewImpl;" };
-  static const J2ObjcClassInfo _ASBottomNavigationViewImpl_BottomNavigationViewParamsBean = { "BottomNavigationViewParamsBean", "com.ashera.navigationview", ptrTable, methods, NULL, 7, 0x1, 1, 0, 0, -1, -1, -1, -1 };
-  return &_ASBottomNavigationViewImpl_BottomNavigationViewParamsBean;
-}
-
-@end
-
-void ASBottomNavigationViewImpl_BottomNavigationViewParamsBean_initWithASBottomNavigationViewImpl_(ASBottomNavigationViewImpl_BottomNavigationViewParamsBean *self, ASBottomNavigationViewImpl *outer$) {
-  ASViewGroupImpl_ViewGroupParamsBean_init(self);
-}
-
-ASBottomNavigationViewImpl_BottomNavigationViewParamsBean *new_ASBottomNavigationViewImpl_BottomNavigationViewParamsBean_initWithASBottomNavigationViewImpl_(ASBottomNavigationViewImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASBottomNavigationViewImpl_BottomNavigationViewParamsBean, initWithASBottomNavigationViewImpl_, outer$)
-}
-
-ASBottomNavigationViewImpl_BottomNavigationViewParamsBean *create_ASBottomNavigationViewImpl_BottomNavigationViewParamsBean_initWithASBottomNavigationViewImpl_(ASBottomNavigationViewImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASBottomNavigationViewImpl_BottomNavigationViewParamsBean, initWithASBottomNavigationViewImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBottomNavigationViewImpl_BottomNavigationViewParamsBean)
-
-@implementation ASBottomNavigationViewImpl_BottomNavigationViewCommandParamsBuilder
-
-- (instancetype)initWithASBottomNavigationViewImpl:(ASBottomNavigationViewImpl *)outer$ {
-  ASBottomNavigationViewImpl_BottomNavigationViewCommandParamsBuilder_initWithASBottomNavigationViewImpl_(self, outer$);
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASBottomNavigationViewImpl:);
-  #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "LASBottomNavigationViewImpl;", "Lcom/ashera/layout/ViewGroupImpl$ViewGroupCommandParamsBuilder<Lcom/ashera/navigationview/BottomNavigationViewImpl$BottomNavigationViewCommandParamsBuilder;>;" };
-  static const J2ObjcClassInfo _ASBottomNavigationViewImpl_BottomNavigationViewCommandParamsBuilder = { "BottomNavigationViewCommandParamsBuilder", "com.ashera.navigationview", ptrTable, methods, NULL, 7, 0x1, 1, 0, 0, -1, -1, 1, -1 };
-  return &_ASBottomNavigationViewImpl_BottomNavigationViewCommandParamsBuilder;
-}
-
-@end
-
-void ASBottomNavigationViewImpl_BottomNavigationViewCommandParamsBuilder_initWithASBottomNavigationViewImpl_(ASBottomNavigationViewImpl_BottomNavigationViewCommandParamsBuilder *self, ASBottomNavigationViewImpl *outer$) {
-  ASViewGroupImpl_ViewGroupCommandParamsBuilder_init(self);
-}
-
-ASBottomNavigationViewImpl_BottomNavigationViewCommandParamsBuilder *new_ASBottomNavigationViewImpl_BottomNavigationViewCommandParamsBuilder_initWithASBottomNavigationViewImpl_(ASBottomNavigationViewImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASBottomNavigationViewImpl_BottomNavigationViewCommandParamsBuilder, initWithASBottomNavigationViewImpl_, outer$)
-}
-
-ASBottomNavigationViewImpl_BottomNavigationViewCommandParamsBuilder *create_ASBottomNavigationViewImpl_BottomNavigationViewCommandParamsBuilder_initWithASBottomNavigationViewImpl_(ASBottomNavigationViewImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASBottomNavigationViewImpl_BottomNavigationViewCommandParamsBuilder, initWithASBottomNavigationViewImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBottomNavigationViewImpl_BottomNavigationViewCommandParamsBuilder)
 
 @implementation ASBottomNavigationViewImpl_$Lambda$1
 

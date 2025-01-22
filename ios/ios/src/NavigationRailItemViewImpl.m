@@ -6,7 +6,6 @@
 #include "BaseHasWidgets.h"
 #include "FrameLayout.h"
 #include "HasWidgets.h"
-#include "IAttributable.h"
 #include "IFragment.h"
 #include "ILifeCycleDecorator.h"
 #include "IOSClass.h"
@@ -26,7 +25,6 @@
 #include "ViewGroupImpl.h"
 #include "ViewImpl.h"
 #include "WidgetAttribute.h"
-#include "WidgetFactory.h"
 #include "java/lang/Integer.h"
 #include "java/lang/Runnable.h"
 #include "java/lang/UnsupportedOperationException.h"
@@ -43,16 +41,11 @@
 
 
 #pragma clang diagnostic ignored "-Wprotocol"
-#pragma clang diagnostic ignored "-Wincomplete-implementation"
 
 @interface ASNavigationRailItemViewImpl () {
  @public
   id uiView_;
   ADXNavigationRailItemView *navigationRailItemView_;
-  ASNavigationRailItemViewImpl_NavigationRailItemViewCommandBuilder *builder_;
-  ASNavigationRailItemViewImpl_NavigationRailItemViewBean *bean_;
-  ASNavigationRailItemViewImpl_NavigationRailItemViewCommandParamsBuilder *paramsBuilder_;
-  ASNavigationRailItemViewImpl_NavigationRailItemViewParamsBean *paramsBean_;
 }
 
 - (void)setWidgetOnNativeClass;
@@ -67,10 +60,6 @@
 
 J2OBJC_FIELD_SETTER(ASNavigationRailItemViewImpl, uiView_, id)
 J2OBJC_FIELD_SETTER(ASNavigationRailItemViewImpl, navigationRailItemView_, ADXNavigationRailItemView *)
-J2OBJC_FIELD_SETTER(ASNavigationRailItemViewImpl, builder_, ASNavigationRailItemViewImpl_NavigationRailItemViewCommandBuilder *)
-J2OBJC_FIELD_SETTER(ASNavigationRailItemViewImpl, bean_, ASNavigationRailItemViewImpl_NavigationRailItemViewBean *)
-J2OBJC_FIELD_SETTER(ASNavigationRailItemViewImpl, paramsBuilder_, ASNavigationRailItemViewImpl_NavigationRailItemViewCommandParamsBuilder *)
-J2OBJC_FIELD_SETTER(ASNavigationRailItemViewImpl, paramsBean_, ASNavigationRailItemViewImpl_NavigationRailItemViewParamsBean *)
 
 __attribute__((unused)) static void ASNavigationRailItemViewImpl_setWidgetOnNativeClass(ASNavigationRailItemViewImpl *self);
 
@@ -97,13 +86,6 @@ J2OBJC_FIELD_SETTER(ASNavigationRailItemViewImpl_NavigationRailItemViewExt, meas
 J2OBJC_FIELD_SETTER(ASNavigationRailItemViewImpl_NavigationRailItemViewExt, onLayoutEvent_, ASOnLayoutEvent *)
 J2OBJC_FIELD_SETTER(ASNavigationRailItemViewImpl_NavigationRailItemViewExt, overlays_, id<JavaUtilList>)
 J2OBJC_FIELD_SETTER(ASNavigationRailItemViewImpl_NavigationRailItemViewExt, templates_, id<JavaUtilMap>)
-
-@interface ASNavigationRailItemViewImpl_NavigationRailItemViewCommandBuilder () {
- @public
-  ASNavigationRailItemViewImpl *this$0_;
-}
-
-@end
 
 @interface ASNavigationRailItemViewImpl_$Lambda$1 : NSObject < JavaLangRunnable > {
  @public
@@ -307,38 +289,6 @@ J2OBJC_IGNORE_DESIGNATED_END
   [((ADView *) nil_chk(((ADView *) cast_chk([self asWidget], [ADView class])))) setVisibilityWithInt:b ? ADView_VISIBLE : ADView_GONE];
 }
 
-- (id)getPluginWithNSString:(NSString *)plugin {
-  return [((id<ASIAttributable>) nil_chk(ASWidgetFactory_getAttributableWithNSString_(plugin))) newInstanceWithASIWidget:self];
-}
-
-- (ASNavigationRailItemViewImpl_NavigationRailItemViewBean *)getBean {
-  if (bean_ == nil) {
-    bean_ = new_ASNavigationRailItemViewImpl_NavigationRailItemViewBean_initWithASNavigationRailItemViewImpl_(self);
-  }
-  return bean_;
-}
-
-- (ASNavigationRailItemViewImpl_NavigationRailItemViewCommandBuilder *)getBuilder {
-  if (builder_ == nil) {
-    builder_ = new_ASNavigationRailItemViewImpl_NavigationRailItemViewCommandBuilder_initWithASNavigationRailItemViewImpl_(self);
-  }
-  return builder_;
-}
-
-- (ASNavigationRailItemViewImpl_NavigationRailItemViewParamsBean *)getParamsBean {
-  if (paramsBean_ == nil) {
-    paramsBean_ = new_ASNavigationRailItemViewImpl_NavigationRailItemViewParamsBean_initWithASNavigationRailItemViewImpl_(self);
-  }
-  return paramsBean_;
-}
-
-- (ASNavigationRailItemViewImpl_NavigationRailItemViewCommandParamsBuilder *)getParamsBuilder {
-  if (paramsBuilder_ == nil) {
-    paramsBuilder_ = new_ASNavigationRailItemViewImpl_NavigationRailItemViewCommandParamsBuilder_initWithASNavigationRailItemViewImpl_(self);
-  }
-  return paramsBuilder_;
-}
-
 - (void)nativeCreateWithJavaUtilMap:(id<JavaUtilMap>)params {
   [self nativeCreate];
   [((ADXNavigationRailItemView *) nil_chk(navigationRailItemView_)) initNavigationBarItemView];
@@ -377,12 +327,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 24, 1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 25, 26, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, 27, 1, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailItemViewImpl_NavigationRailItemViewBean;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailItemViewImpl_NavigationRailItemViewCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailItemViewImpl_NavigationRailItemViewParamsBean;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailItemViewImpl_NavigationRailItemViewCommandParamsBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 28, 29, -1, 30, -1, -1 },
+    { NULL, "V", 0x1, 27, 28, -1, 29, -1, -1 },
     { NULL, "V", 0x101, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -413,26 +358,17 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[22].selector = @selector(invalidate);
   methods[23].selector = @selector(setIdWithNSString:);
   methods[24].selector = @selector(setVisibleWithBoolean:);
-  methods[25].selector = @selector(getPluginWithNSString:);
-  methods[26].selector = @selector(getBean);
-  methods[27].selector = @selector(getBuilder);
-  methods[28].selector = @selector(getParamsBean);
-  methods[29].selector = @selector(getParamsBuilder);
-  methods[30].selector = @selector(nativeCreateWithJavaUtilMap:);
-  methods[31].selector = @selector(nativeCreate);
+  methods[25].selector = @selector(nativeCreateWithJavaUtilMap:);
+  methods[26].selector = @selector(nativeCreate);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "uiView_", "LNSObject;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 31, -1, -1 },
-    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 32, -1, -1 },
+    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 30, -1, -1 },
+    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 31, -1, -1 },
     { "navigationRailItemView_", "LADXNavigationRailItemView;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "builder_", "LASNavigationRailItemViewImpl_NavigationRailItemViewCommandBuilder;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "bean_", "LASNavigationRailItemViewImpl_NavigationRailItemViewBean;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "paramsBuilder_", "LASNavigationRailItemViewImpl_NavigationRailItemViewCommandParamsBuilder;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "paramsBean_", "LASNavigationRailItemViewImpl_NavigationRailItemViewParamsBean;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "remove", "LASIWidget;", "I", "nativeRemoveView", "add", "LASIWidget;I", "createLayoutParams", "LADView;", "getLayoutParams", "setChildAttribute", "LASIWidget;LASWidgetAttribute;LNSString;LNSObject;", "getChildAttribute", "LASIWidget;LASWidgetAttribute;", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "checkIosVersion", "setId", "setVisible", "Z", "getPlugin", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", &ASNavigationRailItemViewImpl_LOCAL_NAME, &ASNavigationRailItemViewImpl_GROUP_NAME, "LASNavigationRailItemViewImpl_NavigationRailItemViewExt;LASNavigationRailItemViewImpl_NavigationRailItemViewCommandBuilder;LASNavigationRailItemViewImpl_NavigationRailItemViewBean;LASNavigationRailItemViewImpl_NavigationRailItemViewParamsBean;LASNavigationRailItemViewImpl_NavigationRailItemViewCommandParamsBuilder;" };
-  static const J2ObjcClassInfo _ASNavigationRailItemViewImpl = { "NavigationRailItemViewImpl", "com.ashera.navigationview", ptrTable, methods, fields, 7, 0x1, 32, 8, -1, 33, -1, -1, -1 };
+  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "remove", "LASIWidget;", "I", "nativeRemoveView", "add", "LASIWidget;I", "createLayoutParams", "LADView;", "getLayoutParams", "setChildAttribute", "LASIWidget;LASWidgetAttribute;LNSString;LNSObject;", "getChildAttribute", "LASIWidget;LASWidgetAttribute;", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "checkIosVersion", "setId", "setVisible", "Z", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", &ASNavigationRailItemViewImpl_LOCAL_NAME, &ASNavigationRailItemViewImpl_GROUP_NAME, "LASNavigationRailItemViewImpl_NavigationRailItemViewExt;" };
+  static const J2ObjcClassInfo _ASNavigationRailItemViewImpl = { "NavigationRailItemViewImpl", "com.ashera.navigationview", ptrTable, methods, fields, 7, 0x1, 27, 4, -1, 32, -1, -1, -1 };
   return &_ASNavigationRailItemViewImpl;
 }
 
@@ -866,169 +802,6 @@ ASNavigationRailItemViewImpl_NavigationRailItemViewExt *create_ASNavigationRailI
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationRailItemViewImpl_NavigationRailItemViewExt)
-
-@implementation ASNavigationRailItemViewImpl_NavigationRailItemViewCommandBuilder
-
-- (instancetype)initWithASNavigationRailItemViewImpl:(ASNavigationRailItemViewImpl *)outer$ {
-  ASNavigationRailItemViewImpl_NavigationRailItemViewCommandBuilder_initWithASNavigationRailItemViewImpl_(self, outer$);
-  return self;
-}
-
-- (ASNavigationRailItemViewImpl_NavigationRailItemViewCommandBuilder *)executeWithBoolean:(jboolean)setter {
-  if (setter) {
-    [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_SETTER_METHOD];
-    [((id<ASIFragment>) nil_chk([this$0_ getFragment])) remeasure];
-  }
-  [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_GETTER_METHOD];
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailItemViewImpl_NavigationRailItemViewCommandBuilder;", 0x1, 1, 2, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASNavigationRailItemViewImpl:);
-  methods[1].selector = @selector(executeWithBoolean:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LASNavigationRailItemViewImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LASNavigationRailItemViewImpl;", "execute", "Z", "Lcom/ashera/layout/ViewGroupImpl$ViewGroupCommandBuilder<Lcom/ashera/navigationview/NavigationRailItemViewImpl$NavigationRailItemViewCommandBuilder;>;" };
-  static const J2ObjcClassInfo _ASNavigationRailItemViewImpl_NavigationRailItemViewCommandBuilder = { "NavigationRailItemViewCommandBuilder", "com.ashera.navigationview", ptrTable, methods, fields, 7, 0x1, 2, 1, 0, -1, -1, 3, -1 };
-  return &_ASNavigationRailItemViewImpl_NavigationRailItemViewCommandBuilder;
-}
-
-@end
-
-void ASNavigationRailItemViewImpl_NavigationRailItemViewCommandBuilder_initWithASNavigationRailItemViewImpl_(ASNavigationRailItemViewImpl_NavigationRailItemViewCommandBuilder *self, ASNavigationRailItemViewImpl *outer$) {
-  self->this$0_ = outer$;
-  ASViewGroupImpl_ViewGroupCommandBuilder_init(self);
-}
-
-ASNavigationRailItemViewImpl_NavigationRailItemViewCommandBuilder *new_ASNavigationRailItemViewImpl_NavigationRailItemViewCommandBuilder_initWithASNavigationRailItemViewImpl_(ASNavigationRailItemViewImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASNavigationRailItemViewImpl_NavigationRailItemViewCommandBuilder, initWithASNavigationRailItemViewImpl_, outer$)
-}
-
-ASNavigationRailItemViewImpl_NavigationRailItemViewCommandBuilder *create_ASNavigationRailItemViewImpl_NavigationRailItemViewCommandBuilder_initWithASNavigationRailItemViewImpl_(ASNavigationRailItemViewImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASNavigationRailItemViewImpl_NavigationRailItemViewCommandBuilder, initWithASNavigationRailItemViewImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationRailItemViewImpl_NavigationRailItemViewCommandBuilder)
-
-@implementation ASNavigationRailItemViewImpl_NavigationRailItemViewBean
-
-- (instancetype)initWithASNavigationRailItemViewImpl:(ASNavigationRailItemViewImpl *)outer$ {
-  ASNavigationRailItemViewImpl_NavigationRailItemViewBean_initWithASNavigationRailItemViewImpl_(self, outer$);
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASNavigationRailItemViewImpl:);
-  #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "LASNavigationRailItemViewImpl;" };
-  static const J2ObjcClassInfo _ASNavigationRailItemViewImpl_NavigationRailItemViewBean = { "NavigationRailItemViewBean", "com.ashera.navigationview", ptrTable, methods, NULL, 7, 0x1, 1, 0, 0, -1, -1, -1, -1 };
-  return &_ASNavigationRailItemViewImpl_NavigationRailItemViewBean;
-}
-
-@end
-
-void ASNavigationRailItemViewImpl_NavigationRailItemViewBean_initWithASNavigationRailItemViewImpl_(ASNavigationRailItemViewImpl_NavigationRailItemViewBean *self, ASNavigationRailItemViewImpl *outer$) {
-  ASViewGroupImpl_ViewGroupBean_initWithASIWidget_(self, outer$);
-}
-
-ASNavigationRailItemViewImpl_NavigationRailItemViewBean *new_ASNavigationRailItemViewImpl_NavigationRailItemViewBean_initWithASNavigationRailItemViewImpl_(ASNavigationRailItemViewImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASNavigationRailItemViewImpl_NavigationRailItemViewBean, initWithASNavigationRailItemViewImpl_, outer$)
-}
-
-ASNavigationRailItemViewImpl_NavigationRailItemViewBean *create_ASNavigationRailItemViewImpl_NavigationRailItemViewBean_initWithASNavigationRailItemViewImpl_(ASNavigationRailItemViewImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASNavigationRailItemViewImpl_NavigationRailItemViewBean, initWithASNavigationRailItemViewImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationRailItemViewImpl_NavigationRailItemViewBean)
-
-@implementation ASNavigationRailItemViewImpl_NavigationRailItemViewParamsBean
-
-- (instancetype)initWithASNavigationRailItemViewImpl:(ASNavigationRailItemViewImpl *)outer$ {
-  ASNavigationRailItemViewImpl_NavigationRailItemViewParamsBean_initWithASNavigationRailItemViewImpl_(self, outer$);
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASNavigationRailItemViewImpl:);
-  #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "LASNavigationRailItemViewImpl;" };
-  static const J2ObjcClassInfo _ASNavigationRailItemViewImpl_NavigationRailItemViewParamsBean = { "NavigationRailItemViewParamsBean", "com.ashera.navigationview", ptrTable, methods, NULL, 7, 0x1, 1, 0, 0, -1, -1, -1, -1 };
-  return &_ASNavigationRailItemViewImpl_NavigationRailItemViewParamsBean;
-}
-
-@end
-
-void ASNavigationRailItemViewImpl_NavigationRailItemViewParamsBean_initWithASNavigationRailItemViewImpl_(ASNavigationRailItemViewImpl_NavigationRailItemViewParamsBean *self, ASNavigationRailItemViewImpl *outer$) {
-  ASViewGroupImpl_ViewGroupParamsBean_init(self);
-}
-
-ASNavigationRailItemViewImpl_NavigationRailItemViewParamsBean *new_ASNavigationRailItemViewImpl_NavigationRailItemViewParamsBean_initWithASNavigationRailItemViewImpl_(ASNavigationRailItemViewImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASNavigationRailItemViewImpl_NavigationRailItemViewParamsBean, initWithASNavigationRailItemViewImpl_, outer$)
-}
-
-ASNavigationRailItemViewImpl_NavigationRailItemViewParamsBean *create_ASNavigationRailItemViewImpl_NavigationRailItemViewParamsBean_initWithASNavigationRailItemViewImpl_(ASNavigationRailItemViewImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASNavigationRailItemViewImpl_NavigationRailItemViewParamsBean, initWithASNavigationRailItemViewImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationRailItemViewImpl_NavigationRailItemViewParamsBean)
-
-@implementation ASNavigationRailItemViewImpl_NavigationRailItemViewCommandParamsBuilder
-
-- (instancetype)initWithASNavigationRailItemViewImpl:(ASNavigationRailItemViewImpl *)outer$ {
-  ASNavigationRailItemViewImpl_NavigationRailItemViewCommandParamsBuilder_initWithASNavigationRailItemViewImpl_(self, outer$);
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASNavigationRailItemViewImpl:);
-  #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "LASNavigationRailItemViewImpl;", "Lcom/ashera/layout/ViewGroupImpl$ViewGroupCommandParamsBuilder<Lcom/ashera/navigationview/NavigationRailItemViewImpl$NavigationRailItemViewCommandParamsBuilder;>;" };
-  static const J2ObjcClassInfo _ASNavigationRailItemViewImpl_NavigationRailItemViewCommandParamsBuilder = { "NavigationRailItemViewCommandParamsBuilder", "com.ashera.navigationview", ptrTable, methods, NULL, 7, 0x1, 1, 0, 0, -1, -1, 1, -1 };
-  return &_ASNavigationRailItemViewImpl_NavigationRailItemViewCommandParamsBuilder;
-}
-
-@end
-
-void ASNavigationRailItemViewImpl_NavigationRailItemViewCommandParamsBuilder_initWithASNavigationRailItemViewImpl_(ASNavigationRailItemViewImpl_NavigationRailItemViewCommandParamsBuilder *self, ASNavigationRailItemViewImpl *outer$) {
-  ASViewGroupImpl_ViewGroupCommandParamsBuilder_init(self);
-}
-
-ASNavigationRailItemViewImpl_NavigationRailItemViewCommandParamsBuilder *new_ASNavigationRailItemViewImpl_NavigationRailItemViewCommandParamsBuilder_initWithASNavigationRailItemViewImpl_(ASNavigationRailItemViewImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASNavigationRailItemViewImpl_NavigationRailItemViewCommandParamsBuilder, initWithASNavigationRailItemViewImpl_, outer$)
-}
-
-ASNavigationRailItemViewImpl_NavigationRailItemViewCommandParamsBuilder *create_ASNavigationRailItemViewImpl_NavigationRailItemViewCommandParamsBuilder_initWithASNavigationRailItemViewImpl_(ASNavigationRailItemViewImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASNavigationRailItemViewImpl_NavigationRailItemViewCommandParamsBuilder, initWithASNavigationRailItemViewImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationRailItemViewImpl_NavigationRailItemViewCommandParamsBuilder)
 
 @implementation ASNavigationRailItemViewImpl_$Lambda$1
 

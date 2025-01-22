@@ -8,7 +8,6 @@
 #include "BottomNavigationItemViewImpl.h"
 #include "FrameLayout.h"
 #include "HasWidgets.h"
-#include "IAttributable.h"
 #include "IFragment.h"
 #include "ILifeCycleDecorator.h"
 #include "IOSClass.h"
@@ -26,7 +25,6 @@
 #include "ViewGroupImpl.h"
 #include "ViewImpl.h"
 #include "WidgetAttribute.h"
-#include "WidgetFactory.h"
 #include "java/lang/Integer.h"
 #include "java/lang/Runnable.h"
 #include "java/lang/UnsupportedOperationException.h"
@@ -43,16 +41,11 @@
 
 
 #pragma clang diagnostic ignored "-Wprotocol"
-#pragma clang diagnostic ignored "-Wincomplete-implementation"
 
 @interface ASBottomNavigationItemViewImpl () {
  @public
   id uiView_;
   ADXBottomNavigationItemView *bottomNavigationItemView_;
-  ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandBuilder *builder_;
-  ASBottomNavigationItemViewImpl_BottomNavigationItemViewBean *bean_;
-  ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandParamsBuilder *paramsBuilder_;
-  ASBottomNavigationItemViewImpl_BottomNavigationItemViewParamsBean *paramsBean_;
 }
 
 - (void)setWidgetOnNativeClass;
@@ -67,10 +60,6 @@
 
 J2OBJC_FIELD_SETTER(ASBottomNavigationItemViewImpl, uiView_, id)
 J2OBJC_FIELD_SETTER(ASBottomNavigationItemViewImpl, bottomNavigationItemView_, ADXBottomNavigationItemView *)
-J2OBJC_FIELD_SETTER(ASBottomNavigationItemViewImpl, builder_, ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandBuilder *)
-J2OBJC_FIELD_SETTER(ASBottomNavigationItemViewImpl, bean_, ASBottomNavigationItemViewImpl_BottomNavigationItemViewBean *)
-J2OBJC_FIELD_SETTER(ASBottomNavigationItemViewImpl, paramsBuilder_, ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandParamsBuilder *)
-J2OBJC_FIELD_SETTER(ASBottomNavigationItemViewImpl, paramsBean_, ASBottomNavigationItemViewImpl_BottomNavigationItemViewParamsBean *)
 
 __attribute__((unused)) static void ASBottomNavigationItemViewImpl_setWidgetOnNativeClass(ASBottomNavigationItemViewImpl *self);
 
@@ -97,13 +86,6 @@ J2OBJC_FIELD_SETTER(ASBottomNavigationItemViewImpl_BottomNavigationItemViewExt, 
 J2OBJC_FIELD_SETTER(ASBottomNavigationItemViewImpl_BottomNavigationItemViewExt, onLayoutEvent_, ASOnLayoutEvent *)
 J2OBJC_FIELD_SETTER(ASBottomNavigationItemViewImpl_BottomNavigationItemViewExt, overlays_, id<JavaUtilList>)
 J2OBJC_FIELD_SETTER(ASBottomNavigationItemViewImpl_BottomNavigationItemViewExt, templates_, id<JavaUtilMap>)
-
-@interface ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandBuilder () {
- @public
-  ASBottomNavigationItemViewImpl *this$0_;
-}
-
-@end
 
 @interface ASBottomNavigationItemViewImpl_$Lambda$1 : NSObject < JavaLangRunnable > {
  @public
@@ -307,38 +289,6 @@ J2OBJC_IGNORE_DESIGNATED_END
   [((ADView *) nil_chk(((ADView *) cast_chk([self asWidget], [ADView class])))) setVisibilityWithInt:b ? ADView_VISIBLE : ADView_GONE];
 }
 
-- (id)getPluginWithNSString:(NSString *)plugin {
-  return [((id<ASIAttributable>) nil_chk(ASWidgetFactory_getAttributableWithNSString_(plugin))) newInstanceWithASIWidget:self];
-}
-
-- (ASBottomNavigationItemViewImpl_BottomNavigationItemViewBean *)getBean {
-  if (bean_ == nil) {
-    bean_ = new_ASBottomNavigationItemViewImpl_BottomNavigationItemViewBean_initWithASBottomNavigationItemViewImpl_(self);
-  }
-  return bean_;
-}
-
-- (ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandBuilder *)getBuilder {
-  if (builder_ == nil) {
-    builder_ = new_ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandBuilder_initWithASBottomNavigationItemViewImpl_(self);
-  }
-  return builder_;
-}
-
-- (ASBottomNavigationItemViewImpl_BottomNavigationItemViewParamsBean *)getParamsBean {
-  if (paramsBean_ == nil) {
-    paramsBean_ = new_ASBottomNavigationItemViewImpl_BottomNavigationItemViewParamsBean_initWithASBottomNavigationItemViewImpl_(self);
-  }
-  return paramsBean_;
-}
-
-- (ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandParamsBuilder *)getParamsBuilder {
-  if (paramsBuilder_ == nil) {
-    paramsBuilder_ = new_ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandParamsBuilder_initWithASBottomNavigationItemViewImpl_(self);
-  }
-  return paramsBuilder_;
-}
-
 - (void)nativeCreateWithJavaUtilMap:(id<JavaUtilMap>)params {
   [self nativeCreate];
   [((ADXBottomNavigationItemView *) nil_chk(bottomNavigationItemView_)) initNavigationBarItemView];
@@ -377,12 +327,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 24, 1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 25, 26, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, 27, 1, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationItemViewImpl_BottomNavigationItemViewBean;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationItemViewImpl_BottomNavigationItemViewParamsBean;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandParamsBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 28, 29, -1, 30, -1, -1 },
+    { NULL, "V", 0x1, 27, 28, -1, 29, -1, -1 },
     { NULL, "V", 0x101, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -413,26 +358,17 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[22].selector = @selector(invalidate);
   methods[23].selector = @selector(setIdWithNSString:);
   methods[24].selector = @selector(setVisibleWithBoolean:);
-  methods[25].selector = @selector(getPluginWithNSString:);
-  methods[26].selector = @selector(getBean);
-  methods[27].selector = @selector(getBuilder);
-  methods[28].selector = @selector(getParamsBean);
-  methods[29].selector = @selector(getParamsBuilder);
-  methods[30].selector = @selector(nativeCreateWithJavaUtilMap:);
-  methods[31].selector = @selector(nativeCreate);
+  methods[25].selector = @selector(nativeCreateWithJavaUtilMap:);
+  methods[26].selector = @selector(nativeCreate);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "uiView_", "LNSObject;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 31, -1, -1 },
-    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 32, -1, -1 },
+    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 30, -1, -1 },
+    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 31, -1, -1 },
     { "bottomNavigationItemView_", "LADXBottomNavigationItemView;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "builder_", "LASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandBuilder;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "bean_", "LASBottomNavigationItemViewImpl_BottomNavigationItemViewBean;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "paramsBuilder_", "LASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandParamsBuilder;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "paramsBean_", "LASBottomNavigationItemViewImpl_BottomNavigationItemViewParamsBean;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "remove", "LASIWidget;", "I", "nativeRemoveView", "add", "LASIWidget;I", "createLayoutParams", "LADView;", "getLayoutParams", "setChildAttribute", "LASIWidget;LASWidgetAttribute;LNSString;LNSObject;", "getChildAttribute", "LASIWidget;LASWidgetAttribute;", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "checkIosVersion", "setId", "setVisible", "Z", "getPlugin", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", &ASBottomNavigationItemViewImpl_LOCAL_NAME, &ASBottomNavigationItemViewImpl_GROUP_NAME, "LASBottomNavigationItemViewImpl_BottomNavigationItemViewExt;LASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandBuilder;LASBottomNavigationItemViewImpl_BottomNavigationItemViewBean;LASBottomNavigationItemViewImpl_BottomNavigationItemViewParamsBean;LASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandParamsBuilder;" };
-  static const J2ObjcClassInfo _ASBottomNavigationItemViewImpl = { "BottomNavigationItemViewImpl", "com.ashera.navigationview", ptrTable, methods, fields, 7, 0x1, 32, 8, -1, 33, -1, -1, -1 };
+  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "remove", "LASIWidget;", "I", "nativeRemoveView", "add", "LASIWidget;I", "createLayoutParams", "LADView;", "getLayoutParams", "setChildAttribute", "LASIWidget;LASWidgetAttribute;LNSString;LNSObject;", "getChildAttribute", "LASIWidget;LASWidgetAttribute;", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "checkIosVersion", "setId", "setVisible", "Z", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", &ASBottomNavigationItemViewImpl_LOCAL_NAME, &ASBottomNavigationItemViewImpl_GROUP_NAME, "LASBottomNavigationItemViewImpl_BottomNavigationItemViewExt;" };
+  static const J2ObjcClassInfo _ASBottomNavigationItemViewImpl = { "BottomNavigationItemViewImpl", "com.ashera.navigationview", ptrTable, methods, fields, 7, 0x1, 27, 4, -1, 32, -1, -1, -1 };
   return &_ASBottomNavigationItemViewImpl;
 }
 
@@ -866,169 +802,6 @@ ASBottomNavigationItemViewImpl_BottomNavigationItemViewExt *create_ASBottomNavig
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBottomNavigationItemViewImpl_BottomNavigationItemViewExt)
-
-@implementation ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandBuilder
-
-- (instancetype)initWithASBottomNavigationItemViewImpl:(ASBottomNavigationItemViewImpl *)outer$ {
-  ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandBuilder_initWithASBottomNavigationItemViewImpl_(self, outer$);
-  return self;
-}
-
-- (ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandBuilder *)executeWithBoolean:(jboolean)setter {
-  if (setter) {
-    [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_SETTER_METHOD];
-    [((id<ASIFragment>) nil_chk([this$0_ getFragment])) remeasure];
-  }
-  [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_GETTER_METHOD];
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandBuilder;", 0x1, 1, 2, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASBottomNavigationItemViewImpl:);
-  methods[1].selector = @selector(executeWithBoolean:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LASBottomNavigationItemViewImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LASBottomNavigationItemViewImpl;", "execute", "Z", "Lcom/ashera/layout/ViewGroupImpl$ViewGroupCommandBuilder<Lcom/ashera/navigationview/BottomNavigationItemViewImpl$BottomNavigationItemViewCommandBuilder;>;" };
-  static const J2ObjcClassInfo _ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandBuilder = { "BottomNavigationItemViewCommandBuilder", "com.ashera.navigationview", ptrTable, methods, fields, 7, 0x1, 2, 1, 0, -1, -1, 3, -1 };
-  return &_ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandBuilder;
-}
-
-@end
-
-void ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandBuilder_initWithASBottomNavigationItemViewImpl_(ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandBuilder *self, ASBottomNavigationItemViewImpl *outer$) {
-  self->this$0_ = outer$;
-  ASViewGroupImpl_ViewGroupCommandBuilder_init(self);
-}
-
-ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandBuilder *new_ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandBuilder_initWithASBottomNavigationItemViewImpl_(ASBottomNavigationItemViewImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandBuilder, initWithASBottomNavigationItemViewImpl_, outer$)
-}
-
-ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandBuilder *create_ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandBuilder_initWithASBottomNavigationItemViewImpl_(ASBottomNavigationItemViewImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandBuilder, initWithASBottomNavigationItemViewImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandBuilder)
-
-@implementation ASBottomNavigationItemViewImpl_BottomNavigationItemViewBean
-
-- (instancetype)initWithASBottomNavigationItemViewImpl:(ASBottomNavigationItemViewImpl *)outer$ {
-  ASBottomNavigationItemViewImpl_BottomNavigationItemViewBean_initWithASBottomNavigationItemViewImpl_(self, outer$);
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASBottomNavigationItemViewImpl:);
-  #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "LASBottomNavigationItemViewImpl;" };
-  static const J2ObjcClassInfo _ASBottomNavigationItemViewImpl_BottomNavigationItemViewBean = { "BottomNavigationItemViewBean", "com.ashera.navigationview", ptrTable, methods, NULL, 7, 0x1, 1, 0, 0, -1, -1, -1, -1 };
-  return &_ASBottomNavigationItemViewImpl_BottomNavigationItemViewBean;
-}
-
-@end
-
-void ASBottomNavigationItemViewImpl_BottomNavigationItemViewBean_initWithASBottomNavigationItemViewImpl_(ASBottomNavigationItemViewImpl_BottomNavigationItemViewBean *self, ASBottomNavigationItemViewImpl *outer$) {
-  ASViewGroupImpl_ViewGroupBean_initWithASIWidget_(self, outer$);
-}
-
-ASBottomNavigationItemViewImpl_BottomNavigationItemViewBean *new_ASBottomNavigationItemViewImpl_BottomNavigationItemViewBean_initWithASBottomNavigationItemViewImpl_(ASBottomNavigationItemViewImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASBottomNavigationItemViewImpl_BottomNavigationItemViewBean, initWithASBottomNavigationItemViewImpl_, outer$)
-}
-
-ASBottomNavigationItemViewImpl_BottomNavigationItemViewBean *create_ASBottomNavigationItemViewImpl_BottomNavigationItemViewBean_initWithASBottomNavigationItemViewImpl_(ASBottomNavigationItemViewImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASBottomNavigationItemViewImpl_BottomNavigationItemViewBean, initWithASBottomNavigationItemViewImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBottomNavigationItemViewImpl_BottomNavigationItemViewBean)
-
-@implementation ASBottomNavigationItemViewImpl_BottomNavigationItemViewParamsBean
-
-- (instancetype)initWithASBottomNavigationItemViewImpl:(ASBottomNavigationItemViewImpl *)outer$ {
-  ASBottomNavigationItemViewImpl_BottomNavigationItemViewParamsBean_initWithASBottomNavigationItemViewImpl_(self, outer$);
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASBottomNavigationItemViewImpl:);
-  #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "LASBottomNavigationItemViewImpl;" };
-  static const J2ObjcClassInfo _ASBottomNavigationItemViewImpl_BottomNavigationItemViewParamsBean = { "BottomNavigationItemViewParamsBean", "com.ashera.navigationview", ptrTable, methods, NULL, 7, 0x1, 1, 0, 0, -1, -1, -1, -1 };
-  return &_ASBottomNavigationItemViewImpl_BottomNavigationItemViewParamsBean;
-}
-
-@end
-
-void ASBottomNavigationItemViewImpl_BottomNavigationItemViewParamsBean_initWithASBottomNavigationItemViewImpl_(ASBottomNavigationItemViewImpl_BottomNavigationItemViewParamsBean *self, ASBottomNavigationItemViewImpl *outer$) {
-  ASViewGroupImpl_ViewGroupParamsBean_init(self);
-}
-
-ASBottomNavigationItemViewImpl_BottomNavigationItemViewParamsBean *new_ASBottomNavigationItemViewImpl_BottomNavigationItemViewParamsBean_initWithASBottomNavigationItemViewImpl_(ASBottomNavigationItemViewImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASBottomNavigationItemViewImpl_BottomNavigationItemViewParamsBean, initWithASBottomNavigationItemViewImpl_, outer$)
-}
-
-ASBottomNavigationItemViewImpl_BottomNavigationItemViewParamsBean *create_ASBottomNavigationItemViewImpl_BottomNavigationItemViewParamsBean_initWithASBottomNavigationItemViewImpl_(ASBottomNavigationItemViewImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASBottomNavigationItemViewImpl_BottomNavigationItemViewParamsBean, initWithASBottomNavigationItemViewImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBottomNavigationItemViewImpl_BottomNavigationItemViewParamsBean)
-
-@implementation ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandParamsBuilder
-
-- (instancetype)initWithASBottomNavigationItemViewImpl:(ASBottomNavigationItemViewImpl *)outer$ {
-  ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandParamsBuilder_initWithASBottomNavigationItemViewImpl_(self, outer$);
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASBottomNavigationItemViewImpl:);
-  #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "LASBottomNavigationItemViewImpl;", "Lcom/ashera/layout/ViewGroupImpl$ViewGroupCommandParamsBuilder<Lcom/ashera/navigationview/BottomNavigationItemViewImpl$BottomNavigationItemViewCommandParamsBuilder;>;" };
-  static const J2ObjcClassInfo _ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandParamsBuilder = { "BottomNavigationItemViewCommandParamsBuilder", "com.ashera.navigationview", ptrTable, methods, NULL, 7, 0x1, 1, 0, 0, -1, -1, 1, -1 };
-  return &_ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandParamsBuilder;
-}
-
-@end
-
-void ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandParamsBuilder_initWithASBottomNavigationItemViewImpl_(ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandParamsBuilder *self, ASBottomNavigationItemViewImpl *outer$) {
-  ASViewGroupImpl_ViewGroupCommandParamsBuilder_init(self);
-}
-
-ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandParamsBuilder *new_ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandParamsBuilder_initWithASBottomNavigationItemViewImpl_(ASBottomNavigationItemViewImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandParamsBuilder, initWithASBottomNavigationItemViewImpl_, outer$)
-}
-
-ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandParamsBuilder *create_ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandParamsBuilder_initWithASBottomNavigationItemViewImpl_(ASBottomNavigationItemViewImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandParamsBuilder, initWithASBottomNavigationItemViewImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBottomNavigationItemViewImpl_BottomNavigationItemViewCommandParamsBuilder)
 
 @implementation ASBottomNavigationItemViewImpl_$Lambda$1
 

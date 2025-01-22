@@ -67,6 +67,7 @@ public class BaselineLayoutImpl extends BaseHasWidgets {
 		
 		
 		ViewGroupImpl.registerCommandConveter(this);
+
 	}
 
 	@Override
@@ -440,7 +441,7 @@ public class BaselineLayoutImpl extends BaseHasWidgets {
 	@SuppressLint("NewApi")
 	@Override
 	public void setAttribute(WidgetAttribute key, String strValue, Object objValue, ILifeCycleDecorator decorator) {
-				ViewGroupImpl.setAttribute(this, key, strValue, objValue, decorator);
+				ViewGroupImpl.setAttribute(this,  key, strValue, objValue, decorator);
 		Object nativeWidget = asNativeWidget();
 
 	}
@@ -496,73 +497,5 @@ public class BaselineLayoutImpl extends BaseHasWidgets {
         ((View)asWidget()).setVisibility(b ? View.VISIBLE : View.GONE);
     }
 
-	
-private BaselineLayoutCommandBuilder builder;
-private BaselineLayoutBean bean;
-public Object getPlugin(String plugin) {
-	return WidgetFactory.getAttributable(plugin).newInstance(this);
-}
-public BaselineLayoutBean getBean() {
-	if (bean == null) {
-		bean = new BaselineLayoutBean();
-	}
-	return bean;
-}
-public BaselineLayoutCommandBuilder getBuilder() {
-	if (builder == null) {
-		builder = new BaselineLayoutCommandBuilder();
-	}
-	return builder;
-}
-
-
-public  class BaselineLayoutCommandBuilder extends com.ashera.layout.ViewGroupImpl.ViewGroupCommandBuilder <BaselineLayoutCommandBuilder> {
-    public BaselineLayoutCommandBuilder() {
-	}
-	
-	public BaselineLayoutCommandBuilder execute(boolean setter) {
-		if (setter) {
-			executeCommand(command, null, IWidget.COMMAND_EXEC_SETTER_METHOD);
-			getFragment().remeasure();
-		}
-		executeCommand(command, null, IWidget.COMMAND_EXEC_GETTER_METHOD);
-return this;	}
-
-}
-public class BaselineLayoutBean extends com.ashera.layout.ViewGroupImpl.ViewGroupBean{
-		public BaselineLayoutBean() {
-			super(BaselineLayoutImpl.this);
-		}
-}
-
-
-private BaselineLayoutCommandParamsBuilder paramsBuilder;
-private BaselineLayoutParamsBean paramsBean;
-
-public BaselineLayoutParamsBean getParamsBean() {
-	if (paramsBean == null) {
-		paramsBean = new BaselineLayoutParamsBean();
-	}
-	return paramsBean;
-}
-public BaselineLayoutCommandParamsBuilder getParamsBuilder() {
-	if (paramsBuilder == null) {
-		paramsBuilder = new BaselineLayoutCommandParamsBuilder();
-	}
-	return paramsBuilder;
-}
-
-
-
-public class BaselineLayoutParamsBean extends com.ashera.layout.ViewGroupImpl.ViewGroupParamsBean{
-}
-
-
-
-
-
-public class BaselineLayoutCommandParamsBuilder extends com.ashera.layout.ViewGroupImpl.ViewGroupCommandParamsBuilder<BaselineLayoutCommandParamsBuilder>{
-}
-
-	//end - body
+		//end - body
 }

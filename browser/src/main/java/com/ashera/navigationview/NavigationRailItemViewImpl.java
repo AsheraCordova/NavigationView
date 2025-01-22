@@ -67,6 +67,7 @@ public class NavigationRailItemViewImpl extends BaseHasWidgets {
 		
 		
 		ViewGroupImpl.registerCommandConveter(this);
+
 	}
 
 	@Override
@@ -440,7 +441,7 @@ public class NavigationRailItemViewImpl extends BaseHasWidgets {
 	@SuppressLint("NewApi")
 	@Override
 	public void setAttribute(WidgetAttribute key, String strValue, Object objValue, ILifeCycleDecorator decorator) {
-				ViewGroupImpl.setAttribute(this, key, strValue, objValue, decorator);
+				ViewGroupImpl.setAttribute(this,  key, strValue, objValue, decorator);
 		Object nativeWidget = asNativeWidget();
 
 	}
@@ -492,75 +493,7 @@ public class NavigationRailItemViewImpl extends BaseHasWidgets {
         ((View)asWidget()).setVisibility(b ? View.VISIBLE : View.GONE);
     }
 
-	
-private NavigationRailItemViewCommandBuilder builder;
-private NavigationRailItemViewBean bean;
-public Object getPlugin(String plugin) {
-	return WidgetFactory.getAttributable(plugin).newInstance(this);
-}
-public NavigationRailItemViewBean getBean() {
-	if (bean == null) {
-		bean = new NavigationRailItemViewBean();
-	}
-	return bean;
-}
-public NavigationRailItemViewCommandBuilder getBuilder() {
-	if (builder == null) {
-		builder = new NavigationRailItemViewCommandBuilder();
-	}
-	return builder;
-}
-
-
-public  class NavigationRailItemViewCommandBuilder extends com.ashera.layout.ViewGroupImpl.ViewGroupCommandBuilder <NavigationRailItemViewCommandBuilder> {
-    public NavigationRailItemViewCommandBuilder() {
-	}
-	
-	public NavigationRailItemViewCommandBuilder execute(boolean setter) {
-		if (setter) {
-			executeCommand(command, null, IWidget.COMMAND_EXEC_SETTER_METHOD);
-			getFragment().remeasure();
-		}
-		executeCommand(command, null, IWidget.COMMAND_EXEC_GETTER_METHOD);
-return this;	}
-
-}
-public class NavigationRailItemViewBean extends com.ashera.layout.ViewGroupImpl.ViewGroupBean{
-		public NavigationRailItemViewBean() {
-			super(NavigationRailItemViewImpl.this);
-		}
-}
-
-
-private NavigationRailItemViewCommandParamsBuilder paramsBuilder;
-private NavigationRailItemViewParamsBean paramsBean;
-
-public NavigationRailItemViewParamsBean getParamsBean() {
-	if (paramsBean == null) {
-		paramsBean = new NavigationRailItemViewParamsBean();
-	}
-	return paramsBean;
-}
-public NavigationRailItemViewCommandParamsBuilder getParamsBuilder() {
-	if (paramsBuilder == null) {
-		paramsBuilder = new NavigationRailItemViewCommandParamsBuilder();
-	}
-	return paramsBuilder;
-}
-
-
-
-public class NavigationRailItemViewParamsBean extends com.ashera.layout.ViewGroupImpl.ViewGroupParamsBean{
-}
-
-
-
-
-
-public class NavigationRailItemViewCommandParamsBuilder extends com.ashera.layout.ViewGroupImpl.ViewGroupCommandParamsBuilder<NavigationRailItemViewCommandParamsBuilder>{
-}
-
-	//end - body
+		//end - body
 
 private void nativeCreate(Map<String, Object> params) {
 	htmlElement = org.teavm.jso.dom.html.HTMLDocument.current().createElement("div");

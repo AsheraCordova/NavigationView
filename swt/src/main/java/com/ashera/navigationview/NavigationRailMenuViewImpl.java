@@ -67,6 +67,7 @@ public class NavigationRailMenuViewImpl extends BaseHasWidgets {
 		
 		
 		ViewGroupImpl.registerCommandConveter(this);
+
 	}
 
 	@Override
@@ -444,7 +445,7 @@ public class NavigationRailMenuViewImpl extends BaseHasWidgets {
 	@SuppressLint("NewApi")
 	@Override
 	public void setAttribute(WidgetAttribute key, String strValue, Object objValue, ILifeCycleDecorator decorator) {
-				ViewGroupImpl.setAttribute(this, key, strValue, objValue, decorator);
+				ViewGroupImpl.setAttribute(this,  key, strValue, objValue, decorator);
 		Object nativeWidget = asNativeWidget();
 
 	}
@@ -518,75 +519,7 @@ public class NavigationRailMenuViewImpl extends BaseHasWidgets {
 		return getStyle("swtStyle", initStyle, params, fragment);
 	}
 
-	
-private NavigationRailMenuViewCommandBuilder builder;
-private NavigationRailMenuViewBean bean;
-public Object getPlugin(String plugin) {
-	return WidgetFactory.getAttributable(plugin).newInstance(this);
-}
-public NavigationRailMenuViewBean getBean() {
-	if (bean == null) {
-		bean = new NavigationRailMenuViewBean();
-	}
-	return bean;
-}
-public NavigationRailMenuViewCommandBuilder getBuilder() {
-	if (builder == null) {
-		builder = new NavigationRailMenuViewCommandBuilder();
-	}
-	return builder;
-}
-
-
-public  class NavigationRailMenuViewCommandBuilder extends com.ashera.layout.ViewGroupImpl.ViewGroupCommandBuilder <NavigationRailMenuViewCommandBuilder> {
-    public NavigationRailMenuViewCommandBuilder() {
-	}
-	
-	public NavigationRailMenuViewCommandBuilder execute(boolean setter) {
-		if (setter) {
-			executeCommand(command, null, IWidget.COMMAND_EXEC_SETTER_METHOD);
-			getFragment().remeasure();
-		}
-		executeCommand(command, null, IWidget.COMMAND_EXEC_GETTER_METHOD);
-return this;	}
-
-}
-public class NavigationRailMenuViewBean extends com.ashera.layout.ViewGroupImpl.ViewGroupBean{
-		public NavigationRailMenuViewBean() {
-			super(NavigationRailMenuViewImpl.this);
-		}
-}
-
-
-private NavigationRailMenuViewCommandParamsBuilder paramsBuilder;
-private NavigationRailMenuViewParamsBean paramsBean;
-
-public NavigationRailMenuViewParamsBean getParamsBean() {
-	if (paramsBean == null) {
-		paramsBean = new NavigationRailMenuViewParamsBean();
-	}
-	return paramsBean;
-}
-public NavigationRailMenuViewCommandParamsBuilder getParamsBuilder() {
-	if (paramsBuilder == null) {
-		paramsBuilder = new NavigationRailMenuViewCommandParamsBuilder();
-	}
-	return paramsBuilder;
-}
-
-
-
-public class NavigationRailMenuViewParamsBean extends com.ashera.layout.ViewGroupImpl.ViewGroupParamsBean{
-}
-
-
-
-
-
-public class NavigationRailMenuViewCommandParamsBuilder extends com.ashera.layout.ViewGroupImpl.ViewGroupCommandParamsBuilder<NavigationRailMenuViewCommandParamsBuilder>{
-}
-
-	//end - body
+		//end - body
 
 private void nativeCreate(Map<String, Object> params) {
     pane = new org.eclipse.swt.widgets.Composite((org.eclipse.swt.widgets.Composite)ViewImpl.getParent(this), getStyle(params, fragment));

@@ -7,7 +7,6 @@
 #include "BaselineLayout.h"
 #include "BaselineLayoutImpl.h"
 #include "HasWidgets.h"
-#include "IAttributable.h"
 #include "IFragment.h"
 #include "ILifeCycleDecorator.h"
 #include "IOSClass.h"
@@ -25,7 +24,6 @@
 #include "ViewGroupImpl.h"
 #include "ViewImpl.h"
 #include "WidgetAttribute.h"
-#include "WidgetFactory.h"
 #include "java/lang/Integer.h"
 #include "java/lang/Runnable.h"
 #include "java/lang/UnsupportedOperationException.h"
@@ -42,16 +40,11 @@
 
 
 #pragma clang diagnostic ignored "-Wprotocol"
-#pragma clang diagnostic ignored "-Wincomplete-implementation"
 
 @interface ASBaselineLayoutImpl () {
  @public
   id uiView_;
   ADXBaselineLayout *baselineLayout_;
-  ASBaselineLayoutImpl_BaselineLayoutCommandBuilder *builder_;
-  ASBaselineLayoutImpl_BaselineLayoutBean *bean_;
-  ASBaselineLayoutImpl_BaselineLayoutCommandParamsBuilder *paramsBuilder_;
-  ASBaselineLayoutImpl_BaselineLayoutParamsBean *paramsBean_;
 }
 
 - (void)setWidgetOnNativeClass;
@@ -66,10 +59,6 @@
 
 J2OBJC_FIELD_SETTER(ASBaselineLayoutImpl, uiView_, id)
 J2OBJC_FIELD_SETTER(ASBaselineLayoutImpl, baselineLayout_, ADXBaselineLayout *)
-J2OBJC_FIELD_SETTER(ASBaselineLayoutImpl, builder_, ASBaselineLayoutImpl_BaselineLayoutCommandBuilder *)
-J2OBJC_FIELD_SETTER(ASBaselineLayoutImpl, bean_, ASBaselineLayoutImpl_BaselineLayoutBean *)
-J2OBJC_FIELD_SETTER(ASBaselineLayoutImpl, paramsBuilder_, ASBaselineLayoutImpl_BaselineLayoutCommandParamsBuilder *)
-J2OBJC_FIELD_SETTER(ASBaselineLayoutImpl, paramsBean_, ASBaselineLayoutImpl_BaselineLayoutParamsBean *)
 
 __attribute__((unused)) static void ASBaselineLayoutImpl_setWidgetOnNativeClass(ASBaselineLayoutImpl *self);
 
@@ -96,13 +85,6 @@ J2OBJC_FIELD_SETTER(ASBaselineLayoutImpl_BaselineLayoutExt, measureFinished_, AS
 J2OBJC_FIELD_SETTER(ASBaselineLayoutImpl_BaselineLayoutExt, onLayoutEvent_, ASOnLayoutEvent *)
 J2OBJC_FIELD_SETTER(ASBaselineLayoutImpl_BaselineLayoutExt, overlays_, id<JavaUtilList>)
 J2OBJC_FIELD_SETTER(ASBaselineLayoutImpl_BaselineLayoutExt, templates_, id<JavaUtilMap>)
-
-@interface ASBaselineLayoutImpl_BaselineLayoutCommandBuilder () {
- @public
-  ASBaselineLayoutImpl *this$0_;
-}
-
-@end
 
 @interface ASBaselineLayoutImpl_$Lambda$1 : NSObject < JavaLangRunnable > {
  @public
@@ -312,38 +294,6 @@ J2OBJC_IGNORE_DESIGNATED_END
   [((ADView *) nil_chk(((ADView *) cast_chk([self asWidget], [ADView class])))) setVisibilityWithInt:b ? ADView_VISIBLE : ADView_GONE];
 }
 
-- (id)getPluginWithNSString:(NSString *)plugin {
-  return [((id<ASIAttributable>) nil_chk(ASWidgetFactory_getAttributableWithNSString_(plugin))) newInstanceWithASIWidget:self];
-}
-
-- (ASBaselineLayoutImpl_BaselineLayoutBean *)getBean {
-  if (bean_ == nil) {
-    bean_ = new_ASBaselineLayoutImpl_BaselineLayoutBean_initWithASBaselineLayoutImpl_(self);
-  }
-  return bean_;
-}
-
-- (ASBaselineLayoutImpl_BaselineLayoutCommandBuilder *)getBuilder {
-  if (builder_ == nil) {
-    builder_ = new_ASBaselineLayoutImpl_BaselineLayoutCommandBuilder_initWithASBaselineLayoutImpl_(self);
-  }
-  return builder_;
-}
-
-- (ASBaselineLayoutImpl_BaselineLayoutParamsBean *)getParamsBean {
-  if (paramsBean_ == nil) {
-    paramsBean_ = new_ASBaselineLayoutImpl_BaselineLayoutParamsBean_initWithASBaselineLayoutImpl_(self);
-  }
-  return paramsBean_;
-}
-
-- (ASBaselineLayoutImpl_BaselineLayoutCommandParamsBuilder *)getParamsBuilder {
-  if (paramsBuilder_ == nil) {
-    paramsBuilder_ = new_ASBaselineLayoutImpl_BaselineLayoutCommandParamsBuilder_initWithASBaselineLayoutImpl_(self);
-  }
-  return paramsBuilder_;
-}
-
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, "V", 0x1, 0, 1, -1, -1, -1, -1 },
@@ -372,11 +322,6 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 27, 1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 28, 29, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, 30, 1, -1, -1, -1, -1 },
-    { NULL, "LASBaselineLayoutImpl_BaselineLayoutBean;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASBaselineLayoutImpl_BaselineLayoutCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASBaselineLayoutImpl_BaselineLayoutParamsBean;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASBaselineLayoutImpl_BaselineLayoutCommandParamsBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -407,24 +352,15 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[23].selector = @selector(invalidate);
   methods[24].selector = @selector(setIdWithNSString:);
   methods[25].selector = @selector(setVisibleWithBoolean:);
-  methods[26].selector = @selector(getPluginWithNSString:);
-  methods[27].selector = @selector(getBean);
-  methods[28].selector = @selector(getBuilder);
-  methods[29].selector = @selector(getParamsBean);
-  methods[30].selector = @selector(getParamsBuilder);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "uiView_", "LNSObject;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 31, -1, -1 },
-    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 32, -1, -1 },
+    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 30, -1, -1 },
+    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 31, -1, -1 },
     { "baselineLayout_", "LADXBaselineLayout;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "builder_", "LASBaselineLayoutImpl_BaselineLayoutCommandBuilder;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "bean_", "LASBaselineLayoutImpl_BaselineLayoutBean;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "paramsBuilder_", "LASBaselineLayoutImpl_BaselineLayoutCommandParamsBuilder;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "paramsBean_", "LASBaselineLayoutImpl_BaselineLayoutParamsBean;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "remove", "LASIWidget;", "I", "nativeRemoveView", "add", "LASIWidget;I", "createLayoutParams", "LADView;", "getLayoutParams", "setChildAttribute", "LASIWidget;LASWidgetAttribute;LNSString;LNSObject;", "getChildAttribute", "LASIWidget;LASWidgetAttribute;", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "checkIosVersion", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "setId", "setVisible", "Z", "getPlugin", &ASBaselineLayoutImpl_LOCAL_NAME, &ASBaselineLayoutImpl_GROUP_NAME, "LASBaselineLayoutImpl_BaselineLayoutExt;LASBaselineLayoutImpl_BaselineLayoutCommandBuilder;LASBaselineLayoutImpl_BaselineLayoutBean;LASBaselineLayoutImpl_BaselineLayoutParamsBean;LASBaselineLayoutImpl_BaselineLayoutCommandParamsBuilder;" };
-  static const J2ObjcClassInfo _ASBaselineLayoutImpl = { "BaselineLayoutImpl", "com.ashera.navigationview", ptrTable, methods, fields, 7, 0x1, 31, 8, -1, 33, -1, -1, -1 };
+  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "remove", "LASIWidget;", "I", "nativeRemoveView", "add", "LASIWidget;I", "createLayoutParams", "LADView;", "getLayoutParams", "setChildAttribute", "LASIWidget;LASWidgetAttribute;LNSString;LNSObject;", "getChildAttribute", "LASIWidget;LASWidgetAttribute;", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "checkIosVersion", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "setId", "setVisible", "Z", &ASBaselineLayoutImpl_LOCAL_NAME, &ASBaselineLayoutImpl_GROUP_NAME, "LASBaselineLayoutImpl_BaselineLayoutExt;" };
+  static const J2ObjcClassInfo _ASBaselineLayoutImpl = { "BaselineLayoutImpl", "com.ashera.navigationview", ptrTable, methods, fields, 7, 0x1, 26, 4, -1, 32, -1, -1, -1 };
   return &_ASBaselineLayoutImpl;
 }
 
@@ -858,169 +794,6 @@ ASBaselineLayoutImpl_BaselineLayoutExt *create_ASBaselineLayoutImpl_BaselineLayo
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBaselineLayoutImpl_BaselineLayoutExt)
-
-@implementation ASBaselineLayoutImpl_BaselineLayoutCommandBuilder
-
-- (instancetype)initWithASBaselineLayoutImpl:(ASBaselineLayoutImpl *)outer$ {
-  ASBaselineLayoutImpl_BaselineLayoutCommandBuilder_initWithASBaselineLayoutImpl_(self, outer$);
-  return self;
-}
-
-- (ASBaselineLayoutImpl_BaselineLayoutCommandBuilder *)executeWithBoolean:(jboolean)setter {
-  if (setter) {
-    [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_SETTER_METHOD];
-    [((id<ASIFragment>) nil_chk([this$0_ getFragment])) remeasure];
-  }
-  [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_GETTER_METHOD];
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LASBaselineLayoutImpl_BaselineLayoutCommandBuilder;", 0x1, 1, 2, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASBaselineLayoutImpl:);
-  methods[1].selector = @selector(executeWithBoolean:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LASBaselineLayoutImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LASBaselineLayoutImpl;", "execute", "Z", "Lcom/ashera/layout/ViewGroupImpl$ViewGroupCommandBuilder<Lcom/ashera/navigationview/BaselineLayoutImpl$BaselineLayoutCommandBuilder;>;" };
-  static const J2ObjcClassInfo _ASBaselineLayoutImpl_BaselineLayoutCommandBuilder = { "BaselineLayoutCommandBuilder", "com.ashera.navigationview", ptrTable, methods, fields, 7, 0x1, 2, 1, 0, -1, -1, 3, -1 };
-  return &_ASBaselineLayoutImpl_BaselineLayoutCommandBuilder;
-}
-
-@end
-
-void ASBaselineLayoutImpl_BaselineLayoutCommandBuilder_initWithASBaselineLayoutImpl_(ASBaselineLayoutImpl_BaselineLayoutCommandBuilder *self, ASBaselineLayoutImpl *outer$) {
-  self->this$0_ = outer$;
-  ASViewGroupImpl_ViewGroupCommandBuilder_init(self);
-}
-
-ASBaselineLayoutImpl_BaselineLayoutCommandBuilder *new_ASBaselineLayoutImpl_BaselineLayoutCommandBuilder_initWithASBaselineLayoutImpl_(ASBaselineLayoutImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASBaselineLayoutImpl_BaselineLayoutCommandBuilder, initWithASBaselineLayoutImpl_, outer$)
-}
-
-ASBaselineLayoutImpl_BaselineLayoutCommandBuilder *create_ASBaselineLayoutImpl_BaselineLayoutCommandBuilder_initWithASBaselineLayoutImpl_(ASBaselineLayoutImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASBaselineLayoutImpl_BaselineLayoutCommandBuilder, initWithASBaselineLayoutImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBaselineLayoutImpl_BaselineLayoutCommandBuilder)
-
-@implementation ASBaselineLayoutImpl_BaselineLayoutBean
-
-- (instancetype)initWithASBaselineLayoutImpl:(ASBaselineLayoutImpl *)outer$ {
-  ASBaselineLayoutImpl_BaselineLayoutBean_initWithASBaselineLayoutImpl_(self, outer$);
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASBaselineLayoutImpl:);
-  #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "LASBaselineLayoutImpl;" };
-  static const J2ObjcClassInfo _ASBaselineLayoutImpl_BaselineLayoutBean = { "BaselineLayoutBean", "com.ashera.navigationview", ptrTable, methods, NULL, 7, 0x1, 1, 0, 0, -1, -1, -1, -1 };
-  return &_ASBaselineLayoutImpl_BaselineLayoutBean;
-}
-
-@end
-
-void ASBaselineLayoutImpl_BaselineLayoutBean_initWithASBaselineLayoutImpl_(ASBaselineLayoutImpl_BaselineLayoutBean *self, ASBaselineLayoutImpl *outer$) {
-  ASViewGroupImpl_ViewGroupBean_initWithASIWidget_(self, outer$);
-}
-
-ASBaselineLayoutImpl_BaselineLayoutBean *new_ASBaselineLayoutImpl_BaselineLayoutBean_initWithASBaselineLayoutImpl_(ASBaselineLayoutImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASBaselineLayoutImpl_BaselineLayoutBean, initWithASBaselineLayoutImpl_, outer$)
-}
-
-ASBaselineLayoutImpl_BaselineLayoutBean *create_ASBaselineLayoutImpl_BaselineLayoutBean_initWithASBaselineLayoutImpl_(ASBaselineLayoutImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASBaselineLayoutImpl_BaselineLayoutBean, initWithASBaselineLayoutImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBaselineLayoutImpl_BaselineLayoutBean)
-
-@implementation ASBaselineLayoutImpl_BaselineLayoutParamsBean
-
-- (instancetype)initWithASBaselineLayoutImpl:(ASBaselineLayoutImpl *)outer$ {
-  ASBaselineLayoutImpl_BaselineLayoutParamsBean_initWithASBaselineLayoutImpl_(self, outer$);
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASBaselineLayoutImpl:);
-  #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "LASBaselineLayoutImpl;" };
-  static const J2ObjcClassInfo _ASBaselineLayoutImpl_BaselineLayoutParamsBean = { "BaselineLayoutParamsBean", "com.ashera.navigationview", ptrTable, methods, NULL, 7, 0x1, 1, 0, 0, -1, -1, -1, -1 };
-  return &_ASBaselineLayoutImpl_BaselineLayoutParamsBean;
-}
-
-@end
-
-void ASBaselineLayoutImpl_BaselineLayoutParamsBean_initWithASBaselineLayoutImpl_(ASBaselineLayoutImpl_BaselineLayoutParamsBean *self, ASBaselineLayoutImpl *outer$) {
-  ASViewGroupImpl_ViewGroupParamsBean_init(self);
-}
-
-ASBaselineLayoutImpl_BaselineLayoutParamsBean *new_ASBaselineLayoutImpl_BaselineLayoutParamsBean_initWithASBaselineLayoutImpl_(ASBaselineLayoutImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASBaselineLayoutImpl_BaselineLayoutParamsBean, initWithASBaselineLayoutImpl_, outer$)
-}
-
-ASBaselineLayoutImpl_BaselineLayoutParamsBean *create_ASBaselineLayoutImpl_BaselineLayoutParamsBean_initWithASBaselineLayoutImpl_(ASBaselineLayoutImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASBaselineLayoutImpl_BaselineLayoutParamsBean, initWithASBaselineLayoutImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBaselineLayoutImpl_BaselineLayoutParamsBean)
-
-@implementation ASBaselineLayoutImpl_BaselineLayoutCommandParamsBuilder
-
-- (instancetype)initWithASBaselineLayoutImpl:(ASBaselineLayoutImpl *)outer$ {
-  ASBaselineLayoutImpl_BaselineLayoutCommandParamsBuilder_initWithASBaselineLayoutImpl_(self, outer$);
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASBaselineLayoutImpl:);
-  #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "LASBaselineLayoutImpl;", "Lcom/ashera/layout/ViewGroupImpl$ViewGroupCommandParamsBuilder<Lcom/ashera/navigationview/BaselineLayoutImpl$BaselineLayoutCommandParamsBuilder;>;" };
-  static const J2ObjcClassInfo _ASBaselineLayoutImpl_BaselineLayoutCommandParamsBuilder = { "BaselineLayoutCommandParamsBuilder", "com.ashera.navigationview", ptrTable, methods, NULL, 7, 0x1, 1, 0, 0, -1, -1, 1, -1 };
-  return &_ASBaselineLayoutImpl_BaselineLayoutCommandParamsBuilder;
-}
-
-@end
-
-void ASBaselineLayoutImpl_BaselineLayoutCommandParamsBuilder_initWithASBaselineLayoutImpl_(ASBaselineLayoutImpl_BaselineLayoutCommandParamsBuilder *self, ASBaselineLayoutImpl *outer$) {
-  ASViewGroupImpl_ViewGroupCommandParamsBuilder_init(self);
-}
-
-ASBaselineLayoutImpl_BaselineLayoutCommandParamsBuilder *new_ASBaselineLayoutImpl_BaselineLayoutCommandParamsBuilder_initWithASBaselineLayoutImpl_(ASBaselineLayoutImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASBaselineLayoutImpl_BaselineLayoutCommandParamsBuilder, initWithASBaselineLayoutImpl_, outer$)
-}
-
-ASBaselineLayoutImpl_BaselineLayoutCommandParamsBuilder *create_ASBaselineLayoutImpl_BaselineLayoutCommandParamsBuilder_initWithASBaselineLayoutImpl_(ASBaselineLayoutImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASBaselineLayoutImpl_BaselineLayoutCommandParamsBuilder, initWithASBaselineLayoutImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBaselineLayoutImpl_BaselineLayoutCommandParamsBuilder)
 
 @implementation ASBaselineLayoutImpl_$Lambda$1
 

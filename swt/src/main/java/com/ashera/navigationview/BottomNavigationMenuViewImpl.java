@@ -67,6 +67,7 @@ public class BottomNavigationMenuViewImpl extends BaseHasWidgets {
 		
 		
 		ViewGroupImpl.registerCommandConveter(this);
+
 	}
 
 	@Override
@@ -444,7 +445,7 @@ public class BottomNavigationMenuViewImpl extends BaseHasWidgets {
 	@SuppressLint("NewApi")
 	@Override
 	public void setAttribute(WidgetAttribute key, String strValue, Object objValue, ILifeCycleDecorator decorator) {
-				ViewGroupImpl.setAttribute(this, key, strValue, objValue, decorator);
+				ViewGroupImpl.setAttribute(this,  key, strValue, objValue, decorator);
 		Object nativeWidget = asNativeWidget();
 
 	}
@@ -522,73 +523,5 @@ public class BottomNavigationMenuViewImpl extends BaseHasWidgets {
 		return getStyle("swtStyle", initStyle, params, fragment);
 	}
 
-	
-private BottomNavigationMenuViewCommandBuilder builder;
-private BottomNavigationMenuViewBean bean;
-public Object getPlugin(String plugin) {
-	return WidgetFactory.getAttributable(plugin).newInstance(this);
-}
-public BottomNavigationMenuViewBean getBean() {
-	if (bean == null) {
-		bean = new BottomNavigationMenuViewBean();
-	}
-	return bean;
-}
-public BottomNavigationMenuViewCommandBuilder getBuilder() {
-	if (builder == null) {
-		builder = new BottomNavigationMenuViewCommandBuilder();
-	}
-	return builder;
-}
-
-
-public  class BottomNavigationMenuViewCommandBuilder extends com.ashera.layout.ViewGroupImpl.ViewGroupCommandBuilder <BottomNavigationMenuViewCommandBuilder> {
-    public BottomNavigationMenuViewCommandBuilder() {
-	}
-	
-	public BottomNavigationMenuViewCommandBuilder execute(boolean setter) {
-		if (setter) {
-			executeCommand(command, null, IWidget.COMMAND_EXEC_SETTER_METHOD);
-			getFragment().remeasure();
-		}
-		executeCommand(command, null, IWidget.COMMAND_EXEC_GETTER_METHOD);
-return this;	}
-
-}
-public class BottomNavigationMenuViewBean extends com.ashera.layout.ViewGroupImpl.ViewGroupBean{
-		public BottomNavigationMenuViewBean() {
-			super(BottomNavigationMenuViewImpl.this);
-		}
-}
-
-
-private BottomNavigationMenuViewCommandParamsBuilder paramsBuilder;
-private BottomNavigationMenuViewParamsBean paramsBean;
-
-public BottomNavigationMenuViewParamsBean getParamsBean() {
-	if (paramsBean == null) {
-		paramsBean = new BottomNavigationMenuViewParamsBean();
-	}
-	return paramsBean;
-}
-public BottomNavigationMenuViewCommandParamsBuilder getParamsBuilder() {
-	if (paramsBuilder == null) {
-		paramsBuilder = new BottomNavigationMenuViewCommandParamsBuilder();
-	}
-	return paramsBuilder;
-}
-
-
-
-public class BottomNavigationMenuViewParamsBean extends com.ashera.layout.ViewGroupImpl.ViewGroupParamsBean{
-}
-
-
-
-
-
-public class BottomNavigationMenuViewCommandParamsBuilder extends com.ashera.layout.ViewGroupImpl.ViewGroupCommandParamsBuilder<BottomNavigationMenuViewCommandParamsBuilder>{
-}
-
-	//end - body
+		//end - body
 }

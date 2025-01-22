@@ -5,7 +5,6 @@
 
 #include "BaseHasWidgets.h"
 #include "HasWidgets.h"
-#include "IAttributable.h"
 #include "IFragment.h"
 #include "ILifeCycleDecorator.h"
 #include "IOSClass.h"
@@ -25,7 +24,6 @@
 #include "ViewGroupImpl.h"
 #include "ViewImpl.h"
 #include "WidgetAttribute.h"
-#include "WidgetFactory.h"
 #include "java/lang/Integer.h"
 #include "java/lang/Runnable.h"
 #include "java/lang/UnsupportedOperationException.h"
@@ -42,16 +40,11 @@
 
 
 #pragma clang diagnostic ignored "-Wprotocol"
-#pragma clang diagnostic ignored "-Wincomplete-implementation"
 
 @interface ASNavigationRailMenuViewImpl () {
  @public
   id uiView_;
   ADXNavigationRailMenuView *navigationRailMenuView_;
-  ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandBuilder *builder_;
-  ASNavigationRailMenuViewImpl_NavigationRailMenuViewBean *bean_;
-  ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandParamsBuilder *paramsBuilder_;
-  ASNavigationRailMenuViewImpl_NavigationRailMenuViewParamsBean *paramsBean_;
 }
 
 - (void)setWidgetOnNativeClass;
@@ -66,10 +59,6 @@
 
 J2OBJC_FIELD_SETTER(ASNavigationRailMenuViewImpl, uiView_, id)
 J2OBJC_FIELD_SETTER(ASNavigationRailMenuViewImpl, navigationRailMenuView_, ADXNavigationRailMenuView *)
-J2OBJC_FIELD_SETTER(ASNavigationRailMenuViewImpl, builder_, ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandBuilder *)
-J2OBJC_FIELD_SETTER(ASNavigationRailMenuViewImpl, bean_, ASNavigationRailMenuViewImpl_NavigationRailMenuViewBean *)
-J2OBJC_FIELD_SETTER(ASNavigationRailMenuViewImpl, paramsBuilder_, ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandParamsBuilder *)
-J2OBJC_FIELD_SETTER(ASNavigationRailMenuViewImpl, paramsBean_, ASNavigationRailMenuViewImpl_NavigationRailMenuViewParamsBean *)
 
 __attribute__((unused)) static void ASNavigationRailMenuViewImpl_setWidgetOnNativeClass(ASNavigationRailMenuViewImpl *self);
 
@@ -96,13 +85,6 @@ J2OBJC_FIELD_SETTER(ASNavigationRailMenuViewImpl_NavigationRailMenuViewExt, meas
 J2OBJC_FIELD_SETTER(ASNavigationRailMenuViewImpl_NavigationRailMenuViewExt, onLayoutEvent_, ASOnLayoutEvent *)
 J2OBJC_FIELD_SETTER(ASNavigationRailMenuViewImpl_NavigationRailMenuViewExt, overlays_, id<JavaUtilList>)
 J2OBJC_FIELD_SETTER(ASNavigationRailMenuViewImpl_NavigationRailMenuViewExt, templates_, id<JavaUtilMap>)
-
-@interface ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandBuilder () {
- @public
-  ASNavigationRailMenuViewImpl *this$0_;
-}
-
-@end
 
 @interface ASNavigationRailMenuViewImpl_$Lambda$1 : NSObject < JavaLangRunnable > {
  @public
@@ -306,38 +288,6 @@ J2OBJC_IGNORE_DESIGNATED_END
   [((ADView *) nil_chk(((ADView *) cast_chk([self asWidget], [ADView class])))) setVisibilityWithInt:b ? ADView_VISIBLE : ADView_GONE];
 }
 
-- (id)getPluginWithNSString:(NSString *)plugin {
-  return [((id<ASIAttributable>) nil_chk(ASWidgetFactory_getAttributableWithNSString_(plugin))) newInstanceWithASIWidget:self];
-}
-
-- (ASNavigationRailMenuViewImpl_NavigationRailMenuViewBean *)getBean {
-  if (bean_ == nil) {
-    bean_ = new_ASNavigationRailMenuViewImpl_NavigationRailMenuViewBean_initWithASNavigationRailMenuViewImpl_(self);
-  }
-  return bean_;
-}
-
-- (ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandBuilder *)getBuilder {
-  if (builder_ == nil) {
-    builder_ = new_ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandBuilder_initWithASNavigationRailMenuViewImpl_(self);
-  }
-  return builder_;
-}
-
-- (ASNavigationRailMenuViewImpl_NavigationRailMenuViewParamsBean *)getParamsBean {
-  if (paramsBean_ == nil) {
-    paramsBean_ = new_ASNavigationRailMenuViewImpl_NavigationRailMenuViewParamsBean_initWithASNavigationRailMenuViewImpl_(self);
-  }
-  return paramsBean_;
-}
-
-- (ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandParamsBuilder *)getParamsBuilder {
-  if (paramsBuilder_ == nil) {
-    paramsBuilder_ = new_ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandParamsBuilder_initWithASNavigationRailMenuViewImpl_(self);
-  }
-  return paramsBuilder_;
-}
-
 - (void)nativeCreateWithJavaUtilMap:(id<JavaUtilMap>)params {
   [self nativeCreate];
   [((ADXNavigationRailMenuView *) nil_chk(navigationRailMenuView_)) initNavigationRailMenuView];
@@ -376,12 +326,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 24, 1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 25, 26, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, 27, 1, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailMenuViewImpl_NavigationRailMenuViewBean;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailMenuViewImpl_NavigationRailMenuViewParamsBean;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandParamsBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 28, 29, -1, 30, -1, -1 },
+    { NULL, "V", 0x1, 27, 28, -1, 29, -1, -1 },
     { NULL, "V", 0x101, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -412,26 +357,17 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[22].selector = @selector(invalidate);
   methods[23].selector = @selector(setIdWithNSString:);
   methods[24].selector = @selector(setVisibleWithBoolean:);
-  methods[25].selector = @selector(getPluginWithNSString:);
-  methods[26].selector = @selector(getBean);
-  methods[27].selector = @selector(getBuilder);
-  methods[28].selector = @selector(getParamsBean);
-  methods[29].selector = @selector(getParamsBuilder);
-  methods[30].selector = @selector(nativeCreateWithJavaUtilMap:);
-  methods[31].selector = @selector(nativeCreate);
+  methods[25].selector = @selector(nativeCreateWithJavaUtilMap:);
+  methods[26].selector = @selector(nativeCreate);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "uiView_", "LNSObject;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 31, -1, -1 },
-    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 32, -1, -1 },
+    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 30, -1, -1 },
+    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 31, -1, -1 },
     { "navigationRailMenuView_", "LADXNavigationRailMenuView;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "builder_", "LASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandBuilder;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "bean_", "LASNavigationRailMenuViewImpl_NavigationRailMenuViewBean;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "paramsBuilder_", "LASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandParamsBuilder;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "paramsBean_", "LASNavigationRailMenuViewImpl_NavigationRailMenuViewParamsBean;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "remove", "LASIWidget;", "I", "nativeRemoveView", "add", "LASIWidget;I", "createLayoutParams", "LADView;", "getLayoutParams", "setChildAttribute", "LASIWidget;LASWidgetAttribute;LNSString;LNSObject;", "getChildAttribute", "LASIWidget;LASWidgetAttribute;", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "checkIosVersion", "setId", "setVisible", "Z", "getPlugin", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", &ASNavigationRailMenuViewImpl_LOCAL_NAME, &ASNavigationRailMenuViewImpl_GROUP_NAME, "LASNavigationRailMenuViewImpl_NavigationRailMenuViewExt;LASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandBuilder;LASNavigationRailMenuViewImpl_NavigationRailMenuViewBean;LASNavigationRailMenuViewImpl_NavigationRailMenuViewParamsBean;LASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandParamsBuilder;" };
-  static const J2ObjcClassInfo _ASNavigationRailMenuViewImpl = { "NavigationRailMenuViewImpl", "com.ashera.navigationview", ptrTable, methods, fields, 7, 0x1, 32, 8, -1, 33, -1, -1, -1 };
+  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "remove", "LASIWidget;", "I", "nativeRemoveView", "add", "LASIWidget;I", "createLayoutParams", "LADView;", "getLayoutParams", "setChildAttribute", "LASIWidget;LASWidgetAttribute;LNSString;LNSObject;", "getChildAttribute", "LASIWidget;LASWidgetAttribute;", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "checkIosVersion", "setId", "setVisible", "Z", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", &ASNavigationRailMenuViewImpl_LOCAL_NAME, &ASNavigationRailMenuViewImpl_GROUP_NAME, "LASNavigationRailMenuViewImpl_NavigationRailMenuViewExt;" };
+  static const J2ObjcClassInfo _ASNavigationRailMenuViewImpl = { "NavigationRailMenuViewImpl", "com.ashera.navigationview", ptrTable, methods, fields, 7, 0x1, 27, 4, -1, 32, -1, -1, -1 };
   return &_ASNavigationRailMenuViewImpl;
 }
 
@@ -865,169 +801,6 @@ ASNavigationRailMenuViewImpl_NavigationRailMenuViewExt *create_ASNavigationRailM
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationRailMenuViewImpl_NavigationRailMenuViewExt)
-
-@implementation ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandBuilder
-
-- (instancetype)initWithASNavigationRailMenuViewImpl:(ASNavigationRailMenuViewImpl *)outer$ {
-  ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandBuilder_initWithASNavigationRailMenuViewImpl_(self, outer$);
-  return self;
-}
-
-- (ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandBuilder *)executeWithBoolean:(jboolean)setter {
-  if (setter) {
-    [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_SETTER_METHOD];
-    [((id<ASIFragment>) nil_chk([this$0_ getFragment])) remeasure];
-  }
-  [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_GETTER_METHOD];
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandBuilder;", 0x1, 1, 2, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASNavigationRailMenuViewImpl:);
-  methods[1].selector = @selector(executeWithBoolean:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LASNavigationRailMenuViewImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LASNavigationRailMenuViewImpl;", "execute", "Z", "Lcom/ashera/layout/ViewGroupImpl$ViewGroupCommandBuilder<Lcom/ashera/navigationview/NavigationRailMenuViewImpl$NavigationRailMenuViewCommandBuilder;>;" };
-  static const J2ObjcClassInfo _ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandBuilder = { "NavigationRailMenuViewCommandBuilder", "com.ashera.navigationview", ptrTable, methods, fields, 7, 0x1, 2, 1, 0, -1, -1, 3, -1 };
-  return &_ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandBuilder;
-}
-
-@end
-
-void ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandBuilder_initWithASNavigationRailMenuViewImpl_(ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandBuilder *self, ASNavigationRailMenuViewImpl *outer$) {
-  self->this$0_ = outer$;
-  ASViewGroupImpl_ViewGroupCommandBuilder_init(self);
-}
-
-ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandBuilder *new_ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandBuilder_initWithASNavigationRailMenuViewImpl_(ASNavigationRailMenuViewImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandBuilder, initWithASNavigationRailMenuViewImpl_, outer$)
-}
-
-ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandBuilder *create_ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandBuilder_initWithASNavigationRailMenuViewImpl_(ASNavigationRailMenuViewImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandBuilder, initWithASNavigationRailMenuViewImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandBuilder)
-
-@implementation ASNavigationRailMenuViewImpl_NavigationRailMenuViewBean
-
-- (instancetype)initWithASNavigationRailMenuViewImpl:(ASNavigationRailMenuViewImpl *)outer$ {
-  ASNavigationRailMenuViewImpl_NavigationRailMenuViewBean_initWithASNavigationRailMenuViewImpl_(self, outer$);
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASNavigationRailMenuViewImpl:);
-  #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "LASNavigationRailMenuViewImpl;" };
-  static const J2ObjcClassInfo _ASNavigationRailMenuViewImpl_NavigationRailMenuViewBean = { "NavigationRailMenuViewBean", "com.ashera.navigationview", ptrTable, methods, NULL, 7, 0x1, 1, 0, 0, -1, -1, -1, -1 };
-  return &_ASNavigationRailMenuViewImpl_NavigationRailMenuViewBean;
-}
-
-@end
-
-void ASNavigationRailMenuViewImpl_NavigationRailMenuViewBean_initWithASNavigationRailMenuViewImpl_(ASNavigationRailMenuViewImpl_NavigationRailMenuViewBean *self, ASNavigationRailMenuViewImpl *outer$) {
-  ASViewGroupImpl_ViewGroupBean_initWithASIWidget_(self, outer$);
-}
-
-ASNavigationRailMenuViewImpl_NavigationRailMenuViewBean *new_ASNavigationRailMenuViewImpl_NavigationRailMenuViewBean_initWithASNavigationRailMenuViewImpl_(ASNavigationRailMenuViewImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASNavigationRailMenuViewImpl_NavigationRailMenuViewBean, initWithASNavigationRailMenuViewImpl_, outer$)
-}
-
-ASNavigationRailMenuViewImpl_NavigationRailMenuViewBean *create_ASNavigationRailMenuViewImpl_NavigationRailMenuViewBean_initWithASNavigationRailMenuViewImpl_(ASNavigationRailMenuViewImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASNavigationRailMenuViewImpl_NavigationRailMenuViewBean, initWithASNavigationRailMenuViewImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationRailMenuViewImpl_NavigationRailMenuViewBean)
-
-@implementation ASNavigationRailMenuViewImpl_NavigationRailMenuViewParamsBean
-
-- (instancetype)initWithASNavigationRailMenuViewImpl:(ASNavigationRailMenuViewImpl *)outer$ {
-  ASNavigationRailMenuViewImpl_NavigationRailMenuViewParamsBean_initWithASNavigationRailMenuViewImpl_(self, outer$);
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASNavigationRailMenuViewImpl:);
-  #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "LASNavigationRailMenuViewImpl;" };
-  static const J2ObjcClassInfo _ASNavigationRailMenuViewImpl_NavigationRailMenuViewParamsBean = { "NavigationRailMenuViewParamsBean", "com.ashera.navigationview", ptrTable, methods, NULL, 7, 0x1, 1, 0, 0, -1, -1, -1, -1 };
-  return &_ASNavigationRailMenuViewImpl_NavigationRailMenuViewParamsBean;
-}
-
-@end
-
-void ASNavigationRailMenuViewImpl_NavigationRailMenuViewParamsBean_initWithASNavigationRailMenuViewImpl_(ASNavigationRailMenuViewImpl_NavigationRailMenuViewParamsBean *self, ASNavigationRailMenuViewImpl *outer$) {
-  ASViewGroupImpl_ViewGroupParamsBean_init(self);
-}
-
-ASNavigationRailMenuViewImpl_NavigationRailMenuViewParamsBean *new_ASNavigationRailMenuViewImpl_NavigationRailMenuViewParamsBean_initWithASNavigationRailMenuViewImpl_(ASNavigationRailMenuViewImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASNavigationRailMenuViewImpl_NavigationRailMenuViewParamsBean, initWithASNavigationRailMenuViewImpl_, outer$)
-}
-
-ASNavigationRailMenuViewImpl_NavigationRailMenuViewParamsBean *create_ASNavigationRailMenuViewImpl_NavigationRailMenuViewParamsBean_initWithASNavigationRailMenuViewImpl_(ASNavigationRailMenuViewImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASNavigationRailMenuViewImpl_NavigationRailMenuViewParamsBean, initWithASNavigationRailMenuViewImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationRailMenuViewImpl_NavigationRailMenuViewParamsBean)
-
-@implementation ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandParamsBuilder
-
-- (instancetype)initWithASNavigationRailMenuViewImpl:(ASNavigationRailMenuViewImpl *)outer$ {
-  ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandParamsBuilder_initWithASNavigationRailMenuViewImpl_(self, outer$);
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASNavigationRailMenuViewImpl:);
-  #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "LASNavigationRailMenuViewImpl;", "Lcom/ashera/layout/ViewGroupImpl$ViewGroupCommandParamsBuilder<Lcom/ashera/navigationview/NavigationRailMenuViewImpl$NavigationRailMenuViewCommandParamsBuilder;>;" };
-  static const J2ObjcClassInfo _ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandParamsBuilder = { "NavigationRailMenuViewCommandParamsBuilder", "com.ashera.navigationview", ptrTable, methods, NULL, 7, 0x1, 1, 0, 0, -1, -1, 1, -1 };
-  return &_ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandParamsBuilder;
-}
-
-@end
-
-void ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandParamsBuilder_initWithASNavigationRailMenuViewImpl_(ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandParamsBuilder *self, ASNavigationRailMenuViewImpl *outer$) {
-  ASViewGroupImpl_ViewGroupCommandParamsBuilder_init(self);
-}
-
-ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandParamsBuilder *new_ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandParamsBuilder_initWithASNavigationRailMenuViewImpl_(ASNavigationRailMenuViewImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandParamsBuilder, initWithASNavigationRailMenuViewImpl_, outer$)
-}
-
-ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandParamsBuilder *create_ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandParamsBuilder_initWithASNavigationRailMenuViewImpl_(ASNavigationRailMenuViewImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandParamsBuilder, initWithASNavigationRailMenuViewImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationRailMenuViewImpl_NavigationRailMenuViewCommandParamsBuilder)
 
 @implementation ASNavigationRailMenuViewImpl_$Lambda$1
 

@@ -15,7 +15,6 @@
 #include "FrameLayout.h"
 #include "HasWidgets.h"
 #include "IActivity.h"
-#include "IAttributable.h"
 #include "IFragment.h"
 #include "ILifeCycleDecorator.h"
 #include "IListener.h"
@@ -59,7 +58,6 @@
 
 
 #pragma clang diagnostic ignored "-Wprotocol"
-#pragma clang diagnostic ignored "-Wincomplete-implementation"
 
 @interface ASNavigationRailViewImpl () {
  @public
@@ -67,10 +65,6 @@
   ADXNavigationRailView *navigationRailView_;
   id<JavaUtilList> badgeMenuItemIds_;
   id<ASIWidget> header_;
-  ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *builder_;
-  ASNavigationRailViewImpl_NavigationRailViewBean *bean_;
-  ASNavigationRailViewImpl_NavigationRailViewCommandParamsBuilder *paramsBuilder_;
-  ASNavigationRailViewImpl_NavigationRailViewParamsBean *paramsBean_;
 }
 
 - (void)setWidgetOnNativeClass;
@@ -116,10 +110,6 @@ J2OBJC_FIELD_SETTER(ASNavigationRailViewImpl, uiView_, id)
 J2OBJC_FIELD_SETTER(ASNavigationRailViewImpl, navigationRailView_, ADXNavigationRailView *)
 J2OBJC_FIELD_SETTER(ASNavigationRailViewImpl, badgeMenuItemIds_, id<JavaUtilList>)
 J2OBJC_FIELD_SETTER(ASNavigationRailViewImpl, header_, id<ASIWidget>)
-J2OBJC_FIELD_SETTER(ASNavigationRailViewImpl, builder_, ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)
-J2OBJC_FIELD_SETTER(ASNavigationRailViewImpl, bean_, ASNavigationRailViewImpl_NavigationRailViewBean *)
-J2OBJC_FIELD_SETTER(ASNavigationRailViewImpl, paramsBuilder_, ASNavigationRailViewImpl_NavigationRailViewCommandParamsBuilder *)
-J2OBJC_FIELD_SETTER(ASNavigationRailViewImpl, paramsBean_, ASNavigationRailViewImpl_NavigationRailViewParamsBean *)
 
 __attribute__((unused)) static void ASNavigationRailViewImpl_setWidgetOnNativeClass(ASNavigationRailViewImpl *self);
 
@@ -275,20 +265,6 @@ __attribute__((unused)) static ASNavigationRailViewImpl_OnItemReselectedListener
 __attribute__((unused)) static ASNavigationRailViewImpl_OnItemReselectedListener *create_ASNavigationRailViewImpl_OnItemReselectedListener_initWithASIWidget_withNSString_withNSString_(id<ASIWidget> w, NSString *strValue, NSString *action);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASNavigationRailViewImpl_OnItemReselectedListener)
-
-@interface ASNavigationRailViewImpl_NavigationRailViewCommandBuilder () {
- @public
-  ASNavigationRailViewImpl *this$0_;
-}
-
-@end
-
-@interface ASNavigationRailViewImpl_NavigationRailViewBean () {
- @public
-  ASNavigationRailViewImpl *this$0_;
-}
-
-@end
 
 @interface ASNavigationRailViewImpl_$Lambda$1 : NSObject < JavaLangRunnable > {
  @public
@@ -890,38 +866,6 @@ withASNavigationRailViewImpl_ValueSetter:(id<ASNavigationRailViewImpl_ValueSette
   [((ADView *) nil_chk(((ADView *) cast_chk([self asWidget], [ADView class])))) setVisibilityWithInt:b ? ADView_VISIBLE : ADView_GONE];
 }
 
-- (id)getPluginWithNSString:(NSString *)plugin {
-  return [((id<ASIAttributable>) nil_chk(ASWidgetFactory_getAttributableWithNSString_(plugin))) newInstanceWithASIWidget:self];
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewBean *)getBean {
-  if (bean_ == nil) {
-    bean_ = new_ASNavigationRailViewImpl_NavigationRailViewBean_initWithASNavigationRailViewImpl_(self);
-  }
-  return bean_;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)getBuilder {
-  if (builder_ == nil) {
-    builder_ = new_ASNavigationRailViewImpl_NavigationRailViewCommandBuilder_initWithASNavigationRailViewImpl_(self);
-  }
-  return builder_;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewParamsBean *)getParamsBean {
-  if (paramsBean_ == nil) {
-    paramsBean_ = new_ASNavigationRailViewImpl_NavigationRailViewParamsBean_initWithASNavigationRailViewImpl_(self);
-  }
-  return paramsBean_;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandParamsBuilder *)getParamsBuilder {
-  if (paramsBuilder_ == nil) {
-    paramsBuilder_ = new_ASNavigationRailViewImpl_NavigationRailViewCommandParamsBuilder_initWithASNavigationRailViewImpl_(self);
-  }
-  return paramsBuilder_;
-}
-
 - (void)nativeCreateWithJavaUtilMap:(id<JavaUtilMap>)params {
   [self nativeCreate];
   [((ADXNavigationRailView *) nil_chk(navigationRailView_)) initNavigationBarView];
@@ -974,12 +918,7 @@ withASNavigationRailViewImpl_ValueSetter:(id<ASNavigationRailViewImpl_ValueSette
     { NULL, "V", 0x2, 39, 25, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 40, 1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 41, 42, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, 43, 1, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewBean;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewParamsBean;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandParamsBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 44, 45, -1, 46, -1, -1 },
+    { NULL, "V", 0x1, 43, 44, -1, 45, -1, -1 },
     { NULL, "V", 0x101, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -1024,28 +963,19 @@ withASNavigationRailViewImpl_ValueSetter:(id<ASNavigationRailViewImpl_ValueSette
   methods[36].selector = @selector(setHeaderLayoutWithId:);
   methods[37].selector = @selector(setIdWithNSString:);
   methods[38].selector = @selector(setVisibleWithBoolean:);
-  methods[39].selector = @selector(getPluginWithNSString:);
-  methods[40].selector = @selector(getBean);
-  methods[41].selector = @selector(getBuilder);
-  methods[42].selector = @selector(getParamsBean);
-  methods[43].selector = @selector(getParamsBuilder);
-  methods[44].selector = @selector(nativeCreateWithJavaUtilMap:);
-  methods[45].selector = @selector(nativeCreate);
+  methods[39].selector = @selector(nativeCreateWithJavaUtilMap:);
+  methods[40].selector = @selector(nativeCreate);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "uiView_", "LNSObject;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 47, -1, -1 },
-    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 48, -1, -1 },
+    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 46, -1, -1 },
+    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 47, -1, -1 },
     { "navigationRailView_", "LADXNavigationRailView;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "badgeMenuItemIds_", "LJavaUtilList;", .constantValue.asLong = 0, 0x2, -1, -1, 49, -1 },
+    { "badgeMenuItemIds_", "LJavaUtilList;", .constantValue.asLong = 0, 0x2, -1, -1, 48, -1 },
     { "header_", "LASIWidget;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "builder_", "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "bean_", "LASNavigationRailViewImpl_NavigationRailViewBean;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "paramsBuilder_", "LASNavigationRailViewImpl_NavigationRailViewCommandParamsBuilder;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "paramsBean_", "LASNavigationRailViewImpl_NavigationRailViewParamsBean;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "remove", "LASIWidget;", "I", "nativeRemoveView", "add", "LASIWidget;I", "createLayoutParams", "LADView;", "getLayoutParams", "setChildAttribute", "LASIWidget;LASWidgetAttribute;LNSString;LNSObject;", "getChildAttribute", "LASIWidget;LASWidgetAttribute;", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "checkIosVersion", "setBadgeBackgroundColors", "LNSObject;", "setValueOnBadgeDrawable", "LNSObject;LASNavigationRailViewImpl_ValueSetter;", "setBadgeMenuItemIds", "setBadgeNumbers", "setBadgeVerticalOffsets", "setBadgeHorizontalOffsets", "setBadgeGravities", "setBadgeMaxCharacterCounts", "setBadgeAlphas", "setBadgeTextColors", "setBadgeIsVisibles", "setMenu", "setTextAppearanceResources", "setHeaderLayout", "setId", "setVisible", "Z", "getPlugin", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", &ASNavigationRailViewImpl_LOCAL_NAME, &ASNavigationRailViewImpl_GROUP_NAME, "Ljava/util/List<Ljava/lang/Object;>;", "LASNavigationRailViewImpl_LabelVisibilityMode;LASNavigationRailViewImpl_NavigationRailViewExt;LASNavigationRailViewImpl_ValueSetter;LASNavigationRailViewImpl_OnItemSelectedListener;LASNavigationRailViewImpl_OnItemReselectedListener;LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;LASNavigationRailViewImpl_NavigationRailViewBean;LASNavigationRailViewImpl_NavigationRailViewParamsBean;LASNavigationRailViewImpl_NavigationRailViewCommandParamsBuilder;" };
-  static const J2ObjcClassInfo _ASNavigationRailViewImpl = { "NavigationRailViewImpl", "com.ashera.navigationview", ptrTable, methods, fields, 7, 0x1, 46, 10, -1, 50, -1, -1, -1 };
+  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "remove", "LASIWidget;", "I", "nativeRemoveView", "add", "LASIWidget;I", "createLayoutParams", "LADView;", "getLayoutParams", "setChildAttribute", "LASIWidget;LASWidgetAttribute;LNSString;LNSObject;", "getChildAttribute", "LASIWidget;LASWidgetAttribute;", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "checkIosVersion", "setBadgeBackgroundColors", "LNSObject;", "setValueOnBadgeDrawable", "LNSObject;LASNavigationRailViewImpl_ValueSetter;", "setBadgeMenuItemIds", "setBadgeNumbers", "setBadgeVerticalOffsets", "setBadgeHorizontalOffsets", "setBadgeGravities", "setBadgeMaxCharacterCounts", "setBadgeAlphas", "setBadgeTextColors", "setBadgeIsVisibles", "setMenu", "setTextAppearanceResources", "setHeaderLayout", "setId", "setVisible", "Z", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", &ASNavigationRailViewImpl_LOCAL_NAME, &ASNavigationRailViewImpl_GROUP_NAME, "Ljava/util/List<Ljava/lang/Object;>;", "LASNavigationRailViewImpl_LabelVisibilityMode;LASNavigationRailViewImpl_NavigationRailViewExt;LASNavigationRailViewImpl_ValueSetter;LASNavigationRailViewImpl_OnItemSelectedListener;LASNavigationRailViewImpl_OnItemReselectedListener;" };
+  static const J2ObjcClassInfo _ASNavigationRailViewImpl = { "NavigationRailViewImpl", "com.ashera.navigationview", ptrTable, methods, fields, 7, 0x1, 41, 6, -1, 49, -1, -1, -1 };
   return &_ASNavigationRailViewImpl;
 }
 
@@ -1893,581 +1823,6 @@ ASNavigationRailViewImpl_OnItemReselectedListener *create_ASNavigationRailViewIm
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationRailViewImpl_OnItemReselectedListener)
-
-@implementation ASNavigationRailViewImpl_NavigationRailViewCommandBuilder
-
-- (instancetype)initWithASNavigationRailViewImpl:(ASNavigationRailViewImpl *)outer$ {
-  ASNavigationRailViewImpl_NavigationRailViewCommandBuilder_initWithASNavigationRailViewImpl_(self, outer$);
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)executeWithBoolean:(jboolean)setter {
-  if (setter) {
-    [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_SETTER_METHOD];
-    [((id<ASIFragment>) nil_chk([this$0_ getFragment])) remeasure];
-  }
-  [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_GETTER_METHOD];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setOnItemSelectedWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"onItemSelected"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setOnItemReselectedWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"onItemReselected"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setMenuWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"menu"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setItemIconTintWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"itemIconTint"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setItemIconSizeWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"itemIconSize"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setItemTextColorWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"itemTextColor"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setItemBackgroundWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"itemBackground"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setSelectedItemIdWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"selectedItemId"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setLabelVisibilityModeWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"labelVisibilityMode"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setBadgeNumbersWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"badgeNumbers"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setMenuItemIdsWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"menuItemIds"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setBadgeAlphasWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"badgeAlphas"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setBadgeMaxCharacterCountsWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"badgeMaxCharacterCounts"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setBadgeGravitiesWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"badgeGravities"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setBadgeHorizontalOffsetsWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"badgeHorizontalOffsets"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setBadgeVerticalOffsetsWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"badgeVerticalOffsets"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setBadgeIsVisiblesWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"badgeIsVisibles"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setMenuGravityWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"menuGravity"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setItemTextAppearanceInactiveWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"itemTextAppearanceInactive"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setItemTextAppearanceActiveWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"itemTextAppearanceActive"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setBadgeBackgroundColorsWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"badgeBackgroundColors"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setBadgeTextColorsWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"badgeTextColors"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setBadgeTextAppearanceResourcesWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"badgeTextAppearanceResources"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *)setHeaderLayoutWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"headerLayout"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 1, 2, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 3, 4, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 5, 4, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 6, 4, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 7, 4, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 8, 4, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 9, 4, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 10, 4, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 11, 4, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 12, 4, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 13, 4, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 14, 4, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 15, 4, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 16, 4, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 17, 4, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 18, 4, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 19, 4, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 20, 4, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 21, 4, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 22, 4, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 23, 4, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 24, 4, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 25, 4, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 26, 4, -1, -1, -1, -1 },
-    { NULL, "LASNavigationRailViewImpl_NavigationRailViewCommandBuilder;", 0x1, 27, 4, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASNavigationRailViewImpl:);
-  methods[1].selector = @selector(executeWithBoolean:);
-  methods[2].selector = @selector(setOnItemSelectedWithNSString:);
-  methods[3].selector = @selector(setOnItemReselectedWithNSString:);
-  methods[4].selector = @selector(setMenuWithNSString:);
-  methods[5].selector = @selector(setItemIconTintWithNSString:);
-  methods[6].selector = @selector(setItemIconSizeWithNSString:);
-  methods[7].selector = @selector(setItemTextColorWithNSString:);
-  methods[8].selector = @selector(setItemBackgroundWithNSString:);
-  methods[9].selector = @selector(setSelectedItemIdWithNSString:);
-  methods[10].selector = @selector(setLabelVisibilityModeWithNSString:);
-  methods[11].selector = @selector(setBadgeNumbersWithNSString:);
-  methods[12].selector = @selector(setMenuItemIdsWithNSString:);
-  methods[13].selector = @selector(setBadgeAlphasWithNSString:);
-  methods[14].selector = @selector(setBadgeMaxCharacterCountsWithNSString:);
-  methods[15].selector = @selector(setBadgeGravitiesWithNSString:);
-  methods[16].selector = @selector(setBadgeHorizontalOffsetsWithNSString:);
-  methods[17].selector = @selector(setBadgeVerticalOffsetsWithNSString:);
-  methods[18].selector = @selector(setBadgeIsVisiblesWithNSString:);
-  methods[19].selector = @selector(setMenuGravityWithNSString:);
-  methods[20].selector = @selector(setItemTextAppearanceInactiveWithNSString:);
-  methods[21].selector = @selector(setItemTextAppearanceActiveWithNSString:);
-  methods[22].selector = @selector(setBadgeBackgroundColorsWithNSString:);
-  methods[23].selector = @selector(setBadgeTextColorsWithNSString:);
-  methods[24].selector = @selector(setBadgeTextAppearanceResourcesWithNSString:);
-  methods[25].selector = @selector(setHeaderLayoutWithNSString:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LASNavigationRailViewImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LASNavigationRailViewImpl;", "execute", "Z", "setOnItemSelected", "LNSString;", "setOnItemReselected", "setMenu", "setItemIconTint", "setItemIconSize", "setItemTextColor", "setItemBackground", "setSelectedItemId", "setLabelVisibilityMode", "setBadgeNumbers", "setMenuItemIds", "setBadgeAlphas", "setBadgeMaxCharacterCounts", "setBadgeGravities", "setBadgeHorizontalOffsets", "setBadgeVerticalOffsets", "setBadgeIsVisibles", "setMenuGravity", "setItemTextAppearanceInactive", "setItemTextAppearanceActive", "setBadgeBackgroundColors", "setBadgeTextColors", "setBadgeTextAppearanceResources", "setHeaderLayout", "Lcom/ashera/layout/ViewGroupImpl$ViewGroupCommandBuilder<Lcom/ashera/navigationview/NavigationRailViewImpl$NavigationRailViewCommandBuilder;>;" };
-  static const J2ObjcClassInfo _ASNavigationRailViewImpl_NavigationRailViewCommandBuilder = { "NavigationRailViewCommandBuilder", "com.ashera.navigationview", ptrTable, methods, fields, 7, 0x1, 26, 1, 0, -1, -1, 28, -1 };
-  return &_ASNavigationRailViewImpl_NavigationRailViewCommandBuilder;
-}
-
-@end
-
-void ASNavigationRailViewImpl_NavigationRailViewCommandBuilder_initWithASNavigationRailViewImpl_(ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *self, ASNavigationRailViewImpl *outer$) {
-  self->this$0_ = outer$;
-  ASViewGroupImpl_ViewGroupCommandBuilder_init(self);
-}
-
-ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *new_ASNavigationRailViewImpl_NavigationRailViewCommandBuilder_initWithASNavigationRailViewImpl_(ASNavigationRailViewImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASNavigationRailViewImpl_NavigationRailViewCommandBuilder, initWithASNavigationRailViewImpl_, outer$)
-}
-
-ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *create_ASNavigationRailViewImpl_NavigationRailViewCommandBuilder_initWithASNavigationRailViewImpl_(ASNavigationRailViewImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASNavigationRailViewImpl_NavigationRailViewCommandBuilder, initWithASNavigationRailViewImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationRailViewImpl_NavigationRailViewCommandBuilder)
-
-@implementation ASNavigationRailViewImpl_NavigationRailViewBean
-
-- (instancetype)initWithASNavigationRailViewImpl:(ASNavigationRailViewImpl *)outer$ {
-  ASNavigationRailViewImpl_NavigationRailViewBean_initWithASNavigationRailViewImpl_(self, outer$);
-  return self;
-}
-
-- (void)setOnItemSelectedWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setOnItemSelectedWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setOnItemReselectedWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setOnItemReselectedWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setMenuWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setMenuWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setItemIconTintWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setItemIconTintWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setItemIconSizeWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setItemIconSizeWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setItemTextColorWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setItemTextColorWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setItemBackgroundWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setItemBackgroundWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setSelectedItemIdWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setSelectedItemIdWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setLabelVisibilityModeWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setLabelVisibilityModeWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setBadgeNumbersWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setBadgeNumbersWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setMenuItemIdsWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setMenuItemIdsWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setBadgeAlphasWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setBadgeAlphasWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setBadgeMaxCharacterCountsWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setBadgeMaxCharacterCountsWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setBadgeGravitiesWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setBadgeGravitiesWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setBadgeHorizontalOffsetsWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setBadgeHorizontalOffsetsWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setBadgeVerticalOffsetsWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setBadgeVerticalOffsetsWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setBadgeIsVisiblesWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setBadgeIsVisiblesWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setMenuGravityWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setMenuGravityWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setItemTextAppearanceInactiveWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setItemTextAppearanceInactiveWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setItemTextAppearanceActiveWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setItemTextAppearanceActiveWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setBadgeBackgroundColorsWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setBadgeBackgroundColorsWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setBadgeTextColorsWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setBadgeTextColorsWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setBadgeTextAppearanceResourcesWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setBadgeTextAppearanceResourcesWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setHeaderLayoutWithNSString:(NSString *)value {
-  (void) [((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([((ASNavigationRailViewImpl_NavigationRailViewCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setHeaderLayoutWithNSString:value])) executeWithBoolean:true];
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 1, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 3, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 4, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 5, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 6, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 7, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 8, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 9, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 10, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 11, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 12, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 13, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 14, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 15, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 16, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 17, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 18, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 19, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 20, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 21, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 22, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 23, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 24, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 25, 2, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASNavigationRailViewImpl:);
-  methods[1].selector = @selector(setOnItemSelectedWithNSString:);
-  methods[2].selector = @selector(setOnItemReselectedWithNSString:);
-  methods[3].selector = @selector(setMenuWithNSString:);
-  methods[4].selector = @selector(setItemIconTintWithNSString:);
-  methods[5].selector = @selector(setItemIconSizeWithNSString:);
-  methods[6].selector = @selector(setItemTextColorWithNSString:);
-  methods[7].selector = @selector(setItemBackgroundWithNSString:);
-  methods[8].selector = @selector(setSelectedItemIdWithNSString:);
-  methods[9].selector = @selector(setLabelVisibilityModeWithNSString:);
-  methods[10].selector = @selector(setBadgeNumbersWithNSString:);
-  methods[11].selector = @selector(setMenuItemIdsWithNSString:);
-  methods[12].selector = @selector(setBadgeAlphasWithNSString:);
-  methods[13].selector = @selector(setBadgeMaxCharacterCountsWithNSString:);
-  methods[14].selector = @selector(setBadgeGravitiesWithNSString:);
-  methods[15].selector = @selector(setBadgeHorizontalOffsetsWithNSString:);
-  methods[16].selector = @selector(setBadgeVerticalOffsetsWithNSString:);
-  methods[17].selector = @selector(setBadgeIsVisiblesWithNSString:);
-  methods[18].selector = @selector(setMenuGravityWithNSString:);
-  methods[19].selector = @selector(setItemTextAppearanceInactiveWithNSString:);
-  methods[20].selector = @selector(setItemTextAppearanceActiveWithNSString:);
-  methods[21].selector = @selector(setBadgeBackgroundColorsWithNSString:);
-  methods[22].selector = @selector(setBadgeTextColorsWithNSString:);
-  methods[23].selector = @selector(setBadgeTextAppearanceResourcesWithNSString:);
-  methods[24].selector = @selector(setHeaderLayoutWithNSString:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LASNavigationRailViewImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LASNavigationRailViewImpl;", "setOnItemSelected", "LNSString;", "setOnItemReselected", "setMenu", "setItemIconTint", "setItemIconSize", "setItemTextColor", "setItemBackground", "setSelectedItemId", "setLabelVisibilityMode", "setBadgeNumbers", "setMenuItemIds", "setBadgeAlphas", "setBadgeMaxCharacterCounts", "setBadgeGravities", "setBadgeHorizontalOffsets", "setBadgeVerticalOffsets", "setBadgeIsVisibles", "setMenuGravity", "setItemTextAppearanceInactive", "setItemTextAppearanceActive", "setBadgeBackgroundColors", "setBadgeTextColors", "setBadgeTextAppearanceResources", "setHeaderLayout" };
-  static const J2ObjcClassInfo _ASNavigationRailViewImpl_NavigationRailViewBean = { "NavigationRailViewBean", "com.ashera.navigationview", ptrTable, methods, fields, 7, 0x1, 25, 1, 0, -1, -1, -1, -1 };
-  return &_ASNavigationRailViewImpl_NavigationRailViewBean;
-}
-
-@end
-
-void ASNavigationRailViewImpl_NavigationRailViewBean_initWithASNavigationRailViewImpl_(ASNavigationRailViewImpl_NavigationRailViewBean *self, ASNavigationRailViewImpl *outer$) {
-  self->this$0_ = outer$;
-  ASViewGroupImpl_ViewGroupBean_initWithASIWidget_(self, outer$);
-}
-
-ASNavigationRailViewImpl_NavigationRailViewBean *new_ASNavigationRailViewImpl_NavigationRailViewBean_initWithASNavigationRailViewImpl_(ASNavigationRailViewImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASNavigationRailViewImpl_NavigationRailViewBean, initWithASNavigationRailViewImpl_, outer$)
-}
-
-ASNavigationRailViewImpl_NavigationRailViewBean *create_ASNavigationRailViewImpl_NavigationRailViewBean_initWithASNavigationRailViewImpl_(ASNavigationRailViewImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASNavigationRailViewImpl_NavigationRailViewBean, initWithASNavigationRailViewImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationRailViewImpl_NavigationRailViewBean)
-
-@implementation ASNavigationRailViewImpl_NavigationRailViewParamsBean
-
-- (instancetype)initWithASNavigationRailViewImpl:(ASNavigationRailViewImpl *)outer$ {
-  ASNavigationRailViewImpl_NavigationRailViewParamsBean_initWithASNavigationRailViewImpl_(self, outer$);
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASNavigationRailViewImpl:);
-  #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "LASNavigationRailViewImpl;" };
-  static const J2ObjcClassInfo _ASNavigationRailViewImpl_NavigationRailViewParamsBean = { "NavigationRailViewParamsBean", "com.ashera.navigationview", ptrTable, methods, NULL, 7, 0x1, 1, 0, 0, -1, -1, -1, -1 };
-  return &_ASNavigationRailViewImpl_NavigationRailViewParamsBean;
-}
-
-@end
-
-void ASNavigationRailViewImpl_NavigationRailViewParamsBean_initWithASNavigationRailViewImpl_(ASNavigationRailViewImpl_NavigationRailViewParamsBean *self, ASNavigationRailViewImpl *outer$) {
-  ASViewGroupImpl_ViewGroupParamsBean_init(self);
-}
-
-ASNavigationRailViewImpl_NavigationRailViewParamsBean *new_ASNavigationRailViewImpl_NavigationRailViewParamsBean_initWithASNavigationRailViewImpl_(ASNavigationRailViewImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASNavigationRailViewImpl_NavigationRailViewParamsBean, initWithASNavigationRailViewImpl_, outer$)
-}
-
-ASNavigationRailViewImpl_NavigationRailViewParamsBean *create_ASNavigationRailViewImpl_NavigationRailViewParamsBean_initWithASNavigationRailViewImpl_(ASNavigationRailViewImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASNavigationRailViewImpl_NavigationRailViewParamsBean, initWithASNavigationRailViewImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationRailViewImpl_NavigationRailViewParamsBean)
-
-@implementation ASNavigationRailViewImpl_NavigationRailViewCommandParamsBuilder
-
-- (instancetype)initWithASNavigationRailViewImpl:(ASNavigationRailViewImpl *)outer$ {
-  ASNavigationRailViewImpl_NavigationRailViewCommandParamsBuilder_initWithASNavigationRailViewImpl_(self, outer$);
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASNavigationRailViewImpl:);
-  #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "LASNavigationRailViewImpl;", "Lcom/ashera/layout/ViewGroupImpl$ViewGroupCommandParamsBuilder<Lcom/ashera/navigationview/NavigationRailViewImpl$NavigationRailViewCommandParamsBuilder;>;" };
-  static const J2ObjcClassInfo _ASNavigationRailViewImpl_NavigationRailViewCommandParamsBuilder = { "NavigationRailViewCommandParamsBuilder", "com.ashera.navigationview", ptrTable, methods, NULL, 7, 0x1, 1, 0, 0, -1, -1, 1, -1 };
-  return &_ASNavigationRailViewImpl_NavigationRailViewCommandParamsBuilder;
-}
-
-@end
-
-void ASNavigationRailViewImpl_NavigationRailViewCommandParamsBuilder_initWithASNavigationRailViewImpl_(ASNavigationRailViewImpl_NavigationRailViewCommandParamsBuilder *self, ASNavigationRailViewImpl *outer$) {
-  ASViewGroupImpl_ViewGroupCommandParamsBuilder_init(self);
-}
-
-ASNavigationRailViewImpl_NavigationRailViewCommandParamsBuilder *new_ASNavigationRailViewImpl_NavigationRailViewCommandParamsBuilder_initWithASNavigationRailViewImpl_(ASNavigationRailViewImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASNavigationRailViewImpl_NavigationRailViewCommandParamsBuilder, initWithASNavigationRailViewImpl_, outer$)
-}
-
-ASNavigationRailViewImpl_NavigationRailViewCommandParamsBuilder *create_ASNavigationRailViewImpl_NavigationRailViewCommandParamsBuilder_initWithASNavigationRailViewImpl_(ASNavigationRailViewImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASNavigationRailViewImpl_NavigationRailViewCommandParamsBuilder, initWithASNavigationRailViewImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationRailViewImpl_NavigationRailViewCommandParamsBuilder)
 
 @implementation ASNavigationRailViewImpl_$Lambda$1
 
