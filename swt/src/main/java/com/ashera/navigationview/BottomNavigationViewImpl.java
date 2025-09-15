@@ -881,6 +881,7 @@ public java.util.Map<String, Object> getOnNavigationItemSelectedEventObj(MenuIte
     obj.put("eventType", "navigationitemselected");
     obj.put("fragmentId", w.getFragment().getFragmentId());
     obj.put("actionUrl", w.getFragment().getActionUrl());
+    obj.put("namespace", w.getFragment().getNamespace());
     
     if (w.getComponentId() != null) {
     	obj.put("componentId", w.getComponentId());
@@ -953,6 +954,7 @@ public java.util.Map<String, Object> getOnNavigationItemReselectedEventObj(MenuI
     obj.put("eventType", "navigationitemreselected");
     obj.put("fragmentId", w.getFragment().getFragmentId());
     obj.put("actionUrl", w.getFragment().getActionUrl());
+    obj.put("namespace", w.getFragment().getNamespace());
     
     if (w.getComponentId() != null) {
     	obj.put("componentId", w.getComponentId());

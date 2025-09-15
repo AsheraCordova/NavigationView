@@ -94,7 +94,7 @@ __attribute__((unused)) static ADXNavigationView_1 *create_ADXNavigationView_1_i
                        withNSString:(NSString *)json
                     withASIFragment:(id<ASIFragment>)fragment {
   [((ADXNavigationMenuPresenter *) nil_chk(presenter_)) setUpdateSuspendedWithBoolean:true];
-  ADXMenuParser_parseMenuWithASHasWidgets_withADXMenuBuilder_withNSString_withASIFragment_(parent, menu_, json, fragment);
+  ADXMenuParser_parseMenuWithASHasWidgets_withADMenu_withNSString_withASIFragment_(parent, menu_, json, fragment);
   [presenter_ setUpdateSuspendedWithBoolean:false];
   [presenter_ updateMenuViewWithBoolean:false];
 }

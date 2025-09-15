@@ -104,7 +104,7 @@ J2OBJC_IGNORE_DESIGNATED_END
                        withNSString:(NSString *)json
                     withASIFragment:(id<ASIFragment>)fragment {
   [((ADXNavigationBarPresenter *) nil_chk(presenter_)) setUpdateSuspendedWithBoolean:true];
-  ADXMenuParser_parseMenuWithASHasWidgets_withADXMenuBuilder_withNSString_withASIFragment_(parent, menu_, json, fragment);
+  ADXMenuParser_parseMenuWithASHasWidgets_withADMenu_withNSString_withASIFragment_(parent, menu_, json, fragment);
   [((ADXNavigationBarPresenter *) nil_chk(presenter_)) setUpdateSuspendedWithBoolean:false];
   [((ADXNavigationBarPresenter *) nil_chk(presenter_)) updateMenuViewWithBoolean:true];
 }
