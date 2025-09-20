@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\navigationrail\NavigationRailItemView.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_NavigationRailItemView")
@@ -20,6 +21,9 @@
 #define INCLUDE_ADXNavigationBarItemView 1
 #include "NavigationBarItemView.h"
 
+@class JavaLangInteger;
+@class NSString;
+
 @interface ADXNavigationRailItemView : ADXNavigationBarItemView
 
 #pragma mark Public
@@ -28,12 +32,12 @@
 
 #pragma mark Protected
 
-- (jint)getItemDefaultMarginResId;
+- (int32_t)getItemDefaultMarginResId;
 
 - (NSString *)getItemLayoutResId;
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec;
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec;
 
 @end
 
@@ -48,6 +52,7 @@ FOUNDATION_EXPORT ADXNavigationRailItemView *create_ADXNavigationRailItemView_in
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationRailItemView)
 
 @compatibility_alias ComGoogleAndroidMaterialNavigationrailNavigationRailItemView ADXNavigationRailItemView;
+
 
 #endif
 

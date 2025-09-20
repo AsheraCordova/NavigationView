@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\navigationrail\NavigationRailMenuView.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "Context.h"
 #include "FrameLayout.h"
 #include "Gravity.h"
@@ -20,8 +25,16 @@
 #include "View.h"
 #include "ViewGroup.h"
 #include "WidgetFactory.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
 #include "java/util/ArrayList.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXNavigationRailMenuView () {
@@ -29,34 +42,34 @@
   ADFrameLayout_LayoutParams *layoutParams_;
 }
 
-- (jint)makeSharedHeightSpecWithInt:(jint)parentWidthSpec
-                            withInt:(jint)maxHeight
-                            withInt:(jint)shareCount;
+- (int32_t)makeSharedHeightSpecWithInt:(int32_t)parentWidthSpec
+                               withInt:(int32_t)maxHeight
+                               withInt:(int32_t)shareCount;
 
-- (jint)measureShiftingChildHeightsWithInt:(jint)widthMeasureSpec
-                                   withInt:(jint)maxHeight
-                                   withInt:(jint)shareCount;
+- (int32_t)measureShiftingChildHeightsWithInt:(int32_t)widthMeasureSpec
+                                      withInt:(int32_t)maxHeight
+                                      withInt:(int32_t)shareCount;
 
-- (jint)measureSharedChildHeightsWithInt:(jint)widthMeasureSpec
-                                 withInt:(jint)maxHeight
-                                 withInt:(jint)shareCount
-                              withADView:(ADView *)selectedView;
+- (int32_t)measureSharedChildHeightsWithInt:(int32_t)widthMeasureSpec
+                                    withInt:(int32_t)maxHeight
+                                    withInt:(int32_t)shareCount
+                                 withADView:(ADView *)selectedView;
 
-- (jint)measureChildHeightWithADView:(ADView *)child
-                             withInt:(jint)widthMeasureSpec
-                             withInt:(jint)heightMeasureSpec;
+- (int32_t)measureChildHeightWithADView:(ADView *)child
+                                withInt:(int32_t)widthMeasureSpec
+                                withInt:(int32_t)heightMeasureSpec;
 
 @end
 
 J2OBJC_FIELD_SETTER(ADXNavigationRailMenuView, layoutParams_, ADFrameLayout_LayoutParams *)
 
-__attribute__((unused)) static jint ADXNavigationRailMenuView_makeSharedHeightSpecWithInt_withInt_withInt_(ADXNavigationRailMenuView *self, jint parentWidthSpec, jint maxHeight, jint shareCount);
+__attribute__((unused)) static int32_t ADXNavigationRailMenuView_makeSharedHeightSpecWithInt_withInt_withInt_(ADXNavigationRailMenuView *self, int32_t parentWidthSpec, int32_t maxHeight, int32_t shareCount);
 
-__attribute__((unused)) static jint ADXNavigationRailMenuView_measureShiftingChildHeightsWithInt_withInt_withInt_(ADXNavigationRailMenuView *self, jint widthMeasureSpec, jint maxHeight, jint shareCount);
+__attribute__((unused)) static int32_t ADXNavigationRailMenuView_measureShiftingChildHeightsWithInt_withInt_withInt_(ADXNavigationRailMenuView *self, int32_t widthMeasureSpec, int32_t maxHeight, int32_t shareCount);
 
-__attribute__((unused)) static jint ADXNavigationRailMenuView_measureSharedChildHeightsWithInt_withInt_withInt_withADView_(ADXNavigationRailMenuView *self, jint widthMeasureSpec, jint maxHeight, jint shareCount, ADView *selectedView);
+__attribute__((unused)) static int32_t ADXNavigationRailMenuView_measureSharedChildHeightsWithInt_withInt_withInt_withADView_(ADXNavigationRailMenuView *self, int32_t widthMeasureSpec, int32_t maxHeight, int32_t shareCount, ADView *selectedView);
 
-__attribute__((unused)) static jint ADXNavigationRailMenuView_measureChildHeightWithADView_withInt_withInt_(ADXNavigationRailMenuView *self, ADView *child, jint widthMeasureSpec, jint heightMeasureSpec);
+__attribute__((unused)) static int32_t ADXNavigationRailMenuView_measureChildHeightWithADView_withInt_withInt_(ADXNavigationRailMenuView *self, ADView *child, int32_t widthMeasureSpec, int32_t heightMeasureSpec);
 
 @implementation ADXNavigationRailMenuView
 
@@ -72,33 +85,33 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self setLayoutParamsWithADViewGroup_LayoutParams:layoutParams_];
 }
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec {
-  jint maxHeight = ADView_MeasureSpec_getSizeWithInt_(heightMeasureSpec);
-  jint visibleCount = [((JavaUtilArrayList *) nil_chk([((ADXMenuBuilder *) nil_chk([self getMenu])) getVisibleItems])) size];
-  jint measuredHeight;
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec {
+  int32_t maxHeight = ADView_MeasureSpec_getSizeWithInt_(heightMeasureSpec);
+  int32_t visibleCount = [((JavaUtilArrayList *) nil_chk([((ADXMenuBuilder *) nil_chk([self getMenu])) getVisibleItems])) size];
+  int32_t measuredHeight;
   if (visibleCount > 1 && [self isShiftingWithInt:[self getLabelVisibilityMode] withInt:visibleCount]) {
     measuredHeight = ADXNavigationRailMenuView_measureShiftingChildHeightsWithInt_withInt_withInt_(self, widthMeasureSpec, maxHeight, visibleCount);
   }
   else {
     measuredHeight = ADXNavigationRailMenuView_measureSharedChildHeightsWithInt_withInt_withInt_withADView_(self, widthMeasureSpec, maxHeight, visibleCount, nil);
   }
-  jint parentWidth = ADView_MeasureSpec_getSizeWithInt_(widthMeasureSpec);
+  int32_t parentWidth = ADView_MeasureSpec_getSizeWithInt_(widthMeasureSpec);
   [self setMeasuredDimensionWithInt:ADView_resolveSizeAndStateWithInt_withInt_withInt_(parentWidth, widthMeasureSpec, 0) withInt:ADView_resolveSizeAndStateWithInt_withInt_withInt_(measuredHeight, heightMeasureSpec, 0)];
 }
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)left
-                    withInt:(jint)top
-                    withInt:(jint)right
-                    withInt:(jint)bottom {
-  jint count = [self getChildCount];
-  jint width = right - left;
-  jint used = 0;
-  for (jint i = 0; i < count; i++) {
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)left
+                    withInt:(int32_t)top
+                    withInt:(int32_t)right
+                    withInt:(int32_t)bottom {
+  int32_t count = [self getChildCount];
+  int32_t width = right - left;
+  int32_t used = 0;
+  for (int32_t i = 0; i < count; i++) {
     ADView *child = [self getChildAtWithInt:i];
     if ([((ADView *) nil_chk(child)) getVisibility] != ADView_GONE) {
-      jint childHeight = [child getMeasuredHeight];
+      int32_t childHeight = [child getMeasuredHeight];
       [child layoutWithInt:0 withInt:used withInt:width withInt:childHeight + used];
       used += childHeight;
     }
@@ -111,43 +124,43 @@ J2OBJC_IGNORE_DESIGNATED_END
   return (ADXNavigationRailItemView *) cast_chk([((id<ASIWidget>) nil_chk(widget)) asWidget], [ADXNavigationRailItemView class]);
 }
 
-- (jint)makeSharedHeightSpecWithInt:(jint)parentWidthSpec
-                            withInt:(jint)maxHeight
-                            withInt:(jint)shareCount {
+- (int32_t)makeSharedHeightSpecWithInt:(int32_t)parentWidthSpec
+                               withInt:(int32_t)maxHeight
+                               withInt:(int32_t)shareCount {
   return ADXNavigationRailMenuView_makeSharedHeightSpecWithInt_withInt_withInt_(self, parentWidthSpec, maxHeight, shareCount);
 }
 
-- (jint)measureShiftingChildHeightsWithInt:(jint)widthMeasureSpec
-                                   withInt:(jint)maxHeight
-                                   withInt:(jint)shareCount {
+- (int32_t)measureShiftingChildHeightsWithInt:(int32_t)widthMeasureSpec
+                                      withInt:(int32_t)maxHeight
+                                      withInt:(int32_t)shareCount {
   return ADXNavigationRailMenuView_measureShiftingChildHeightsWithInt_withInt_withInt_(self, widthMeasureSpec, maxHeight, shareCount);
 }
 
-- (jint)measureSharedChildHeightsWithInt:(jint)widthMeasureSpec
-                                 withInt:(jint)maxHeight
-                                 withInt:(jint)shareCount
-                              withADView:(ADView *)selectedView {
+- (int32_t)measureSharedChildHeightsWithInt:(int32_t)widthMeasureSpec
+                                    withInt:(int32_t)maxHeight
+                                    withInt:(int32_t)shareCount
+                                 withADView:(ADView *)selectedView {
   return ADXNavigationRailMenuView_measureSharedChildHeightsWithInt_withInt_withInt_withADView_(self, widthMeasureSpec, maxHeight, shareCount, selectedView);
 }
 
-- (jint)measureChildHeightWithADView:(ADView *)child
-                             withInt:(jint)widthMeasureSpec
-                             withInt:(jint)heightMeasureSpec {
+- (int32_t)measureChildHeightWithADView:(ADView *)child
+                                withInt:(int32_t)widthMeasureSpec
+                                withInt:(int32_t)heightMeasureSpec {
   return ADXNavigationRailMenuView_measureChildHeightWithADView_withInt_withInt_(self, child, widthMeasureSpec, heightMeasureSpec);
 }
 
-- (void)setMenuGravityWithInt:(jint)gravity {
+- (void)setMenuGravityWithInt:(int32_t)gravity {
   if (((ADFrameLayout_LayoutParams *) nil_chk(layoutParams_))->gravity_ != gravity) {
     layoutParams_->gravity_ = gravity;
     [self setLayoutParamsWithADViewGroup_LayoutParams:layoutParams_];
   }
 }
 
-- (jint)getMenuGravity {
+- (int32_t)getMenuGravity {
   return ((ADFrameLayout_LayoutParams *) nil_chk(layoutParams_))->gravity_;
 }
 
-- (jboolean)isTopGravity {
+- (bool)isTopGravity {
   return (((ADFrameLayout_LayoutParams *) nil_chk(layoutParams_))->gravity_ & ADGravity_VERTICAL_GRAVITY_MASK) == ADGravity_TOP;
 }
 
@@ -210,16 +223,16 @@ ADXNavigationRailMenuView *create_ADXNavigationRailMenuView_init() {
   J2OBJC_CREATE_IMPL(ADXNavigationRailMenuView, init)
 }
 
-jint ADXNavigationRailMenuView_makeSharedHeightSpecWithInt_withInt_withInt_(ADXNavigationRailMenuView *self, jint parentWidthSpec, jint maxHeight, jint shareCount) {
-  jint maxAvailable = JreIntDiv(maxHeight, JavaLangMath_maxWithInt_withInt_(1, shareCount));
+int32_t ADXNavigationRailMenuView_makeSharedHeightSpecWithInt_withInt_withInt_(ADXNavigationRailMenuView *self, int32_t parentWidthSpec, int32_t maxHeight, int32_t shareCount) {
+  int32_t maxAvailable = JreIntDiv(maxHeight, JavaLangMath_maxWithInt_withInt_(1, shareCount));
   return ADView_MeasureSpec_makeMeasureSpecWithInt_withInt_(JavaLangMath_minWithInt_withInt_(ADView_MeasureSpec_getSizeWithInt_(parentWidthSpec), maxAvailable), ADView_MeasureSpec_UNSPECIFIED);
 }
 
-jint ADXNavigationRailMenuView_measureShiftingChildHeightsWithInt_withInt_withInt_(ADXNavigationRailMenuView *self, jint widthMeasureSpec, jint maxHeight, jint shareCount) {
-  jint selectedViewHeight = 0;
+int32_t ADXNavigationRailMenuView_measureShiftingChildHeightsWithInt_withInt_withInt_(ADXNavigationRailMenuView *self, int32_t widthMeasureSpec, int32_t maxHeight, int32_t shareCount) {
+  int32_t selectedViewHeight = 0;
   ADView *selectedView = JreRetainedLocalValue([self getChildAtWithInt:[self getSelectedItemPosition]]);
   if (selectedView != nil) {
-    jint childHeightSpec = ADXNavigationRailMenuView_makeSharedHeightSpecWithInt_withInt_withInt_(self, widthMeasureSpec, maxHeight, shareCount);
+    int32_t childHeightSpec = ADXNavigationRailMenuView_makeSharedHeightSpecWithInt_withInt_withInt_(self, widthMeasureSpec, maxHeight, shareCount);
     selectedViewHeight = ADXNavigationRailMenuView_measureChildHeightWithADView_withInt_withInt_(self, selectedView, widthMeasureSpec, childHeightSpec);
     maxHeight -= selectedViewHeight;
     --shareCount;
@@ -227,26 +240,26 @@ jint ADXNavigationRailMenuView_measureShiftingChildHeightsWithInt_withInt_withIn
   return selectedViewHeight + ADXNavigationRailMenuView_measureSharedChildHeightsWithInt_withInt_withInt_withADView_(self, widthMeasureSpec, maxHeight, shareCount, selectedView);
 }
 
-jint ADXNavigationRailMenuView_measureSharedChildHeightsWithInt_withInt_withInt_withADView_(ADXNavigationRailMenuView *self, jint widthMeasureSpec, jint maxHeight, jint shareCount, ADView *selectedView) {
-  jint childHeightSpec = ADXNavigationRailMenuView_makeSharedHeightSpecWithInt_withInt_withInt_(self, widthMeasureSpec, maxHeight, shareCount);
+int32_t ADXNavigationRailMenuView_measureSharedChildHeightsWithInt_withInt_withInt_withADView_(ADXNavigationRailMenuView *self, int32_t widthMeasureSpec, int32_t maxHeight, int32_t shareCount, ADView *selectedView) {
+  int32_t childHeightSpec = ADXNavigationRailMenuView_makeSharedHeightSpecWithInt_withInt_withInt_(self, widthMeasureSpec, maxHeight, shareCount);
   if (selectedView == nil) {
     childHeightSpec = ADXNavigationRailMenuView_makeSharedHeightSpecWithInt_withInt_withInt_(self, widthMeasureSpec, maxHeight, shareCount);
   }
   else {
     childHeightSpec = ADView_MeasureSpec_makeMeasureSpecWithInt_withInt_([selectedView getMeasuredHeight], ADView_MeasureSpec_UNSPECIFIED);
   }
-  jint childCount = [self getChildCount];
-  jint totalHeight = 0;
-  for (jint i = 0; i < childCount; i++) {
+  int32_t childCount = [self getChildCount];
+  int32_t totalHeight = 0;
+  for (int32_t i = 0; i < childCount; i++) {
     ADView *child = [self getChildAtWithInt:i];
-    if (child != selectedView) {
+    if (!JreObjectEqualsEquals(child, selectedView)) {
       totalHeight += ADXNavigationRailMenuView_measureChildHeightWithADView_withInt_withInt_(self, child, widthMeasureSpec, childHeightSpec);
     }
   }
   return totalHeight;
 }
 
-jint ADXNavigationRailMenuView_measureChildHeightWithADView_withInt_withInt_(ADXNavigationRailMenuView *self, ADView *child, jint widthMeasureSpec, jint heightMeasureSpec) {
+int32_t ADXNavigationRailMenuView_measureChildHeightWithADView_withInt_withInt_(ADXNavigationRailMenuView *self, ADView *child, int32_t widthMeasureSpec, int32_t heightMeasureSpec) {
   if ([((ADView *) nil_chk(child)) getVisibility] != ADView_GONE) {
     [child measureWithInt:widthMeasureSpec withInt:heightMeasureSpec];
     return [child getMeasuredHeight];
@@ -255,3 +268,5 @@ jint ADXNavigationRailMenuView_measureChildHeightWithADView_withInt_withInt_(ADX
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXNavigationRailMenuView)
+
+J2OBJC_NAME_MAPPING(ADXNavigationRailMenuView, "com.google.android.material.navigationrail", "ADX")

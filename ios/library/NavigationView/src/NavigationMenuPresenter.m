@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\internal\NavigationMenuPresenter.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ColorStateList.h"
 #include "Context.h"
 #include "Drawable.h"
@@ -25,10 +30,17 @@
 #include "View.h"
 #include "ViewGroup.h"
 #include "ViewParent.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
 #include "java/lang/RuntimeException.h"
 #include "java/util/ArrayList.h"
 
-@class JavaUtilArrayList;
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 #pragma clang diagnostic ignored "-Wincomplete-implementation"
@@ -36,14 +48,14 @@
 @interface ADXNavigationMenuPresenter () {
  @public
   ADXRecyclerView *menuView_;
-  jint id__;
-  jint itemMaxLines_;
-  jint paddingTopDefault_;
-  jint overScrollMode_;
+  int32_t id__;
+  int32_t itemMaxLines_;
+  int32_t paddingTopDefault_;
+  int32_t overScrollMode_;
   NSString *textAppearance_;
 }
 
-- (jboolean)hasHeader;
+- (bool)hasHeader;
 
 - (ADView *)getNavigationMenuItemViewWithADView:(ADView *)v;
 
@@ -52,7 +64,7 @@
 J2OBJC_FIELD_SETTER(ADXNavigationMenuPresenter, menuView_, ADXRecyclerView *)
 J2OBJC_FIELD_SETTER(ADXNavigationMenuPresenter, textAppearance_, NSString *)
 
-__attribute__((unused)) static jboolean ADXNavigationMenuPresenter_hasHeader(ADXNavigationMenuPresenter *self);
+__attribute__((unused)) static bool ADXNavigationMenuPresenter_hasHeader(ADXNavigationMenuPresenter *self);
 
 __attribute__((unused)) static ADView *ADXNavigationMenuPresenter_getNavigationMenuItemViewWithADView_(ADXNavigationMenuPresenter *self, ADView *v);
 
@@ -74,6 +86,7 @@ __attribute__((unused)) static ADXNavigationMenuPresenter_NormalViewHolder *crea
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationMenuPresenter_NormalViewHolder)
 
+
 @interface ADXNavigationMenuPresenter_SubheaderViewHolder : ADXNavigationMenuPresenter_ViewHolder
 
 - (instancetype)initWithADXNavigationMenuPresenter_LayoutInflater:(ADXNavigationMenuPresenter_LayoutInflater *)inflater
@@ -90,6 +103,7 @@ __attribute__((unused)) static ADXNavigationMenuPresenter_SubheaderViewHolder *n
 __attribute__((unused)) static ADXNavigationMenuPresenter_SubheaderViewHolder *create_ADXNavigationMenuPresenter_SubheaderViewHolder_initWithADXNavigationMenuPresenter_LayoutInflater_withADViewGroup_(ADXNavigationMenuPresenter_LayoutInflater *inflater, ADViewGroup *parent);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationMenuPresenter_SubheaderViewHolder)
+
 
 @interface ADXNavigationMenuPresenter_SeparatorViewHolder : ADXNavigationMenuPresenter_ViewHolder
 
@@ -108,6 +122,7 @@ __attribute__((unused)) static ADXNavigationMenuPresenter_SeparatorViewHolder *c
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationMenuPresenter_SeparatorViewHolder)
 
+
 @interface ADXNavigationMenuPresenter_HeaderViewHolder : ADXNavigationMenuPresenter_ViewHolder
 
 - (instancetype)initWithADView:(ADView *)itemView;
@@ -123,6 +138,7 @@ __attribute__((unused)) static ADXNavigationMenuPresenter_HeaderViewHolder *new_
 __attribute__((unused)) static ADXNavigationMenuPresenter_HeaderViewHolder *create_ADXNavigationMenuPresenter_HeaderViewHolder_initWithADView_(ADView *itemView);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationMenuPresenter_HeaderViewHolder)
+
 
 @interface ADXNavigationMenuPresenter_1 : NSObject < ADView_OnClickListener > {
  @public
@@ -143,41 +159,42 @@ __attribute__((unused)) static ADXNavigationMenuPresenter_1 *new_ADXNavigationMe
 
 __attribute__((unused)) static ADXNavigationMenuPresenter_1 *create_ADXNavigationMenuPresenter_1_initWithADXNavigationMenuPresenter_(ADXNavigationMenuPresenter *outer$);
 
+
 @interface ADXNavigationMenuPresenter_NavigationMenuAdapter () {
  @public
   ADXNavigationMenuPresenter *this$0_;
   JavaUtilArrayList *items_;
   ADXMenuItemImpl *checkedItem_;
-  jboolean updateSuspended_;
+  bool updateSuspended_;
 }
 
 - (instancetype)initWithADXNavigationMenuPresenter:(ADXNavigationMenuPresenter *)outer$;
 
 - (void)prepareMenuItems;
 
-- (void)appendTransparentIconIfMissingWithInt:(jint)startIndex
-                                      withInt:(jint)endIndex;
+- (void)appendTransparentIconIfMissingWithInt:(int32_t)startIndex
+                                      withInt:(int32_t)endIndex;
 
 @end
 
 J2OBJC_FIELD_SETTER(ADXNavigationMenuPresenter_NavigationMenuAdapter, items_, JavaUtilArrayList *)
 J2OBJC_FIELD_SETTER(ADXNavigationMenuPresenter_NavigationMenuAdapter, checkedItem_, ADXMenuItemImpl *)
 
-inline jint ADXNavigationMenuPresenter_NavigationMenuAdapter_get_VIEW_TYPE_NORMAL(void);
+inline int32_t ADXNavigationMenuPresenter_NavigationMenuAdapter_get_VIEW_TYPE_NORMAL(void);
 #define ADXNavigationMenuPresenter_NavigationMenuAdapter_VIEW_TYPE_NORMAL 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationMenuPresenter_NavigationMenuAdapter, VIEW_TYPE_NORMAL, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationMenuPresenter_NavigationMenuAdapter, VIEW_TYPE_NORMAL, int32_t)
 
-inline jint ADXNavigationMenuPresenter_NavigationMenuAdapter_get_VIEW_TYPE_SUBHEADER(void);
+inline int32_t ADXNavigationMenuPresenter_NavigationMenuAdapter_get_VIEW_TYPE_SUBHEADER(void);
 #define ADXNavigationMenuPresenter_NavigationMenuAdapter_VIEW_TYPE_SUBHEADER 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationMenuPresenter_NavigationMenuAdapter, VIEW_TYPE_SUBHEADER, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationMenuPresenter_NavigationMenuAdapter, VIEW_TYPE_SUBHEADER, int32_t)
 
-inline jint ADXNavigationMenuPresenter_NavigationMenuAdapter_get_VIEW_TYPE_SEPARATOR(void);
+inline int32_t ADXNavigationMenuPresenter_NavigationMenuAdapter_get_VIEW_TYPE_SEPARATOR(void);
 #define ADXNavigationMenuPresenter_NavigationMenuAdapter_VIEW_TYPE_SEPARATOR 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationMenuPresenter_NavigationMenuAdapter, VIEW_TYPE_SEPARATOR, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationMenuPresenter_NavigationMenuAdapter, VIEW_TYPE_SEPARATOR, int32_t)
 
-inline jint ADXNavigationMenuPresenter_NavigationMenuAdapter_get_VIEW_TYPE_HEADER(void);
+inline int32_t ADXNavigationMenuPresenter_NavigationMenuAdapter_get_VIEW_TYPE_HEADER(void);
 #define ADXNavigationMenuPresenter_NavigationMenuAdapter_VIEW_TYPE_HEADER 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationMenuPresenter_NavigationMenuAdapter, VIEW_TYPE_HEADER, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationMenuPresenter_NavigationMenuAdapter, VIEW_TYPE_HEADER, int32_t)
 
 __attribute__((unused)) static void ADXNavigationMenuPresenter_NavigationMenuAdapter_initWithADXNavigationMenuPresenter_(ADXNavigationMenuPresenter_NavigationMenuAdapter *self, ADXNavigationMenuPresenter *outer$);
 
@@ -187,7 +204,7 @@ __attribute__((unused)) static ADXNavigationMenuPresenter_NavigationMenuAdapter 
 
 __attribute__((unused)) static void ADXNavigationMenuPresenter_NavigationMenuAdapter_prepareMenuItems(ADXNavigationMenuPresenter_NavigationMenuAdapter *self);
 
-__attribute__((unused)) static void ADXNavigationMenuPresenter_NavigationMenuAdapter_appendTransparentIconIfMissingWithInt_withInt_(ADXNavigationMenuPresenter_NavigationMenuAdapter *self, jint startIndex, jint endIndex);
+__attribute__((unused)) static void ADXNavigationMenuPresenter_NavigationMenuAdapter_appendTransparentIconIfMissingWithInt_withInt_(ADXNavigationMenuPresenter_NavigationMenuAdapter *self, int32_t startIndex, int32_t endIndex);
 
 @protocol ADXNavigationMenuPresenter_NavigationMenuItem < JavaObject >
 
@@ -201,10 +218,11 @@ J2OBJC_EMPTY_STATIC_INIT(ADXNavigationMenuPresenter_NavigationMenuItem)
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationMenuPresenter_NavigationMenuItem)
 
+
 @interface ADXNavigationMenuPresenter_NavigationMenuTextItem : NSObject < ADXNavigationMenuPresenter_NavigationMenuItem > {
  @public
   ADXMenuItemImpl *menuItem_;
-  jboolean needsEmptyIcon_;
+  bool needsEmptyIcon_;
 }
 
 - (instancetype)initWithADXMenuItemImpl:(ADXMenuItemImpl *)item;
@@ -225,30 +243,32 @@ __attribute__((unused)) static ADXNavigationMenuPresenter_NavigationMenuTextItem
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationMenuPresenter_NavigationMenuTextItem)
 
+
 @interface ADXNavigationMenuPresenter_NavigationMenuSeparatorItem : NSObject < ADXNavigationMenuPresenter_NavigationMenuItem > {
  @public
-  jint paddingTop_;
-  jint paddingBottom_;
+  int32_t paddingTop_;
+  int32_t paddingBottom_;
 }
 
-- (instancetype)initWithInt:(jint)paddingTop
-                    withInt:(jint)paddingBottom;
+- (instancetype)initWithInt:(int32_t)paddingTop
+                    withInt:(int32_t)paddingBottom;
 
-- (jint)getPaddingTop;
+- (int32_t)getPaddingTop;
 
-- (jint)getPaddingBottom;
+- (int32_t)getPaddingBottom;
 
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(ADXNavigationMenuPresenter_NavigationMenuSeparatorItem)
 
-__attribute__((unused)) static void ADXNavigationMenuPresenter_NavigationMenuSeparatorItem_initWithInt_withInt_(ADXNavigationMenuPresenter_NavigationMenuSeparatorItem *self, jint paddingTop, jint paddingBottom);
+__attribute__((unused)) static void ADXNavigationMenuPresenter_NavigationMenuSeparatorItem_initWithInt_withInt_(ADXNavigationMenuPresenter_NavigationMenuSeparatorItem *self, int32_t paddingTop, int32_t paddingBottom);
 
-__attribute__((unused)) static ADXNavigationMenuPresenter_NavigationMenuSeparatorItem *new_ADXNavigationMenuPresenter_NavigationMenuSeparatorItem_initWithInt_withInt_(jint paddingTop, jint paddingBottom) NS_RETURNS_RETAINED;
+__attribute__((unused)) static ADXNavigationMenuPresenter_NavigationMenuSeparatorItem *new_ADXNavigationMenuPresenter_NavigationMenuSeparatorItem_initWithInt_withInt_(int32_t paddingTop, int32_t paddingBottom) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static ADXNavigationMenuPresenter_NavigationMenuSeparatorItem *create_ADXNavigationMenuPresenter_NavigationMenuSeparatorItem_initWithInt_withInt_(jint paddingTop, jint paddingBottom);
+__attribute__((unused)) static ADXNavigationMenuPresenter_NavigationMenuSeparatorItem *create_ADXNavigationMenuPresenter_NavigationMenuSeparatorItem_initWithInt_withInt_(int32_t paddingTop, int32_t paddingBottom);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationMenuPresenter_NavigationMenuSeparatorItem)
+
 
 @interface ADXNavigationMenuPresenter_NavigationMenuHeaderItem : NSObject < ADXNavigationMenuPresenter_NavigationMenuItem >
 
@@ -265,6 +285,7 @@ __attribute__((unused)) static ADXNavigationMenuPresenter_NavigationMenuHeaderIt
 __attribute__((unused)) static ADXNavigationMenuPresenter_NavigationMenuHeaderItem *create_ADXNavigationMenuPresenter_NavigationMenuHeaderItem_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationMenuPresenter_NavigationMenuHeaderItem)
+
 
 @implementation ADXNavigationMenuPresenter
 
@@ -296,17 +317,17 @@ J2OBJC_IGNORE_DESIGNATED_END
   return menuView_;
 }
 
-- (void)updateMenuViewWithBoolean:(jboolean)cleared {
+- (void)updateMenuViewWithBoolean:(bool)cleared {
   if (adapter_ != nil) {
     [adapter_ update];
   }
 }
 
-- (jboolean)flagActionItems {
+- (bool)flagActionItems {
   return false;
 }
 
-- (void)setIdWithInt:(jint)id_ {
+- (void)setIdWithInt:(int32_t)id_ {
   self->id__ = id_;
 }
 
@@ -322,15 +343,15 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jint)getHeaderCount {
+- (int32_t)getHeaderCount {
   return [((ADLinearLayout *) nil_chk(headerLayout_)) getChildCount];
 }
 
-- (jboolean)hasHeader {
+- (bool)hasHeader {
   return ADXNavigationMenuPresenter_hasHeader(self);
 }
 
-- (ADView *)getHeaderViewWithInt:(jint)index {
+- (ADView *)getHeaderViewWithInt:(int32_t)index {
   return [((ADLinearLayout *) nil_chk(headerLayout_)) getChildAtWithInt:index];
 }
 
@@ -366,63 +387,63 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self updateMenuViewWithBoolean:false];
 }
 
-- (jint)getItemHorizontalPadding {
+- (int32_t)getItemHorizontalPadding {
   return itemHorizontalPadding_;
 }
 
-- (void)setItemHorizontalPaddingWithInt:(jint)itemHorizontalPadding {
+- (void)setItemHorizontalPaddingWithInt:(int32_t)itemHorizontalPadding {
   self->itemHorizontalPadding_ = itemHorizontalPadding;
   [self updateMenuViewWithBoolean:false];
 }
 
-- (jint)getItemVerticalPadding {
+- (int32_t)getItemVerticalPadding {
   return itemVerticalPadding_;
 }
 
-- (void)setItemVerticalPaddingWithInt:(jint)itemVerticalPadding {
+- (void)setItemVerticalPaddingWithInt:(int32_t)itemVerticalPadding {
   self->itemVerticalPadding_ = itemVerticalPadding;
   [self updateMenuViewWithBoolean:false];
 }
 
-- (void)setDividerInsetStartWithInt:(jint)dividerInsetStart {
+- (void)setDividerInsetStartWithInt:(int32_t)dividerInsetStart {
   self->dividerInsetStart_ = dividerInsetStart;
   [self updateMenuViewWithBoolean:false];
 }
 
-- (void)setDividerInsetEndWithInt:(jint)dividerInsetEnd {
+- (void)setDividerInsetEndWithInt:(int32_t)dividerInsetEnd {
   self->dividerInsetEnd_ = dividerInsetEnd;
   [self updateMenuViewWithBoolean:false];
 }
 
-- (void)setSubheaderInsetStartWithInt:(jint)subheaderInsetStart {
+- (void)setSubheaderInsetStartWithInt:(int32_t)subheaderInsetStart {
   self->subheaderInsetStart_ = subheaderInsetStart;
   [self updateMenuViewWithBoolean:false];
 }
 
-- (void)setSubheaderInsetEndWithInt:(jint)subheaderInsetEnd {
+- (void)setSubheaderInsetEndWithInt:(int32_t)subheaderInsetEnd {
   self->subheaderInsetEnd_ = subheaderInsetEnd;
   [self updateMenuViewWithBoolean:false];
 }
 
-- (jint)getItemIconPadding {
+- (int32_t)getItemIconPadding {
   return itemIconPadding_;
 }
 
-- (void)setItemIconPaddingWithInt:(jint)itemIconPadding {
+- (void)setItemIconPaddingWithInt:(int32_t)itemIconPadding {
   self->itemIconPadding_ = itemIconPadding;
   [self updateMenuViewWithBoolean:false];
 }
 
-- (void)setItemMaxLinesWithInt:(jint)itemMaxLines {
+- (void)setItemMaxLinesWithInt:(int32_t)itemMaxLines {
   self->itemMaxLines_ = itemMaxLines;
   [self updateMenuViewWithBoolean:false];
 }
 
-- (jint)getItemMaxLines {
+- (int32_t)getItemMaxLines {
   return itemMaxLines_;
 }
 
-- (void)setItemIconSizeWithInt:(jint)itemIconSize {
+- (void)setItemIconSizeWithInt:(int32_t)itemIconSize {
   if (self->itemIconSize_ != itemIconSize) {
     self->itemIconSize_ = itemIconSize;
     hasCustomItemIconSize_ = true;
@@ -430,7 +451,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)setUpdateSuspendedWithBoolean:(jboolean)updateSuspended {
+- (void)setUpdateSuspendedWithBoolean:(bool)updateSuspended {
   if (adapter_ != nil) {
     [adapter_ setUpdateSuspendedWithBoolean:updateSuspended];
   }
@@ -583,7 +604,7 @@ ADXNavigationMenuPresenter *create_ADXNavigationMenuPresenter_init() {
   J2OBJC_CREATE_IMPL(ADXNavigationMenuPresenter, init)
 }
 
-jboolean ADXNavigationMenuPresenter_hasHeader(ADXNavigationMenuPresenter *self) {
+bool ADXNavigationMenuPresenter_hasHeader(ADXNavigationMenuPresenter *self) {
   return [self getHeaderCount] > 0;
 }
 
@@ -595,6 +616,8 @@ ADView *ADXNavigationMenuPresenter_getNavigationMenuItemViewWithADView_(ADXNavig
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXNavigationMenuPresenter)
+
+J2OBJC_NAME_MAPPING(ADXNavigationMenuPresenter, "com.google.android.material.internal", "ADX")
 
 @implementation ADXNavigationMenuPresenter_ViewHolder
 
@@ -790,8 +813,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXNavigationMenuPresenter_HeaderViewHolder)
   ADXNavigationMenuItemView *itemView = (ADXNavigationMenuItemView *) cast_chk(ADXNavigationMenuPresenter_getNavigationMenuItemViewWithADView_(this$0_, view), [ADXNavigationMenuItemView class]);
   [this$0_ setUpdateSuspendedWithBoolean:true];
   ADXMenuItemImpl *item = JreRetainedLocalValue([((ADXNavigationMenuItemView *) nil_chk(itemView)) getItemData]);
-  jboolean result = [((ADXMenuBuilder *) nil_chk(this$0_->menu_)) performItemActionWithADMenuItem:item withADXMenuPresenter:this$0_ withInt:0];
-  jboolean checkStateChanged = false;
+  bool result = [((ADXMenuBuilder *) nil_chk(this$0_->menu_)) performItemActionWithADMenuItem:item withADXMenuPresenter:this$0_ withInt:0];
+  bool checkStateChanged = false;
   if (item != nil && [item isCheckable] && result) {
     [((ADXNavigationMenuPresenter_NavigationMenuAdapter *) nil_chk(this$0_->adapter_)) setCheckedItemWithADXMenuItemImpl:item];
     checkStateChanged = true;
@@ -822,7 +845,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXNavigationMenuPresenter_HeaderViewHolder)
     { "this$0_", "LADXNavigationMenuPresenter;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LADXNavigationMenuPresenter;", "onClick", "LADView;" };
-  static const J2ObjcClassInfo _ADXNavigationMenuPresenter_1 = { "", "com.google.android.material.internal", ptrTable, methods, fields, 7, 0x8010, 2, 1, 0, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _ADXNavigationMenuPresenter_1 = { "", "com.google.android.material.internal", ptrTable, methods, fields, 7, 0x8000, 2, 1, 0, -1, -1, -1, -1 };
   return &_ADXNavigationMenuPresenter_1;
 }
 
@@ -848,11 +871,11 @@ ADXNavigationMenuPresenter_1 *create_ADXNavigationMenuPresenter_1_initWithADXNav
   return self;
 }
 
-- (jint)getItemCount {
+- (int32_t)getItemCount {
   return [((JavaUtilArrayList *) nil_chk(items_)) size];
 }
 
-- (jint)getItemViewTypeWithInt:(jint)position {
+- (int32_t)getItemViewTypeWithInt:(int32_t)position {
   id<ADXNavigationMenuPresenter_NavigationMenuItem> item = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(items_)) getWithInt:position]);
   if ([item isKindOfClass:[ADXNavigationMenuPresenter_NavigationMenuSeparatorItem class]]) {
     return ADXNavigationMenuPresenter_NavigationMenuAdapter_VIEW_TYPE_SEPARATOR;
@@ -873,7 +896,7 @@ ADXNavigationMenuPresenter_1 *create_ADXNavigationMenuPresenter_1_initWithADXNav
 }
 
 - (ADXNavigationMenuPresenter_ViewHolder *)onCreateViewHolderWithADViewGroup:(ADViewGroup *)parent
-                                                                     withInt:(jint)viewType {
+                                                                     withInt:(int32_t)viewType {
   switch (viewType) {
     case ADXNavigationMenuPresenter_NavigationMenuAdapter_VIEW_TYPE_NORMAL:
     return create_ADXNavigationMenuPresenter_NormalViewHolder_initWithADXNavigationMenuPresenter_LayoutInflater_withADViewGroup_withADView_OnClickListener_(this$0_->layoutInflater_, parent, this$0_->onClickListener_);
@@ -892,7 +915,7 @@ ADXNavigationMenuPresenter_1 *create_ADXNavigationMenuPresenter_1_initWithADXNav
 }
 
 - (void)onBindViewHolderWithADXRecyclerView_ViewHolder:(ADXNavigationMenuPresenter_ViewHolder *)holder
-                                               withInt:(jint)position {
+                                               withInt:(int32_t)position {
   switch ([self getItemViewTypeWithInt:position]) {
     case ADXNavigationMenuPresenter_NavigationMenuAdapter_VIEW_TYPE_NORMAL:
     {
@@ -951,13 +974,13 @@ ADXNavigationMenuPresenter_1 *create_ADXNavigationMenuPresenter_1_initWithADXNav
   ADXNavigationMenuPresenter_NavigationMenuAdapter_prepareMenuItems(self);
 }
 
-- (void)appendTransparentIconIfMissingWithInt:(jint)startIndex
-                                      withInt:(jint)endIndex {
+- (void)appendTransparentIconIfMissingWithInt:(int32_t)startIndex
+                                      withInt:(int32_t)endIndex {
   ADXNavigationMenuPresenter_NavigationMenuAdapter_appendTransparentIconIfMissingWithInt_withInt_(self, startIndex, endIndex);
 }
 
 - (void)setCheckedItemWithADXMenuItemImpl:(ADXMenuItemImpl *)checkedItem {
-  if (self->checkedItem_ == checkedItem || ![((ADXMenuItemImpl *) nil_chk(checkedItem)) isCheckable]) {
+  if (JreObjectEqualsEquals(self->checkedItem_, checkedItem) || ![((ADXMenuItemImpl *) nil_chk(checkedItem)) isCheckable]) {
     return;
   }
   if (self->checkedItem_ != nil) {
@@ -967,7 +990,7 @@ ADXNavigationMenuPresenter_1 *create_ADXNavigationMenuPresenter_1_initWithADXNav
   [((ADXMenuItemImpl *) nil_chk(checkedItem)) setCheckedWithBoolean:true];
 }
 
-- (void)setUpdateSuspendedWithBoolean:(jboolean)updateSuspended {
+- (void)setUpdateSuspendedWithBoolean:(bool)updateSuspended {
   self->updateSuspended_ = updateSuspended;
 }
 
@@ -1045,10 +1068,10 @@ void ADXNavigationMenuPresenter_NavigationMenuAdapter_prepareMenuItems(ADXNaviga
   self->updateSuspended_ = true;
   [((JavaUtilArrayList *) nil_chk(self->items_)) clear];
   [self->items_ addWithId:create_ADXNavigationMenuPresenter_NavigationMenuHeaderItem_init()];
-  jint currentGroupId = -1;
-  jint currentGroupStart = 0;
-  jboolean currentGroupHasIcon = false;
-  for (jint i = 0, totalSize = [((JavaUtilArrayList *) nil_chk([((ADXMenuBuilder *) nil_chk(self->this$0_->menu_)) getVisibleItems])) size]; i < totalSize; i++) {
+  int32_t currentGroupId = -1;
+  int32_t currentGroupStart = 0;
+  bool currentGroupHasIcon = false;
+  for (int32_t i = 0, totalSize = [((JavaUtilArrayList *) nil_chk([((ADXMenuBuilder *) nil_chk(self->this$0_->menu_)) getVisibleItems])) size]; i < totalSize; i++) {
     ADXMenuItemImpl *item = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk([((ADXMenuBuilder *) nil_chk(self->this$0_->menu_)) getVisibleItems])) getWithInt:i]);
     if ([((ADXMenuItemImpl *) nil_chk(item)) isChecked]) {
       [self setCheckedItemWithADXMenuItemImpl:item];
@@ -1063,9 +1086,9 @@ void ADXNavigationMenuPresenter_NavigationMenuAdapter_prepareMenuItems(ADXNaviga
           [self->items_ addWithId:create_ADXNavigationMenuPresenter_NavigationMenuSeparatorItem_initWithInt_withInt_(self->this$0_->paddingSeparator_, 0)];
         }
         [self->items_ addWithId:create_ADXNavigationMenuPresenter_NavigationMenuTextItem_initWithADXMenuItemImpl_(item)];
-        jboolean subMenuHasIcon = false;
-        jint subMenuStart = [self->items_ size];
-        for (jint j = 0, size = [subMenu size]; j < size; j++) {
+        bool subMenuHasIcon = false;
+        int32_t subMenuStart = [self->items_ size];
+        for (int32_t j = 0, size = [subMenu size]; j < size; j++) {
           ADXMenuItemImpl *subMenuItem = (ADXMenuItemImpl *) cast_chk([subMenu getItemWithInt:j], [ADXMenuItemImpl class]);
           if ([((ADXMenuItemImpl *) nil_chk(subMenuItem)) isVisible]) {
             if (!subMenuHasIcon && [subMenuItem getIcon] != nil) {
@@ -1086,7 +1109,7 @@ void ADXNavigationMenuPresenter_NavigationMenuAdapter_prepareMenuItems(ADXNaviga
       }
     }
     else {
-      jint groupId = [item getGroupId];
+      int32_t groupId = [item getGroupId];
       if (groupId != currentGroupId) {
         currentGroupStart = [self->items_ size];
         currentGroupHasIcon = ([item getIcon] != nil);
@@ -1108,8 +1131,8 @@ void ADXNavigationMenuPresenter_NavigationMenuAdapter_prepareMenuItems(ADXNaviga
   self->updateSuspended_ = false;
 }
 
-void ADXNavigationMenuPresenter_NavigationMenuAdapter_appendTransparentIconIfMissingWithInt_withInt_(ADXNavigationMenuPresenter_NavigationMenuAdapter *self, jint startIndex, jint endIndex) {
-  for (jint i = startIndex; i < endIndex; i++) {
+void ADXNavigationMenuPresenter_NavigationMenuAdapter_appendTransparentIconIfMissingWithInt_withInt_(ADXNavigationMenuPresenter_NavigationMenuAdapter *self, int32_t startIndex, int32_t endIndex) {
+  for (int32_t i = startIndex; i < endIndex; i++) {
     ADXNavigationMenuPresenter_NavigationMenuTextItem *textItem = (ADXNavigationMenuPresenter_NavigationMenuTextItem *) cast_chk([((JavaUtilArrayList *) nil_chk(self->items_)) getWithInt:i], [ADXNavigationMenuPresenter_NavigationMenuTextItem class]);
     ((ADXNavigationMenuPresenter_NavigationMenuTextItem *) nil_chk(textItem))->needsEmptyIcon_ = true;
   }
@@ -1184,17 +1207,17 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXNavigationMenuPresenter_NavigationMenuTextIt
 
 @implementation ADXNavigationMenuPresenter_NavigationMenuSeparatorItem
 
-- (instancetype)initWithInt:(jint)paddingTop
-                    withInt:(jint)paddingBottom {
+- (instancetype)initWithInt:(int32_t)paddingTop
+                    withInt:(int32_t)paddingBottom {
   ADXNavigationMenuPresenter_NavigationMenuSeparatorItem_initWithInt_withInt_(self, paddingTop, paddingBottom);
   return self;
 }
 
-- (jint)getPaddingTop {
+- (int32_t)getPaddingTop {
   return paddingTop_;
 }
 
-- (jint)getPaddingBottom {
+- (int32_t)getPaddingBottom {
   return paddingBottom_;
 }
 
@@ -1222,17 +1245,17 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXNavigationMenuPresenter_NavigationMenuTextIt
 
 @end
 
-void ADXNavigationMenuPresenter_NavigationMenuSeparatorItem_initWithInt_withInt_(ADXNavigationMenuPresenter_NavigationMenuSeparatorItem *self, jint paddingTop, jint paddingBottom) {
+void ADXNavigationMenuPresenter_NavigationMenuSeparatorItem_initWithInt_withInt_(ADXNavigationMenuPresenter_NavigationMenuSeparatorItem *self, int32_t paddingTop, int32_t paddingBottom) {
   NSObject_init(self);
   self->paddingTop_ = paddingTop;
   self->paddingBottom_ = paddingBottom;
 }
 
-ADXNavigationMenuPresenter_NavigationMenuSeparatorItem *new_ADXNavigationMenuPresenter_NavigationMenuSeparatorItem_initWithInt_withInt_(jint paddingTop, jint paddingBottom) {
+ADXNavigationMenuPresenter_NavigationMenuSeparatorItem *new_ADXNavigationMenuPresenter_NavigationMenuSeparatorItem_initWithInt_withInt_(int32_t paddingTop, int32_t paddingBottom) {
   J2OBJC_NEW_IMPL(ADXNavigationMenuPresenter_NavigationMenuSeparatorItem, initWithInt_withInt_, paddingTop, paddingBottom)
 }
 
-ADXNavigationMenuPresenter_NavigationMenuSeparatorItem *create_ADXNavigationMenuPresenter_NavigationMenuSeparatorItem_initWithInt_withInt_(jint paddingTop, jint paddingBottom) {
+ADXNavigationMenuPresenter_NavigationMenuSeparatorItem *create_ADXNavigationMenuPresenter_NavigationMenuSeparatorItem_initWithInt_withInt_(int32_t paddingTop, int32_t paddingBottom) {
   J2OBJC_CREATE_IMPL(ADXNavigationMenuPresenter_NavigationMenuSeparatorItem, initWithInt_withInt_, paddingTop, paddingBottom)
 }
 
@@ -1292,14 +1315,14 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (ADView *)inflateWithNSString:(NSString *)layout
                 withADViewGroup:(ADViewGroup *)parent
-                    withBoolean:(jboolean)b {
+                    withBoolean:(bool)b {
   return [((ADViewGroup *) nil_chk(parent)) inflateViewWithNSString:layout];
 }
 
 - (void)recurseSetWithADViewGroup:(ADViewGroup *)parent
        withADView_OnClickListener:(id<ADView_OnClickListener>)onClickListener {
   if ([((NSString *) nil_chk(ASPluginInvoker_getOS())) java_equalsIgnoreCase:@"swt"]) {
-    for (jint i = 0; i < [((ADViewGroup *) nil_chk(parent)) getChildCount]; i++) {
+    for (int32_t i = 0; i < [((ADViewGroup *) nil_chk(parent)) getChildCount]; i++) {
       ADView *child = JreRetainedLocalValue([parent getChildAtWithInt:i]);
       [((ADView *) nil_chk(child)) setMyAttributeWithNSString:@"onClick" withId:onClickListener];
       if ([child isKindOfClass:[ADViewGroup class]]) {

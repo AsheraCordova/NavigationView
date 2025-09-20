@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\bottomnavigation\BottomNavigationView.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_BottomNavigationView")
@@ -22,6 +23,8 @@
 
 @class ADContext;
 @class ADXNavigationBarMenuView;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 
 @interface ADXBottomNavigationView : ADXNavigationBarView
 
@@ -29,11 +32,11 @@
 
 - (instancetype)init;
 
-- (jint)getMaxItemCount;
+- (int32_t)getMaxItemCount;
 
-- (jboolean)isItemHorizontalTranslationEnabled;
+- (bool)isItemHorizontalTranslationEnabled;
 
-- (void)setItemHorizontalTranslationEnabledWithBoolean:(jboolean)itemHorizontalTranslationEnabled;
+- (void)setItemHorizontalTranslationEnabledWithBoolean:(bool)itemHorizontalTranslationEnabled;
 
 #pragma mark Protected
 
@@ -43,9 +46,9 @@
 
 J2OBJC_EMPTY_STATIC_INIT(ADXBottomNavigationView)
 
-inline jint ADXBottomNavigationView_get_MAX_ITEM_COUNT(void);
+inline int32_t ADXBottomNavigationView_get_MAX_ITEM_COUNT(void);
 #define ADXBottomNavigationView_MAX_ITEM_COUNT 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXBottomNavigationView, MAX_ITEM_COUNT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXBottomNavigationView, MAX_ITEM_COUNT, int32_t)
 
 FOUNDATION_EXPORT void ADXBottomNavigationView_init(ADXBottomNavigationView *self);
 
@@ -56,6 +59,7 @@ FOUNDATION_EXPORT ADXBottomNavigationView *create_ADXBottomNavigationView_init(v
 J2OBJC_TYPE_LITERAL_HEADER(ADXBottomNavigationView)
 
 @compatibility_alias ComGoogleAndroidMaterialBottomnavigationBottomNavigationView ADXBottomNavigationView;
+
 
 #endif
 

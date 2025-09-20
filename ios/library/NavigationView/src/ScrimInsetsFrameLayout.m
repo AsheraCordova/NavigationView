@@ -3,9 +3,20 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\navigation\ScrimInsetsFrameLayout.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "FrameLayout.h"
 #include "J2ObjC_source.h"
 #include "ScrimInsetsFrameLayout.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXScrimInsetsFrameLayout
@@ -45,3 +56,5 @@ ADXScrimInsetsFrameLayout *create_ADXScrimInsetsFrameLayout_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXScrimInsetsFrameLayout)
+
+J2OBJC_NAME_MAPPING(ADXScrimInsetsFrameLayout, "com.google.android.material.navigation", "ADX")

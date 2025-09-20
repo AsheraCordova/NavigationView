@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-ios-widgets\IOSNavigationViewPlugin\src\main\java\com\ashera\navigationview\NavigationViewPlugin.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_NavigationViewPlugin")
@@ -39,6 +40,7 @@ FOUNDATION_EXPORT void ASNavigationViewPlugin_initPlugin(void);
 J2OBJC_TYPE_LITERAL_HEADER(ASNavigationViewPlugin)
 
 @compatibility_alias ComAsheraNavigationviewNavigationViewPlugin ASNavigationViewPlugin;
+
 
 #endif
 

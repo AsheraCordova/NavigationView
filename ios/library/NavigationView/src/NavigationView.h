@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\navigation\NavigationView.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_NavigationView")
@@ -24,6 +25,8 @@
 @class ADDrawable;
 @class ADView;
 @class ADXNavigationMenu;
+@class JavaLangInteger;
+@class NSString;
 @protocol ADXNavigationView_OnNavigationItemSelectedListener;
 @protocol ASHasWidgets;
 @protocol ASIFragment;
@@ -39,21 +42,21 @@
 
 - (void)addHeaderViewWithADView:(ADView *)view;
 
-- (ADView *)getHeaderViewWithInt:(jint)index;
+- (ADView *)getHeaderViewWithInt:(int32_t)index;
 
 - (ADDrawable *)getItemBackground;
 
-- (jint)getItemHorizontalPadding;
+- (int32_t)getItemHorizontalPadding;
 
-- (jint)getItemIconPadding;
+- (int32_t)getItemIconPadding;
 
 - (ADColorStateList *)getItemIconTintList;
 
-- (jint)getItemMaxLines;
+- (int32_t)getItemMaxLines;
 
 - (ADColorStateList *)getItemTextColor;
 
-- (jint)getItemVerticalPadding;
+- (int32_t)getItemVerticalPadding;
 
 - (ADXNavigationMenu *)getMenu;
 
@@ -65,38 +68,38 @@
 
 - (void)removeHeaderViewWithADView:(ADView *)view;
 
-- (void)setDividerInsetEndWithInt:(jint)dividerInsetEnd;
+- (void)setDividerInsetEndWithInt:(int32_t)dividerInsetEnd;
 
-- (void)setDividerInsetStartWithInt:(jint)dividerInsetStart;
+- (void)setDividerInsetStartWithInt:(int32_t)dividerInsetStart;
 
 - (void)setItemBackgroundWithADDrawable:(ADDrawable *)itemBackground;
 
-- (void)setItemHorizontalPaddingWithInt:(jint)padding;
+- (void)setItemHorizontalPaddingWithInt:(int32_t)padding;
 
-- (void)setItemIconPaddingWithInt:(jint)padding;
+- (void)setItemIconPaddingWithInt:(int32_t)padding;
 
-- (void)setItemIconSizeWithInt:(jint)iconSize;
+- (void)setItemIconSizeWithInt:(int32_t)iconSize;
 
 - (void)setItemIconTintListWithADColorStateList:(ADColorStateList *)tint;
 
-- (void)setItemMaxLinesWithInt:(jint)itemMaxLines;
+- (void)setItemMaxLinesWithInt:(int32_t)itemMaxLines;
 
 - (void)setItemTextAppearanceWithNSString:(NSString *)resId;
 
 - (void)setItemTextColorWithADColorStateList:(ADColorStateList *)textColor;
 
-- (void)setItemVerticalPaddingWithInt:(jint)padding;
+- (void)setItemVerticalPaddingWithInt:(int32_t)padding;
 
 - (void)setNavigationItemSelectedListenerWithADXNavigationView_OnNavigationItemSelectedListener:(id<ADXNavigationView_OnNavigationItemSelectedListener>)listener;
 
-- (void)setSubheaderInsetEndWithInt:(jint)subheaderInsetEnd;
+- (void)setSubheaderInsetEndWithInt:(int32_t)subheaderInsetEnd;
 
-- (void)setSubheaderInsetStartWithInt:(jint)subheaderInsetStart;
+- (void)setSubheaderInsetStartWithInt:(int32_t)subheaderInsetStart;
 
 #pragma mark Protected
 
-- (void)onMeasureWithInt:(jint)widthSpec
-                 withInt:(jint)heightSpec;
+- (void)onMeasureWithInt:(int32_t)widthSpec
+                 withInt:(int32_t)heightSpec;
 
 @end
 
@@ -114,22 +117,25 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationView)
 
 @compatibility_alias ComGoogleAndroidMaterialNavigationNavigationView ADXNavigationView;
 
+
 #endif
 
 #if !defined (ADXNavigationView_OnNavigationItemSelectedListener_) && (INCLUDE_ALL_NavigationView || defined(INCLUDE_ADXNavigationView_OnNavigationItemSelectedListener))
 #define ADXNavigationView_OnNavigationItemSelectedListener_
 
+@class JavaLangBoolean;
 @protocol ADMenuItem;
 
 @protocol ADXNavigationView_OnNavigationItemSelectedListener < JavaObject >
 
-- (jboolean)onNavigationItemSelectedWithADMenuItem:(id<ADMenuItem>)item;
+- (bool)onNavigationItemSelectedWithADMenuItem:(id<ADMenuItem>)item;
 
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(ADXNavigationView_OnNavigationItemSelectedListener)
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationView_OnNavigationItemSelectedListener)
+
 
 #endif
 

@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\navigationrail\NavigationRailView.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "Context.h"
 #include "FrameLayout.h"
 #include "HasWidgets.h"
@@ -18,59 +23,68 @@
 #include "View.h"
 #include "ViewGroup.h"
 #include "WidgetFactory.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXNavigationRailView () {
  @public
-  jint topMargin_;
+  int32_t topMargin_;
   ADView *headerView_;
 }
 
 - (ADXNavigationRailMenuView *)getNavigationRailMenuView;
 
-- (jint)makeMinWidthSpecWithInt:(jint)measureSpec;
+- (int32_t)makeMinWidthSpecWithInt:(int32_t)measureSpec;
 
-- (jboolean)isHeaderViewVisible;
+- (bool)isHeaderViewVisible;
 
 @end
 
 J2OBJC_FIELD_SETTER(ADXNavigationRailView, headerView_, ADView *)
 
-inline jint ADXNavigationRailView_get_DEFAULT_HEADER_GRAVITY(void);
+inline int32_t ADXNavigationRailView_get_DEFAULT_HEADER_GRAVITY(void);
 #define ADXNavigationRailView_DEFAULT_HEADER_GRAVITY 49
-J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationRailView, DEFAULT_HEADER_GRAVITY, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationRailView, DEFAULT_HEADER_GRAVITY, int32_t)
 
 __attribute__((unused)) static ADXNavigationRailMenuView *ADXNavigationRailView_getNavigationRailMenuView(ADXNavigationRailView *self);
 
-__attribute__((unused)) static jint ADXNavigationRailView_makeMinWidthSpecWithInt_(ADXNavigationRailView *self, jint measureSpec);
+__attribute__((unused)) static int32_t ADXNavigationRailView_makeMinWidthSpecWithInt_(ADXNavigationRailView *self, int32_t measureSpec);
 
-__attribute__((unused)) static jboolean ADXNavigationRailView_isHeaderViewVisible(ADXNavigationRailView *self);
+__attribute__((unused)) static bool ADXNavigationRailView_isHeaderViewVisible(ADXNavigationRailView *self);
 
 @implementation ADXNavigationRailView
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec {
-  jint minWidthSpec = ADXNavigationRailView_makeMinWidthSpecWithInt_(self, widthMeasureSpec);
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec {
+  int32_t minWidthSpec = ADXNavigationRailView_makeMinWidthSpecWithInt_(self, widthMeasureSpec);
   [super onMeasureWithInt:minWidthSpec withInt:heightMeasureSpec];
   if (ADXNavigationRailView_isHeaderViewVisible(self)) {
-    jint maxMenuHeight = [self getMeasuredHeight] - [((ADView *) nil_chk(headerView_)) getMeasuredHeight] - topMargin_;
-    jint menuHeightSpec = ADView_MeasureSpec_makeMeasureSpecWithInt_withInt_(maxMenuHeight, ADView_MeasureSpec_AT_MOST);
+    int32_t maxMenuHeight = [self getMeasuredHeight] - [((ADView *) nil_chk(headerView_)) getMeasuredHeight] - topMargin_;
+    int32_t menuHeightSpec = ADView_MeasureSpec_makeMeasureSpecWithInt_withInt_(maxMenuHeight, ADView_MeasureSpec_AT_MOST);
     [self measureChildWithADView:ADXNavigationRailView_getNavigationRailMenuView(self) withInt:minWidthSpec withInt:menuHeightSpec];
   }
 }
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)left
-                    withInt:(jint)top
-                    withInt:(jint)right
-                    withInt:(jint)bottom {
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)left
+                    withInt:(int32_t)top
+                    withInt:(int32_t)right
+                    withInt:(int32_t)bottom {
   [super onLayoutWithBoolean:changed withInt:left withInt:top withInt:right withInt:bottom];
   ADXNavigationRailMenuView *menuView = ADXNavigationRailView_getNavigationRailMenuView(self);
-  jint offsetY = 0;
+  int32_t offsetY = 0;
   if (ADXNavigationRailView_isHeaderViewVisible(self)) {
-    jint usedTop = [((ADView *) nil_chk(headerView_)) getBottom] + topMargin_;
-    jint menuTop = [((ADXNavigationRailMenuView *) nil_chk(menuView)) getTop];
+    int32_t usedTop = [((ADView *) nil_chk(headerView_)) getBottom] + topMargin_;
+    int32_t menuTop = [((ADXNavigationRailMenuView *) nil_chk(menuView)) getTop];
     if (menuTop < usedTop) {
       offsetY = usedTop - menuTop;
     }
@@ -104,15 +118,15 @@ __attribute__((unused)) static jboolean ADXNavigationRailView_isHeaderViewVisibl
   }
 }
 
-- (void)setMenuGravityWithInt:(jint)gravity {
+- (void)setMenuGravityWithInt:(int32_t)gravity {
   [((ADXNavigationRailMenuView *) nil_chk(ADXNavigationRailView_getNavigationRailMenuView(self))) setMenuGravityWithInt:gravity];
 }
 
-- (jint)getMenuGravity {
+- (int32_t)getMenuGravity {
   return [((ADXNavigationRailMenuView *) nil_chk(ADXNavigationRailView_getNavigationRailMenuView(self))) getMenuGravity];
 }
 
-- (jint)getMaxItemCount {
+- (int32_t)getMaxItemCount {
   return ADXNavigationRailView_MAX_ITEM_COUNT;
 }
 
@@ -126,11 +140,11 @@ __attribute__((unused)) static jboolean ADXNavigationRailView_isHeaderViewVisibl
   return (ADXNavigationRailMenuView *) cast_chk([((id<ASIWidget>) nil_chk(widget)) asWidget], [ADXNavigationRailMenuView class]);
 }
 
-- (jint)makeMinWidthSpecWithInt:(jint)measureSpec {
+- (int32_t)makeMinWidthSpecWithInt:(int32_t)measureSpec {
   return ADXNavigationRailView_makeMinWidthSpecWithInt_(self, measureSpec);
 }
 
-- (jboolean)isHeaderViewVisible {
+- (bool)isHeaderViewVisible {
   return ADXNavigationRailView_isHeaderViewVisible(self);
 }
 
@@ -205,8 +219,8 @@ ADXNavigationRailMenuView *ADXNavigationRailView_getNavigationRailMenuView(ADXNa
   return (ADXNavigationRailMenuView *) cast_chk([self getMenuView], [ADXNavigationRailMenuView class]);
 }
 
-jint ADXNavigationRailView_makeMinWidthSpecWithInt_(ADXNavigationRailView *self, jint measureSpec) {
-  jint minWidth = [self getSuggestedMinimumWidth];
+int32_t ADXNavigationRailView_makeMinWidthSpecWithInt_(ADXNavigationRailView *self, int32_t measureSpec) {
+  int32_t minWidth = [self getSuggestedMinimumWidth];
   if (ADView_MeasureSpec_getModeWithInt_(measureSpec) != ADView_MeasureSpec_EXACTLY && minWidth > 0) {
     minWidth += [self getPaddingLeft] + [self getPaddingRight];
     return ADView_MeasureSpec_makeMeasureSpecWithInt_withInt_(JavaLangMath_minWithInt_withInt_(ADView_MeasureSpec_getSizeWithInt_(measureSpec), minWidth), ADView_MeasureSpec_EXACTLY);
@@ -214,7 +228,7 @@ jint ADXNavigationRailView_makeMinWidthSpecWithInt_(ADXNavigationRailView *self,
   return measureSpec;
 }
 
-jboolean ADXNavigationRailView_isHeaderViewVisible(ADXNavigationRailView *self) {
+bool ADXNavigationRailView_isHeaderViewVisible(ADXNavigationRailView *self) {
   return self->headerView_ != nil && [self->headerView_ getVisibility] != ADView_GONE;
 }
 
@@ -232,3 +246,5 @@ ADXNavigationRailView *create_ADXNavigationRailView_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXNavigationRailView)
+
+J2OBJC_NAME_MAPPING(ADXNavigationRailView, "com.google.android.material.navigationrail", "ADX")

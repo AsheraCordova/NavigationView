@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\internal\BaselineLayout.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_BaselineLayout")
@@ -20,26 +21,29 @@
 #define INCLUDE_ADViewGroup 1
 #include "ViewGroup.h"
 
+@class JavaLangBoolean;
+@class JavaLangInteger;
+
 @interface ADXBaselineLayout : ADViewGroup
 
 #pragma mark Public
 
 - (instancetype)init;
 
-- (jint)getBaseline;
+- (int32_t)getBaseline;
 
-- (void)setMeasurePaddingFromBaselineWithBoolean:(jboolean)measurePaddingFromBaseline;
+- (void)setMeasurePaddingFromBaselineWithBoolean:(bool)measurePaddingFromBaseline;
 
 #pragma mark Protected
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)left
-                    withInt:(jint)top
-                    withInt:(jint)right
-                    withInt:(jint)bottom;
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)left
+                    withInt:(int32_t)top
+                    withInt:(int32_t)right
+                    withInt:(int32_t)bottom;
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec;
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec;
 
 @end
 
@@ -54,6 +58,7 @@ FOUNDATION_EXPORT ADXBaselineLayout *create_ADXBaselineLayout_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXBaselineLayout)
 
 @compatibility_alias ComGoogleAndroidMaterialInternalBaselineLayout ADXBaselineLayout;
+
 
 #endif
 

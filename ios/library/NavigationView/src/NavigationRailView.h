@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\navigationrail\NavigationRailView.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_NavigationRailView")
@@ -23,6 +24,8 @@
 @class ADContext;
 @class ADView;
 @class ADXNavigationRailMenuView;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 
 @interface ADXNavigationRailView : ADXNavigationBarView
 
@@ -34,40 +37,40 @@
 
 - (ADView *)getHeaderView;
 
-- (jint)getMaxItemCount;
+- (int32_t)getMaxItemCount;
 
-- (jint)getMenuGravity;
+- (int32_t)getMenuGravity;
 
 - (void)initNavigationBarView OBJC_METHOD_FAMILY_NONE;
 
 - (void)removeHeaderView;
 
-- (void)setMenuGravityWithInt:(jint)gravity;
+- (void)setMenuGravityWithInt:(int32_t)gravity;
 
 #pragma mark Protected
 
 - (ADXNavigationRailMenuView *)createNavigationBarMenuViewWithADContext:(ADContext *)context;
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)left
-                    withInt:(jint)top
-                    withInt:(jint)right
-                    withInt:(jint)bottom;
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)left
+                    withInt:(int32_t)top
+                    withInt:(int32_t)right
+                    withInt:(int32_t)bottom;
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec;
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec;
 
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(ADXNavigationRailView)
 
-inline jint ADXNavigationRailView_get_DEFAULT_MENU_GRAVITY(void);
+inline int32_t ADXNavigationRailView_get_DEFAULT_MENU_GRAVITY(void);
 #define ADXNavigationRailView_DEFAULT_MENU_GRAVITY 49
-J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationRailView, DEFAULT_MENU_GRAVITY, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationRailView, DEFAULT_MENU_GRAVITY, int32_t)
 
-inline jint ADXNavigationRailView_get_MAX_ITEM_COUNT(void);
+inline int32_t ADXNavigationRailView_get_MAX_ITEM_COUNT(void);
 #define ADXNavigationRailView_MAX_ITEM_COUNT 7
-J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationRailView, MAX_ITEM_COUNT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationRailView, MAX_ITEM_COUNT, int32_t)
 
 FOUNDATION_EXPORT void ADXNavigationRailView_init(ADXNavigationRailView *self);
 
@@ -78,6 +81,7 @@ FOUNDATION_EXPORT ADXNavigationRailView *create_ADXNavigationRailView_init(void)
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationRailView)
 
 @compatibility_alias ComGoogleAndroidMaterialNavigationrailNavigationRailView ADXNavigationRailView;
+
 
 #endif
 

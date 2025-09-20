@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\internal\NavigationMenuItemView.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_NavigationMenuItemView")
@@ -23,12 +24,15 @@
 @class ADColorStateList;
 @class ADDrawable;
 @class ADXMenuItemImpl;
+@class JavaLangBoolean;
+@class JavaLangInteger;
+@class NSString;
 @protocol JavaLangCharSequence;
 
 @interface ADXNavigationMenuItemView : ADXForegroundLinearLayout {
  @public
-  jboolean checkable_;
-  jboolean isBold_;
+  bool checkable_;
+  bool isBold_;
 }
 
 #pragma mark Public
@@ -38,28 +42,28 @@
 - (ADXMenuItemImpl *)getItemData;
 
 - (void)initialize__WithADXMenuItemImpl:(ADXMenuItemImpl *)itemData
-                            withBoolean:(jboolean)isBold OBJC_METHOD_FAMILY_NONE;
+                            withBoolean:(bool)isBold OBJC_METHOD_FAMILY_NONE;
 
 - (void)initialize__WithADXMenuItemImpl:(ADXMenuItemImpl *)itemData
-                                withInt:(jint)menuType OBJC_METHOD_FAMILY_NONE;
+                                withInt:(int32_t)menuType OBJC_METHOD_FAMILY_NONE;
 
 - (void)initNavigationMenuItemView OBJC_METHOD_FAMILY_NONE;
 
 - (void)recycle;
 
-- (void)setCheckableWithBoolean:(jboolean)checkable;
+- (void)setCheckableWithBoolean:(bool)checkable;
 
-- (void)setCheckedWithBoolean:(jboolean)checked;
+- (void)setCheckedWithBoolean:(bool)checked;
 
 - (void)setIconWithADDrawable:(ADDrawable *)icon;
 
-- (void)setIconPaddingWithInt:(jint)padding;
+- (void)setIconPaddingWithInt:(int32_t)padding;
 
-- (void)setIconSizeWithInt:(jint)iconSize;
+- (void)setIconSizeWithInt:(int32_t)iconSize;
 
-- (void)setMaxLinesWithInt:(jint)maxLines;
+- (void)setMaxLinesWithInt:(int32_t)maxLines;
 
-- (void)setNeedsEmptyIconWithBoolean:(jboolean)needsEmptyIcon;
+- (void)setNeedsEmptyIconWithBoolean:(bool)needsEmptyIcon;
 
 - (void)setTextAppearanceWithNSString:(NSString *)textAppearance;
 
@@ -84,6 +88,7 @@ FOUNDATION_EXPORT ADXNavigationMenuItemView *create_ADXNavigationMenuItemView_in
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationMenuItemView)
 
 @compatibility_alias ComGoogleAndroidMaterialInternalNavigationMenuItemView ADXNavigationMenuItemView;
+
 
 #endif
 

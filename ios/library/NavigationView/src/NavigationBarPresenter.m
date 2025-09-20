@@ -3,19 +3,32 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\navigation\NavigationBarPresenter.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "Context.h"
 #include "J2ObjC_source.h"
 #include "MenuBuilder.h"
 #include "NavigationBarMenuView.h"
 #include "NavigationBarPresenter.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXNavigationBarPresenter () {
  @public
   ADXMenuBuilder *menu_;
   ADXNavigationBarMenuView *menuView_;
-  jboolean updateSuspended_;
-  jint id__;
+  bool updateSuspended_;
+  int32_t id__;
 }
 
 @end
@@ -42,7 +55,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   [((ADXNavigationBarMenuView *) nil_chk(menuView_)) initialize__WithADXMenuBuilder:self->menu_];
 }
 
-- (void)updateMenuViewWithBoolean:(jboolean)cleared {
+- (void)updateMenuViewWithBoolean:(bool)cleared {
   if (updateSuspended_) {
     return;
   }
@@ -54,15 +67,15 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jboolean)flagActionItems {
+- (bool)flagActionItems {
   return false;
 }
 
-- (void)setIdWithInt:(jint)id_ {
+- (void)setIdWithInt:(int32_t)id_ {
   self->id__ = id_;
 }
 
-- (void)setUpdateSuspendedWithBoolean:(jboolean)updateSuspended {
+- (void)setUpdateSuspendedWithBoolean:(bool)updateSuspended {
   self->updateSuspended_ = updateSuspended;
 }
 
@@ -120,3 +133,5 @@ ADXNavigationBarPresenter *create_ADXNavigationBarPresenter_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXNavigationBarPresenter)
+
+J2OBJC_NAME_MAPPING(ADXNavigationBarPresenter, "com.google.android.material.navigation", "ADX")

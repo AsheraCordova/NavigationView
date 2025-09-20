@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\internal\NavigationMenuPresenter.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_NavigationMenuPresenter")
@@ -30,6 +31,9 @@
 @class ADXNavigationMenuPresenter_LayoutInflater;
 @class ADXNavigationMenuPresenter_NavigationMenuAdapter;
 @class ADXRecyclerView;
+@class JavaLangBoolean;
+@class JavaLangInteger;
+@class NSString;
 @protocol ADView_OnClickListener;
 
 @interface ADXNavigationMenuPresenter : NSObject < ADXMenuPresenter > {
@@ -38,23 +42,23 @@
   ADXMenuBuilder *menu_;
   ADXNavigationMenuPresenter_NavigationMenuAdapter *adapter_;
   ADXNavigationMenuPresenter_LayoutInflater *layoutInflater_;
-  jint subheaderTextAppearance_;
+  int32_t subheaderTextAppearance_;
   ADColorStateList *subheaderColor_;
-  jboolean textAppearanceActiveBoldEnabled_;
+  bool textAppearanceActiveBoldEnabled_;
   ADColorStateList *textColor_;
   ADColorStateList *iconTintList_;
   ADDrawable *itemBackground_;
-  jint itemHorizontalPadding_;
-  jint itemVerticalPadding_;
-  jint itemIconPadding_;
-  jint itemIconSize_;
-  jint dividerInsetStart_;
-  jint dividerInsetEnd_;
-  jint subheaderInsetStart_;
-  jint subheaderInsetEnd_;
-  jboolean hasCustomItemIconSize_;
-  jboolean isBehindStatusBar_;
-  jint paddingSeparator_;
+  int32_t itemHorizontalPadding_;
+  int32_t itemVerticalPadding_;
+  int32_t itemIconPadding_;
+  int32_t itemIconSize_;
+  int32_t dividerInsetStart_;
+  int32_t dividerInsetEnd_;
+  int32_t subheaderInsetStart_;
+  int32_t subheaderInsetEnd_;
+  bool hasCustomItemIconSize_;
+  bool isBehindStatusBar_;
+  int32_t paddingSeparator_;
   id<ADView_OnClickListener> onClickListener_;
 }
 
@@ -64,25 +68,25 @@
 
 - (void)addHeaderViewWithADView:(ADView *)view;
 
-- (jboolean)flagActionItems;
+- (bool)flagActionItems;
 
-- (jint)getHeaderCount;
+- (int32_t)getHeaderCount;
 
-- (ADView *)getHeaderViewWithInt:(jint)index;
+- (ADView *)getHeaderViewWithInt:(int32_t)index;
 
 - (ADDrawable *)getItemBackground;
 
-- (jint)getItemHorizontalPadding;
+- (int32_t)getItemHorizontalPadding;
 
-- (jint)getItemIconPadding;
+- (int32_t)getItemIconPadding;
 
-- (jint)getItemMaxLines;
+- (int32_t)getItemMaxLines;
 
 - (ADColorStateList *)getItemTextColor;
 
 - (ADColorStateList *)getItemTintList;
 
-- (jint)getItemVerticalPadding;
+- (int32_t)getItemVerticalPadding;
 
 - (ADXRecyclerView *)getMenuViewWithADViewGroup:(ADViewGroup *)root;
 
@@ -91,37 +95,37 @@
 
 - (void)removeHeaderViewWithADView:(ADView *)view;
 
-- (void)setDividerInsetEndWithInt:(jint)dividerInsetEnd;
+- (void)setDividerInsetEndWithInt:(int32_t)dividerInsetEnd;
 
-- (void)setDividerInsetStartWithInt:(jint)dividerInsetStart;
+- (void)setDividerInsetStartWithInt:(int32_t)dividerInsetStart;
 
-- (void)setIdWithInt:(jint)id_;
+- (void)setIdWithInt:(int32_t)id_;
 
 - (void)setItemBackgroundWithADDrawable:(ADDrawable *)itemBackground;
 
-- (void)setItemHorizontalPaddingWithInt:(jint)itemHorizontalPadding;
+- (void)setItemHorizontalPaddingWithInt:(int32_t)itemHorizontalPadding;
 
-- (void)setItemIconPaddingWithInt:(jint)itemIconPadding;
+- (void)setItemIconPaddingWithInt:(int32_t)itemIconPadding;
 
-- (void)setItemIconSizeWithInt:(jint)itemIconSize;
+- (void)setItemIconSizeWithInt:(int32_t)itemIconSize;
 
 - (void)setItemIconTintListWithADColorStateList:(ADColorStateList *)tint;
 
-- (void)setItemMaxLinesWithInt:(jint)itemMaxLines;
+- (void)setItemMaxLinesWithInt:(int32_t)itemMaxLines;
 
 - (void)setItemTextAppearanceWithNSString:(NSString *)resId;
 
 - (void)setItemTextColorWithADColorStateList:(ADColorStateList *)textColor;
 
-- (void)setItemVerticalPaddingWithInt:(jint)itemVerticalPadding;
+- (void)setItemVerticalPaddingWithInt:(int32_t)itemVerticalPadding;
 
-- (void)setSubheaderInsetEndWithInt:(jint)subheaderInsetEnd;
+- (void)setSubheaderInsetEndWithInt:(int32_t)subheaderInsetEnd;
 
-- (void)setSubheaderInsetStartWithInt:(jint)subheaderInsetStart;
+- (void)setSubheaderInsetStartWithInt:(int32_t)subheaderInsetStart;
 
-- (void)setUpdateSuspendedWithBoolean:(jboolean)updateSuspended;
+- (void)setUpdateSuspendedWithBoolean:(bool)updateSuspended;
 
-- (void)updateMenuViewWithBoolean:(jboolean)cleared;
+- (void)updateMenuViewWithBoolean:(bool)cleared;
 
 @end
 
@@ -137,9 +141,9 @@ J2OBJC_FIELD_SETTER(ADXNavigationMenuPresenter, iconTintList_, ADColorStateList 
 J2OBJC_FIELD_SETTER(ADXNavigationMenuPresenter, itemBackground_, ADDrawable *)
 J2OBJC_FIELD_SETTER(ADXNavigationMenuPresenter, onClickListener_, id<ADView_OnClickListener>)
 
-inline jint ADXNavigationMenuPresenter_get_NO_TEXT_APPEARANCE_SET(void);
+inline int32_t ADXNavigationMenuPresenter_get_NO_TEXT_APPEARANCE_SET(void);
 #define ADXNavigationMenuPresenter_NO_TEXT_APPEARANCE_SET 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationMenuPresenter, NO_TEXT_APPEARANCE_SET, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationMenuPresenter, NO_TEXT_APPEARANCE_SET, int32_t)
 
 FOUNDATION_EXPORT void ADXNavigationMenuPresenter_init(ADXNavigationMenuPresenter *self);
 
@@ -150,6 +154,7 @@ FOUNDATION_EXPORT ADXNavigationMenuPresenter *create_ADXNavigationMenuPresenter_
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationMenuPresenter)
 
 @compatibility_alias ComGoogleAndroidMaterialInternalNavigationMenuPresenter ADXNavigationMenuPresenter;
+
 
 #endif
 
@@ -176,6 +181,7 @@ FOUNDATION_EXPORT void ADXNavigationMenuPresenter_ViewHolder_initWithADView_(ADX
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationMenuPresenter_ViewHolder)
 
+
 #endif
 
 #if !defined (ADXNavigationMenuPresenter_NavigationMenuAdapter_) && (INCLUDE_ALL_NavigationMenuPresenter || defined(INCLUDE_ADXNavigationMenuPresenter_NavigationMenuAdapter))
@@ -188,29 +194,31 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationMenuPresenter_ViewHolder)
 @class ADViewGroup;
 @class ADXMenuItemImpl;
 @class ADXNavigationMenuPresenter_ViewHolder;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 
 @interface ADXNavigationMenuPresenter_NavigationMenuAdapter : ADXRecyclerView_Adapter
 
 #pragma mark Public
 
-- (ADXNavigationMenuPresenter_ViewHolder *)createViewHolderWithADViewGroup:(ADViewGroup *)arg0
-                                                                   withInt:(jint)arg1;
+- (ADXNavigationMenuPresenter_ViewHolder *)createViewHolderWithADViewGroup:(ADViewGroup *)parent
+                                                                   withInt:(int32_t)viewType;
 
-- (jint)getItemCount;
+- (int32_t)getItemCount;
 
-- (jint)getItemViewTypeWithInt:(jint)position;
+- (int32_t)getItemViewTypeWithInt:(int32_t)position;
 
 - (void)onBindViewHolderWithADXRecyclerView_ViewHolder:(ADXNavigationMenuPresenter_ViewHolder *)holder
-                                               withInt:(jint)position;
+                                               withInt:(int32_t)position;
 
 - (ADXNavigationMenuPresenter_ViewHolder *)onCreateViewHolderWithADViewGroup:(ADViewGroup *)parent
-                                                                     withInt:(jint)viewType;
+                                                                     withInt:(int32_t)viewType;
 
 - (void)onViewRecycledWithADXRecyclerView_ViewHolder:(ADXNavigationMenuPresenter_ViewHolder *)holder;
 
 - (void)setCheckedItemWithADXMenuItemImpl:(ADXMenuItemImpl *)checkedItem;
 
-- (void)setUpdateSuspendedWithBoolean:(jboolean)updateSuspended;
+- (void)setUpdateSuspendedWithBoolean:(bool)updateSuspended;
 
 - (void)update;
 
@@ -220,6 +228,7 @@ J2OBJC_EMPTY_STATIC_INIT(ADXNavigationMenuPresenter_NavigationMenuAdapter)
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationMenuPresenter_NavigationMenuAdapter)
 
+
 #endif
 
 #if !defined (ADXNavigationMenuPresenter_LayoutInflater_) && (INCLUDE_ALL_NavigationMenuPresenter || defined(INCLUDE_ADXNavigationMenuPresenter_LayoutInflater))
@@ -228,6 +237,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationMenuPresenter_NavigationMenuAdapter)
 @class ADContext;
 @class ADView;
 @class ADViewGroup;
+@class JavaLangBoolean;
+@class NSString;
 @protocol ADView_OnClickListener;
 
 @interface ADXNavigationMenuPresenter_LayoutInflater : NSObject
@@ -240,7 +251,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationMenuPresenter_NavigationMenuAdapter)
 
 - (ADView *)inflateWithNSString:(NSString *)layout
                 withADViewGroup:(ADViewGroup *)parent
-                    withBoolean:(jboolean)b;
+                    withBoolean:(bool)b;
 
 - (void)recurseSetWithADViewGroup:(ADViewGroup *)parent
        withADView_OnClickListener:(id<ADView_OnClickListener>)onClickListener;
@@ -258,6 +269,7 @@ FOUNDATION_EXPORT ADXNavigationMenuPresenter_LayoutInflater *create_ADXNavigatio
 FOUNDATION_EXPORT ADXNavigationMenuPresenter_LayoutInflater *ADXNavigationMenuPresenter_LayoutInflater_fromWithADContext_(ADContext *context);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationMenuPresenter_LayoutInflater)
+
 
 #endif
 

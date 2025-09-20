@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\navigation\NavigationBarMenuView.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_NavigationBarMenuView")
@@ -28,6 +29,9 @@
 @class ADXNavigationBarItemView;
 @class ADXNavigationBarPresenter;
 @class IOSIntArray;
+@class JavaLangBoolean;
+@class JavaLangInteger;
+@class NSString;
 
 @interface ADXNavigationBarMenuView : ADViewGroup
 
@@ -37,13 +41,13 @@
 
 - (void)buildMenuView;
 
-- (ADColorStateList *)createDefaultColorStateListWithInt:(jint)baseColorThemeAttr;
+- (ADColorStateList *)createDefaultColorStateListWithInt:(int32_t)baseColorThemeAttr;
 
-- (ADXNavigationBarItemView *)findItemViewWithInt:(jint)menuItemId;
+- (ADXNavigationBarItemView *)findItemViewWithInt:(int32_t)menuItemId;
 
-- (jint)getLabelVisibilityMode;
+- (int32_t)getLabelVisibilityMode;
 
-- (jint)getSelectedItemId;
+- (int32_t)getSelectedItemId;
 
 - (void)initialize__WithADXMenuBuilder:(ADXMenuBuilder *)menu OBJC_METHOD_FAMILY_NONE;
 
@@ -53,7 +57,7 @@
 
 - (void)setItemBackgroundWithADDrawable:(ADDrawable *)background;
 
-- (void)setItemIconSizeWithInt:(jint)iconSize;
+- (void)setItemIconSizeWithInt:(int32_t)iconSize;
 
 - (void)setItemTextAppearanceActiveWithNSString:(NSString *)textAppearanceRes;
 
@@ -61,7 +65,7 @@
 
 - (void)setItemTextColorWithADColorStateList:(ADColorStateList *)color;
 
-- (void)setLabelVisibilityModeWithInt:(jint)labelVisibilityMode;
+- (void)setLabelVisibilityModeWithInt:(int32_t)labelVisibilityMode;
 
 - (void)setPresenterWithADXNavigationBarPresenter:(ADXNavigationBarPresenter *)presenter;
 
@@ -73,14 +77,14 @@
 
 - (ADXMenuBuilder *)getMenu;
 
-- (jint)getSelectedItemPosition;
+- (int32_t)getSelectedItemPosition;
 
-- (jboolean)isShiftingWithInt:(jint)labelVisibilityMode
-                      withInt:(jint)childCount;
+- (bool)isShiftingWithInt:(int32_t)labelVisibilityMode
+                  withInt:(int32_t)childCount;
 
 #pragma mark Package-Private
 
-- (ADXBadgeDrawable *)getOrCreateBadgeWithInt:(jint)menuItemId;
+- (ADXBadgeDrawable *)getOrCreateBadgeWithInt:(int32_t)menuItemId;
 
 @end
 
@@ -96,6 +100,7 @@ FOUNDATION_EXPORT void ADXNavigationBarMenuView_init(ADXNavigationBarMenuView *s
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationBarMenuView)
 
 @compatibility_alias ComGoogleAndroidMaterialNavigationNavigationBarMenuView ADXNavigationBarMenuView;
+
 
 #endif
 

@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-ios-widgets\IOSNavigationViewPlugin\src\main\java\com\ashera\navigationview\BaselineLayoutImpl.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_BaselineLayoutImpl")
@@ -22,6 +23,9 @@
 
 @class ASWidgetAttribute;
 @class IOSClass;
+@class JavaLangBoolean;
+@class JavaLangInteger;
+@class NSString;
 @protocol ASIFragment;
 @protocol ASILifeCycleDecorator;
 @protocol ASIWidget;
@@ -40,13 +44,13 @@
                     withNSString:(NSString *)localname;
 
 - (void)addWithASIWidget:(id<ASIWidget>)w
-                 withInt:(jint)index;
+                 withInt:(int32_t)index;
 
 - (id)asNativeWidget;
 
 - (id)asWidget;
 
-- (jboolean)checkIosVersionWithNSString:(NSString *)v;
+- (bool)checkIosVersionWithNSString:(NSString *)v;
 
 - (void)createWithASIFragment:(id<ASIFragment>)fragment
               withJavaUtilMap:(id<JavaUtilMap>)params;
@@ -67,9 +71,9 @@
 
 - (id<ASIWidget>)newInstance OBJC_METHOD_FAMILY_NONE;
 
-- (jboolean)removeWithInt:(jint)index;
+- (bool)removeWithInt:(int32_t)index;
 
-- (jboolean)removeWithASIWidget:(id<ASIWidget>)w;
+- (bool)removeWithASIWidget:(id<ASIWidget>)w;
 
 - (void)requestLayout;
 
@@ -85,7 +89,7 @@
 
 - (void)setIdWithNSString:(NSString *)id_;
 
-- (void)setVisibleWithBoolean:(jboolean)b;
+- (void)setVisibleWithBoolean:(bool)b;
 
 @end
 
@@ -123,6 +127,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBaselineLayoutImpl)
 
 @compatibility_alias ComAsheraNavigationviewBaselineLayoutImpl ASBaselineLayoutImpl;
 
+
 #endif
 
 #if !defined (ASBaselineLayoutImpl_BaselineLayoutExt_) && (INCLUDE_ALL_BaselineLayoutImpl || defined(INCLUDE_ASBaselineLayoutImpl_BaselineLayoutExt))
@@ -146,6 +151,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBaselineLayoutImpl)
 @class ASWidgetAttribute;
 @class IOSIntArray;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangInteger;
+@class NSString;
 @protocol ASIWidget;
 @protocol JavaUtilList;
 
@@ -166,9 +174,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBaselineLayoutImpl)
 
 - (void)getLocationOnScreenWithIntArray:(IOSIntArray *)appScreenLocation;
 
-- (jint)getMaxHeight;
+- (int32_t)getMaxHeight;
 
-- (jint)getMaxWidth;
+- (int32_t)getMaxWidth;
 
 - (id<JavaUtilList>)getMethods;
 
@@ -182,12 +190,12 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBaselineLayoutImpl)
 
 - (id<ASILifeCycleDecorator>)newInstanceWithASIWidget:(id<ASIWidget>)widget OBJC_METHOD_FAMILY_NONE;
 
-- (void)offsetLeftAndRightWithInt:(jint)offset;
+- (void)offsetLeftAndRightWithInt:(int32_t)offset;
 
-- (void)offsetTopAndBottomWithInt:(jint)offset;
+- (void)offsetTopAndBottomWithInt:(int32_t)offset;
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec;
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec;
 
 - (void)remeasure;
 
@@ -197,9 +205,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBaselineLayoutImpl)
                              withNSString:(NSString *)strValue
                                    withId:(id)objValue;
 
-- (void)setMaxHeightWithInt:(jint)height;
+- (void)setMaxHeightWithInt:(int32_t)height;
 
-- (void)setMaxWidthWithInt:(jint)width;
+- (void)setMaxWidthWithInt:(int32_t)width;
 
 - (void)setMyAttributeWithNSString:(NSString *)name
                             withId:(id)value;
@@ -214,7 +222,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBaselineLayoutImpl)
 
 - (void)setState4WithId:(id)value;
 
-- (void)setVisibilityWithInt:(jint)visibility;
+- (void)setVisibilityWithInt:(int32_t)visibility;
 
 - (void)state0;
 
@@ -230,16 +238,16 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBaselineLayoutImpl)
 
 - (void)stateYes;
 
-- (void)updateMeasuredDimensionWithInt:(jint)width
-                               withInt:(jint)height;
+- (void)updateMeasuredDimensionWithInt:(int32_t)width
+                               withInt:(int32_t)height;
 
 #pragma mark Protected
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)l
-                    withInt:(jint)t
-                    withInt:(jint)r
-                    withInt:(jint)b;
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)l
+                    withInt:(int32_t)t
+                    withInt:(int32_t)r
+                    withInt:(int32_t)b;
 
 // Disallowed inherited constructors, do not use.
 
@@ -256,6 +264,7 @@ FOUNDATION_EXPORT ASBaselineLayoutImpl_BaselineLayoutExt *new_ASBaselineLayoutIm
 FOUNDATION_EXPORT ASBaselineLayoutImpl_BaselineLayoutExt *create_ASBaselineLayoutImpl_BaselineLayoutExt_initWithASBaselineLayoutImpl_(ASBaselineLayoutImpl *outer$);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASBaselineLayoutImpl_BaselineLayoutExt)
+
 
 #endif
 

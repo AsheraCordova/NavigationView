@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\navigation\NavigationBarView.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "BadgeDrawable.h"
 #include "ColorStateList.h"
 #include "Context.h"
@@ -20,6 +25,15 @@
 #include "NavigationBarPresenter.h"
 #include "NavigationBarView.h"
 #include "PluginInvoker.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXNavigationBarView () {
@@ -41,9 +55,9 @@ J2OBJC_FIELD_SETTER(ADXNavigationBarView, itemRippleColor_, ADColorStateList *)
 J2OBJC_FIELD_SETTER(ADXNavigationBarView, selectedListener_, id<ADXNavigationBarView_OnItemSelectedListener>)
 J2OBJC_FIELD_SETTER(ADXNavigationBarView, reselectedListener_, id<ADXNavigationBarView_OnItemReselectedListener>)
 
-inline jint ADXNavigationBarView_get_MENU_PRESENTER_ID(void);
+inline int32_t ADXNavigationBarView_get_MENU_PRESENTER_ID(void);
 #define ADXNavigationBarView_MENU_PRESENTER_ID 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationBarView, MENU_PRESENTER_ID, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationBarView, MENU_PRESENTER_ID, int32_t)
 
 @interface ADXNavigationBarView_OnItemSelectedListener : NSObject
 
@@ -60,8 +74,8 @@ J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationBarView, MENU_PRESENTER_ID, jint)
 
 - (instancetype)initWithADXNavigationBarView:(ADXNavigationBarView *)outer$;
 
-- (jboolean)onMenuItemSelectedWithADXMenuBuilder:(ADXMenuBuilder *)menu
-                                  withADMenuItem:(id<ADMenuItem>)item;
+- (bool)onMenuItemSelectedWithADXMenuBuilder:(ADXMenuBuilder *)menu
+                              withADMenuItem:(id<ADMenuItem>)item;
 
 - (void)onMenuModeChangeWithADXMenuBuilder:(ADXMenuBuilder *)menu;
 
@@ -74,6 +88,7 @@ __attribute__((unused)) static void ADXNavigationBarView_1_initWithADXNavigation
 __attribute__((unused)) static ADXNavigationBarView_1 *new_ADXNavigationBarView_1_initWithADXNavigationBarView_(ADXNavigationBarView *outer$) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static ADXNavigationBarView_1 *create_ADXNavigationBarView_1_initWithADXNavigationBarView_(ADXNavigationBarView *outer$);
+
 
 @implementation ADXNavigationBarView
 
@@ -113,7 +128,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   [((ADXNavigationBarMenuView *) nil_chk(menuView_)) setIconTintListWithADColorStateList:tint];
 }
 
-- (void)setItemIconSizeWithInt:(jint)iconSize {
+- (void)setItemIconSizeWithInt:(int32_t)iconSize {
   [((ADXNavigationBarMenuView *) nil_chk(menuView_)) setItemIconSizeWithInt:iconSize];
 }
 
@@ -126,11 +141,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   JreStrongAssign(&itemRippleColor_, nil);
 }
 
-- (jint)getSelectedItemId {
+- (int32_t)getSelectedItemId {
   return [((ADXNavigationBarMenuView *) nil_chk(menuView_)) getSelectedItemId];
 }
 
-- (void)setSelectedItemIdWithInt:(jint)itemId {
+- (void)setSelectedItemIdWithInt:(int32_t)itemId {
   id<ADMenuItem> item = JreRetainedLocalValue([((ADXNavigationBarMenu *) nil_chk(menu_)) findItemWithInt:itemId]);
   if (item != nil) {
     if (![((ADXNavigationBarMenu *) nil_chk(menu_)) performItemActionWithADMenuItem:item withADXMenuPresenter:presenter_ withInt:0]) {
@@ -139,7 +154,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)setLabelVisibilityModeWithInt:(jint)labelVisibilityMode {
+- (void)setLabelVisibilityModeWithInt:(int32_t)labelVisibilityMode {
   if ([((ADXNavigationBarMenuView *) nil_chk(menuView_)) getLabelVisibilityMode] != labelVisibilityMode) {
     [((ADXNavigationBarMenuView *) nil_chk(menuView_)) setLabelVisibilityModeWithInt:labelVisibilityMode];
     [((ADXNavigationBarPresenter *) nil_chk(presenter_)) updateMenuViewWithBoolean:false];
@@ -154,11 +169,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   [((ADXNavigationBarMenuView *) nil_chk(menuView_)) setItemTextAppearanceActiveWithNSString:textAppearanceRes];
 }
 
-- (ADXBadgeDrawable *)getOrCreateBadgeWithInt:(jint)menuItemId {
+- (ADXBadgeDrawable *)getOrCreateBadgeWithInt:(int32_t)menuItemId {
   return [((ADXNavigationBarMenuView *) nil_chk(menuView_)) getOrCreateBadgeWithInt:menuItemId];
 }
 
-- (jint)getMaxItemCount {
+- (int32_t)getMaxItemCount {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
   return 0;
@@ -281,6 +296,8 @@ void ADXNavigationBarView_init(ADXNavigationBarView *self) {
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXNavigationBarView)
 
+J2OBJC_NAME_MAPPING(ADXNavigationBarView, "com.google.android.material.navigation", "ADX")
+
 @implementation ADXNavigationBarView_OnItemSelectedListener
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -328,8 +345,8 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ADXNavigationBarView_OnItemReselectedListen
   return self;
 }
 
-- (jboolean)onMenuItemSelectedWithADXMenuBuilder:(ADXMenuBuilder *)menu
-                                  withADMenuItem:(id<ADMenuItem>)item {
+- (bool)onMenuItemSelectedWithADXMenuBuilder:(ADXMenuBuilder *)menu
+                              withADMenuItem:(id<ADMenuItem>)item {
   if (this$0_->reselectedListener_ != nil && [((id<ADMenuItem>) nil_chk(item)) getItemId] == [this$0_ getSelectedItemId]) {
     [this$0_->reselectedListener_ onNavigationItemReselectedWithADMenuItem:item];
     return true;
@@ -362,7 +379,7 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ADXNavigationBarView_OnItemReselectedListen
     { "this$0_", "LADXNavigationBarView;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LADXNavigationBarView;", "onMenuItemSelected", "LADXMenuBuilder;LADMenuItem;", "onMenuModeChange", "LADXMenuBuilder;", "initNavigationBarView" };
-  static const J2ObjcClassInfo _ADXNavigationBarView_1 = { "", "com.google.android.material.navigation", ptrTable, methods, fields, 7, 0x8010, 3, 1, 0, -1, 5, -1, -1 };
+  static const J2ObjcClassInfo _ADXNavigationBarView_1 = { "", "com.google.android.material.navigation", ptrTable, methods, fields, 7, 0x8000, 3, 1, 0, -1, 5, -1, -1 };
   return &_ADXNavigationBarView_1;
 }
 

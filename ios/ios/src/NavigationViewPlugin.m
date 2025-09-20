@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-ios-widgets\IOSNavigationViewPlugin\src\main\java\com\ashera\navigationview\NavigationViewPlugin.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "BaselineLayoutImpl.h"
 #include "BottomNavigationItemViewImpl.h"
 #include "BottomNavigationMenuViewImpl.h"
@@ -15,6 +20,12 @@
 #include "NavigationViewImpl.h"
 #include "NavigationViewPlugin.h"
 #include "WidgetFactory.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ASNavigationViewPlugin
@@ -73,3 +84,5 @@ void ASNavigationViewPlugin_initPlugin() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationViewPlugin)
+
+J2OBJC_NAME_MAPPING(ASNavigationViewPlugin, "com.ashera.navigationview", "AS")

@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\internal\NavigationMenuItemView.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ColorStateList.h"
 #include "Drawable.h"
 #include "ForegroundLinearLayout.h"
@@ -17,23 +22,31 @@
 #include "View.h"
 #include "ViewGroup.h"
 #include "ViewParent.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/CharSequence.h"
+#include "java/lang/Float.h"
 #include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXNavigationMenuItemView () {
  @public
-  jint iconSize_;
-  jboolean needsEmptyIcon_;
+  int32_t iconSize_;
+  bool needsEmptyIcon_;
   ADTextView *textView_;
   ADFrameLayout *actionArea_;
   ADXMenuItemImpl *itemData_;
   ADColorStateList *iconTintList_;
-  jboolean hasIconTintList_;
+  bool hasIconTintList_;
   ADDrawable *emptyDrawable_;
 }
 
-- (jboolean)shouldExpandActionArea;
+- (bool)shouldExpandActionArea;
 
 - (void)adjustAppearance;
 
@@ -47,7 +60,7 @@ J2OBJC_FIELD_SETTER(ADXNavigationMenuItemView, itemData_, ADXMenuItemImpl *)
 J2OBJC_FIELD_SETTER(ADXNavigationMenuItemView, iconTintList_, ADColorStateList *)
 J2OBJC_FIELD_SETTER(ADXNavigationMenuItemView, emptyDrawable_, ADDrawable *)
 
-__attribute__((unused)) static jboolean ADXNavigationMenuItemView_shouldExpandActionArea(ADXNavigationMenuItemView *self);
+__attribute__((unused)) static bool ADXNavigationMenuItemView_shouldExpandActionArea(ADXNavigationMenuItemView *self);
 
 __attribute__((unused)) static void ADXNavigationMenuItemView_adjustAppearance(ADXNavigationMenuItemView *self);
 
@@ -63,7 +76,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)initialize__WithADXMenuItemImpl:(ADXMenuItemImpl *)itemData
-                                withInt:(jint)menuType {
+                                withInt:(int32_t)menuType {
   JreStrongAssign(&self->itemData_, itemData);
   if ([((ADXMenuItemImpl *) nil_chk(itemData)) getItemId] > 0) {
     [self setIdWithInt:[itemData getItemId]];
@@ -81,12 +94,12 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)initialize__WithADXMenuItemImpl:(ADXMenuItemImpl *)itemData
-                            withBoolean:(jboolean)isBold {
+                            withBoolean:(bool)isBold {
   self->isBold_ = isBold;
   [self initialize__WithADXMenuItemImpl:itemData withInt:0];
 }
 
-- (jboolean)shouldExpandActionArea {
+- (bool)shouldExpandActionArea {
   return ADXNavigationMenuItemView_shouldExpandActionArea(self);
 }
 
@@ -112,14 +125,14 @@ J2OBJC_IGNORE_DESIGNATED_END
   [((ADTextView *) nil_chk(textView_)) setMyAttributeWithNSString:@"text" withId:title];
 }
 
-- (void)setCheckableWithBoolean:(jboolean)checkable {
+- (void)setCheckableWithBoolean:(bool)checkable {
   [self refreshDrawableState];
   if (self->checkable_ != checkable) {
     self->checkable_ = checkable;
   }
 }
 
-- (void)setCheckedWithBoolean:(jboolean)checked {
+- (void)setCheckedWithBoolean:(bool)checked {
   [self refreshDrawableState];
 }
 
@@ -146,7 +159,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)setIconSizeWithInt:(jint)iconSize {
+- (void)setIconSizeWithInt:(int32_t)iconSize {
   self->iconSize_ = iconSize;
 }
 
@@ -166,15 +179,15 @@ J2OBJC_IGNORE_DESIGNATED_END
   [((ADTextView *) nil_chk(textView_)) setMyAttributeWithNSString:@"textColor" withId:colors];
 }
 
-- (void)setNeedsEmptyIconWithBoolean:(jboolean)needsEmptyIcon {
+- (void)setNeedsEmptyIconWithBoolean:(bool)needsEmptyIcon {
   self->needsEmptyIcon_ = needsEmptyIcon;
 }
 
-- (void)setIconPaddingWithInt:(jint)padding {
+- (void)setIconPaddingWithInt:(int32_t)padding {
   [((ADTextView *) nil_chk(textView_)) setMyAttributeWithNSString:@"drawablePadding" withId:JavaLangInteger_valueOfWithInt_(padding)];
 }
 
-- (void)setMaxLinesWithInt:(jint)maxLines {
+- (void)setMaxLinesWithInt:(int32_t)maxLines {
   [((ADTextView *) nil_chk(textView_)) setMyAttributeWithNSString:@"maxLines" withId:JavaLangInteger_valueOfWithInt_(maxLines)];
 }
 
@@ -273,7 +286,7 @@ ADXNavigationMenuItemView *create_ADXNavigationMenuItemView_init() {
   J2OBJC_CREATE_IMPL(ADXNavigationMenuItemView, init)
 }
 
-jboolean ADXNavigationMenuItemView_shouldExpandActionArea(ADXNavigationMenuItemView *self) {
+bool ADXNavigationMenuItemView_shouldExpandActionArea(ADXNavigationMenuItemView *self) {
   return [((ADXMenuItemImpl *) nil_chk(self->itemData_)) getTitle] == nil && [((ADXMenuItemImpl *) nil_chk(self->itemData_)) getIcon] == nil && [((ADXMenuItemImpl *) nil_chk(self->itemData_)) getActionView] != nil;
 }
 
@@ -309,3 +322,5 @@ void ADXNavigationMenuItemView_setActionViewWithADView_(ADXNavigationMenuItemVie
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXNavigationMenuItemView)
+
+J2OBJC_NAME_MAPPING(ADXNavigationMenuItemView, "com.google.android.material.internal", "ADX")

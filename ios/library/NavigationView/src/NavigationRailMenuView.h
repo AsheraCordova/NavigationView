@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\navigationrail\NavigationRailMenuView.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_NavigationRailMenuView")
@@ -22,6 +23,8 @@
 
 @class ADContext;
 @class ADXNavigationBarItemView;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 
 @interface ADXNavigationRailMenuView : ADXNavigationBarMenuView
 
@@ -35,22 +38,22 @@
 
 - (ADXNavigationBarItemView *)createNavigationBarItemViewWithADContext:(ADContext *)context;
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)left
-                    withInt:(jint)top
-                    withInt:(jint)right
-                    withInt:(jint)bottom;
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)left
+                    withInt:(int32_t)top
+                    withInt:(int32_t)right
+                    withInt:(int32_t)bottom;
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec;
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec;
 
 #pragma mark Package-Private
 
-- (jint)getMenuGravity;
+- (int32_t)getMenuGravity;
 
-- (jboolean)isTopGravity;
+- (bool)isTopGravity;
 
-- (void)setMenuGravityWithInt:(jint)gravity;
+- (void)setMenuGravityWithInt:(int32_t)gravity;
 
 @end
 
@@ -65,6 +68,7 @@ FOUNDATION_EXPORT ADXNavigationRailMenuView *create_ADXNavigationRailMenuView_in
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationRailMenuView)
 
 @compatibility_alias ComGoogleAndroidMaterialNavigationrailNavigationRailMenuView ADXNavigationRailMenuView;
+
 
 #endif
 

@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\internal\NavigationMenuView.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_NavigationMenuView")
@@ -22,6 +23,7 @@
 
 @class ADContext;
 @class ADXMenuBuilder;
+@class JavaLangInteger;
 
 @interface ADXNavigationMenuView : ADXRecyclerView
 
@@ -29,7 +31,7 @@
 
 - (instancetype)initWithADContext:(ADContext *)context;
 
-- (jint)getWindowAnimations;
+- (int32_t)getWindowAnimations;
 
 - (void)initialize__WithADXMenuBuilder:(ADXMenuBuilder *)menu OBJC_METHOD_FAMILY_NONE;
 
@@ -50,6 +52,7 @@ FOUNDATION_EXPORT ADXNavigationMenuView *create_ADXNavigationMenuView_initWithAD
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationMenuView)
 
 @compatibility_alias ComGoogleAndroidMaterialInternalNavigationMenuView ADXNavigationMenuView;
+
 
 #endif
 

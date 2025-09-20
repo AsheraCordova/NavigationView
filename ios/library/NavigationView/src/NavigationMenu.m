@@ -3,10 +3,21 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\internal\NavigationMenu.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "Context.h"
 #include "J2ObjC_source.h"
 #include "MenuBuilder.h"
 #include "NavigationMenu.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXNavigationMenu
@@ -45,3 +56,5 @@ ADXNavigationMenu *create_ADXNavigationMenu_initWithADContext_(ADContext *contex
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXNavigationMenu)
+
+J2OBJC_NAME_MAPPING(ADXNavigationMenu, "com.google.android.material.internal", "ADX")

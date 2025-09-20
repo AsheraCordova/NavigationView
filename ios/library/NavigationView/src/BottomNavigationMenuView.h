@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\bottomnavigation\BottomNavigationMenuView.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_BottomNavigationMenuView")
@@ -22,6 +23,8 @@
 
 @class ADContext;
 @class ADXNavigationBarItemView;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 
 @interface ADXBottomNavigationMenuView : ADXNavigationBarMenuView
 
@@ -29,22 +32,22 @@
 
 - (instancetype)init;
 
-- (jboolean)isItemHorizontalTranslationEnabled;
+- (bool)isItemHorizontalTranslationEnabled;
 
-- (void)setItemHorizontalTranslationEnabledWithBoolean:(jboolean)itemHorizontalTranslationEnabled;
+- (void)setItemHorizontalTranslationEnabledWithBoolean:(bool)itemHorizontalTranslationEnabled;
 
 #pragma mark Protected
 
 - (ADXNavigationBarItemView *)createNavigationBarItemViewWithADContext:(ADContext *)context;
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)left
-                    withInt:(jint)top
-                    withInt:(jint)right
-                    withInt:(jint)bottom;
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)left
+                    withInt:(int32_t)top
+                    withInt:(int32_t)right
+                    withInt:(int32_t)bottom;
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec;
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec;
 
 @end
 
@@ -59,6 +62,7 @@ FOUNDATION_EXPORT ADXBottomNavigationMenuView *create_ADXBottomNavigationMenuVie
 J2OBJC_TYPE_LITERAL_HEADER(ADXBottomNavigationMenuView)
 
 @compatibility_alias ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView ADXBottomNavigationMenuView;
+
 
 #endif
 

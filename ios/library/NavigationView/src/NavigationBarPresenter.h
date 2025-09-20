@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\navigation\NavigationBarPresenter.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_NavigationBarPresenter")
@@ -23,6 +24,8 @@
 @class ADContext;
 @class ADXMenuBuilder;
 @class ADXNavigationBarMenuView;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 
 @interface ADXNavigationBarPresenter : NSObject < ADXMenuPresenter >
 
@@ -30,18 +33,18 @@
 
 - (instancetype)init;
 
-- (jboolean)flagActionItems;
+- (bool)flagActionItems;
 
 - (void)initForMenuWithADContext:(ADContext *)context
               withADXMenuBuilder:(ADXMenuBuilder *)menu OBJC_METHOD_FAMILY_NONE;
 
-- (void)setIdWithInt:(jint)id_;
+- (void)setIdWithInt:(int32_t)id_;
 
 - (void)setMenuViewWithADXNavigationBarMenuView:(ADXNavigationBarMenuView *)menuView;
 
-- (void)setUpdateSuspendedWithBoolean:(jboolean)updateSuspended;
+- (void)setUpdateSuspendedWithBoolean:(bool)updateSuspended;
 
-- (void)updateMenuViewWithBoolean:(jboolean)cleared;
+- (void)updateMenuViewWithBoolean:(bool)cleared;
 
 @end
 
@@ -56,6 +59,7 @@ FOUNDATION_EXPORT ADXNavigationBarPresenter *create_ADXNavigationBarPresenter_in
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationBarPresenter)
 
 @compatibility_alias ComGoogleAndroidMaterialNavigationNavigationBarPresenter ADXNavigationBarPresenter;
+
 
 #endif
 

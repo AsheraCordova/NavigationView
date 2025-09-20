@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\navigation\NavigationBarView.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_NavigationBarView")
@@ -27,6 +28,8 @@
 @class ADXNavigationBarMenu;
 @class ADXNavigationBarMenuView;
 @class ADXNavigationBarPresenter;
+@class JavaLangInteger;
+@class NSString;
 @protocol ADXNavigationBarView_OnItemReselectedListener;
 @protocol ADXNavigationBarView_OnItemSelectedListener;
 @protocol ASHasWidgets;
@@ -38,15 +41,15 @@
 
 - (instancetype)init;
 
-- (jint)getMaxItemCount;
+- (int32_t)getMaxItemCount;
 
 - (ADXNavigationBarMenu *)getMenu;
 
 - (ADXNavigationBarMenuView *)getMenuView;
 
-- (ADXBadgeDrawable *)getOrCreateBadgeWithInt:(jint)menuItemId;
+- (ADXBadgeDrawable *)getOrCreateBadgeWithInt:(int32_t)menuItemId;
 
-- (jint)getSelectedItemId;
+- (int32_t)getSelectedItemId;
 
 - (void)inflateMenuWithASHasWidgets:(id<ASHasWidgets>)parent
                        withNSString:(NSString *)json
@@ -58,7 +61,7 @@
 
 - (void)setItemBackgroundWithADDrawable:(ADDrawable *)background;
 
-- (void)setItemIconSizeWithInt:(jint)iconSize;
+- (void)setItemIconSizeWithInt:(int32_t)iconSize;
 
 - (void)setItemIconTintListWithADColorStateList:(ADColorStateList *)tint;
 
@@ -68,13 +71,13 @@
 
 - (void)setItemTextColorWithADColorStateList:(ADColorStateList *)textColor;
 
-- (void)setLabelVisibilityModeWithInt:(jint)labelVisibilityMode;
+- (void)setLabelVisibilityModeWithInt:(int32_t)labelVisibilityMode;
 
 - (void)setOnItemReselectedListenerWithADXNavigationBarView_OnItemReselectedListener:(id<ADXNavigationBarView_OnItemReselectedListener>)listener;
 
 - (void)setOnItemSelectedListenerWithADXNavigationBarView_OnItemSelectedListener:(id<ADXNavigationBarView_OnItemSelectedListener>)listener;
 
-- (void)setSelectedItemIdWithInt:(jint)itemId;
+- (void)setSelectedItemIdWithInt:(int32_t)itemId;
 
 #pragma mark Protected
 
@@ -86,21 +89,21 @@
 
 J2OBJC_EMPTY_STATIC_INIT(ADXNavigationBarView)
 
-inline jint ADXNavigationBarView_get_LABEL_VISIBILITY_AUTO(void);
+inline int32_t ADXNavigationBarView_get_LABEL_VISIBILITY_AUTO(void);
 #define ADXNavigationBarView_LABEL_VISIBILITY_AUTO -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationBarView, LABEL_VISIBILITY_AUTO, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationBarView, LABEL_VISIBILITY_AUTO, int32_t)
 
-inline jint ADXNavigationBarView_get_LABEL_VISIBILITY_SELECTED(void);
+inline int32_t ADXNavigationBarView_get_LABEL_VISIBILITY_SELECTED(void);
 #define ADXNavigationBarView_LABEL_VISIBILITY_SELECTED 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationBarView, LABEL_VISIBILITY_SELECTED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationBarView, LABEL_VISIBILITY_SELECTED, int32_t)
 
-inline jint ADXNavigationBarView_get_LABEL_VISIBILITY_LABELED(void);
+inline int32_t ADXNavigationBarView_get_LABEL_VISIBILITY_LABELED(void);
 #define ADXNavigationBarView_LABEL_VISIBILITY_LABELED 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationBarView, LABEL_VISIBILITY_LABELED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationBarView, LABEL_VISIBILITY_LABELED, int32_t)
 
-inline jint ADXNavigationBarView_get_LABEL_VISIBILITY_UNLABELED(void);
+inline int32_t ADXNavigationBarView_get_LABEL_VISIBILITY_UNLABELED(void);
 #define ADXNavigationBarView_LABEL_VISIBILITY_UNLABELED 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationBarView, LABEL_VISIBILITY_UNLABELED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationBarView, LABEL_VISIBILITY_UNLABELED, int32_t)
 
 FOUNDATION_EXPORT void ADXNavigationBarView_init(ADXNavigationBarView *self);
 
@@ -108,22 +111,25 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationBarView)
 
 @compatibility_alias ComGoogleAndroidMaterialNavigationNavigationBarView ADXNavigationBarView;
 
+
 #endif
 
 #if !defined (ADXNavigationBarView_OnItemSelectedListener_) && (INCLUDE_ALL_NavigationBarView || defined(INCLUDE_ADXNavigationBarView_OnItemSelectedListener))
 #define ADXNavigationBarView_OnItemSelectedListener_
 
+@class JavaLangBoolean;
 @protocol ADMenuItem;
 
 @protocol ADXNavigationBarView_OnItemSelectedListener < JavaObject >
 
-- (jboolean)onNavigationItemSelectedWithADMenuItem:(id<ADMenuItem>)item;
+- (bool)onNavigationItemSelectedWithADMenuItem:(id<ADMenuItem>)item;
 
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(ADXNavigationBarView_OnItemSelectedListener)
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationBarView_OnItemSelectedListener)
+
 
 #endif
 
@@ -141,6 +147,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationBarView_OnItemSelectedListener)
 J2OBJC_EMPTY_STATIC_INIT(ADXNavigationBarView_OnItemReselectedListener)
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationBarView_OnItemReselectedListener)
+
 
 #endif
 

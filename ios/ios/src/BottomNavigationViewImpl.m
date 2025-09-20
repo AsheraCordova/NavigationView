@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-ios-widgets\IOSNavigationViewPlugin\src\main\java\com\ashera\navigationview\BottomNavigationViewImpl.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "AbstractEnumToIntConverter.h"
 #include "BadgeDrawable.h"
 #include "BaseHasWidgets.h"
@@ -53,8 +58,12 @@
 #include "ASUIView.h"
 #include "HasLifeCycleDecorators.h"
 
-@protocol JavaUtilList;
-@protocol JavaUtilMap;
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 #pragma clang diagnostic ignored "-Wprotocol"
@@ -152,12 +161,12 @@ J2OBJC_FIELD_SETTER(ASBottomNavigationViewImpl_LabelVisibilityMode, mapping_, id
 
 @interface ASBottomNavigationViewImpl_BottomNavigationViewExt () {
  @public
-  __unsafe_unretained ASBottomNavigationViewImpl *this$0_;
+  WEAK_ ASBottomNavigationViewImpl *this$0_;
   ASMeasureEvent *measureFinished_;
   ASOnLayoutEvent *onLayoutEvent_;
   id<JavaUtilList> overlays_;
-  jint mMaxWidth_;
-  jint mMaxHeight_;
+  int32_t mMaxWidth_;
+  int32_t mMaxHeight_;
   id<JavaUtilMap> templates_;
 }
 
@@ -189,7 +198,7 @@ J2OBJC_FIELD_SETTER(ASBottomNavigationViewImpl_BottomNavigationViewExt, template
                      withNSString:(NSString *)strValue
                      withNSString:(NSString *)action;
 
-- (jboolean)onNavigationItemSelectedWithADMenuItem:(id<ADMenuItem>)item;
+- (bool)onNavigationItemSelectedWithADMenuItem:(id<ADMenuItem>)item;
 
 - (id<JavaUtilMap>)getOnNavigationItemSelectedEventObjWithADMenuItem:(id<ADMenuItem>)item;
 
@@ -215,6 +224,7 @@ __attribute__((unused)) static ASBottomNavigationViewImpl_OnItemSelectedListener
 __attribute__((unused)) static ASBottomNavigationViewImpl_OnItemSelectedListener *create_ASBottomNavigationViewImpl_OnItemSelectedListener_initWithASIWidget_withNSString_withNSString_(id<ASIWidget> w, NSString *strValue, NSString *action);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASBottomNavigationViewImpl_OnItemSelectedListener)
+
 
 @interface ASBottomNavigationViewImpl_OnItemReselectedListener : NSObject < ADXNavigationBarView_OnItemReselectedListener, ASIListener > {
  @public
@@ -260,6 +270,7 @@ __attribute__((unused)) static ASBottomNavigationViewImpl_OnItemReselectedListen
 
 J2OBJC_TYPE_LITERAL_HEADER(ASBottomNavigationViewImpl_OnItemReselectedListener)
 
+
 @interface ASBottomNavigationViewImpl_$Lambda$1 : NSObject < JavaLangRunnable > {
  @public
   id<ASIWidget> val$widget_;
@@ -276,6 +287,7 @@ __attribute__((unused)) static void ASBottomNavigationViewImpl_$Lambda$1_initWit
 __attribute__((unused)) static ASBottomNavigationViewImpl_$Lambda$1 *new_ASBottomNavigationViewImpl_$Lambda$1_initWithASIWidget_(id<ASIWidget> capture$0) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static ASBottomNavigationViewImpl_$Lambda$1 *create_ASBottomNavigationViewImpl_$Lambda$1_initWithASIWidget_(id<ASIWidget> capture$0);
+
 
 @interface ASBottomNavigationViewImpl_$Lambda$2 : NSObject < ASBottomNavigationViewImpl_ValueSetter >
 
@@ -296,6 +308,7 @@ __attribute__((unused)) static ASBottomNavigationViewImpl_$Lambda$2 *new_ASBotto
 
 __attribute__((unused)) static ASBottomNavigationViewImpl_$Lambda$2 *create_ASBottomNavigationViewImpl_$Lambda$2_init(void);
 
+
 @interface ASBottomNavigationViewImpl_$Lambda$3 : NSObject < ASBottomNavigationViewImpl_ValueSetter >
 
 - (void)setValueOnBadgeDrawableWithADXBadgeDrawable:(ADXBadgeDrawable *)badge
@@ -314,6 +327,7 @@ __attribute__((unused)) static void ASBottomNavigationViewImpl_$Lambda$3_init(AS
 __attribute__((unused)) static ASBottomNavigationViewImpl_$Lambda$3 *new_ASBottomNavigationViewImpl_$Lambda$3_init(void) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static ASBottomNavigationViewImpl_$Lambda$3 *create_ASBottomNavigationViewImpl_$Lambda$3_init(void);
+
 
 @interface ASBottomNavigationViewImpl_$Lambda$4 : NSObject < ASBottomNavigationViewImpl_ValueSetter >
 
@@ -334,6 +348,7 @@ __attribute__((unused)) static ASBottomNavigationViewImpl_$Lambda$4 *new_ASBotto
 
 __attribute__((unused)) static ASBottomNavigationViewImpl_$Lambda$4 *create_ASBottomNavigationViewImpl_$Lambda$4_init(void);
 
+
 @interface ASBottomNavigationViewImpl_$Lambda$5 : NSObject < ASBottomNavigationViewImpl_ValueSetter >
 
 - (void)setValueOnBadgeDrawableWithADXBadgeDrawable:(ADXBadgeDrawable *)badge
@@ -352,6 +367,7 @@ __attribute__((unused)) static void ASBottomNavigationViewImpl_$Lambda$5_init(AS
 __attribute__((unused)) static ASBottomNavigationViewImpl_$Lambda$5 *new_ASBottomNavigationViewImpl_$Lambda$5_init(void) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static ASBottomNavigationViewImpl_$Lambda$5 *create_ASBottomNavigationViewImpl_$Lambda$5_init(void);
+
 
 @interface ASBottomNavigationViewImpl_$Lambda$6 : NSObject < ASBottomNavigationViewImpl_ValueSetter >
 
@@ -372,6 +388,7 @@ __attribute__((unused)) static ASBottomNavigationViewImpl_$Lambda$6 *new_ASBotto
 
 __attribute__((unused)) static ASBottomNavigationViewImpl_$Lambda$6 *create_ASBottomNavigationViewImpl_$Lambda$6_init(void);
 
+
 @interface ASBottomNavigationViewImpl_$Lambda$7 : NSObject < ASBottomNavigationViewImpl_ValueSetter >
 
 - (void)setValueOnBadgeDrawableWithADXBadgeDrawable:(ADXBadgeDrawable *)badge
@@ -390,6 +407,7 @@ __attribute__((unused)) static void ASBottomNavigationViewImpl_$Lambda$7_init(AS
 __attribute__((unused)) static ASBottomNavigationViewImpl_$Lambda$7 *new_ASBottomNavigationViewImpl_$Lambda$7_init(void) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static ASBottomNavigationViewImpl_$Lambda$7 *create_ASBottomNavigationViewImpl_$Lambda$7_init(void);
+
 
 @interface ASBottomNavigationViewImpl_$Lambda$8 : NSObject < ASBottomNavigationViewImpl_ValueSetter >
 
@@ -410,6 +428,7 @@ __attribute__((unused)) static ASBottomNavigationViewImpl_$Lambda$8 *new_ASBotto
 
 __attribute__((unused)) static ASBottomNavigationViewImpl_$Lambda$8 *create_ASBottomNavigationViewImpl_$Lambda$8_init(void);
 
+
 @interface ASBottomNavigationViewImpl_$Lambda$9 : NSObject < ASBottomNavigationViewImpl_ValueSetter >
 
 - (void)setValueOnBadgeDrawableWithADXBadgeDrawable:(ADXBadgeDrawable *)badge
@@ -428,6 +447,7 @@ __attribute__((unused)) static void ASBottomNavigationViewImpl_$Lambda$9_init(AS
 __attribute__((unused)) static ASBottomNavigationViewImpl_$Lambda$9 *new_ASBottomNavigationViewImpl_$Lambda$9_init(void) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static ASBottomNavigationViewImpl_$Lambda$9 *create_ASBottomNavigationViewImpl_$Lambda$9_init(void);
+
 
 @interface ASBottomNavigationViewImpl_$Lambda$10 : NSObject < ASBottomNavigationViewImpl_ValueSetter >
 
@@ -448,6 +468,7 @@ __attribute__((unused)) static ASBottomNavigationViewImpl_$Lambda$10 *new_ASBott
 
 __attribute__((unused)) static ASBottomNavigationViewImpl_$Lambda$10 *create_ASBottomNavigationViewImpl_$Lambda$10_init(void);
 
+
 @interface ASBottomNavigationViewImpl_$Lambda$11 : NSObject < ASBottomNavigationViewImpl_ValueSetter >
 
 - (void)setValueOnBadgeDrawableWithADXBadgeDrawable:(ADXBadgeDrawable *)badge
@@ -466,6 +487,7 @@ __attribute__((unused)) static void ASBottomNavigationViewImpl_$Lambda$11_init(A
 __attribute__((unused)) static ASBottomNavigationViewImpl_$Lambda$11 *new_ASBottomNavigationViewImpl_$Lambda$11_init(void) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static ASBottomNavigationViewImpl_$Lambda$11 *create_ASBottomNavigationViewImpl_$Lambda$11_init(void);
+
 
 NSString *ASBottomNavigationViewImpl_LOCAL_NAME = @"com.google.android.material.bottomnavigation.BottomNavigationView";
 NSString *ASBottomNavigationViewImpl_GROUP_NAME = @"com.google.android.material.bottomnavigation.BottomNavigationView";
@@ -541,16 +563,16 @@ J2OBJC_IGNORE_DESIGNATED_END
   return bottomNavigationView_;
 }
 
-- (jboolean)removeWithASIWidget:(id<ASIWidget>)w {
-  jboolean remove = [super removeWithASIWidget:w];
+- (bool)removeWithASIWidget:(id<ASIWidget>)w {
+  bool remove = [super removeWithASIWidget:w];
   [((ADXBottomNavigationView *) nil_chk(bottomNavigationView_)) removeViewWithADView:(ADView *) cast_chk([((id<ASIWidget>) nil_chk(w)) asWidget], [ADView class])];
   ASBottomNavigationViewImpl_nativeRemoveViewWithASIWidget_(self, w);
   return remove;
 }
 
-- (jboolean)removeWithInt:(jint)index {
+- (bool)removeWithInt:(int32_t)index {
   id<ASIWidget> widget = [((id<JavaUtilList>) nil_chk(widgets_)) getWithInt:index];
-  jboolean remove = [super removeWithInt:index];
+  bool remove = [super removeWithInt:index];
   if (index + 1 <= [((ADXBottomNavigationView *) nil_chk(bottomNavigationView_)) getChildCount]) {
     [((ADXBottomNavigationView *) nil_chk(bottomNavigationView_)) removeViewAtWithInt:index];
     ASBottomNavigationViewImpl_nativeRemoveViewWithASIWidget_(self, widget);
@@ -563,7 +585,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)addWithASIWidget:(id<ASIWidget>)w
-                 withInt:(jint)index {
+                 withInt:(int32_t)index {
   if (index != -2) {
     ADView *view = (ADView *) cast_chk([((id<ASIWidget>) nil_chk(w)) asWidget], [ADView class]);
     ASBottomNavigationViewImpl_createLayoutParamsWithADView_(self, view);
@@ -770,7 +792,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return uiView_;
 }
 
-- (jboolean)checkIosVersionWithNSString:(NSString *)v {
+- (bool)checkIosVersionWithNSString:(NSString *)v {
   return ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending);
 }
 
@@ -846,7 +868,7 @@ withASBottomNavigationViewImpl_ValueSetter:(id<ASBottomNavigationViewImpl_ValueS
   }
 }
 
-- (void)setVisibleWithBoolean:(jboolean)b {
+- (void)setVisibleWithBoolean:(bool)b {
   [((ADView *) nil_chk(((ADView *) cast_chk([self asWidget], [ADView class])))) setVisibilityWithInt:b ? ADView_VISIBLE : ADView_GONE];
 }
 
@@ -1036,8 +1058,8 @@ void ASBottomNavigationViewImpl_setBadgeBackgroundColorsWithId_(ASBottomNavigati
 void ASBottomNavigationViewImpl_setValueOnBadgeDrawableWithId_withASBottomNavigationViewImpl_ValueSetter_(ASBottomNavigationViewImpl *self, id objValue, id<ASBottomNavigationViewImpl_ValueSetter> valueSetter) {
   if (self->badgeMenuItemIds_ != nil) {
     id<JavaUtilList> badgeAttrs = ASPluginInvoker_getListWithId_(objValue);
-    for (jint i = 0; i < [((id<JavaUtilList>) nil_chk(self->badgeMenuItemIds_)) size]; i++) {
-      jint id_ = [((JavaLangInteger *) nil_chk((JavaLangInteger *) cast_chk([((id<JavaUtilList>) nil_chk(self->badgeMenuItemIds_)) getWithInt:i], [JavaLangInteger class]))) intValue];
+    for (int32_t i = 0; i < [((id<JavaUtilList>) nil_chk(self->badgeMenuItemIds_)) size]; i++) {
+      int32_t id_ = [((JavaLangInteger *) nil_chk((JavaLangInteger *) cast_chk([((id<JavaUtilList>) nil_chk(self->badgeMenuItemIds_)) getWithInt:i], [JavaLangInteger class]))) intValue];
       ADXBadgeDrawable *badge = [((ADXBottomNavigationView *) nil_chk(self->bottomNavigationView_)) getOrCreateBadgeWithInt:id_];
       id value = [((id<JavaUtilList>) nil_chk(badgeAttrs)) getWithInt:i];
       [((id<ASBottomNavigationViewImpl_ValueSetter>) nil_chk(valueSetter)) setValueOnBadgeDrawableWithADXBadgeDrawable:badge withId:value];
@@ -1095,6 +1117,8 @@ void ASBottomNavigationViewImpl_setTextAppearanceResourcesWithId_(ASBottomNaviga
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBottomNavigationViewImpl)
 
+J2OBJC_NAME_MAPPING(ASBottomNavigationViewImpl, "com.ashera.navigationview", "AS")
+
 @implementation ASBottomNavigationViewImpl_LabelVisibilityMode
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
@@ -1139,10 +1163,10 @@ void ASBottomNavigationViewImpl_LabelVisibilityMode_init(ASBottomNavigationViewI
   ASAbstractEnumToIntConverter_init(self);
   self->mapping_ = new_JavaUtilHashMap_init();
   {
-    (void) [self->mapping_ putWithId:@"auto" withId:JavaLangInteger_valueOfWithInt_((jint) 0xffffffff)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"selected" withId:JavaLangInteger_valueOfWithInt_((jint) 0x00000000)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"labeled" withId:JavaLangInteger_valueOfWithInt_((jint) 0x00000001)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"unlabeled" withId:JavaLangInteger_valueOfWithInt_((jint) 0x00000002)];
+    (void) [self->mapping_ putWithId:@"auto" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0xffffffff)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"selected" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x00000000)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"labeled" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x00000001)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"unlabeled" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x00000002)];
   }
 }
 
@@ -1162,19 +1186,19 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBottomNavigationViewImpl_LabelVisibilityMode)
   return this$0_;
 }
 
-- (void)setMaxWidthWithInt:(jint)width {
+- (void)setMaxWidthWithInt:(int32_t)width {
   mMaxWidth_ = width;
 }
 
-- (void)setMaxHeightWithInt:(jint)height {
+- (void)setMaxHeightWithInt:(int32_t)height {
   mMaxHeight_ = height;
 }
 
-- (jint)getMaxWidth {
+- (int32_t)getMaxWidth {
   return mMaxWidth_;
 }
 
-- (jint)getMaxHeight {
+- (int32_t)getMaxHeight {
   return mMaxHeight_;
 }
 
@@ -1183,8 +1207,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBottomNavigationViewImpl_LabelVisibilityMode)
   return self;
 }
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec {
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec {
   if (mMaxWidth_ > 0) {
     widthMeasureSpec = ADView_MeasureSpec_makeMeasureSpecWithInt_withInt_(mMaxWidth_, ADView_MeasureSpec_AT_MOST);
   }
@@ -1200,11 +1224,11 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBottomNavigationViewImpl_LabelVisibilityMode)
   }
 }
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)l
-                    withInt:(jint)t
-                    withInt:(jint)r
-                    withInt:(jint)b {
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)l
+                    withInt:(int32_t)t
+                    withInt:(int32_t)r
+                    withInt:(int32_t)b {
   [super onLayoutWithBoolean:changed withInt:l withInt:t withInt:r withInt:b];
   ASViewImpl_setDrawableBoundsWithASIWidget_withInt_withInt_withInt_withInt_(this$0_, l, t, r, b);
   if (![self isOverlay]) {
@@ -1231,8 +1255,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBottomNavigationViewImpl_LabelVisibilityMode)
           withNSObjectArray:(IOSObjectArray *)canvas {
 }
 
-- (void)updateMeasuredDimensionWithInt:(jint)width
-                               withInt:(jint)height {
+- (void)updateMeasuredDimensionWithInt:(int32_t)width
+                               withInt:(int32_t)height {
   [self setMeasuredDimensionWithInt:width withInt:height];
 }
 
@@ -1300,12 +1324,12 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBottomNavigationViewImpl_LabelVisibilityMode)
   displayFrame->bottom_ = displayFrame->top_ + [self getHeight];
 }
 
-- (void)offsetTopAndBottomWithInt:(jint)offset {
+- (void)offsetTopAndBottomWithInt:(int32_t)offset {
   [super offsetTopAndBottomWithInt:offset];
   ASViewImpl_nativeMakeFrameWithId_withInt_withInt_withInt_withInt_([this$0_ asNativeWidget], [self getLeft], [self getTop], [self getRight], [self getBottom]);
 }
 
-- (void)offsetLeftAndRightWithInt:(jint)offset {
+- (void)offsetLeftAndRightWithInt:(int32_t)offset {
   [super offsetLeftAndRightWithInt:offset];
   ASViewImpl_nativeMakeFrameWithId_withInt_withInt_withInt_withInt_([this$0_ asNativeWidget], [self getLeft], [self getTop], [self getRight], [self getBottom]);
 }
@@ -1335,7 +1359,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBottomNavigationViewImpl_LabelVisibilityMode)
   [this$0_ setAttributeWithNSString:name withId:value withBoolean:!([value isKindOfClass:[NSString class]])];
 }
 
-- (void)setVisibilityWithInt:(jint)visibility {
+- (void)setVisibilityWithInt:(int32_t)visibility {
   [super setVisibilityWithInt:visibility];
   ASViewImpl_nativeSetVisibilityWithId_withBoolean_([this$0_ asNativeWidget], visibility != ADView_VISIBLE);
 }
@@ -1555,8 +1579,8 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ASBottomNavigationViewImpl_ValueSetter)
   return self;
 }
 
-- (jboolean)onNavigationItemSelectedWithADMenuItem:(id<ADMenuItem>)item {
-  jboolean result = true;
+- (bool)onNavigationItemSelectedWithADMenuItem:(id<ADMenuItem>)item {
+  bool result = true;
   if (action_ == nil || [action_ isEqual:@"onNavigationItemSelected"]) {
     [((id<ASIWidget>) nil_chk(w_)) syncModelFromUiToPojoWithNSString:@"onNavigationItemSelected"];
     id<JavaUtilMap> obj = [self getOnNavigationItemSelectedEventObjWithADMenuItem:item];
@@ -1581,7 +1605,7 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ASBottomNavigationViewImpl_ValueSetter)
     if ([((id<ASIWidget>) nil_chk(w_)) getModelUiToPojoEventIds] != nil) {
       ASViewImpl_refreshUiFromModelWithASIWidget_withId_withBoolean_(w_, [((id<ASIWidget>) nil_chk(w_)) getModelUiToPojoEventIds], true);
     }
-    if (strValue_ != nil && ![strValue_ java_isEmpty] && ![((NSString *) nil_chk([((NSString *) nil_chk(strValue_)) java_trim])) java_hasPrefix:@"+"]) {
+    if (strValue_ != nil && ![strValue_ isEmpty] && ![((NSString *) nil_chk([((NSString *) nil_chk(strValue_)) java_trim])) java_hasPrefix:@"+"]) {
       id<ASIActivity> activity = [((id<ASIFragment>) nil_chk([((id<ASIWidget>) nil_chk(w_)) getFragment])) getRootActivity];
       if (activity != nil) {
         [activity sendEventMessageWithJavaUtilMap:obj];
@@ -1710,7 +1734,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBottomNavigationViewImpl_OnItemSelectedListen
     if ([((id<ASIWidget>) nil_chk(w_)) getModelUiToPojoEventIds] != nil) {
       ASViewImpl_refreshUiFromModelWithASIWidget_withId_withBoolean_(w_, [((id<ASIWidget>) nil_chk(w_)) getModelUiToPojoEventIds], true);
     }
-    if (strValue_ != nil && ![strValue_ java_isEmpty] && ![((NSString *) nil_chk([((NSString *) nil_chk(strValue_)) java_trim])) java_hasPrefix:@"+"]) {
+    if (strValue_ != nil && ![strValue_ isEmpty] && ![((NSString *) nil_chk([((NSString *) nil_chk(strValue_)) java_trim])) java_hasPrefix:@"+"]) {
       id<ASIActivity> activity = [((id<ASIFragment>) nil_chk([((id<ASIWidget>) nil_chk(w_)) getFragment])) getRootActivity];
       if (activity != nil) {
         [activity sendEventMessageWithJavaUtilMap:obj];

@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-ios-widgets\IOSNavigationViewPlugin\src\main\java\com\ashera\navigationview\NavigationRailViewImpl.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_NavigationRailViewImpl")
@@ -22,6 +23,9 @@
 
 @class ASWidgetAttribute;
 @class IOSClass;
+@class JavaLangBoolean;
+@class JavaLangInteger;
+@class NSString;
 @protocol ASIFragment;
 @protocol ASILifeCycleDecorator;
 @protocol ASIWidget;
@@ -40,13 +44,13 @@
                     withNSString:(NSString *)localname;
 
 - (void)addWithASIWidget:(id<ASIWidget>)w
-                 withInt:(jint)index;
+                 withInt:(int32_t)index;
 
 - (id)asNativeWidget;
 
 - (id)asWidget;
 
-- (jboolean)checkIosVersionWithNSString:(NSString *)v;
+- (bool)checkIosVersionWithNSString:(NSString *)v;
 
 - (void)createWithASIFragment:(id<ASIFragment>)fragment
               withJavaUtilMap:(id<JavaUtilMap>)params;
@@ -69,9 +73,9 @@
 
 - (id<ASIWidget>)newInstance OBJC_METHOD_FAMILY_NONE;
 
-- (jboolean)removeWithInt:(jint)index;
+- (bool)removeWithInt:(int32_t)index;
 
-- (jboolean)removeWithASIWidget:(id<ASIWidget>)w;
+- (bool)removeWithASIWidget:(id<ASIWidget>)w;
 
 - (void)requestLayout;
 
@@ -87,7 +91,7 @@
 
 - (void)setIdWithNSString:(NSString *)id_;
 
-- (void)setVisibleWithBoolean:(jboolean)b;
+- (void)setVisibleWithBoolean:(bool)b;
 
 @end
 
@@ -125,6 +129,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ASNavigationRailViewImpl)
 
 @compatibility_alias ComAsheraNavigationviewNavigationRailViewImpl ASNavigationRailViewImpl;
 
+
 #endif
 
 #if !defined (ASNavigationRailViewImpl_LabelVisibilityMode_) && (INCLUDE_ALL_NavigationRailViewImpl || defined(INCLUDE_ASNavigationRailViewImpl_LabelVisibilityMode))
@@ -161,6 +166,7 @@ FOUNDATION_EXPORT ASNavigationRailViewImpl_LabelVisibilityMode *create_ASNavigat
 
 J2OBJC_TYPE_LITERAL_HEADER(ASNavigationRailViewImpl_LabelVisibilityMode)
 
+
 #endif
 
 #if !defined (ASNavigationRailViewImpl_NavigationRailViewExt_) && (INCLUDE_ALL_NavigationRailViewImpl || defined(INCLUDE_ASNavigationRailViewImpl_NavigationRailViewExt))
@@ -184,6 +190,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ASNavigationRailViewImpl_LabelVisibilityMode)
 @class ASWidgetAttribute;
 @class IOSIntArray;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangInteger;
+@class NSString;
 @protocol ASIWidget;
 @protocol JavaUtilList;
 
@@ -204,9 +213,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ASNavigationRailViewImpl_LabelVisibilityMode)
 
 - (void)getLocationOnScreenWithIntArray:(IOSIntArray *)appScreenLocation;
 
-- (jint)getMaxHeight;
+- (int32_t)getMaxHeight;
 
-- (jint)getMaxWidth;
+- (int32_t)getMaxWidth;
 
 - (id<JavaUtilList>)getMethods;
 
@@ -220,12 +229,12 @@ J2OBJC_TYPE_LITERAL_HEADER(ASNavigationRailViewImpl_LabelVisibilityMode)
 
 - (id<ASILifeCycleDecorator>)newInstanceWithASIWidget:(id<ASIWidget>)widget OBJC_METHOD_FAMILY_NONE;
 
-- (void)offsetLeftAndRightWithInt:(jint)offset;
+- (void)offsetLeftAndRightWithInt:(int32_t)offset;
 
-- (void)offsetTopAndBottomWithInt:(jint)offset;
+- (void)offsetTopAndBottomWithInt:(int32_t)offset;
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec;
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec;
 
 - (void)remeasure;
 
@@ -235,9 +244,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ASNavigationRailViewImpl_LabelVisibilityMode)
                              withNSString:(NSString *)strValue
                                    withId:(id)objValue;
 
-- (void)setMaxHeightWithInt:(jint)height;
+- (void)setMaxHeightWithInt:(int32_t)height;
 
-- (void)setMaxWidthWithInt:(jint)width;
+- (void)setMaxWidthWithInt:(int32_t)width;
 
 - (void)setMyAttributeWithNSString:(NSString *)name
                             withId:(id)value;
@@ -252,7 +261,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ASNavigationRailViewImpl_LabelVisibilityMode)
 
 - (void)setState4WithId:(id)value;
 
-- (void)setVisibilityWithInt:(jint)visibility;
+- (void)setVisibilityWithInt:(int32_t)visibility;
 
 - (void)state0;
 
@@ -268,16 +277,16 @@ J2OBJC_TYPE_LITERAL_HEADER(ASNavigationRailViewImpl_LabelVisibilityMode)
 
 - (void)stateYes;
 
-- (void)updateMeasuredDimensionWithInt:(jint)width
-                               withInt:(jint)height;
+- (void)updateMeasuredDimensionWithInt:(int32_t)width
+                               withInt:(int32_t)height;
 
 #pragma mark Protected
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)l
-                    withInt:(jint)t
-                    withInt:(jint)r
-                    withInt:(jint)b;
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)l
+                    withInt:(int32_t)t
+                    withInt:(int32_t)r
+                    withInt:(int32_t)b;
 
 // Disallowed inherited constructors, do not use.
 
@@ -294,6 +303,7 @@ FOUNDATION_EXPORT ASNavigationRailViewImpl_NavigationRailViewExt *new_ASNavigati
 FOUNDATION_EXPORT ASNavigationRailViewImpl_NavigationRailViewExt *create_ASNavigationRailViewImpl_NavigationRailViewExt_initWithASNavigationRailViewImpl_(ASNavigationRailViewImpl *outer$);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASNavigationRailViewImpl_NavigationRailViewExt)
+
 
 #endif
 
@@ -312,6 +322,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ASNavigationRailViewImpl_NavigationRailViewExt)
 J2OBJC_EMPTY_STATIC_INIT(ASNavigationRailViewImpl_ValueSetter)
 
 J2OBJC_TYPE_LITERAL_HEADER(ASNavigationRailViewImpl_ValueSetter)
+
 
 #endif
 

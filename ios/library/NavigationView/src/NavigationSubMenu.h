@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\internal\NavigationSubMenu.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_NavigationSubMenu")
@@ -52,6 +53,7 @@ FOUNDATION_EXPORT ADXNavigationSubMenu *create_ADXNavigationSubMenu_initWithADCo
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationSubMenu)
 
 @compatibility_alias ComGoogleAndroidMaterialInternalNavigationSubMenu ADXNavigationSubMenu;
+
 
 #endif
 

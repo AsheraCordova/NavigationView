@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\bottomnavigation\BottomNavigationView.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "BottomNavigationMenuView.h"
 #include "BottomNavigationView.h"
 #include "Context.h"
@@ -15,6 +20,14 @@
 #include "NavigationBarPresenter.h"
 #include "NavigationBarView.h"
 #include "WidgetFactory.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXBottomNavigationView
@@ -26,7 +39,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (void)setItemHorizontalTranslationEnabledWithBoolean:(jboolean)itemHorizontalTranslationEnabled {
+- (void)setItemHorizontalTranslationEnabledWithBoolean:(bool)itemHorizontalTranslationEnabled {
   ADXBottomNavigationMenuView *menuView = (ADXBottomNavigationMenuView *) cast_chk([self getMenuView], [ADXBottomNavigationMenuView class]);
   if ([((ADXBottomNavigationMenuView *) nil_chk(menuView)) isItemHorizontalTranslationEnabled] != itemHorizontalTranslationEnabled) {
     [menuView setItemHorizontalTranslationEnabledWithBoolean:itemHorizontalTranslationEnabled];
@@ -34,11 +47,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jboolean)isItemHorizontalTranslationEnabled {
+- (bool)isItemHorizontalTranslationEnabled {
   return [((ADXBottomNavigationMenuView *) nil_chk(((ADXBottomNavigationMenuView *) cast_chk([self getMenuView], [ADXBottomNavigationMenuView class])))) isItemHorizontalTranslationEnabled];
 }
 
-- (jint)getMaxItemCount {
+- (int32_t)getMaxItemCount {
   return ADXBottomNavigationView_MAX_ITEM_COUNT;
 }
 
@@ -88,3 +101,5 @@ ADXBottomNavigationView *create_ADXBottomNavigationView_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXBottomNavigationView)
+
+J2OBJC_NAME_MAPPING(ADXBottomNavigationView, "com.google.android.material.bottomnavigation", "ADX")

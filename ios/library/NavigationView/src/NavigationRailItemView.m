@@ -3,22 +3,35 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\navigationrail\NavigationRailItemView.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "IdGenerator.h"
 #include "J2ObjC_source.h"
 #include "NavigationBarItemView.h"
 #include "NavigationRailItemView.h"
 #include "PluginInvoker.h"
 #include "View.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXNavigationRailItemView ()
 
-- (void)hackForDimensionOnFrameLayoutWrapperWithInt:(jint)bestHeight;
+- (void)hackForDimensionOnFrameLayoutWrapperWithInt:(int32_t)bestHeight;
 
 @end
 
-__attribute__((unused)) static void ADXNavigationRailItemView_hackForDimensionOnFrameLayoutWrapperWithInt_(ADXNavigationRailItemView *self, jint bestHeight);
+__attribute__((unused)) static void ADXNavigationRailItemView_hackForDimensionOnFrameLayoutWrapperWithInt_(ADXNavigationRailItemView *self, int32_t bestHeight);
 
 @implementation ADXNavigationRailItemView
 
@@ -29,13 +42,13 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec {
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec {
   [super onMeasureWithInt:widthMeasureSpec withInt:heightMeasureSpec];
   if (ADView_MeasureSpec_getModeWithInt_(heightMeasureSpec) == ADView_MeasureSpec_UNSPECIFIED) {
-    jint preferredHeight = ADView_MeasureSpec_getSizeWithInt_(heightMeasureSpec);
-    jint measuredHeight = [self getMeasuredHeight];
-    jint bestHeight = JavaLangMath_maxWithInt_withInt_(measuredHeight, preferredHeight);
+    int32_t preferredHeight = ADView_MeasureSpec_getSizeWithInt_(heightMeasureSpec);
+    int32_t measuredHeight = [self getMeasuredHeight];
+    int32_t bestHeight = JavaLangMath_maxWithInt_withInt_(measuredHeight, preferredHeight);
     [self setMeasuredDimensionWithInt:[self getMeasuredWidthAndState] withInt:ADView_resolveSizeAndStateWithInt_withInt_withInt_(bestHeight, heightMeasureSpec, 0)];
     ADXNavigationRailItemView_hackForDimensionOnFrameLayoutWrapperWithInt_(self, bestHeight);
   }
@@ -45,11 +58,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   return @"@layout/design_navigation_rail_item_new";
 }
 
-- (jint)getItemDefaultMarginResId {
+- (int32_t)getItemDefaultMarginResId {
   return JreFpToInt(ASPluginInvoker_convertDpToPixelWithNSString_(@"6dp"));
 }
 
-- (void)hackForDimensionOnFrameLayoutWrapperWithInt:(jint)bestHeight {
+- (void)hackForDimensionOnFrameLayoutWrapperWithInt:(int32_t)bestHeight {
   ADXNavigationRailItemView_hackForDimensionOnFrameLayoutWrapperWithInt_(self, bestHeight);
 }
 
@@ -89,10 +102,12 @@ ADXNavigationRailItemView *create_ADXNavigationRailItemView_init() {
   J2OBJC_CREATE_IMPL(ADXNavigationRailItemView, init)
 }
 
-void ADXNavigationRailItemView_hackForDimensionOnFrameLayoutWrapperWithInt_(ADXNavigationRailItemView *self, jint bestHeight) {
+void ADXNavigationRailItemView_hackForDimensionOnFrameLayoutWrapperWithInt_(ADXNavigationRailItemView *self, int32_t bestHeight) {
   ADView *navigationBarFlWrapper = JreRetainedLocalValue([self findViewByIdWithInt:ASIdGenerator_getIdWithNSString_(@"@+id/navigation_bar_fl_wrapper")]);
   [((ADView *) nil_chk(navigationBarFlWrapper)) setMinimumHeightWithInt:bestHeight];
   [navigationBarFlWrapper setMinimumWidthWithInt:ASPluginInvoker_getScreenWidth()];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXNavigationRailItemView)
+
+J2OBJC_NAME_MAPPING(ADXNavigationRailItemView, "com.google.android.material.navigationrail", "ADX")

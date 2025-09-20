@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\navigation\ScrimInsetsFrameLayout.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ScrimInsetsFrameLayout")
@@ -39,6 +40,7 @@ FOUNDATION_EXPORT ADXScrimInsetsFrameLayout *create_ADXScrimInsetsFrameLayout_in
 J2OBJC_TYPE_LITERAL_HEADER(ADXScrimInsetsFrameLayout)
 
 @compatibility_alias ComGoogleAndroidMaterialNavigationScrimInsetsFrameLayout ADXScrimInsetsFrameLayout;
+
 
 #endif
 

@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\navigation\NavigationBarItemView.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "BadgeDrawable.h"
 #include "BadgeUtils.h"
 #include "ColorStateList.h"
@@ -29,46 +34,53 @@
 #include "ViewParent.h"
 #include "java/lang/Boolean.h"
 #include "java/lang/CharSequence.h"
+#include "java/lang/Float.h"
 #include "java/lang/Integer.h"
 #include "java/lang/Math.h"
 
 
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXNavigationBarItemView () {
  @public
-  jint defaultMargin_;
-  jfloat shiftAmount_;
-  jfloat scaleUpFactor_;
-  jfloat scaleDownFactor_;
-  jint labelVisibilityMode_;
-  jboolean isShifting_;
+  int32_t defaultMargin_;
+  float shiftAmount_;
+  float scaleUpFactor_;
+  float scaleDownFactor_;
+  int32_t labelVisibilityMode_;
+  bool isShifting_;
   ADImageView *icon_;
   ADViewGroup *labelGroup_;
   ADTextView *smallLabel_;
   ADTextView *largeLabel_;
-  jint itemPosition_;
+  int32_t itemPosition_;
   ADXMenuItemImpl *itemData_;
   ADDrawable *originalIconDrawable_;
   ADXBadgeDrawable *badgeDrawable_;
 }
 
-- (jint)getItemVisiblePosition;
+- (int32_t)getItemVisiblePosition;
 
 + (void)setViewLayoutParamsWithADView:(ADView *)view
-                              withInt:(jint)topMargin
-                              withInt:(jint)gravity;
+                              withInt:(int32_t)topMargin
+                              withInt:(int32_t)gravity;
 
 + (void)setViewScaleValuesWithADView:(ADView *)view
-                           withFloat:(jfloat)scaleX
-                           withFloat:(jfloat)scaleY
-                             withInt:(jint)visibility;
+                           withFloat:(float)scaleX
+                           withFloat:(float)scaleY
+                             withInt:(int32_t)visibility;
 
 + (void)updateViewPaddingBottomWithADView:(ADView *)view
-                                  withInt:(jint)paddingBottom;
+                                  withInt:(int32_t)paddingBottom;
 
-- (void)calculateTextScaleFactorsWithFloat:(jfloat)smallLabelSize
-                                 withFloat:(jfloat)largeLabelSize;
+- (void)calculateTextScaleFactorsWithFloat:(float)smallLabelSize
+                                 withFloat:(float)largeLabelSize;
 
-- (jboolean)hasBadge;
+- (bool)hasBadge;
 
 - (void)tryUpdateBadgeBoundsWithADView:(ADView *)anchorView;
 
@@ -76,11 +88,11 @@
 
 - (ADFrameLayout *)getCustomParentForBadgeWithADView:(ADView *)anchorView;
 
-- (jint)getSuggestedIconWidth;
+- (int32_t)getSuggestedIconWidth;
 
-- (jint)getSuggestedIconHeight;
+- (int32_t)getSuggestedIconHeight;
 
-- (jint)getTextSizeWithADTextView:(ADTextView *)label;
+- (int32_t)getTextSizeWithADTextView:(ADTextView *)label;
 
 @end
 
@@ -92,25 +104,25 @@ J2OBJC_FIELD_SETTER(ADXNavigationBarItemView, itemData_, ADXMenuItemImpl *)
 J2OBJC_FIELD_SETTER(ADXNavigationBarItemView, originalIconDrawable_, ADDrawable *)
 J2OBJC_FIELD_SETTER(ADXNavigationBarItemView, badgeDrawable_, ADXBadgeDrawable *)
 
-inline jint ADXNavigationBarItemView_get_INVALID_ITEM_POSITION(void);
+inline int32_t ADXNavigationBarItemView_get_INVALID_ITEM_POSITION(void);
 #define ADXNavigationBarItemView_INVALID_ITEM_POSITION -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationBarItemView, INVALID_ITEM_POSITION, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationBarItemView, INVALID_ITEM_POSITION, int32_t)
 
 inline IOSIntArray *ADXNavigationBarItemView_get_CHECKED_STATE_SET(void);
 static IOSIntArray *ADXNavigationBarItemView_CHECKED_STATE_SET;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXNavigationBarItemView, CHECKED_STATE_SET, IOSIntArray *)
 
-__attribute__((unused)) static jint ADXNavigationBarItemView_getItemVisiblePosition(ADXNavigationBarItemView *self);
+__attribute__((unused)) static int32_t ADXNavigationBarItemView_getItemVisiblePosition(ADXNavigationBarItemView *self);
 
-__attribute__((unused)) static void ADXNavigationBarItemView_setViewLayoutParamsWithADView_withInt_withInt_(ADView *view, jint topMargin, jint gravity);
+__attribute__((unused)) static void ADXNavigationBarItemView_setViewLayoutParamsWithADView_withInt_withInt_(ADView *view, int32_t topMargin, int32_t gravity);
 
-__attribute__((unused)) static void ADXNavigationBarItemView_setViewScaleValuesWithADView_withFloat_withFloat_withInt_(ADView *view, jfloat scaleX, jfloat scaleY, jint visibility);
+__attribute__((unused)) static void ADXNavigationBarItemView_setViewScaleValuesWithADView_withFloat_withFloat_withInt_(ADView *view, float scaleX, float scaleY, int32_t visibility);
 
-__attribute__((unused)) static void ADXNavigationBarItemView_updateViewPaddingBottomWithADView_withInt_(ADView *view, jint paddingBottom);
+__attribute__((unused)) static void ADXNavigationBarItemView_updateViewPaddingBottomWithADView_withInt_(ADView *view, int32_t paddingBottom);
 
-__attribute__((unused)) static void ADXNavigationBarItemView_calculateTextScaleFactorsWithFloat_withFloat_(ADXNavigationBarItemView *self, jfloat smallLabelSize, jfloat largeLabelSize);
+__attribute__((unused)) static void ADXNavigationBarItemView_calculateTextScaleFactorsWithFloat_withFloat_(ADXNavigationBarItemView *self, float smallLabelSize, float largeLabelSize);
 
-__attribute__((unused)) static jboolean ADXNavigationBarItemView_hasBadge(ADXNavigationBarItemView *self);
+__attribute__((unused)) static bool ADXNavigationBarItemView_hasBadge(ADXNavigationBarItemView *self);
 
 __attribute__((unused)) static void ADXNavigationBarItemView_tryUpdateBadgeBoundsWithADView_(ADXNavigationBarItemView *self, ADView *anchorView);
 
@@ -118,11 +130,11 @@ __attribute__((unused)) static void ADXNavigationBarItemView_tryAttachBadgeToAnc
 
 __attribute__((unused)) static ADFrameLayout *ADXNavigationBarItemView_getCustomParentForBadgeWithADView_(ADXNavigationBarItemView *self, ADView *anchorView);
 
-__attribute__((unused)) static jint ADXNavigationBarItemView_getSuggestedIconWidth(ADXNavigationBarItemView *self);
+__attribute__((unused)) static int32_t ADXNavigationBarItemView_getSuggestedIconWidth(ADXNavigationBarItemView *self);
 
-__attribute__((unused)) static jint ADXNavigationBarItemView_getSuggestedIconHeight(ADXNavigationBarItemView *self);
+__attribute__((unused)) static int32_t ADXNavigationBarItemView_getSuggestedIconHeight(ADXNavigationBarItemView *self);
 
-__attribute__((unused)) static jint ADXNavigationBarItemView_getTextSizeWithADTextView_(ADXNavigationBarItemView *self, ADTextView *label);
+__attribute__((unused)) static int32_t ADXNavigationBarItemView_getTextSizeWithADTextView_(ADXNavigationBarItemView *self, ADTextView *label);
 
 @interface ADXNavigationBarItemView_1 : NSObject < ADView_OnLayoutChangeListener > {
  @public
@@ -132,14 +144,14 @@ __attribute__((unused)) static jint ADXNavigationBarItemView_getTextSizeWithADTe
 - (instancetype)initWithADXNavigationBarItemView:(ADXNavigationBarItemView *)outer$;
 
 - (void)onLayoutChangeWithADView:(ADView *)v
-                         withInt:(jint)left
-                         withInt:(jint)top
-                         withInt:(jint)right
-                         withInt:(jint)bottom
-                         withInt:(jint)oldLeft
-                         withInt:(jint)oldTop
-                         withInt:(jint)oldRight
-                         withInt:(jint)oldBottom;
+                         withInt:(int32_t)left
+                         withInt:(int32_t)top
+                         withInt:(int32_t)right
+                         withInt:(int32_t)bottom
+                         withInt:(int32_t)oldLeft
+                         withInt:(int32_t)oldTop
+                         withInt:(int32_t)oldRight
+                         withInt:(int32_t)oldBottom;
 
 @end
 
@@ -150,6 +162,7 @@ __attribute__((unused)) static void ADXNavigationBarItemView_1_initWithADXNaviga
 __attribute__((unused)) static ADXNavigationBarItemView_1 *new_ADXNavigationBarItemView_1_initWithADXNavigationBarItemView_(ADXNavigationBarItemView *outer$) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static ADXNavigationBarItemView_1 *create_ADXNavigationBarItemView_1_initWithADXNavigationBarItemView_(ADXNavigationBarItemView *outer$);
+
 
 J2OBJC_INITIALIZED_DEFN(ADXNavigationBarItemView)
 
@@ -168,7 +181,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   JreStrongAssign(&labelGroup_, [view findViewByIdWithInt:ASIdGenerator_getIdWithNSString_(@"@+id/navigation_bar_item_labels_group")]);
   JreStrongAssign(&smallLabel_, [view findViewByIdWithInt:ASIdGenerator_getIdWithNSString_(@"@+id/navigation_bar_item_small_label_view")]);
   JreStrongAssign(&largeLabel_, [view findViewByIdWithInt:ASIdGenerator_getIdWithNSString_(@"@+id/navigation_bar_item_large_label_view")]);
-  defaultMargin_ = (jint) [self getItemDefaultMarginResId];
+  defaultMargin_ = (int32_t) [self getItemDefaultMarginResId];
   [((ADViewGroup *) nil_chk(labelGroup_)) setTagWithInt:JreLoadStatic(ADR_id, mtrl_view_tag_bottom_padding) withId:JavaLangInteger_valueOfWithInt_([labelGroup_ getPaddingBottom])];
   ADXViewCompat_setImportantForAccessibilityWithADView_withInt_(smallLabel_, ADXViewCompat_IMPORTANT_FOR_ACCESSIBILITY_NO);
   ADXViewCompat_setImportantForAccessibilityWithADView_withInt_(largeLabel_, ADXViewCompat_IMPORTANT_FOR_ACCESSIBILITY_NO);
@@ -179,19 +192,19 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jint)getSuggestedMinimumWidth {
+- (int32_t)getSuggestedMinimumWidth {
   ADFrameLayout_LayoutParams *labelGroupParams = (ADFrameLayout_LayoutParams *) cast_chk([((ADViewGroup *) nil_chk(labelGroup_)) getLayoutParams], [ADFrameLayout_LayoutParams class]);
-  jint labelWidth = ((ADFrameLayout_LayoutParams *) nil_chk(labelGroupParams))->leftMargin_ + [((ADViewGroup *) nil_chk(labelGroup_)) getMeasuredWidth] + labelGroupParams->rightMargin_;
+  int32_t labelWidth = ((ADFrameLayout_LayoutParams *) nil_chk(labelGroupParams))->leftMargin_ + [((ADViewGroup *) nil_chk(labelGroup_)) getMeasuredWidth] + labelGroupParams->rightMargin_;
   return JavaLangMath_maxWithInt_withInt_(ADXNavigationBarItemView_getSuggestedIconWidth(self), labelWidth);
 }
 
-- (jint)getSuggestedMinimumHeight {
+- (int32_t)getSuggestedMinimumHeight {
   ADFrameLayout_LayoutParams *labelGroupParams = (ADFrameLayout_LayoutParams *) cast_chk([((ADViewGroup *) nil_chk(labelGroup_)) getLayoutParams], [ADFrameLayout_LayoutParams class]);
   return ADXNavigationBarItemView_getSuggestedIconHeight(self) + ((ADFrameLayout_LayoutParams *) nil_chk(labelGroupParams))->topMargin_ + [((ADViewGroup *) nil_chk(labelGroup_)) getMeasuredHeight] + labelGroupParams->bottomMargin_;
 }
 
 - (void)initialize__WithADXMenuItemImpl:(ADXMenuItemImpl *)itemData
-                                withInt:(jint)menuType {
+                                withInt:(int32_t)menuType {
   JreStrongAssign(&self->itemData_, itemData);
   [self setCheckableWithBoolean:[((ADXMenuItemImpl *) nil_chk(itemData)) isCheckable]];
   [self setCheckedWithBoolean:[itemData isChecked]];
@@ -207,28 +220,28 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self setVisibilityWithInt:[itemData isVisible] ? ADView_VISIBLE : ADView_GONE];
 }
 
-- (void)setItemPositionWithInt:(jint)position {
+- (void)setItemPositionWithInt:(int32_t)position {
   itemPosition_ = position;
 }
 
-- (jint)getItemPosition {
+- (int32_t)getItemPosition {
   return itemPosition_;
 }
 
-- (void)setShiftingWithBoolean:(jboolean)shifting {
+- (void)setShiftingWithBoolean:(bool)shifting {
   if (isShifting_ != shifting) {
     isShifting_ = shifting;
-    jboolean initialized = itemData_ != nil;
+    bool initialized = itemData_ != nil;
     if (initialized) {
       [self setCheckedWithBoolean:[((ADXMenuItemImpl *) nil_chk(itemData_)) isChecked]];
     }
   }
 }
 
-- (void)setLabelVisibilityModeWithInt:(jint)mode {
+- (void)setLabelVisibilityModeWithInt:(int32_t)mode {
   if (labelVisibilityMode_ != mode) {
     labelVisibilityMode_ = mode;
-    jboolean initialized = itemData_ != nil;
+    bool initialized = itemData_ != nil;
     if (initialized) {
       [self setCheckedWithBoolean:[((ADXMenuItemImpl *) nil_chk(itemData_)) isChecked]];
     }
@@ -249,11 +262,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)setCheckableWithBoolean:(jboolean)checkable {
+- (void)setCheckableWithBoolean:(bool)checkable {
   [self refreshDrawableState];
 }
 
-- (void)setCheckedWithBoolean:(jboolean)checked {
+- (void)setCheckedWithBoolean:(bool)checked {
   [((ADTextView *) nil_chk(largeLabel_)) setPivotXWithFloat:JreIntDiv([largeLabel_ getWidth], 2)];
   [((ADTextView *) nil_chk(largeLabel_)) setPivotYWithFloat:[largeLabel_ getBaseline]];
   [((ADTextView *) nil_chk(smallLabel_)) setPivotXWithFloat:JreIntDiv([smallLabel_ getWidth], 2)];
@@ -325,29 +338,29 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self setSelectedWithBoolean:checked];
 }
 
-- (jint)getItemVisiblePosition {
+- (int32_t)getItemVisiblePosition {
   return ADXNavigationBarItemView_getItemVisiblePosition(self);
 }
 
 + (void)setViewLayoutParamsWithADView:(ADView *)view
-                              withInt:(jint)topMargin
-                              withInt:(jint)gravity {
+                              withInt:(int32_t)topMargin
+                              withInt:(int32_t)gravity {
   ADXNavigationBarItemView_setViewLayoutParamsWithADView_withInt_withInt_(view, topMargin, gravity);
 }
 
 + (void)setViewScaleValuesWithADView:(ADView *)view
-                           withFloat:(jfloat)scaleX
-                           withFloat:(jfloat)scaleY
-                             withInt:(jint)visibility {
+                           withFloat:(float)scaleX
+                           withFloat:(float)scaleY
+                             withInt:(int32_t)visibility {
   ADXNavigationBarItemView_setViewScaleValuesWithADView_withFloat_withFloat_withInt_(view, scaleX, scaleY, visibility);
 }
 
 + (void)updateViewPaddingBottomWithADView:(ADView *)view
-                                  withInt:(jint)paddingBottom {
+                                  withInt:(int32_t)paddingBottom {
   ADXNavigationBarItemView_updateViewPaddingBottomWithADView_withInt_(view, paddingBottom);
 }
 
-- (void)setEnabledWithBoolean:(jboolean)enabled {
+- (void)setEnabledWithBoolean:(bool)enabled {
   [super setEnabledWithBoolean:enabled];
   [((ADTextView *) nil_chk(smallLabel_)) setEnabledWithBoolean:enabled];
   [((ADTextView *) nil_chk(largeLabel_)) setEnabledWithBoolean:enabled];
@@ -358,7 +371,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (IOSIntArray *)onCreateDrawableStateWithInt:(jint)extraSpace {
+- (IOSIntArray *)onCreateDrawableStateWithInt:(int32_t)extraSpace {
   IOSIntArray *drawableState = [super onCreateDrawableStateWithInt:extraSpace + 1];
   if (itemData_ != nil && [itemData_ isCheckable] && [((ADXMenuItemImpl *) nil_chk(itemData_)) isChecked]) {
     ADView_mergeDrawableStatesWithIntArray_withIntArray_(drawableState, ADXNavigationBarItemView_CHECKED_STATE_SET);
@@ -367,7 +380,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)setIconWithADDrawable:(ADDrawable *)iconDrawable {
-  if (iconDrawable == originalIconDrawable_) {
+  if (JreObjectEqualsEquals(iconDrawable, originalIconDrawable_)) {
     return;
   }
   JreStrongAssign(&originalIconDrawable_, iconDrawable);
@@ -376,7 +389,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   [((ADImageView *) nil_chk(self->icon_)) setMyAttributeWithNSString:@"src" withId:iconDrawable];
 }
 
-- (void)setIconSizeWithInt:(jint)iconSize {
+- (void)setIconSizeWithInt:(int32_t)iconSize {
   ADFrameLayout_LayoutParams *iconParams = (ADFrameLayout_LayoutParams *) cast_chk([((ADImageView *) nil_chk(icon_)) getLayoutParams], [ADFrameLayout_LayoutParams class]);
   ((ADFrameLayout_LayoutParams *) nil_chk(iconParams))->width_ = iconSize;
   iconParams->height_ = iconSize;
@@ -400,8 +413,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)calculateTextScaleFactorsWithFloat:(jfloat)smallLabelSize
-                                 withFloat:(jfloat)largeLabelSize {
+- (void)calculateTextScaleFactorsWithFloat:(float)smallLabelSize
+                                 withFloat:(float)largeLabelSize {
   ADXNavigationBarItemView_calculateTextScaleFactorsWithFloat_withFloat_(self, smallLabelSize, largeLabelSize);
 }
 
@@ -412,7 +425,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jboolean)hasBadge {
+- (bool)hasBadge {
   return ADXNavigationBarItemView_hasBadge(self);
 }
 
@@ -428,15 +441,15 @@ J2OBJC_IGNORE_DESIGNATED_END
   return ADXNavigationBarItemView_getCustomParentForBadgeWithADView_(self, anchorView);
 }
 
-- (jint)getSuggestedIconWidth {
+- (int32_t)getSuggestedIconWidth {
   return ADXNavigationBarItemView_getSuggestedIconWidth(self);
 }
 
-- (jint)getSuggestedIconHeight {
+- (int32_t)getSuggestedIconHeight {
   return ADXNavigationBarItemView_getSuggestedIconHeight(self);
 }
 
-- (jint)getItemDefaultMarginResId {
+- (int32_t)getItemDefaultMarginResId {
   return JreFpToInt(ASPluginInvoker_convertDpToPixelWithNSString_(@"8dp"));
 }
 
@@ -454,7 +467,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   [((ADImageView *) nil_chk(icon_)) setMyAttributeWithNSString:@"tint" withId:tint];
 }
 
-- (jint)getTextSizeWithADTextView:(ADTextView *)label {
+- (int32_t)getTextSizeWithADTextView:(ADTextView *)label {
   return ADXNavigationBarItemView_getTextSizeWithADTextView_(self, label);
 }
 
@@ -584,7 +597,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 + (void)initialize {
   if (self == [ADXNavigationBarItemView class]) {
-    JreStrongAssignAndConsume(&ADXNavigationBarItemView_CHECKED_STATE_SET, [IOSIntArray newArrayWithInts:(jint[]){ ADR_attr_state_checked } count:1]);
+    JreStrongAssignAndConsume(&ADXNavigationBarItemView_CHECKED_STATE_SET, [IOSIntArray newArrayWithInts:(int32_t[]){ ADR_attr_state_checked } count:1]);
     J2OBJC_SET_INITIALIZED(ADXNavigationBarItemView)
   }
 }
@@ -596,11 +609,11 @@ void ADXNavigationBarItemView_init(ADXNavigationBarItemView *self) {
   self->itemPosition_ = ADXNavigationBarItemView_INVALID_ITEM_POSITION;
 }
 
-jint ADXNavigationBarItemView_getItemVisiblePosition(ADXNavigationBarItemView *self) {
+int32_t ADXNavigationBarItemView_getItemVisiblePosition(ADXNavigationBarItemView *self) {
   ADViewGroup *parent = (ADViewGroup *) cast_chk([self getParent], [ADViewGroup class]);
-  jint index = [((ADViewGroup *) nil_chk(parent)) indexOfChildWithADView:self];
-  jint visiblePosition = 0;
-  for (jint i = 0; i < index; i++) {
+  int32_t index = [((ADViewGroup *) nil_chk(parent)) indexOfChildWithADView:self];
+  int32_t visiblePosition = 0;
+  for (int32_t i = 0; i < index; i++) {
     ADView *child = JreRetainedLocalValue([parent getChildAtWithInt:i]);
     if ([child isKindOfClass:[ADXNavigationBarItemView class]] && [((ADView *) nil_chk(child)) getVisibility] == ADView_VISIBLE) {
       visiblePosition++;
@@ -609,7 +622,7 @@ jint ADXNavigationBarItemView_getItemVisiblePosition(ADXNavigationBarItemView *s
   return visiblePosition;
 }
 
-void ADXNavigationBarItemView_setViewLayoutParamsWithADView_withInt_withInt_(ADView *view, jint topMargin, jint gravity) {
+void ADXNavigationBarItemView_setViewLayoutParamsWithADView_withInt_withInt_(ADView *view, int32_t topMargin, int32_t gravity) {
   ADXNavigationBarItemView_initialize();
   ADFrameLayout_LayoutParams *viewParams = (ADFrameLayout_LayoutParams *) cast_chk([((ADView *) nil_chk(view)) getLayoutParams], [ADFrameLayout_LayoutParams class]);
   ((ADFrameLayout_LayoutParams *) nil_chk(viewParams))->topMargin_ = topMargin;
@@ -617,25 +630,25 @@ void ADXNavigationBarItemView_setViewLayoutParamsWithADView_withInt_withInt_(ADV
   [view setLayoutParamsWithADViewGroup_LayoutParams:viewParams];
 }
 
-void ADXNavigationBarItemView_setViewScaleValuesWithADView_withFloat_withFloat_withInt_(ADView *view, jfloat scaleX, jfloat scaleY, jint visibility) {
+void ADXNavigationBarItemView_setViewScaleValuesWithADView_withFloat_withFloat_withInt_(ADView *view, float scaleX, float scaleY, int32_t visibility) {
   ADXNavigationBarItemView_initialize();
   [((ADView *) nil_chk(view)) setScaleXWithFloat:scaleX];
   [view setScaleYWithFloat:scaleY];
   [view setVisibilityWithInt:visibility];
 }
 
-void ADXNavigationBarItemView_updateViewPaddingBottomWithADView_withInt_(ADView *view, jint paddingBottom) {
+void ADXNavigationBarItemView_updateViewPaddingBottomWithADView_withInt_(ADView *view, int32_t paddingBottom) {
   ADXNavigationBarItemView_initialize();
   [((ADView *) nil_chk(view)) setPaddingWithInt:[view getPaddingLeft] withInt:[view getPaddingTop] withInt:[view getPaddingRight] withInt:paddingBottom];
 }
 
-void ADXNavigationBarItemView_calculateTextScaleFactorsWithFloat_withFloat_(ADXNavigationBarItemView *self, jfloat smallLabelSize, jfloat largeLabelSize) {
+void ADXNavigationBarItemView_calculateTextScaleFactorsWithFloat_withFloat_(ADXNavigationBarItemView *self, float smallLabelSize, float largeLabelSize) {
   self->shiftAmount_ = smallLabelSize - largeLabelSize;
   self->scaleUpFactor_ = 1.0f * largeLabelSize / smallLabelSize;
   self->scaleDownFactor_ = 1.0f * smallLabelSize / largeLabelSize;
 }
 
-jboolean ADXNavigationBarItemView_hasBadge(ADXNavigationBarItemView *self) {
+bool ADXNavigationBarItemView_hasBadge(ADXNavigationBarItemView *self) {
   return self->badgeDrawable_ != nil;
 }
 
@@ -658,20 +671,20 @@ void ADXNavigationBarItemView_tryAttachBadgeToAnchorWithADView_(ADXNavigationBar
 }
 
 ADFrameLayout *ADXNavigationBarItemView_getCustomParentForBadgeWithADView_(ADXNavigationBarItemView *self, ADView *anchorView) {
-  if (anchorView == self->icon_) {
+  if (JreObjectEqualsEquals(anchorView, self->icon_)) {
     return nil;
   }
   return nil;
 }
 
-jint ADXNavigationBarItemView_getSuggestedIconWidth(ADXNavigationBarItemView *self) {
-  jint badgeWidth = self->badgeDrawable_ == nil ? 0 : [self->badgeDrawable_ getMinimumWidth] - [((ADXBadgeDrawable *) nil_chk(self->badgeDrawable_)) getHorizontalOffset];
+int32_t ADXNavigationBarItemView_getSuggestedIconWidth(ADXNavigationBarItemView *self) {
+  int32_t badgeWidth = self->badgeDrawable_ == nil ? 0 : [self->badgeDrawable_ getMinimumWidth] - [((ADXBadgeDrawable *) nil_chk(self->badgeDrawable_)) getHorizontalOffset];
   ADFrameLayout_LayoutParams *iconParams = (ADFrameLayout_LayoutParams *) cast_chk([((ADImageView *) nil_chk(self->icon_)) getLayoutParams], [ADFrameLayout_LayoutParams class]);
   return JavaLangMath_maxWithInt_withInt_(badgeWidth, ((ADFrameLayout_LayoutParams *) nil_chk(iconParams))->leftMargin_) + [((ADImageView *) nil_chk(self->icon_)) getMeasuredWidth] + JavaLangMath_maxWithInt_withInt_(badgeWidth, iconParams->rightMargin_);
 }
 
-jint ADXNavigationBarItemView_getSuggestedIconHeight(ADXNavigationBarItemView *self) {
-  jint badgeHeight = 0;
+int32_t ADXNavigationBarItemView_getSuggestedIconHeight(ADXNavigationBarItemView *self) {
+  int32_t badgeHeight = 0;
   if (self->badgeDrawable_ != nil) {
     badgeHeight = JreIntDiv([self->badgeDrawable_ getMinimumHeight], 2);
   }
@@ -679,7 +692,7 @@ jint ADXNavigationBarItemView_getSuggestedIconHeight(ADXNavigationBarItemView *s
   return JavaLangMath_maxWithInt_withInt_(badgeHeight, ((ADFrameLayout_LayoutParams *) nil_chk(iconParams))->topMargin_) + [((ADImageView *) nil_chk(self->icon_)) getMeasuredWidth] + badgeHeight;
 }
 
-jint ADXNavigationBarItemView_getTextSizeWithADTextView_(ADXNavigationBarItemView *self, ADTextView *label) {
+int32_t ADXNavigationBarItemView_getTextSizeWithADTextView_(ADXNavigationBarItemView *self, ADTextView *label) {
   NSNumber *number = (NSNumber *) cast_chk([((id<ASIWidget>) nil_chk([((id<ASILifeCycleDecorator>) nil_chk(((id<ASILifeCycleDecorator>) cast_check(label, ASILifeCycleDecorator_class_())))) getWidget])) getAttributeWithNSString:@"textSize" withBoolean:true], [NSNumber class]);
   if (number != nil) {
     return [number intValue];
@@ -691,6 +704,8 @@ jint ADXNavigationBarItemView_getTextSizeWithADTextView_(ADXNavigationBarItemVie
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXNavigationBarItemView)
 
+J2OBJC_NAME_MAPPING(ADXNavigationBarItemView, "com.google.android.material.navigation", "ADX")
+
 @implementation ADXNavigationBarItemView_1
 
 - (instancetype)initWithADXNavigationBarItemView:(ADXNavigationBarItemView *)outer$ {
@@ -699,14 +714,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXNavigationBarItemView)
 }
 
 - (void)onLayoutChangeWithADView:(ADView *)v
-                         withInt:(jint)left
-                         withInt:(jint)top
-                         withInt:(jint)right
-                         withInt:(jint)bottom
-                         withInt:(jint)oldLeft
-                         withInt:(jint)oldTop
-                         withInt:(jint)oldRight
-                         withInt:(jint)oldBottom {
+                         withInt:(int32_t)left
+                         withInt:(int32_t)top
+                         withInt:(int32_t)right
+                         withInt:(int32_t)bottom
+                         withInt:(int32_t)oldLeft
+                         withInt:(int32_t)oldTop
+                         withInt:(int32_t)oldRight
+                         withInt:(int32_t)oldBottom {
   if ([((ADImageView *) nil_chk(this$0_->icon_)) getVisibility] == ADView_VISIBLE) {
     ADXNavigationBarItemView_tryUpdateBadgeBoundsWithADView_(this$0_, this$0_->icon_);
   }
@@ -732,7 +747,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXNavigationBarItemView)
     { "this$0_", "LADXNavigationBarItemView;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LADXNavigationBarItemView;", "onLayoutChange", "LADView;IIIIIIII", "initNavigationBarItemView" };
-  static const J2ObjcClassInfo _ADXNavigationBarItemView_1 = { "", "com.google.android.material.navigation", ptrTable, methods, fields, 7, 0x8010, 2, 1, 0, -1, 3, -1, -1 };
+  static const J2ObjcClassInfo _ADXNavigationBarItemView_1 = { "", "com.google.android.material.navigation", ptrTable, methods, fields, 7, 0x8000, 2, 1, 0, -1, 3, -1, -1 };
   return &_ADXNavigationBarItemView_1;
 }
 

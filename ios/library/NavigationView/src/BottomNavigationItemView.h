@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\bottomnavigation\BottomNavigationItemView.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_BottomNavigationItemView")
@@ -20,6 +21,9 @@
 #define INCLUDE_ADXNavigationBarItemView 1
 #include "NavigationBarItemView.h"
 
+@class JavaLangInteger;
+@class NSString;
+
 @interface ADXBottomNavigationItemView : ADXNavigationBarItemView
 
 #pragma mark Public
@@ -28,7 +32,7 @@
 
 #pragma mark Protected
 
-- (jint)getItemDefaultMarginResId;
+- (int32_t)getItemDefaultMarginResId;
 
 - (NSString *)getItemLayoutResId;
 
@@ -45,6 +49,7 @@ FOUNDATION_EXPORT ADXBottomNavigationItemView *create_ADXBottomNavigationItemVie
 J2OBJC_TYPE_LITERAL_HEADER(ADXBottomNavigationItemView)
 
 @compatibility_alias ComGoogleAndroidMaterialBottomnavigationBottomNavigationItemView ADXBottomNavigationItemView;
+
 
 #endif
 

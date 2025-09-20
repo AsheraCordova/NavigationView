@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\navigation\NavigationBarMenuView.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "BadgeDrawable.h"
 #include "Color.h"
 #include "ColorStateList.h"
@@ -28,9 +33,18 @@
 #include "View.h"
 #include "ViewGroup.h"
 #include "ViewParent.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/IllegalArgumentException.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
 #include "java/util/ArrayList.h"
+
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXNavigationBarMenuView () {
@@ -38,18 +52,18 @@
   id<ADView_OnClickListener> onClickListener_;
   id<ADPools_Pool> itemPool_;
   ADSparseArray *onTouchListeners_;
-  jint labelVisibilityMode_;
+  int32_t labelVisibilityMode_;
   IOSObjectArray *buttons_;
-  jint selectedItemId_;
-  jint selectedItemPosition_;
+  int32_t selectedItemId_;
+  int32_t selectedItemPosition_;
   ADColorStateList *itemIconTint_;
-  jint itemIconSize_;
+  int32_t itemIconSize_;
   ADColorStateList *itemTextColorFromUser_;
   ADColorStateList *itemTextColorDefault_;
   NSString *itemTextAppearanceInactive_;
   NSString *itemTextAppearanceActive_;
   ADDrawable *itemBackground_;
-  jint itemBackgroundRes_;
+  int32_t itemBackgroundRes_;
   ADSparseArray *badgeDrawables_;
   ADXNavigationBarPresenter *presenter_;
   ADXMenuBuilder *menu_;
@@ -57,9 +71,9 @@
 
 - (ADXNavigationBarItemView *)getNewItem;
 
-- (jboolean)isValidIdWithInt:(jint)viewId;
+- (bool)isValidIdWithInt:(int32_t)viewId;
 
-- (void)validateMenuItemIdWithInt:(jint)viewId;
+- (void)validateMenuItemIdWithInt:(int32_t)viewId;
 
 - (void)recurseSetWithADViewGroup:(ADViewGroup *)parent
        withADView_OnClickListener:(id<ADView_OnClickListener>)onClickListener;
@@ -82,9 +96,9 @@ J2OBJC_FIELD_SETTER(ADXNavigationBarMenuView, badgeDrawables_, ADSparseArray *)
 J2OBJC_FIELD_SETTER(ADXNavigationBarMenuView, presenter_, ADXNavigationBarPresenter *)
 J2OBJC_FIELD_SETTER(ADXNavigationBarMenuView, menu_, ADXMenuBuilder *)
 
-inline jint ADXNavigationBarMenuView_get_ITEM_POOL_SIZE(void);
+inline int32_t ADXNavigationBarMenuView_get_ITEM_POOL_SIZE(void);
 #define ADXNavigationBarMenuView_ITEM_POOL_SIZE 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationBarMenuView, ITEM_POOL_SIZE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationBarMenuView, ITEM_POOL_SIZE, int32_t)
 
 inline IOSIntArray *ADXNavigationBarMenuView_get_CHECKED_STATE_SET(void);
 static IOSIntArray *ADXNavigationBarMenuView_CHECKED_STATE_SET;
@@ -96,9 +110,9 @@ J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXNavigationBarMenuView, DISABLED_STATE_SET, IOSI
 
 __attribute__((unused)) static ADXNavigationBarItemView *ADXNavigationBarMenuView_getNewItem(ADXNavigationBarMenuView *self);
 
-__attribute__((unused)) static jboolean ADXNavigationBarMenuView_isValidIdWithInt_(ADXNavigationBarMenuView *self, jint viewId);
+__attribute__((unused)) static bool ADXNavigationBarMenuView_isValidIdWithInt_(ADXNavigationBarMenuView *self, int32_t viewId);
 
-__attribute__((unused)) static void ADXNavigationBarMenuView_validateMenuItemIdWithInt_(ADXNavigationBarMenuView *self, jint viewId);
+__attribute__((unused)) static void ADXNavigationBarMenuView_validateMenuItemIdWithInt_(ADXNavigationBarMenuView *self, int32_t viewId);
 
 __attribute__((unused)) static void ADXNavigationBarMenuView_recurseSetWithADViewGroup_withADView_OnClickListener_(ADXNavigationBarMenuView *self, ADViewGroup *parent, id<ADView_OnClickListener> onClickListener);
 
@@ -122,6 +136,7 @@ __attribute__((unused)) static void ADXNavigationBarMenuView_1_initWithADXNaviga
 __attribute__((unused)) static ADXNavigationBarMenuView_1 *new_ADXNavigationBarMenuView_1_initWithADXNavigationBarMenuView_(ADXNavigationBarMenuView *outer$) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static ADXNavigationBarMenuView_1 *create_ADXNavigationBarMenuView_1_initWithADXNavigationBarMenuView_(ADXNavigationBarMenuView *outer$);
+
 
 J2OBJC_INITIALIZED_DEFN(ADXNavigationBarMenuView)
 
@@ -148,14 +163,14 @@ J2OBJC_IGNORE_DESIGNATED_END
       ADXNavigationBarItemView * const *b__ = a__->buffer_;
       ADXNavigationBarItemView * const *e__ = b__ + a__->size_;
       while (b__ < e__) {
-        ADXNavigationBarItemView *item = *b__++;
-        [((ADXNavigationBarItemView *) nil_chk(item)) setIconTintListWithADColorStateList:tint];
+        ADXNavigationBarItemView *item = RETAIN_AND_AUTORELEASE(*b__++);
+        [item setIconTintListWithADColorStateList:tint];
       }
     }
   }
 }
 
-- (void)setItemIconSizeWithInt:(jint)iconSize {
+- (void)setItemIconSizeWithInt:(int32_t)iconSize {
   self->itemIconSize_ = iconSize;
   if (buttons_ != nil) {
     {
@@ -163,8 +178,8 @@ J2OBJC_IGNORE_DESIGNATED_END
       ADXNavigationBarItemView * const *b__ = a__->buffer_;
       ADXNavigationBarItemView * const *e__ = b__ + a__->size_;
       while (b__ < e__) {
-        ADXNavigationBarItemView *item = *b__++;
-        [((ADXNavigationBarItemView *) nil_chk(item)) setIconSizeWithInt:iconSize];
+        ADXNavigationBarItemView *item = RETAIN_AND_AUTORELEASE(*b__++);
+        [item setIconSizeWithInt:iconSize];
       }
     }
   }
@@ -178,8 +193,8 @@ J2OBJC_IGNORE_DESIGNATED_END
       ADXNavigationBarItemView * const *b__ = a__->buffer_;
       ADXNavigationBarItemView * const *e__ = b__ + a__->size_;
       while (b__ < e__) {
-        ADXNavigationBarItemView *item = *b__++;
-        [((ADXNavigationBarItemView *) nil_chk(item)) setTextColorWithADColorStateList:color];
+        ADXNavigationBarItemView *item = RETAIN_AND_AUTORELEASE(*b__++);
+        [item setTextColorWithADColorStateList:color];
       }
     }
   }
@@ -193,8 +208,8 @@ J2OBJC_IGNORE_DESIGNATED_END
       ADXNavigationBarItemView * const *b__ = a__->buffer_;
       ADXNavigationBarItemView * const *e__ = b__ + a__->size_;
       while (b__ < e__) {
-        ADXNavigationBarItemView *item = *b__++;
-        [((ADXNavigationBarItemView *) nil_chk(item)) setTextAppearanceInactiveWithNSString:textAppearanceRes];
+        ADXNavigationBarItemView *item = RETAIN_AND_AUTORELEASE(*b__++);
+        [item setTextAppearanceInactiveWithNSString:textAppearanceRes];
         if (itemTextColorFromUser_ != nil) {
           [item setTextColorWithADColorStateList:itemTextColorFromUser_];
         }
@@ -211,8 +226,8 @@ J2OBJC_IGNORE_DESIGNATED_END
       ADXNavigationBarItemView * const *b__ = a__->buffer_;
       ADXNavigationBarItemView * const *e__ = b__ + a__->size_;
       while (b__ < e__) {
-        ADXNavigationBarItemView *item = *b__++;
-        [((ADXNavigationBarItemView *) nil_chk(item)) setTextAppearanceActiveWithNSString:textAppearanceRes];
+        ADXNavigationBarItemView *item = RETAIN_AND_AUTORELEASE(*b__++);
+        [item setTextAppearanceActiveWithNSString:textAppearanceRes];
         if (itemTextColorFromUser_ != nil) {
           [item setTextColorWithADColorStateList:itemTextColorFromUser_];
         }
@@ -229,18 +244,18 @@ J2OBJC_IGNORE_DESIGNATED_END
       ADXNavigationBarItemView * const *b__ = a__->buffer_;
       ADXNavigationBarItemView * const *e__ = b__ + a__->size_;
       while (b__ < e__) {
-        ADXNavigationBarItemView *item = *b__++;
-        [((ADXNavigationBarItemView *) nil_chk(item)) setItemBackgroundWithADDrawable:background];
+        ADXNavigationBarItemView *item = RETAIN_AND_AUTORELEASE(*b__++);
+        [item setItemBackgroundWithADDrawable:background];
       }
     }
   }
 }
 
-- (void)setLabelVisibilityModeWithInt:(jint)labelVisibilityMode {
+- (void)setLabelVisibilityModeWithInt:(int32_t)labelVisibilityMode {
   self->labelVisibilityMode_ = labelVisibilityMode;
 }
 
-- (jint)getLabelVisibilityMode {
+- (int32_t)getLabelVisibilityMode {
   return labelVisibilityMode_;
 }
 
@@ -256,7 +271,7 @@ J2OBJC_IGNORE_DESIGNATED_END
       ADXNavigationBarItemView * const *b__ = a__->buffer_;
       ADXNavigationBarItemView * const *e__ = b__ + a__->size_;
       while (b__ < e__) {
-        ADXNavigationBarItemView *item = *b__++;
+        ADXNavigationBarItemView *item = RETAIN_AND_AUTORELEASE(*b__++);
         if (item != nil) {
           [((id<ADPools_Pool>) nil_chk(itemPool_)) release__WithId:item];
         }
@@ -270,8 +285,8 @@ J2OBJC_IGNORE_DESIGNATED_END
     return;
   }
   JreStrongAssignAndConsume(&buttons_, [IOSObjectArray newArrayWithLength:[((ADXMenuBuilder *) nil_chk(menu_)) size] type:ADXNavigationBarItemView_class_()]);
-  jboolean shifting = [self isShiftingWithInt:labelVisibilityMode_ withInt:[((JavaUtilArrayList *) nil_chk([((ADXMenuBuilder *) nil_chk(menu_)) getVisibleItems])) size]];
-  for (jint i = 0; i < [((ADXMenuBuilder *) nil_chk(menu_)) size]; i++) {
+  bool shifting = [self isShiftingWithInt:labelVisibilityMode_ withInt:[((JavaUtilArrayList *) nil_chk([((ADXMenuBuilder *) nil_chk(menu_)) getVisibleItems])) size]];
+  for (int32_t i = 0; i < [((ADXMenuBuilder *) nil_chk(menu_)) size]; i++) {
     [((ADXNavigationBarPresenter *) nil_chk(presenter_)) setUpdateSuspendedWithBoolean:true];
     [((id<ADMenuItem>) nil_chk([((ADXMenuBuilder *) nil_chk(menu_)) getItemWithInt:i])) setCheckableWithBoolean:true];
     [((ADXNavigationBarPresenter *) nil_chk(presenter_)) setUpdateSuspendedWithBoolean:false];
@@ -293,7 +308,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     ADXMenuItemImpl *item = (ADXMenuItemImpl *) cast_chk([((ADXMenuBuilder *) nil_chk(menu_)) getItemWithInt:i], [ADXMenuItemImpl class]);
     [child initialize__WithADXMenuItemImpl:item withInt:0];
     [child setItemPositionWithInt:i];
-    jint itemId = [((ADXMenuItemImpl *) nil_chk(item)) getItemId];
+    int32_t itemId = [((ADXMenuItemImpl *) nil_chk(item)) getItemId];
     [child setMyAttributeWithNSString:@"onClick" withId:onClickListener_];
     ADXNavigationBarMenuView_recurseSetWithADViewGroup_withADView_OnClickListener_(self, child, onClickListener_);
     if (selectedItemId_ != ADMenu_NONE && itemId == selectedItemId_) {
@@ -311,13 +326,13 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (menu_ == nil || buttons_ == nil) {
     return;
   }
-  jint menuSize = [menu_ size];
+  int32_t menuSize = [menu_ size];
   if (menuSize != ((IOSObjectArray *) nil_chk(buttons_))->size_) {
     [self buildMenuView];
     return;
   }
-  jint previousSelectedId = selectedItemId_;
-  for (jint i = 0; i < menuSize; i++) {
+  int32_t previousSelectedId = selectedItemId_;
+  for (int32_t i = 0; i < menuSize; i++) {
     id<ADMenuItem> item = JreRetainedLocalValue([((ADXMenuBuilder *) nil_chk(menu_)) getItemWithInt:i]);
     if ([((id<ADMenuItem>) nil_chk(item)) isChecked]) {
       selectedItemId_ = [item getItemId];
@@ -326,8 +341,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
   if (previousSelectedId != selectedItemId_) {
   }
-  jboolean shifting = [self isShiftingWithInt:labelVisibilityMode_ withInt:[((JavaUtilArrayList *) nil_chk([((ADXMenuBuilder *) nil_chk(menu_)) getVisibleItems])) size]];
-  for (jint i = 0; i < menuSize; i++) {
+  bool shifting = [self isShiftingWithInt:labelVisibilityMode_ withInt:[((JavaUtilArrayList *) nil_chk([((ADXMenuBuilder *) nil_chk(menu_)) getVisibleItems])) size]];
+  for (int32_t i = 0; i < menuSize; i++) {
     [((ADXNavigationBarPresenter *) nil_chk(presenter_)) setUpdateSuspendedWithBoolean:true];
     [((ADXNavigationBarItemView *) nil_chk(IOSObjectArray_Get(nil_chk(buttons_), i))) setLabelVisibilityModeWithInt:labelVisibilityMode_];
     [((ADXNavigationBarItemView *) nil_chk(IOSObjectArray_Get(nil_chk(buttons_), i))) setShiftingWithBoolean:shifting];
@@ -340,16 +355,16 @@ J2OBJC_IGNORE_DESIGNATED_END
   return ADXNavigationBarMenuView_getNewItem(self);
 }
 
-- (jint)getSelectedItemId {
+- (int32_t)getSelectedItemId {
   return selectedItemId_;
 }
 
-- (jboolean)isShiftingWithInt:(jint)labelVisibilityMode
-                      withInt:(jint)childCount {
+- (bool)isShiftingWithInt:(int32_t)labelVisibilityMode
+                  withInt:(int32_t)childCount {
   return labelVisibilityMode == ADXNavigationBarView_LABEL_VISIBILITY_AUTO ? childCount > 3 : labelVisibilityMode == ADXNavigationBarView_LABEL_VISIBILITY_SELECTED;
 }
 
-- (ADXBadgeDrawable *)getOrCreateBadgeWithInt:(jint)menuItemId {
+- (ADXBadgeDrawable *)getOrCreateBadgeWithInt:(int32_t)menuItemId {
   ADXNavigationBarMenuView_validateMenuItemIdWithInt_(self, menuItemId);
   ADXBadgeDrawable *badgeDrawable = JreRetainedLocalValue([((ADSparseArray *) nil_chk(badgeDrawables_)) getWithInt:menuItemId]);
   if (badgeDrawable == nil) {
@@ -363,7 +378,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return badgeDrawable;
 }
 
-- (ADXNavigationBarItemView *)findItemViewWithInt:(jint)menuItemId {
+- (ADXNavigationBarItemView *)findItemViewWithInt:(int32_t)menuItemId {
   ADXNavigationBarMenuView_validateMenuItemIdWithInt_(self, menuItemId);
   if (buttons_ != nil) {
     {
@@ -371,8 +386,8 @@ J2OBJC_IGNORE_DESIGNATED_END
       ADXNavigationBarItemView * const *b__ = a__->buffer_;
       ADXNavigationBarItemView * const *e__ = b__ + a__->size_;
       while (b__ < e__) {
-        ADXNavigationBarItemView *itemView = *b__++;
-        if ([((ADXNavigationBarItemView *) nil_chk(itemView)) getId] == menuItemId) {
+        ADXNavigationBarItemView *itemView = RETAIN_AND_AUTORELEASE(*b__++);
+        if ([itemView getId] == menuItemId) {
           return itemView;
         }
       }
@@ -387,7 +402,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 0;
 }
 
-- (jint)getSelectedItemPosition {
+- (int32_t)getSelectedItemPosition {
   return selectedItemPosition_;
 }
 
@@ -395,11 +410,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   return menu_;
 }
 
-- (jboolean)isValidIdWithInt:(jint)viewId {
+- (bool)isValidIdWithInt:(int32_t)viewId {
   return ADXNavigationBarMenuView_isValidIdWithInt_(self, viewId);
 }
 
-- (void)validateMenuItemIdWithInt:(jint)viewId {
+- (void)validateMenuItemIdWithInt:(int32_t)viewId {
   ADXNavigationBarMenuView_validateMenuItemIdWithInt_(self, viewId);
 }
 
@@ -412,8 +427,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   return ADXNavigationBarMenuView_getNavigationBarItemViewWithADView_(self, v);
 }
 
-- (ADColorStateList *)createDefaultColorStateListWithInt:(jint)baseColorThemeAttr {
-  return create_ADColorStateList_initWithIntArray2_withIntArray_([IOSObjectArray arrayWithObjects:(id[]){ ADXNavigationBarMenuView_DISABLED_STATE_SET, ADXNavigationBarMenuView_CHECKED_STATE_SET, ADXNavigationBarMenuView_EMPTY_STATE_SET } count:3 type:IOSClass_intArray(1)], [IOSIntArray arrayWithInts:(jint[]){ ADColor_WHITE, ADColor_WHITE, ADColor_BLACK } count:3]);
+- (ADColorStateList *)createDefaultColorStateListWithInt:(int32_t)baseColorThemeAttr {
+  return create_ADColorStateList_initWithIntArray2_withIntArray_([IOSObjectArray arrayWithObjects:(id[]){ ADXNavigationBarMenuView_DISABLED_STATE_SET, ADXNavigationBarMenuView_CHECKED_STATE_SET, ADXNavigationBarMenuView_EMPTY_STATE_SET } count:3 type:IOSClass_intArray(1)], [IOSIntArray arrayWithInts:(int32_t[]){ ADColor_WHITE, ADColor_WHITE, ADColor_BLACK } count:3]);
 }
 
 - (void)requestLayout {
@@ -424,7 +439,7 @@ J2OBJC_IGNORE_DESIGNATED_END
       ADXNavigationBarItemView * const *b__ = a__->buffer_;
       ADXNavigationBarItemView * const *e__ = b__ + a__->size_;
       while (b__ < e__) {
-        ADXNavigationBarItemView *item = *b__++;
+        ADXNavigationBarItemView *item = RETAIN_AND_AUTORELEASE(*b__++);
         if (item != nil) {
           [item requestLayout];
         }
@@ -542,8 +557,8 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 + (void)initialize {
   if (self == [ADXNavigationBarMenuView class]) {
-    JreStrongAssignAndConsume(&ADXNavigationBarMenuView_CHECKED_STATE_SET, [IOSIntArray newArrayWithInts:(jint[]){ ADR_attr_state_checked } count:1]);
-    JreStrongAssignAndConsume(&ADXNavigationBarMenuView_DISABLED_STATE_SET, [IOSIntArray newArrayWithInts:(jint[]){ -ADR_attr_state_enabled } count:1]);
+    JreStrongAssignAndConsume(&ADXNavigationBarMenuView_CHECKED_STATE_SET, [IOSIntArray newArrayWithInts:(int32_t[]){ ADR_attr_state_checked } count:1]);
+    JreStrongAssignAndConsume(&ADXNavigationBarMenuView_DISABLED_STATE_SET, [IOSIntArray newArrayWithInts:(int32_t[]){ -ADR_attr_state_enabled } count:1]);
     JreStrongAssign(&ADXNavigationBarMenuView_EMPTY_STATE_SET, ADStateSet_getWithInt_(0));
     J2OBJC_SET_INITIALIZED(ADXNavigationBarMenuView)
   }
@@ -570,11 +585,11 @@ ADXNavigationBarItemView *ADXNavigationBarMenuView_getNewItem(ADXNavigationBarMe
   return item;
 }
 
-jboolean ADXNavigationBarMenuView_isValidIdWithInt_(ADXNavigationBarMenuView *self, jint viewId) {
+bool ADXNavigationBarMenuView_isValidIdWithInt_(ADXNavigationBarMenuView *self, int32_t viewId) {
   return viewId != ADView_NO_ID;
 }
 
-void ADXNavigationBarMenuView_validateMenuItemIdWithInt_(ADXNavigationBarMenuView *self, jint viewId) {
+void ADXNavigationBarMenuView_validateMenuItemIdWithInt_(ADXNavigationBarMenuView *self, int32_t viewId) {
   if (!ADXNavigationBarMenuView_isValidIdWithInt_(self, viewId)) {
     @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("I$", viewId, @" is not a valid view id"));
   }
@@ -582,7 +597,7 @@ void ADXNavigationBarMenuView_validateMenuItemIdWithInt_(ADXNavigationBarMenuVie
 
 void ADXNavigationBarMenuView_recurseSetWithADViewGroup_withADView_OnClickListener_(ADXNavigationBarMenuView *self, ADViewGroup *parent, id<ADView_OnClickListener> onClickListener) {
   if ([((NSString *) nil_chk(ASPluginInvoker_getOS())) java_equalsIgnoreCase:@"swt"]) {
-    for (jint i = 0; i < [((ADViewGroup *) nil_chk(parent)) getChildCount]; i++) {
+    for (int32_t i = 0; i < [((ADViewGroup *) nil_chk(parent)) getChildCount]; i++) {
       ADView *child = JreRetainedLocalValue([parent getChildAtWithInt:i]);
       [((ADView *) nil_chk(child)) setMyAttributeWithNSString:@"onClick" withId:onClickListener];
       if ([child isKindOfClass:[ADViewGroup class]]) {
@@ -600,6 +615,8 @@ ADView *ADXNavigationBarMenuView_getNavigationBarItemViewWithADView_(ADXNavigati
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXNavigationBarMenuView)
+
+J2OBJC_NAME_MAPPING(ADXNavigationBarMenuView, "com.google.android.material.navigation", "ADX")
 
 @implementation ADXNavigationBarMenuView_1
 
@@ -637,7 +654,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXNavigationBarMenuView)
     { "this$0_", "LADXNavigationBarMenuView;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LADXNavigationBarMenuView;", "onClick", "LADView;", "init" };
-  static const J2ObjcClassInfo _ADXNavigationBarMenuView_1 = { "", "com.google.android.material.navigation", ptrTable, methods, fields, 7, 0x8010, 2, 1, 0, -1, 3, -1, -1 };
+  static const J2ObjcClassInfo _ADXNavigationBarMenuView_1 = { "", "com.google.android.material.navigation", ptrTable, methods, fields, 7, 0x8000, 2, 1, 0, -1, 3, -1, -1 };
   return &_ADXNavigationBarMenuView_1;
 }
 

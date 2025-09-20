@@ -3,20 +3,33 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\navigation\NavigationBarMenu.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "IOSClass.h"
 #include "J2ObjC_source.h"
 #include "MenuBuilder.h"
 #include "MenuItem.h"
 #include "MenuItemImpl.h"
 #include "NavigationBarMenu.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/CharSequence.h"
 #include "java/lang/IllegalArgumentException.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXNavigationBarMenu () {
  @public
   IOSClass *viewClass_;
-  jint maxItemCount_;
+  int32_t maxItemCount_;
 }
 
 @end
@@ -26,18 +39,18 @@ J2OBJC_FIELD_SETTER(ADXNavigationBarMenu, viewClass_, IOSClass *)
 @implementation ADXNavigationBarMenu
 
 - (instancetype)initWithIOSClass:(IOSClass *)viewClass
-                         withInt:(jint)maxItemCount {
+                         withInt:(int32_t)maxItemCount {
   ADXNavigationBarMenu_initWithIOSClass_withInt_(self, viewClass, maxItemCount);
   return self;
 }
 
-- (jint)getMaxItemCount {
+- (int32_t)getMaxItemCount {
   return maxItemCount_;
 }
 
-- (id<ADMenuItem>)addInternalWithInt:(jint)group
-                             withInt:(jint)id_
-                             withInt:(jint)categoryOrder
+- (id<ADMenuItem>)addInternalWithInt:(int32_t)group
+                             withInt:(int32_t)id_
+                             withInt:(int32_t)categoryOrder
             withJavaLangCharSequence:(id<JavaLangCharSequence>)title {
   if ([self size] + 1 > maxItemCount_) {
     NSString *viewClassName = [((IOSClass *) nil_chk(viewClass_)) getSimpleName];
@@ -81,18 +94,20 @@ J2OBJC_FIELD_SETTER(ADXNavigationBarMenu, viewClass_, IOSClass *)
 
 @end
 
-void ADXNavigationBarMenu_initWithIOSClass_withInt_(ADXNavigationBarMenu *self, IOSClass *viewClass, jint maxItemCount) {
+void ADXNavigationBarMenu_initWithIOSClass_withInt_(ADXNavigationBarMenu *self, IOSClass *viewClass, int32_t maxItemCount) {
   ADXMenuBuilder_init(self);
   JreStrongAssign(&self->viewClass_, viewClass);
   self->maxItemCount_ = maxItemCount;
 }
 
-ADXNavigationBarMenu *new_ADXNavigationBarMenu_initWithIOSClass_withInt_(IOSClass *viewClass, jint maxItemCount) {
+ADXNavigationBarMenu *new_ADXNavigationBarMenu_initWithIOSClass_withInt_(IOSClass *viewClass, int32_t maxItemCount) {
   J2OBJC_NEW_IMPL(ADXNavigationBarMenu, initWithIOSClass_withInt_, viewClass, maxItemCount)
 }
 
-ADXNavigationBarMenu *create_ADXNavigationBarMenu_initWithIOSClass_withInt_(IOSClass *viewClass, jint maxItemCount) {
+ADXNavigationBarMenu *create_ADXNavigationBarMenu_initWithIOSClass_withInt_(IOSClass *viewClass, int32_t maxItemCount) {
   J2OBJC_CREATE_IMPL(ADXNavigationBarMenu, initWithIOSClass_withInt_, viewClass, maxItemCount)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXNavigationBarMenu)
+
+J2OBJC_NAME_MAPPING(ADXNavigationBarMenu, "com.google.android.material.navigation", "ADX")

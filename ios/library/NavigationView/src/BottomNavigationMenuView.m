@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\bottomnavigation\BottomNavigationMenuView.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "BottomNavigationItemView.h"
 #include "BottomNavigationMenuView.h"
 #include "BottomNavigationView.h"
@@ -23,18 +28,27 @@
 #include "ViewCompat.h"
 #include "ViewGroup.h"
 #include "WidgetFactory.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
 #include "java/util/ArrayList.h"
 
 
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXBottomNavigationMenuView () {
  @public
-  jint inactiveItemMaxWidth_;
-  jint inactiveItemMinWidth_;
-  jint activeItemMaxWidth_;
-  jint activeItemMinWidth_;
-  jint itemHeight_;
-  jboolean itemHorizontalTranslationEnabled_;
+  int32_t inactiveItemMaxWidth_;
+  int32_t inactiveItemMinWidth_;
+  int32_t activeItemMaxWidth_;
+  int32_t activeItemMinWidth_;
+  int32_t itemHeight_;
+  bool itemHorizontalTranslationEnabled_;
   IOSIntArray *tempChildWidths_;
 }
 
@@ -51,27 +65,27 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec {
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec {
   ADXMenuBuilder *menu = [self getMenu];
-  jint width = ADView_MeasureSpec_getSizeWithInt_(widthMeasureSpec);
-  jint visibleCount = [((JavaUtilArrayList *) nil_chk([((ADXMenuBuilder *) nil_chk(menu)) getVisibleItems])) size];
-  jint totalCount = [self getChildCount];
-  jint heightSpec = ADView_MeasureSpec_makeMeasureSpecWithInt_withInt_(itemHeight_, ADView_MeasureSpec_EXACTLY);
+  int32_t width = ADView_MeasureSpec_getSizeWithInt_(widthMeasureSpec);
+  int32_t visibleCount = [((JavaUtilArrayList *) nil_chk([((ADXMenuBuilder *) nil_chk(menu)) getVisibleItems])) size];
+  int32_t totalCount = [self getChildCount];
+  int32_t heightSpec = ADView_MeasureSpec_makeMeasureSpecWithInt_withInt_(itemHeight_, ADView_MeasureSpec_EXACTLY);
   if ([self isShiftingWithInt:[self getLabelVisibilityMode] withInt:visibleCount] && [self isItemHorizontalTranslationEnabled]) {
     ADView *activeChild = [self getChildAtWithInt:[self getSelectedItemPosition]];
-    jint activeItemWidth = activeItemMinWidth_;
+    int32_t activeItemWidth = activeItemMinWidth_;
     if ([((ADView *) nil_chk(activeChild)) getVisibility] != ADView_GONE) {
       [activeChild measureWithInt:ADView_MeasureSpec_makeMeasureSpecWithInt_withInt_(activeItemMaxWidth_, ADView_MeasureSpec_AT_MOST) withInt:heightSpec];
       activeItemWidth = JavaLangMath_maxWithInt_withInt_(activeItemWidth, [activeChild getMeasuredWidth]);
     }
-    jint inactiveCount = visibleCount - ([activeChild getVisibility] != ADView_GONE ? 1 : 0);
-    jint activeMaxAvailable = width - inactiveCount * inactiveItemMinWidth_;
-    jint activeWidth = JavaLangMath_minWithInt_withInt_(activeMaxAvailable, JavaLangMath_minWithInt_withInt_(activeItemWidth, activeItemMaxWidth_));
-    jint inactiveMaxAvailable = JreIntDiv((width - activeWidth), (inactiveCount == 0 ? 1 : inactiveCount));
-    jint inactiveWidth = JavaLangMath_minWithInt_withInt_(inactiveMaxAvailable, inactiveItemMaxWidth_);
-    jint extra = width - activeWidth - inactiveWidth * inactiveCount;
-    for (jint i = 0; i < totalCount; i++) {
+    int32_t inactiveCount = visibleCount - ([activeChild getVisibility] != ADView_GONE ? 1 : 0);
+    int32_t activeMaxAvailable = width - inactiveCount * inactiveItemMinWidth_;
+    int32_t activeWidth = JavaLangMath_minWithInt_withInt_(activeMaxAvailable, JavaLangMath_minWithInt_withInt_(activeItemWidth, activeItemMaxWidth_));
+    int32_t inactiveMaxAvailable = JreIntDiv((width - activeWidth), (inactiveCount == 0 ? 1 : inactiveCount));
+    int32_t inactiveWidth = JavaLangMath_minWithInt_withInt_(inactiveMaxAvailable, inactiveItemMaxWidth_);
+    int32_t extra = width - activeWidth - inactiveWidth * inactiveCount;
+    for (int32_t i = 0; i < totalCount; i++) {
       if ([((ADView *) nil_chk([self getChildAtWithInt:i])) getVisibility] != ADView_GONE) {
         *IOSIntArray_GetRef(nil_chk(tempChildWidths_), i) = (i == [self getSelectedItemPosition]) ? activeWidth : inactiveWidth;
         if (extra > 0) {
@@ -85,10 +99,10 @@ J2OBJC_IGNORE_DESIGNATED_END
     }
   }
   else {
-    jint maxAvailable = JreIntDiv(width, (visibleCount == 0 ? 1 : visibleCount));
-    jint childWidth = JavaLangMath_minWithInt_withInt_(maxAvailable, activeItemMaxWidth_);
-    jint extra = width - childWidth * visibleCount;
-    for (jint i = 0; i < totalCount; i++) {
+    int32_t maxAvailable = JreIntDiv(width, (visibleCount == 0 ? 1 : visibleCount));
+    int32_t childWidth = JavaLangMath_minWithInt_withInt_(maxAvailable, activeItemMaxWidth_);
+    int32_t extra = width - childWidth * visibleCount;
+    for (int32_t i = 0; i < totalCount; i++) {
       if ([((ADView *) nil_chk([self getChildAtWithInt:i])) getVisibility] != ADView_GONE) {
         *IOSIntArray_GetRef(nil_chk(tempChildWidths_), i) = childWidth;
         if (extra > 0) {
@@ -101,8 +115,8 @@ J2OBJC_IGNORE_DESIGNATED_END
       }
     }
   }
-  jint totalWidth = 0;
-  for (jint i = 0; i < totalCount; i++) {
+  int32_t totalWidth = 0;
+  for (int32_t i = 0; i < totalCount; i++) {
     ADView *child = [self getChildAtWithInt:i];
     if ([((ADView *) nil_chk(child)) getVisibility] == ADView_GONE) {
       continue;
@@ -115,16 +129,16 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self setMeasuredDimensionWithInt:ADView_resolveSizeAndStateWithInt_withInt_withInt_(totalWidth, ADView_MeasureSpec_makeMeasureSpecWithInt_withInt_(totalWidth, ADView_MeasureSpec_EXACTLY), 0) withInt:ADView_resolveSizeAndStateWithInt_withInt_withInt_(itemHeight_, heightSpec, 0)];
 }
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)left
-                    withInt:(jint)top
-                    withInt:(jint)right
-                    withInt:(jint)bottom {
-  jint count = [self getChildCount];
-  jint width = right - left;
-  jint height = bottom - top;
-  jint used = 0;
-  for (jint i = 0; i < count; i++) {
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)left
+                    withInt:(int32_t)top
+                    withInt:(int32_t)right
+                    withInt:(int32_t)bottom {
+  int32_t count = [self getChildCount];
+  int32_t width = right - left;
+  int32_t height = bottom - top;
+  int32_t used = 0;
+  for (int32_t i = 0; i < count; i++) {
     ADView *child = [self getChildAtWithInt:i];
     if ([((ADView *) nil_chk(child)) getVisibility] == ADView_GONE) {
       continue;
@@ -139,11 +153,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)setItemHorizontalTranslationEnabledWithBoolean:(jboolean)itemHorizontalTranslationEnabled {
+- (void)setItemHorizontalTranslationEnabledWithBoolean:(bool)itemHorizontalTranslationEnabled {
   self->itemHorizontalTranslationEnabled_ = itemHorizontalTranslationEnabled;
 }
 
-- (jboolean)isItemHorizontalTranslationEnabled {
+- (bool)isItemHorizontalTranslationEnabled {
   return itemHorizontalTranslationEnabled_;
 }
 
@@ -200,7 +214,7 @@ void ADXBottomNavigationMenuView_init(ADXBottomNavigationMenuView *self) {
   [self setLayoutParamsWithADViewGroup_LayoutParams:params];
   self->inactiveItemMaxWidth_ = JreFpToInt(ASPluginInvoker_convertDpToPixelWithNSString_(@"96dp"));
   self->inactiveItemMinWidth_ = JreFpToInt(ASPluginInvoker_convertDpToPixelWithNSString_(@"56dp"));
-  self->activeItemMaxWidth_ = (jint) ASPluginInvoker_getScreenWidth();
+  self->activeItemMaxWidth_ = (int32_t) ASPluginInvoker_getScreenWidth();
   self->activeItemMinWidth_ = JreFpToInt(ASPluginInvoker_convertDpToPixelWithNSString_(@"96dp"));
   self->itemHeight_ = JreFpToInt(ASPluginInvoker_convertDpToPixelWithNSString_(@"56dp"));
   JreStrongAssignAndConsume(&self->tempChildWidths_, [IOSIntArray newArrayWithLength:ADXBottomNavigationView_MAX_ITEM_COUNT]);
@@ -215,3 +229,5 @@ ADXBottomNavigationMenuView *create_ADXBottomNavigationMenuView_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXBottomNavigationMenuView)
+
+J2OBJC_NAME_MAPPING(ADXBottomNavigationMenuView, "com.google.android.material.bottomnavigation", "ADX")

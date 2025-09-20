@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\navigation\NavigationBarItemView.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_NavigationBarItemView")
@@ -25,6 +26,9 @@
 @class ADXBadgeDrawable;
 @class ADXMenuItemImpl;
 @class IOSIntArray;
+@class JavaLangBoolean;
+@class JavaLangInteger;
+@class NSString;
 @protocol JavaLangCharSequence;
 
 @interface ADXNavigationBarItemView : ADFrameLayout
@@ -35,36 +39,36 @@
 
 - (ADXMenuItemImpl *)getItemData;
 
-- (jint)getItemPosition;
+- (int32_t)getItemPosition;
 
 - (void)initialize__WithADXMenuItemImpl:(ADXMenuItemImpl *)itemData
-                                withInt:(jint)menuType OBJC_METHOD_FAMILY_NONE;
+                                withInt:(int32_t)menuType OBJC_METHOD_FAMILY_NONE;
 
 - (void)initNavigationBarItemView OBJC_METHOD_FAMILY_NONE;
 
-- (IOSIntArray *)onCreateDrawableStateWithInt:(jint)extraSpace;
+- (IOSIntArray *)onCreateDrawableStateWithInt:(int32_t)extraSpace;
 
 - (void)requestLayout;
 
-- (void)setCheckableWithBoolean:(jboolean)checkable;
+- (void)setCheckableWithBoolean:(bool)checkable;
 
-- (void)setCheckedWithBoolean:(jboolean)checked;
+- (void)setCheckedWithBoolean:(bool)checked;
 
-- (void)setEnabledWithBoolean:(jboolean)enabled;
+- (void)setEnabledWithBoolean:(bool)enabled;
 
 - (void)setIconWithADDrawable:(ADDrawable *)iconDrawable;
 
-- (void)setIconSizeWithInt:(jint)iconSize;
+- (void)setIconSizeWithInt:(int32_t)iconSize;
 
 - (void)setIconTintListWithADColorStateList:(ADColorStateList *)tint;
 
 - (void)setItemBackgroundWithADDrawable:(ADDrawable *)background;
 
-- (void)setItemPositionWithInt:(jint)position;
+- (void)setItemPositionWithInt:(int32_t)position;
 
-- (void)setLabelVisibilityModeWithInt:(jint)mode;
+- (void)setLabelVisibilityModeWithInt:(int32_t)mode;
 
-- (void)setShiftingWithBoolean:(jboolean)shifting;
+- (void)setShiftingWithBoolean:(bool)shifting;
 
 - (void)setTextAppearanceActiveWithNSString:(NSString *)activeTextAppearance;
 
@@ -76,13 +80,13 @@
 
 #pragma mark Protected
 
-- (jint)getItemDefaultMarginResId;
+- (int32_t)getItemDefaultMarginResId;
 
 - (NSString *)getItemLayoutResId;
 
-- (jint)getSuggestedMinimumHeight;
+- (int32_t)getSuggestedMinimumHeight;
 
-- (jint)getSuggestedMinimumWidth;
+- (int32_t)getSuggestedMinimumWidth;
 
 #pragma mark Package-Private
 
@@ -97,6 +101,7 @@ FOUNDATION_EXPORT void ADXNavigationBarItemView_init(ADXNavigationBarItemView *s
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationBarItemView)
 
 @compatibility_alias ComGoogleAndroidMaterialNavigationNavigationBarItemView ADXNavigationBarItemView;
+
 
 #endif
 

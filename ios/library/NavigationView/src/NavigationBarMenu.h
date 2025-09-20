@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\navigation\NavigationBarMenu.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_NavigationBarMenu")
@@ -21,6 +22,7 @@
 #include "MenuBuilder.h"
 
 @class IOSClass;
+@class JavaLangInteger;
 @protocol ADMenuItem;
 @protocol JavaLangCharSequence;
 
@@ -29,15 +31,15 @@
 #pragma mark Public
 
 - (instancetype)initWithIOSClass:(IOSClass *)viewClass
-                         withInt:(jint)maxItemCount;
+                         withInt:(int32_t)maxItemCount;
 
-- (jint)getMaxItemCount;
+- (int32_t)getMaxItemCount;
 
 #pragma mark Protected
 
-- (id<ADMenuItem>)addInternalWithInt:(jint)group
-                             withInt:(jint)id_
-                             withInt:(jint)categoryOrder
+- (id<ADMenuItem>)addInternalWithInt:(int32_t)group
+                             withInt:(int32_t)id_
+                             withInt:(int32_t)categoryOrder
             withJavaLangCharSequence:(id<JavaLangCharSequence>)title;
 
 // Disallowed inherited constructors, do not use.
@@ -48,15 +50,16 @@
 
 J2OBJC_EMPTY_STATIC_INIT(ADXNavigationBarMenu)
 
-FOUNDATION_EXPORT void ADXNavigationBarMenu_initWithIOSClass_withInt_(ADXNavigationBarMenu *self, IOSClass *viewClass, jint maxItemCount);
+FOUNDATION_EXPORT void ADXNavigationBarMenu_initWithIOSClass_withInt_(ADXNavigationBarMenu *self, IOSClass *viewClass, int32_t maxItemCount);
 
-FOUNDATION_EXPORT ADXNavigationBarMenu *new_ADXNavigationBarMenu_initWithIOSClass_withInt_(IOSClass *viewClass, jint maxItemCount) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXNavigationBarMenu *new_ADXNavigationBarMenu_initWithIOSClass_withInt_(IOSClass *viewClass, int32_t maxItemCount) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXNavigationBarMenu *create_ADXNavigationBarMenu_initWithIOSClass_withInt_(IOSClass *viewClass, jint maxItemCount);
+FOUNDATION_EXPORT ADXNavigationBarMenu *create_ADXNavigationBarMenu_initWithIOSClass_withInt_(IOSClass *viewClass, int32_t maxItemCount);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXNavigationBarMenu)
 
 @compatibility_alias ComGoogleAndroidMaterialNavigationNavigationBarMenu ADXNavigationBarMenu;
+
 
 #endif
 

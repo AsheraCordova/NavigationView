@@ -3,17 +3,30 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\internal\BaselineLayout.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "BaselineLayout.h"
 #include "J2ObjC_source.h"
 #include "View.h"
 #include "ViewGroup.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXBaselineLayout () {
  @public
-  jint baseline_;
-  jboolean measurePaddingFromBaseline_;
+  int32_t baseline_;
+  bool measurePaddingFromBaseline_;
 }
 
 @end
@@ -27,27 +40,27 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (void)setMeasurePaddingFromBaselineWithBoolean:(jboolean)measurePaddingFromBaseline {
+- (void)setMeasurePaddingFromBaselineWithBoolean:(bool)measurePaddingFromBaseline {
   self->measurePaddingFromBaseline_ = measurePaddingFromBaseline;
 }
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec {
-  jint count = [self getChildCount];
-  jint maxWidth = 0;
-  jint maxHeight = 0;
-  jint maxChildBaseline = -1;
-  jint maxChildDescent = -1;
-  jint maxMeasuredHeight = 0;
-  jint childState = 0;
-  for (jint i = 0; i < count; i++) {
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec {
+  int32_t count = [self getChildCount];
+  int32_t maxWidth = 0;
+  int32_t maxHeight = 0;
+  int32_t maxChildBaseline = -1;
+  int32_t maxChildDescent = -1;
+  int32_t maxMeasuredHeight = 0;
+  int32_t childState = 0;
+  for (int32_t i = 0; i < count; i++) {
     ADView *child = [self getChildAtWithInt:i];
     if ([((ADView *) nil_chk(child)) getVisibility] == ADView_GONE) {
       continue;
     }
     [self measureChildWithADView:child withInt:widthMeasureSpec withInt:heightMeasureSpec];
     maxMeasuredHeight = JavaLangMath_maxWithInt_withInt_(maxMeasuredHeight, [child getMeasuredHeight]);
-    jint baseline = [child getBaseline];
+    int32_t baseline = [child getBaseline];
     if (baseline != -1) {
       maxChildBaseline = JavaLangMath_maxWithInt_withInt_(maxChildBaseline, baseline);
       maxChildDescent = JavaLangMath_maxWithInt_withInt_(maxChildDescent, [child getMeasuredHeight] - baseline);
@@ -68,25 +81,25 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self setMeasuredDimensionWithInt:ADView_resolveSizeAndStateWithInt_withInt_withInt_(maxWidth, widthMeasureSpec, childState) withInt:ADView_resolveSizeAndStateWithInt_withInt_withInt_(maxHeight, heightMeasureSpec, JreLShift32(childState, ADView_MEASURED_HEIGHT_STATE_SHIFT))];
 }
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)left
-                    withInt:(jint)top
-                    withInt:(jint)right
-                    withInt:(jint)bottom {
-  jint count = [self getChildCount];
-  jint parentLeft = [self getPaddingLeft];
-  jint parentRight = right - left - [self getPaddingRight];
-  jint parentContentWidth = parentRight - parentLeft;
-  jint parentTop = [self getPaddingTop];
-  for (jint i = 0; i < count; i++) {
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)left
+                    withInt:(int32_t)top
+                    withInt:(int32_t)right
+                    withInt:(int32_t)bottom {
+  int32_t count = [self getChildCount];
+  int32_t parentLeft = [self getPaddingLeft];
+  int32_t parentRight = right - left - [self getPaddingRight];
+  int32_t parentContentWidth = parentRight - parentLeft;
+  int32_t parentTop = [self getPaddingTop];
+  for (int32_t i = 0; i < count; i++) {
     ADView *child = [self getChildAtWithInt:i];
     if ([((ADView *) nil_chk(child)) getVisibility] == ADView_GONE) {
       continue;
     }
-    jint width = [child getMeasuredWidth];
-    jint height = [child getMeasuredHeight];
-    jint childLeft = parentLeft + JreIntDiv((parentContentWidth - width), 2);
-    jint childTop;
+    int32_t width = [child getMeasuredWidth];
+    int32_t height = [child getMeasuredHeight];
+    int32_t childLeft = parentLeft + JreIntDiv((parentContentWidth - width), 2);
+    int32_t childTop;
     if (baseline_ != -1 && [child getBaseline] != -1) {
       childTop = parentTop + baseline_ - [child getBaseline];
     }
@@ -97,7 +110,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jint)getBaseline {
+- (int32_t)getBaseline {
   return baseline_;
 }
 
@@ -143,3 +156,5 @@ ADXBaselineLayout *create_ADXBaselineLayout_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXBaselineLayout)
+
+J2OBJC_NAME_MAPPING(ADXBaselineLayout, "com.google.android.material.internal", "ADX")

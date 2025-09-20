@@ -3,12 +3,25 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\internal\NavigationMenuView.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "Context.h"
 #include "J2ObjC_source.h"
 #include "LinearLayoutManager.h"
 #include "MenuBuilder.h"
 #include "NavigationMenuView.h"
 #include "RecyclerView.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXNavigationMenuView
@@ -21,7 +34,7 @@
 - (void)initialize__WithADXMenuBuilder:(ADXMenuBuilder *)menu {
 }
 
-- (jint)getWindowAnimations {
+- (int32_t)getWindowAnimations {
   return 0;
 }
 
@@ -59,3 +72,5 @@ ADXNavigationMenuView *create_ADXNavigationMenuView_initWithADContext_(ADContext
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXNavigationMenuView)
+
+J2OBJC_NAME_MAPPING(ADXNavigationMenuView, "com.google.android.material.internal", "ADX")

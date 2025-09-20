@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\navigation\NavigationView.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ColorStateList.h"
 #include "Context.h"
 #include "Drawable.h"
@@ -19,19 +24,28 @@
 #include "RecyclerView.h"
 #include "ScrimInsetsFrameLayout.h"
 #include "View.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXNavigationView () {
  @public
   ADXNavigationMenu *menu_;
   ADXNavigationMenuPresenter *presenter_;
-  jint maxWidth_;
-  jboolean topInsetScrimEnabled_;
-  jboolean bottomInsetScrimEnabled_;
-  jint drawerLayoutCornerSize_;
-  jboolean drawerLayoutCornerSizeBackAnimationEnabled_;
-  jint drawerLayoutCornerSizeBackAnimationMax_;
+  int32_t maxWidth_;
+  bool topInsetScrimEnabled_;
+  bool bottomInsetScrimEnabled_;
+  int32_t drawerLayoutCornerSize_;
+  bool drawerLayoutCornerSizeBackAnimationEnabled_;
+  int32_t drawerLayoutCornerSizeBackAnimationMax_;
 }
 
 @end
@@ -39,9 +53,9 @@
 J2OBJC_FIELD_SETTER(ADXNavigationView, menu_, ADXNavigationMenu *)
 J2OBJC_FIELD_SETTER(ADXNavigationView, presenter_, ADXNavigationMenuPresenter *)
 
-inline jint ADXNavigationView_get_PRESENTER_NAVIGATION_VIEW_ID(void);
+inline int32_t ADXNavigationView_get_PRESENTER_NAVIGATION_VIEW_ID(void);
 #define ADXNavigationView_PRESENTER_NAVIGATION_VIEW_ID 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationView, PRESENTER_NAVIGATION_VIEW_ID, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationView, PRESENTER_NAVIGATION_VIEW_ID, int32_t)
 
 @interface ADXNavigationView_OnNavigationItemSelectedListener : NSObject
 
@@ -54,8 +68,8 @@ J2OBJC_STATIC_FIELD_CONSTANT(ADXNavigationView, PRESENTER_NAVIGATION_VIEW_ID, ji
 
 - (instancetype)initWithADXNavigationView:(ADXNavigationView *)outer$;
 
-- (jboolean)onMenuItemSelectedWithADXMenuBuilder:(ADXMenuBuilder *)menu
-                                  withADMenuItem:(id<ADMenuItem>)item;
+- (bool)onMenuItemSelectedWithADXMenuBuilder:(ADXMenuBuilder *)menu
+                              withADMenuItem:(id<ADMenuItem>)item;
 
 - (void)onMenuModeChangeWithADXMenuBuilder:(ADXMenuBuilder *)menu;
 
@@ -69,14 +83,15 @@ __attribute__((unused)) static ADXNavigationView_1 *new_ADXNavigationView_1_init
 
 __attribute__((unused)) static ADXNavigationView_1 *create_ADXNavigationView_1_initWithADXNavigationView_(ADXNavigationView *outer$);
 
+
 @implementation ADXNavigationView
 
 - (void)setNavigationItemSelectedListenerWithADXNavigationView_OnNavigationItemSelectedListener:(id<ADXNavigationView_OnNavigationItemSelectedListener>)listener {
   JreStrongAssign(&self->listener_, listener);
 }
 
-- (void)onMeasureWithInt:(jint)widthSpec
-                 withInt:(jint)heightSpec {
+- (void)onMeasureWithInt:(int32_t)widthSpec
+                 withInt:(int32_t)heightSpec {
   switch (ADView_MeasureSpec_getModeWithInt_(widthSpec)) {
     case ADView_MeasureSpec_EXACTLY:
     break;
@@ -107,7 +122,7 @@ __attribute__((unused)) static ADXNavigationView_1 *create_ADXNavigationView_1_i
   [((ADXNavigationMenuPresenter *) nil_chk(presenter_)) removeHeaderViewWithADView:view];
 }
 
-- (ADView *)getHeaderViewWithInt:(jint)index {
+- (ADView *)getHeaderViewWithInt:(int32_t)index {
   return [((ADXNavigationMenuPresenter *) nil_chk(presenter_)) getHeaderViewWithInt:index];
 }
 
@@ -135,27 +150,27 @@ __attribute__((unused)) static ADXNavigationView_1 *create_ADXNavigationView_1_i
   [((ADXNavigationMenuPresenter *) nil_chk(presenter_)) setItemBackgroundWithADDrawable:itemBackground];
 }
 
-- (jint)getItemHorizontalPadding {
+- (int32_t)getItemHorizontalPadding {
   return [((ADXNavigationMenuPresenter *) nil_chk(presenter_)) getItemHorizontalPadding];
 }
 
-- (void)setItemHorizontalPaddingWithInt:(jint)padding {
+- (void)setItemHorizontalPaddingWithInt:(int32_t)padding {
   [((ADXNavigationMenuPresenter *) nil_chk(presenter_)) setItemHorizontalPaddingWithInt:padding];
 }
 
-- (jint)getItemVerticalPadding {
+- (int32_t)getItemVerticalPadding {
   return [((ADXNavigationMenuPresenter *) nil_chk(presenter_)) getItemVerticalPadding];
 }
 
-- (void)setItemVerticalPaddingWithInt:(jint)padding {
+- (void)setItemVerticalPaddingWithInt:(int32_t)padding {
   [((ADXNavigationMenuPresenter *) nil_chk(presenter_)) setItemVerticalPaddingWithInt:padding];
 }
 
-- (jint)getItemIconPadding {
+- (int32_t)getItemIconPadding {
   return [((ADXNavigationMenuPresenter *) nil_chk(presenter_)) getItemIconPadding];
 }
 
-- (void)setItemIconPaddingWithInt:(jint)padding {
+- (void)setItemIconPaddingWithInt:(int32_t)padding {
   [((ADXNavigationMenuPresenter *) nil_chk(presenter_)) setItemIconPaddingWithInt:padding];
 }
 
@@ -163,31 +178,31 @@ __attribute__((unused)) static ADXNavigationView_1 *create_ADXNavigationView_1_i
   [((ADXNavigationMenuPresenter *) nil_chk(presenter_)) setItemTextAppearanceWithNSString:resId];
 }
 
-- (void)setItemIconSizeWithInt:(jint)iconSize {
+- (void)setItemIconSizeWithInt:(int32_t)iconSize {
   [((ADXNavigationMenuPresenter *) nil_chk(presenter_)) setItemIconSizeWithInt:iconSize];
 }
 
-- (void)setItemMaxLinesWithInt:(jint)itemMaxLines {
+- (void)setItemMaxLinesWithInt:(int32_t)itemMaxLines {
   [((ADXNavigationMenuPresenter *) nil_chk(presenter_)) setItemMaxLinesWithInt:itemMaxLines];
 }
 
-- (jint)getItemMaxLines {
+- (int32_t)getItemMaxLines {
   return [((ADXNavigationMenuPresenter *) nil_chk(presenter_)) getItemMaxLines];
 }
 
-- (void)setDividerInsetStartWithInt:(jint)dividerInsetStart {
+- (void)setDividerInsetStartWithInt:(int32_t)dividerInsetStart {
   [((ADXNavigationMenuPresenter *) nil_chk(presenter_)) setDividerInsetStartWithInt:dividerInsetStart];
 }
 
-- (void)setDividerInsetEndWithInt:(jint)dividerInsetEnd {
+- (void)setDividerInsetEndWithInt:(int32_t)dividerInsetEnd {
   [((ADXNavigationMenuPresenter *) nil_chk(presenter_)) setDividerInsetEndWithInt:dividerInsetEnd];
 }
 
-- (void)setSubheaderInsetStartWithInt:(jint)subheaderInsetStart {
+- (void)setSubheaderInsetStartWithInt:(int32_t)subheaderInsetStart {
   [((ADXNavigationMenuPresenter *) nil_chk(presenter_)) setSubheaderInsetStartWithInt:subheaderInsetStart];
 }
 
-- (void)setSubheaderInsetEndWithInt:(jint)subheaderInsetEnd {
+- (void)setSubheaderInsetEndWithInt:(int32_t)subheaderInsetEnd {
   [((ADXNavigationMenuPresenter *) nil_chk(presenter_)) setSubheaderInsetEndWithInt:subheaderInsetEnd];
 }
 
@@ -328,6 +343,8 @@ ADXNavigationView *create_ADXNavigationView_init() {
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXNavigationView)
 
+J2OBJC_NAME_MAPPING(ADXNavigationView, "com.google.android.material.navigation", "ADX")
+
 @implementation ADXNavigationView_OnNavigationItemSelectedListener
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -355,8 +372,8 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ADXNavigationView_OnNavigationItemSelectedL
   return self;
 }
 
-- (jboolean)onMenuItemSelectedWithADXMenuBuilder:(ADXMenuBuilder *)menu
-                                  withADMenuItem:(id<ADMenuItem>)item {
+- (bool)onMenuItemSelectedWithADXMenuBuilder:(ADXMenuBuilder *)menu
+                              withADMenuItem:(id<ADMenuItem>)item {
   return this$0_->listener_ != nil && [this$0_->listener_ onNavigationItemSelectedWithADMenuItem:item];
 }
 
@@ -385,7 +402,7 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ADXNavigationView_OnNavigationItemSelectedL
     { "this$0_", "LADXNavigationView;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LADXNavigationView;", "onMenuItemSelected", "LADXMenuBuilder;LADMenuItem;", "onMenuModeChange", "LADXMenuBuilder;", "init" };
-  static const J2ObjcClassInfo _ADXNavigationView_1 = { "", "com.google.android.material.navigation", ptrTable, methods, fields, 7, 0x8010, 3, 1, 0, -1, 5, -1, -1 };
+  static const J2ObjcClassInfo _ADXNavigationView_1 = { "", "com.google.android.material.navigation", ptrTable, methods, fields, 7, 0x8000, 3, 1, 0, -1, 5, -1, -1 };
   return &_ADXNavigationView_1;
 }
 

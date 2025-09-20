@@ -3,9 +3,20 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\internal\ForegroundLinearLayout.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ForegroundLinearLayout.h"
 #include "J2ObjC_source.h"
 #include "LinearLayout.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXForegroundLinearLayout
@@ -45,3 +56,5 @@ ADXForegroundLinearLayout *create_ADXForegroundLinearLayout_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXForegroundLinearLayout)
+
+J2OBJC_NAME_MAPPING(ADXForegroundLinearLayout, "com.google.android.material.internal", "ADX")

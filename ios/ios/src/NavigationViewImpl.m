@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-ios-widgets\IOSNavigationViewPlugin\src\main\java\com\ashera\navigationview\NavigationViewImpl.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "BaseHasWidgets.h"
 #include "ColorStateList.h"
 #include "Drawable.h"
@@ -49,8 +54,12 @@
 #include "ASUIView.h"
 #include "HasLifeCycleDecorators.h"
 
-@protocol JavaUtilList;
-@protocol JavaUtilMap;
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 #pragma clang diagnostic ignored "-Wprotocol"
@@ -96,12 +105,12 @@ __attribute__((unused)) static void ASNavigationViewImpl_setHeaderLayoutWithId_(
 
 @interface ASNavigationViewImpl_NavigationViewExt () {
  @public
-  __unsafe_unretained ASNavigationViewImpl *this$0_;
+  WEAK_ ASNavigationViewImpl *this$0_;
   ASMeasureEvent *measureFinished_;
   ASOnLayoutEvent *onLayoutEvent_;
   id<JavaUtilList> overlays_;
-  jint mMaxWidth_;
-  jint mMaxHeight_;
+  int32_t mMaxWidth_;
+  int32_t mMaxHeight_;
   id<JavaUtilMap> templates_;
 }
 
@@ -129,7 +138,7 @@ J2OBJC_FIELD_SETTER(ASNavigationViewImpl_NavigationViewExt, templates_, id<JavaU
                      withNSString:(NSString *)strValue
                      withNSString:(NSString *)action;
 
-- (jboolean)onNavigationItemSelectedWithADMenuItem:(id<ADMenuItem>)item;
+- (bool)onNavigationItemSelectedWithADMenuItem:(id<ADMenuItem>)item;
 
 - (id<JavaUtilMap>)getOnNavigationItemSelectedEventObjWithADMenuItem:(id<ADMenuItem>)item;
 
@@ -156,6 +165,7 @@ __attribute__((unused)) static ASNavigationViewImpl_OnNavigationItemSelectedList
 
 J2OBJC_TYPE_LITERAL_HEADER(ASNavigationViewImpl_OnNavigationItemSelectedListener)
 
+
 @interface ASNavigationViewImpl_$Lambda$1 : NSObject < JavaLangRunnable > {
  @public
   id<ASIWidget> val$widget_;
@@ -172,6 +182,7 @@ __attribute__((unused)) static void ASNavigationViewImpl_$Lambda$1_initWithASIWi
 __attribute__((unused)) static ASNavigationViewImpl_$Lambda$1 *new_ASNavigationViewImpl_$Lambda$1_initWithASIWidget_(id<ASIWidget> capture$0) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static ASNavigationViewImpl_$Lambda$1 *create_ASNavigationViewImpl_$Lambda$1_initWithASIWidget_(id<ASIWidget> capture$0);
+
 
 NSString *ASNavigationViewImpl_LOCAL_NAME = @"com.google.android.material.navigation.NavigationView";
 NSString *ASNavigationViewImpl_GROUP_NAME = @"com.google.android.material.navigation.NavigationView";
@@ -239,16 +250,16 @@ J2OBJC_IGNORE_DESIGNATED_END
   return navigationView_;
 }
 
-- (jboolean)removeWithASIWidget:(id<ASIWidget>)w {
-  jboolean remove = [super removeWithASIWidget:w];
+- (bool)removeWithASIWidget:(id<ASIWidget>)w {
+  bool remove = [super removeWithASIWidget:w];
   [((ADXNavigationView *) nil_chk(navigationView_)) removeViewWithADView:(ADView *) cast_chk([((id<ASIWidget>) nil_chk(w)) asWidget], [ADView class])];
   ASNavigationViewImpl_nativeRemoveViewWithASIWidget_(self, w);
   return remove;
 }
 
-- (jboolean)removeWithInt:(jint)index {
+- (bool)removeWithInt:(int32_t)index {
   id<ASIWidget> widget = [((id<JavaUtilList>) nil_chk(widgets_)) getWithInt:index];
-  jboolean remove = [super removeWithInt:index];
+  bool remove = [super removeWithInt:index];
   if (index + 1 <= [((ADXNavigationView *) nil_chk(navigationView_)) getChildCount]) {
     [((ADXNavigationView *) nil_chk(navigationView_)) removeViewAtWithInt:index];
     ASNavigationViewImpl_nativeRemoveViewWithASIWidget_(self, widget);
@@ -261,7 +272,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)addWithASIWidget:(id<ASIWidget>)w
-                 withInt:(jint)index {
+                 withInt:(int32_t)index {
   if (index != -2) {
     ADView *view = (ADView *) cast_chk([((id<ASIWidget>) nil_chk(w)) asWidget], [ADView class]);
     ASNavigationViewImpl_createLayoutParamsWithADView_(self, view);
@@ -461,7 +472,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return uiView_;
 }
 
-- (jboolean)checkIosVersionWithNSString:(NSString *)v {
+- (bool)checkIosVersionWithNSString:(NSString *)v {
   return ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending);
 }
 
@@ -511,7 +522,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)setVisibleWithBoolean:(jboolean)b {
+- (void)setVisibleWithBoolean:(bool)b {
   [((ADView *) nil_chk(((ADView *) cast_chk([self asWidget], [ADView class])))) setVisibilityWithInt:b ? ADView_VISIBLE : ADView_GONE];
 }
 
@@ -689,25 +700,27 @@ void ASNavigationViewImpl_setHeaderLayoutWithId_(ASNavigationViewImpl *self, id 
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationViewImpl)
 
+J2OBJC_NAME_MAPPING(ASNavigationViewImpl, "com.ashera.navigationview", "AS")
+
 @implementation ASNavigationViewImpl_NavigationViewExt
 
 - (id<ASIWidget>)getWidget {
   return this$0_;
 }
 
-- (void)setMaxWidthWithInt:(jint)width {
+- (void)setMaxWidthWithInt:(int32_t)width {
   mMaxWidth_ = width;
 }
 
-- (void)setMaxHeightWithInt:(jint)height {
+- (void)setMaxHeightWithInt:(int32_t)height {
   mMaxHeight_ = height;
 }
 
-- (jint)getMaxWidth {
+- (int32_t)getMaxWidth {
   return mMaxWidth_;
 }
 
-- (jint)getMaxHeight {
+- (int32_t)getMaxHeight {
   return mMaxHeight_;
 }
 
@@ -716,8 +729,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationViewImpl)
   return self;
 }
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec {
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec {
   if (mMaxWidth_ > 0) {
     widthMeasureSpec = ADView_MeasureSpec_makeMeasureSpecWithInt_withInt_(mMaxWidth_, ADView_MeasureSpec_AT_MOST);
   }
@@ -733,11 +746,11 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationViewImpl)
   }
 }
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)l
-                    withInt:(jint)t
-                    withInt:(jint)r
-                    withInt:(jint)b {
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)l
+                    withInt:(int32_t)t
+                    withInt:(int32_t)r
+                    withInt:(int32_t)b {
   [super onLayoutWithBoolean:changed withInt:l withInt:t withInt:r withInt:b];
   ASViewImpl_setDrawableBoundsWithASIWidget_withInt_withInt_withInt_withInt_(this$0_, l, t, r, b);
   if (![self isOverlay]) {
@@ -764,8 +777,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationViewImpl)
           withNSObjectArray:(IOSObjectArray *)canvas {
 }
 
-- (void)updateMeasuredDimensionWithInt:(jint)width
-                               withInt:(jint)height {
+- (void)updateMeasuredDimensionWithInt:(int32_t)width
+                               withInt:(int32_t)height {
   [self setMeasuredDimensionWithInt:width withInt:height];
 }
 
@@ -833,12 +846,12 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationViewImpl)
   displayFrame->bottom_ = displayFrame->top_ + [self getHeight];
 }
 
-- (void)offsetTopAndBottomWithInt:(jint)offset {
+- (void)offsetTopAndBottomWithInt:(int32_t)offset {
   [super offsetTopAndBottomWithInt:offset];
   ASViewImpl_nativeMakeFrameWithId_withInt_withInt_withInt_withInt_([this$0_ asNativeWidget], [self getLeft], [self getTop], [self getRight], [self getBottom]);
 }
 
-- (void)offsetLeftAndRightWithInt:(jint)offset {
+- (void)offsetLeftAndRightWithInt:(int32_t)offset {
   [super offsetLeftAndRightWithInt:offset];
   ASViewImpl_nativeMakeFrameWithId_withInt_withInt_withInt_withInt_([this$0_ asNativeWidget], [self getLeft], [self getTop], [self getRight], [self getBottom]);
 }
@@ -868,7 +881,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationViewImpl)
   [this$0_ setAttributeWithNSString:name withId:value withBoolean:!([value isKindOfClass:[NSString class]])];
 }
 
-- (void)setVisibilityWithInt:(jint)visibility {
+- (void)setVisibilityWithInt:(int32_t)visibility {
   [super setVisibilityWithInt:visibility];
   ASViewImpl_nativeSetVisibilityWithId_withBoolean_([this$0_ asNativeWidget], visibility != ADView_VISIBLE);
 }
@@ -1068,8 +1081,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationViewImpl_NavigationViewExt)
   return self;
 }
 
-- (jboolean)onNavigationItemSelectedWithADMenuItem:(id<ADMenuItem>)item {
-  jboolean result = true;
+- (bool)onNavigationItemSelectedWithADMenuItem:(id<ADMenuItem>)item {
+  bool result = true;
   if (action_ == nil || [action_ isEqual:@"onNavigationItemSelected"]) {
     [((id<ASIWidget>) nil_chk(w_)) syncModelFromUiToPojoWithNSString:@"onNavigationItemSelected"];
     id<JavaUtilMap> obj = [self getOnNavigationItemSelectedEventObjWithADMenuItem:item];
@@ -1094,7 +1107,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASNavigationViewImpl_NavigationViewExt)
     if ([((id<ASIWidget>) nil_chk(w_)) getModelUiToPojoEventIds] != nil) {
       ASViewImpl_refreshUiFromModelWithASIWidget_withId_withBoolean_(w_, [((id<ASIWidget>) nil_chk(w_)) getModelUiToPojoEventIds], true);
     }
-    if (strValue_ != nil && ![strValue_ java_isEmpty] && ![((NSString *) nil_chk([((NSString *) nil_chk(strValue_)) java_trim])) java_hasPrefix:@"+"]) {
+    if (strValue_ != nil && ![strValue_ isEmpty] && ![((NSString *) nil_chk([((NSString *) nil_chk(strValue_)) java_trim])) java_hasPrefix:@"+"]) {
       id<ASIActivity> activity = [((id<ASIFragment>) nil_chk([((id<ASIWidget>) nil_chk(w_)) getFragment])) getRootActivity];
       if (activity != nil) {
         [activity sendEventMessageWithJavaUtilMap:obj];

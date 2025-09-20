@@ -3,10 +3,23 @@
 //  source: D:\Java\git\core-javafx-widget\AndroidJNavigationView\src\main\java\com\google\android\material\bottomnavigation\BottomNavigationItemView.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "BottomNavigationItemView.h"
 #include "J2ObjC_source.h"
 #include "NavigationBarItemView.h"
 #include "PluginInvoker.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXBottomNavigationItemView
@@ -22,7 +35,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return @"@layout/design_bottom_navigation_item_new";
 }
 
-- (jint)getItemDefaultMarginResId {
+- (int32_t)getItemDefaultMarginResId {
   return JreFpToInt(ASPluginInvoker_convertDpToPixelWithNSString_(@"6dp"));
 }
 
@@ -58,3 +71,5 @@ ADXBottomNavigationItemView *create_ADXBottomNavigationItemView_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXBottomNavigationItemView)
+
+J2OBJC_NAME_MAPPING(ADXBottomNavigationItemView, "com.google.android.material.bottomnavigation", "ADX")
