@@ -11,7 +11,7 @@
   
   <platform name="ios">
     <config-file target="config.xml" parent="/widget">
-      <feature name="com.ashera.navigationview.ios">
+      <feature name="CordovaNavigationViewPlugin">
         	<param name="ios-package" value="CordovaNavigationViewPlugin" />
          	<param name="onload" value="true" />
       </feature>
